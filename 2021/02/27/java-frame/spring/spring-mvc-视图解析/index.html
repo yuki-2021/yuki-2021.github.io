@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="ViewResolver和View🍎 View解析和@ResponseBoady区别1️⃣ 设置**响应的Content-type响应头。\**显示指定就下一步\**，没有显示指定，就根据req的Accept自动设定**。 2️⃣ 有@ResponseBody,直接**使用Converter转换**，然后返回。 3️⃣ 没有，使用**ViewResolver找到合适的View，然后渲染内容**，">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ViewResolver和View🍎 View解析和@ResponseBoady区别1️⃣ 设置**响应的Content-type响应头。\**显示指定就下一步\**，没有显示指定，就根据req的Accept自动设定**。 2️⃣ 有@ResponseBody,直接**使用Converter转换**，然后返回。 3️⃣ 没有，使用**ViewResolver找到合适的View，然后渲染内容**，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/index.html">
@@ -17,74 +31,173 @@
 <meta property="article:modified_time" content="2021-02-27T03:07:40.699Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/">
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/","path":"2021/02/27/java-frame/spring/spring-mvc-视图解析/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | Hexo</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewResolver%E5%92%8CView"><span class="nav-number">1.</span> <span class="nav-text">ViewResolver和View</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%8D%8E-View%E8%A7%A3%E6%9E%90%E5%92%8C-ResponseBoady%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.</span> <span class="nav-text">🍎 View解析和@ResponseBoady区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%8D%9F-%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE%E7%BB%99View-Model%E3%80%81-ModelMap-%E3%80%81-Map-%E3%80%81-Pojo"><span class="nav-number">1.2.</span> <span class="nav-text">🍟 传递数据给View - Model、**ModelMap**、**Map**、**Pojo**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%8D%92-ModelAndView-%E6%8C%87%E5%AE%9Aview%E5%92%8Cmodel"><span class="nav-number">1.3.</span> <span class="nav-text">🍒 ModelAndView - 指定view和model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%8C%B6%EF%B8%8F-%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91-redirect-hello"><span class="nav-number">1.4.</span> <span class="nav-text">🌶️ 请求转发 - redirect:&#x2F;hello</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%F0%9F%8D%9A-%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C-RedirectAttributes-redirect-hello"><span class="nav-number">1.5.</span> <span class="nav-text">🍚 重定向和**RedirectAttributes**- redirect:&#x2F;hello</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%90%B3-CookieValue-%E8%8E%B7%E5%8F%96Cookie"><span class="nav-number">2.</span> <span class="nav-text">🐳 @CookieValue - 获取Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%90%8B-SessionAttribute-%E8%8E%B7%E5%8F%96Session"><span class="nav-number">3.</span> <span class="nav-text">🐋 @SessionAttribute - 获取Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%BA-DateTimeFormat-%E6%8C%89%E7%85%A7parttern%E8%A7%A3%E6%9E%90str%E5%88%B0Date"><span class="nav-number">4.</span> <span class="nav-text">🌺@DateTimeFormat - 按照parttern解析str到Date</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
-      <div class="outer">
-        <section id="main"><article id="post-java-frame/spring/spring-mvc-视图解析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2021-02-27T03:04:37.285Z" itemprop="datePublished">2021-02-27</time>
-</a>
+
+    </header>
+
     
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
+
+      <time title="Created: 2021-02-27 11:04:37 / Modified: 11:07:40" itemprop="dateCreated datePublished" datetime="2021-02-27T11:04:37+08:00">2021-02-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
         <h3 id="ViewResolver和View"><a href="#ViewResolver和View" class="headerlink" title="ViewResolver和View"></a>ViewResolver和View</h3><h4 id="🍎-View解析和-ResponseBoady区别"><a href="#🍎-View解析和-ResponseBoady区别" class="headerlink" title="🍎 View解析和@ResponseBoady区别"></a>🍎 <code>View解析</code>和<code>@ResponseBoady</code>区别</h4><p>1️⃣ 设置**<code>响应</code><strong>的</strong><code>Content-type响应头</code><strong>。<code>\**显示指定就下一步\**</code>，没有显示指定，就</strong><code>根据req的Accept自动设定</code>**。</p>
 <p>2️⃣ <strong><code>有@ResponseBody</code></strong>,直接**<code>使用Converter转换</code>**，然后返回。</p>
 <p>3️⃣ 没有，使用**<code>ViewResolver找到合适的View</code><strong>，然后</strong><code>渲染内容</code>**，返回。</p>
@@ -110,134 +223,73 @@
 <h3 id="🐋-SessionAttribute-获取Session"><a href="#🐋-SessionAttribute-获取Session" class="headerlink" title="🐋 @SessionAttribute - 获取Session"></a>🐋 @SessionAttribute - 获取Session</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*  @**SessionAttribute **- 获取Session</span></span><br><span class="line"><span class="comment">*		- required - 是否必须</span></span><br><span class="line"><span class="comment">*		- name  - 获取name的session赋值给对象</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@GetMapping(&quot;getSession&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">attr2</span><span class="params">(<span class="meta">@SessionAttribute</span> User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="🌺-DateTimeFormat-按照parttern解析str到Date"><a href="#🌺-DateTimeFormat-按照parttern解析str到Date" class="headerlink" title="🌺@DateTimeFormat - 按照parttern解析str到Date"></a>🌺<code>@DateTimeFormat</code> - 按照<strong>parttern</strong>解析str到Date</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*   @DateTimeFormat - 按照parttern解析str到Date</span></span><br><span class="line"><span class="comment">*		- pattern - 给定格式</span></span><br><span class="line"><span class="comment">*		- 可以用在方法、pojo类中</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在方法</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param7&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param7</span><span class="params">(<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span> Date birth,User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(birth);</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在pojo</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Integer id;</span><br><span class="line">  <span class="keyword">private</span> String username;</span><br><span class="line">  <span class="keyword">private</span> String password;</span><br><span class="line">  **<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span>**</span><br><span class="line">  <span class="keyword">private</span> Date birth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/" data-id="ckqqo0zkx000sisv90kky6v5o" data-title="" class="article-share-link">Share</a>
-      
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/04/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/08/04/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
+  </footer>
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
 
-<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
 </body>
 </html>
