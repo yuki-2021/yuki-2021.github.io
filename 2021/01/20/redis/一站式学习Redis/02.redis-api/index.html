@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="通用命令123456789101112131415# 获取满足pattern的key  - O(n）-热备从节点keys patternkeys he*# key的个数dbsize# key是否存在exists key # key的类型type key# 删除keydel key# 设置key过期exipre key secondsttl keypersist key   数据解构和内部编码  时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/02.redis-api/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="通用命令123456789101112131415# 获取满足pattern的key  - O(n）-热备从节点keys patternkeys he*# key的个数dbsize# key是否存在exists key # key的类型type key# 删除keydel key# 设置key过期exipre key secondsttl keypersist key   数据解构和内部编码  时">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120173042571.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120173405837.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120173546135.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120173711293.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120175429816.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120175449410.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120181530064.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120181541782.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120181703580.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120184226604.png">
+<meta property="article:published_time" content="2021-01-20T08:41:43.317Z">
+<meta property="article:modified_time" content="2021-01-20T11:29:17.948Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120173042571.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-redis/一站式学习Redis/02.redis-api" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/02.redis-api/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T08:41:43.317Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取满足pattern的key  - O(n）-热备从节点</span></span><br><span class="line">keys pattern</span><br><span class="line">keys he*</span><br><span class="line"><span class="meta">#</span><span class="bash"> key的个数</span></span><br><span class="line">dbsize</span><br><span class="line"><span class="meta">#</span><span class="bash"> key是否存在</span></span><br><span class="line">exists key </span><br><span class="line"><span class="meta">#</span><span class="bash"> key的类型</span></span><br><span class="line">type key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除key</span></span><br><span class="line">del key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置key过期</span></span><br><span class="line">exipre key seconds</span><br><span class="line">ttl key</span><br><span class="line">persist key </span><br></pre></td></tr></table></figure>
+
+<h3 id="数据解构和内部编码"><a href="#数据解构和内部编码" class="headerlink" title="数据解构和内部编码"></a>数据解构和内部编码</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173042571.png" alt="image-20210120173042571"></p>
+<p> 时间换空间  还是 空间 换取时间</p>
+<p>type / encoding</p>
+<h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173405837.png" alt="image-20210120173405837"></p>
+<ul>
+<li>存内存 - 写文件时候不是单线程</li>
+<li>非阻塞IO  epop多路复用</li>
+<li>避免线程切换和静态消耗</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173546135.png" alt="image-20210120173546135"></p>
+<p>拒绝常命令</p>
+<p>keys flushall、flushdb、show lua scripts、multi/exec、operate、big value</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173711293.png" alt="image-20210120173711293"></p>
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3><p>str/int/二进制/json串/</p>
+<p>up to 512Mb – 100KB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取key</span></span><br><span class="line">get key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置</span></span><br><span class="line">set key value</span><br><span class="line">setnx key value #分布式锁</span><br><span class="line">set key value</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除Key</span></span><br><span class="line">del key</span><br><span class="line"><span class="meta">#</span><span class="bash"> getset append strlen</span></span><br><span class="line">getset key newValue </span><br><span class="line">append key value # 追加内容</span><br><span class="line"><span class="meta">#</span><span class="bash"> mget mset 批量获取和设置</span></span><br><span class="line">mget k1 k2 k3</span><br><span class="line">mset k1 v1 k2 v2 k3 v3</span><br><span class="line"></span><br><span class="line">strlen key # 返回字节数字</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 计数</span></span><br><span class="line">incr key # 自增1</span><br><span class="line">decr     # 自减1</span><br><span class="line">incrby key n # 增加n </span><br><span class="line">decrby		 # 减少n</span><br><span class="line"><span class="meta">#</span><span class="bash"> incrbyfloat</span></span><br><span class="line">incrbyfloat 3.5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">incr userid:pageview (单线程：无竞争)</span><br><span class="line">缓存视频基本信息</span><br><span class="line"></span><br><span class="line">getrange key start end</span><br><span class="line">setrange key start end</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120175429816.png" alt="image-20210120175429816"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120175449410.png" alt="image-20210120175449410"></p>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取和设置</span></span><br><span class="line">hget key field</span><br><span class="line">hset key field value </span><br><span class="line">hdel key field</span><br><span class="line">hgetall key </span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line">hmget key f1 f2 f3</span><br><span class="line">hmset key f1 v1 f2 v2 f3 v3</span><br><span class="line"><span class="meta">#</span><span class="bash"> filed的个数</span></span><br><span class="line">hlen key </span><br><span class="line"><span class="meta">#</span><span class="bash"> field是否存在</span></span><br><span class="line">hexists key field</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line">hgetall key</span><br><span class="line">hvals key</span><br><span class="line">hkeys key</span><br><span class="line"></span><br><span class="line">hsetbx key filed value</span><br><span class="line">hincrby key field v</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">用户个人主页的访问量</span></span><br><span class="line">hincrby user:1:info pageView count</span><br><span class="line"><span class="meta">#</span><span class="bash"> 储存视频基本信息</span></span><br><span class="line">redis.hgetAll()</span><br><span class="line">redis.hmset(redisKey,transferToMap())</span><br></pre></td></tr></table></figure>
+
+<p>存储方式是<code>hastable</code>和<code>ziplist</code></p>
+<p><strong>对比</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181530064.png" alt="image-20210120181530064"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181541782.png" alt="image-20210120181541782"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181703580.png" alt="image-20210120181703580"></p>
+<h3 id="List列表"><a href="#List列表" class="headerlink" title="List列表"></a>List列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 列表 - 有序 重复</span></span><br><span class="line">rpush key v1 v2 ... vn</span><br><span class="line">lpush key v1 v2 ... vn</span><br><span class="line">linsert key before|after value newValue</span><br><span class="line">lset key index newValue</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出</span></span><br><span class="line">lpop key</span><br><span class="line">rpop key</span><br><span class="line"><span class="meta">#</span><span class="bash"> c&lt;0 删除count个value</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> c&gt;0 右边删除count个value</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> c=0 删除所有的valuse</span></span><br><span class="line">lrem key count value</span><br><span class="line">ltrim key start end # 保留start到end</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查询</span></span><br><span class="line">lrange key start end  # [start,end]</span><br><span class="line">llen key#长度</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Set集合类型"><a href="#Set集合类型" class="headerlink" title="Set集合类型"></a>Set集合类型</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 加入内容</span></span><br><span class="line">sadd key ele</span><br><span class="line">srem key ele</span><br><span class="line">spop</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查询</span></span><br><span class="line">srandmember # 随机返回</span><br><span class="line">smembers</span><br><span class="line">scan</span><br><span class="line"><span class="meta">#</span><span class="bash"> 其他API</span></span><br><span class="line">scard # 集合大小</span><br><span class="line">sismember # 是否存在</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 抽奖活动</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Zset"><a href="#Zset" class="headerlink" title="Zset"></a>Zset</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120184226604.png" alt="image-20210120184226604"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/02.redis-api/" data-id="ckqqo0zkv000oisv9d0n9eanq" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/20/java-frame/spring/spring-base/02.Spring-ioc2-anno/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/01.redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

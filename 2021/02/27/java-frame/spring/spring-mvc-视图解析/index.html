@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ViewResolver和View🍎 View解析和@ResponseBoady区别1️⃣ 设置**响应的Content-type响应头。\**显示指定就下一步\**，没有显示指定，就根据req的Accept自动设定**。 2️⃣ 有@ResponseBody,直接**使用Converter转换**，然后返回。 3️⃣ 没有，使用**ViewResolver找到合适的View，然后渲染内容**，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ViewResolver和View🍎 View解析和@ResponseBoady区别1️⃣ 设置**响应的Content-type响应头。\**显示指定就下一步\**，没有显示指定，就根据req的Accept自动设定**。 2️⃣ 有@ResponseBody,直接**使用Converter转换**，然后返回。 3️⃣ 没有，使用**ViewResolver找到合适的View，然后渲染内容**，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-27T03:04:37.285Z">
+<meta property="article:modified_time" content="2021-02-27T03:07:40.699Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-frame/spring/spring-mvc-视图解析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2021-02-27T03:04:37.285Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="ViewResolver和View"><a href="#ViewResolver和View" class="headerlink" title="ViewResolver和View"></a>ViewResolver和View</h3><h4 id="🍎-View解析和-ResponseBoady区别"><a href="#🍎-View解析和-ResponseBoady区别" class="headerlink" title="🍎 View解析和@ResponseBoady区别"></a>🍎 <code>View解析</code>和<code>@ResponseBoady</code>区别</h4><p>1️⃣ 设置**<code>响应</code><strong>的</strong><code>Content-type响应头</code><strong>。<code>\**显示指定就下一步\**</code>，没有显示指定，就</strong><code>根据req的Accept自动设定</code>**。</p>
+<p>2️⃣ <strong><code>有@ResponseBody</code></strong>,直接**<code>使用Converter转换</code>**，然后返回。</p>
+<p>3️⃣ 没有，使用**<code>ViewResolver找到合适的View</code><strong>，然后</strong><code>渲染内容</code>**，返回。</p>
+<h4 id="🍟-传递数据给View-Model、-ModelMap-、-Map-、-Pojo"><a href="#🍟-传递数据给View-Model、-ModelMap-、-Map-、-Pojo" class="headerlink" title="🍟 传递数据给View - Model、**ModelMap**、**Map**、**Pojo**"></a>🍟 传递数据给View - <code>Model</code>、<code>**ModelMap**</code>、<code>**Map**</code>、<code>**Pojo**</code></h4><p><code>Model</code>、<code>**ModelMap**</code>、<code>**Map**</code>、<code>**Pojo</code>** 会自动传递给View。</p>
+<ul>
+<li><strong>Map</strong>、<strong>ModelMap</strong>、<strong>Model</strong>作为参数无区别，spring-mvc在运行时创建的都是**<code>BindingAwareModelMap</code>**。</li>
+<li>其他类型不会传递</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 给view传递数据 - Map、Model、ModelMap(本质上是BindingAwareModelMap)、User</span></span><br><span class="line"><span class="comment">*              - 其他类型不会自动传递</span></span><br><span class="line"><span class="comment">*              - 请求参数可以使用 - paramScope访问</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view3&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view3</span><span class="params">(String username, Map&lt;String,Object&gt; map, Model model, ModelMap modelMap, User user)</span> </span>&#123;</span><br><span class="line">    map.put(<span class="string">&quot;map1&quot;</span>,<span class="string">&quot;map传递参数&quot;</span>);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;model1&quot;</span>,<span class="string">&quot;model传递参数&quot;</span>);</span><br><span class="line">    modelMap.addAttribute(<span class="string">&quot;modelMap1&quot;</span>,<span class="string">&quot;modelMap传递参数&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;viewAuto&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
+
+<h4 id="🍒-ModelAndView-指定view和model"><a href="#🍒-ModelAndView-指定view和model" class="headerlink" title="🍒 ModelAndView - 指定view和model"></a>🍒 ModelAndView - 指定view和model</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* ModelAndView -</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view4&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">view4</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">    ModelAndView modelAndView = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">    modelAndView.setViewName(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;username&quot;</span>,username);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
+
+<h4 id="🌶️-请求转发-redirect-hello"><a href="#🌶️-请求转发-redirect-hello" class="headerlink" title="🌶️ 请求转发 - redirect:/hello"></a>🌶️ 请求转发 - <code>redirect:/hello</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 请求转发 - redirect:/hello</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view1&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;forward:/hello&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
+
+<h4 id="🍚-重定向和-RedirectAttributes-redirect-hello"><a href="#🍚-重定向和-RedirectAttributes-redirect-hello" class="headerlink" title="🍚 重定向和**RedirectAttributes**- redirect:/hello"></a>🍚 重定向和**<code>RedirectAttributes</code>**- <code>redirect:/hello</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - redirect:/hello</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/hello&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>RedirectAttributes</code></strong> - <code>**传递重定向参数**</code>。</p>
+<p><code>**@ModelAttribute**</code>用于<code>**接收重定向参数**</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - RedirectAttributes - 传递重定向参数</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@GetMapping(&quot;/view2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view2</span><span class="params">(RedirectAttributes redirectAttrs)</span> </span>&#123;</span><br><span class="line">    redirectAttrs.addFlashAttribute(<span class="string">&quot;redirect&quot;</span>,<span class="string">&quot;FlashMap用于重定向&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/hello&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - @ModelAttribute - 接收重定向参数</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(<span class="meta">@ModelAttribute(&quot;redirect&quot;)</span> String redirect)</span> </span>&#123;</span><br><span class="line">    System.out.println(redirect);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello-world-aaaaaa1&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🐳-CookieValue-获取Cookie"><a href="#🐳-CookieValue-获取Cookie" class="headerlink" title="🐳 @CookieValue - 获取Cookie"></a>🐳 @CookieValue - 获取Cookie</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*  @CookieValue - @CookieValue获取cookie</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param6/cookie&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param6Cookie</span><span class="params">(HttpServletResponse  resp)</span> </span>&#123;</span><br><span class="line">    Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">&quot;yuki&quot;</span>, <span class="string">&quot;y&quot;</span>);</span><br><span class="line">    resp.addCookie(cookie);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;已经生成Cookie !!!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">**<span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param6&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param6</span><span class="params">(<span class="meta">@CookieValue(&quot;yuki&quot;)</span> String sessionId)</span> </span>&#123;**</span><br><span class="line">    System.out.println(sessionId);</span><br><span class="line">    <span class="keyword">return</span> sessionId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🐋-SessionAttribute-获取Session"><a href="#🐋-SessionAttribute-获取Session" class="headerlink" title="🐋 @SessionAttribute - 获取Session"></a>🐋 @SessionAttribute - 获取Session</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*  @**SessionAttribute **- 获取Session</span></span><br><span class="line"><span class="comment">*		- required - 是否必须</span></span><br><span class="line"><span class="comment">*		- name  - 获取name的session赋值给对象</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@GetMapping(&quot;getSession&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">attr2</span><span class="params">(<span class="meta">@SessionAttribute</span> User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🌺-DateTimeFormat-按照parttern解析str到Date"><a href="#🌺-DateTimeFormat-按照parttern解析str到Date" class="headerlink" title="🌺@DateTimeFormat - 按照parttern解析str到Date"></a>🌺<code>@DateTimeFormat</code> - 按照<strong>parttern</strong>解析str到Date</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*   @DateTimeFormat - 按照parttern解析str到Date</span></span><br><span class="line"><span class="comment">*		- pattern - 给定格式</span></span><br><span class="line"><span class="comment">*		- 可以用在方法、pojo类中</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在方法</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param7&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param7</span><span class="params">(<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span> Date birth,User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(birth);</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在pojo</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Integer id;</span><br><span class="line">  <span class="keyword">private</span> String username;</span><br><span class="line">  <span class="keyword">private</span> String password;</span><br><span class="line">  **<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span>**</span><br><span class="line">  <span class="keyword">private</span> Date birth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/" data-id="ckqqo0zkx000sisv90kky6v5o" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/04/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

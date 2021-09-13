@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="DQL语句是Data Query Language，用于查询数据。 基础查询基础的查询语法是 1234567select [distinct] col1 [as c1] ,col2 [as c1],...from table_name [tb_name_alias][where ... [having ...] ][group by ... ][having xxx][order by c1 de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/05/db/mysql%E5%9F%BA%E7%A1%80/05DQL%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DQL语句是Data Query Language，用于查询数据。 基础查询基础的查询语法是 1234567select [distinct] col1 [as c1] ,col2 [as c1],...from table_name [tb_name_alias][where ... [having ...] ][group by ... ][having xxx][order by c1 de">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-05T14:42:26.435Z">
+<meta property="article:modified_time" content="2021-01-06T04:20:09.683Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-db/mysql基础/05DQL语句" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/05/db/mysql%E5%9F%BA%E7%A1%80/05DQL%E8%AF%AD%E5%8F%A5/" class="article-date">
+  <time class="dt-published" datetime="2021-01-05T14:42:26.435Z" itemprop="datePublished">2021-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>DQL语句</code>是<code>Data Query Language</code>，用于<code>查询数据</code>。</p>
+<h3 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h3><p>基础的查询语法是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">distinct</span>] col1 [<span class="keyword">as</span> c1] ,col2 [<span class="keyword">as</span> c1],...</span><br><span class="line"><span class="keyword">from</span> table_name [tb_name_alias]</span><br><span class="line">[<span class="keyword">where</span> ... [<span class="keyword">having</span> ...] ]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> ... ]</span><br><span class="line">[<span class="keyword">having</span> xxx]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> c1 <span class="keyword">desc</span>, c1 <span class="keyword">asc</span>, ...]</span><br><span class="line">[<span class="keyword">limit</span> a,b]</span><br></pre></td></tr></table></figure>
+
+<h6 id="AS-起别名"><a href="#AS-起别名" class="headerlink" title="AS - 起别名"></a><strong>AS - 起别名</strong></h6><ul>
+<li>给<code>运算结果起别名</code></li>
+<li>给<code>列起别名</code></li>
+<li>给<code>表起别名</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 运算结果起别名 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">100</span>*<span class="number">100</span> <span class="keyword">as</span> res</span><br><span class="line"><span class="comment">/* 列别名 表别名*/</span></span><br><span class="line"><span class="keyword">select</span> first_name <span class="keyword">as</span> <span class="string">&#x27;姓&#x27;</span>, last_name <span class="keyword">as</span> <span class="string">&#x27;名&#x27;</span> <span class="keyword">from</span> employees <span class="keyword">as</span> emp</span><br><span class="line"><span class="keyword">where</span> emp.first_name <span class="keyword">like</span> <span class="string">&#x27;%s%&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="Distinct-去重复"><a href="#Distinct-去重复" class="headerlink" title="Distinct - 去重复"></a><strong>Distinct - 去重复</strong></h6><ul>
+<li><code>Distinct 紧跟在Select后面</code></li>
+<li>单列，一列作为整体，去重。<code>多列，多列作为整体，去重</code>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 单列去重 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span></span><br><span class="line"><span class="comment">/* 多列去重 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">DISTINCT</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="分组-group-by"><a href="#分组-group-by" class="headerlink" title="分组 - group by"></a><strong>分组 - group by</strong></h6><ul>
+<li><code>一般配合聚合函数(count、max、min、avg、sum)，实现分组后统计</code></li>
+<li>多次使用，表示多个分组条件。比如，统计<code>每个部门的每个工种的平均工资</code>，就是<code>部门和工种</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 聚合函数 多分组*/</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary)</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br></pre></td></tr></table></figure>
+
+<h6 id="Having-子查询"><a href="#Having-子查询" class="headerlink" title="Having - 子查询"></a><strong>Having - 子查询</strong></h6><ul>
+<li><code>having</code>用来对<code>group by</code>结果进行过滤。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">having</span> avg_sal &gt; <span class="number">7000</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="排序-order-by"><a href="#排序-order-by" class="headerlink" title="排序 - order by"></a><strong>排序 - order by</strong></h6><ul>
+<li>可选值有<code>ASC</code>、<code>DESC</code>。<code>ASC可以省略</code>。</li>
+<li>多次使用，先按c1排，然后按照c2排。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 多列排序 */</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> avg_sal, job_id</span><br></pre></td></tr></table></figure>
+
+<h6 id="Limit-分页"><a href="#Limit-分页" class="headerlink" title="Limit  - 分页"></a><strong>Limit  - 分页</strong></h6><ul>
+<li>语法是Limt(idx,count)。idx省略表示取前count条。</li>
+<li><code>idx从0开始，比如取11-20条，应该是limit(10,10)</code>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 取 6-10条 数据 */</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> avg_sal, job_id</span><br><span class="line"><span class="keyword">limit</span> <span class="number">5</span>,<span class="number">5</span>	</span><br></pre></td></tr></table></figure>
+
+<h3 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h3><h6 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h6><p>条件表达式有<code>&gt;</code>、<code>&lt;</code>、<code>=</code>、<code>!=</code>、<code>&lt;&gt;</code></p>
+<p><strong>查询1</strong>： 工资&gt;大于1200。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees <span class="keyword">where</span> salary &gt; <span class="number">1200</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查询2</strong>： 查询 <code>部门编号不等于90</code> 的 <code>员工名和编号</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>,department_id <span class="keyword">from</span> employees <span class="keyword">where</span> department_id != <span class="number">90</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="逻辑表达式"><a href="#逻辑表达式" class="headerlink" title="逻辑表达式"></a>逻辑表达式</h6><p>逻辑表达式有<code>and</code>、<code>or</code>、<code>not</code>。可以<code>连接两个条件</code>。</p>
+<p><strong>查询1</strong>： 查询 <code>工资在 1w 到 2w</code> 的 <code>员工名 工资 奖金</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(first_name, last_name) <span class="keyword">as</span> <span class="keyword">name</span>, salary, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> salary &gt; <span class="number">10000</span> <span class="keyword">and</span> salary &lt; <span class="number">20000</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查询2</strong>： 查询 <code>部门编号 不再 90 - 100</code> 或 <code>工资 高于 15000</code> 的 信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> (department_id &lt; <span class="number">90</span> <span class="keyword">or</span> department_id &gt; <span class="number">100</span>) <span class="keyword">or</span> (salary &gt; <span class="number">15000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>null</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> (department_id &gt;= <span class="number">90</span> <span class="keyword">and</span> department_id &lt;= <span class="number">100</span>) <span class="keyword">or</span> (salary &gt; <span class="number">15000</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h6><ul>
+<li>模糊查询使用<code>like</code></li>
+<li>可用符号有<code>_</code>和<code>%</code></li>
+<li>转义符号是<code>\</code></li>
+</ul>
+<p><strong>查询1</strong>： 查询 <code>员工姓名 包含 a</code> 的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">like</span> <span class="string">&#x27;%a%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查询2</strong>： 查询 第二个字符是’_’的员工。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用转义符号 */</span></span><br><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> last_name <span class="keyword">like</span> <span class="string">&#x27;_\_%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Between-and-和-in"><a href="#Between-and-和-in" class="headerlink" title="Between ... and 和 in"></a><code>Between ... and</code> 和 <code>in</code></h6><p>这两个用于<code>范围查询</code>。</p>
+<p><strong>查询3</strong>： 查询 <code>员工编号 在 100 到 200  之间</code>的 员工号 和 名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, job_id</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> employee_id <span class="keyword">BETWEEN</span> <span class="number">100</span> <span class="keyword">and</span> <span class="number">200</span> </span><br></pre></td></tr></table></figure>
+
+<p><strong>查询4</strong>： 查询<code>工种编号是 IT_PROG，AD_VP，AD_PRES</code>的员工姓名 和 工种号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, job_id</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> job_id <span class="keyword">in</span> (<span class="string">&#x27;IT_PROG&#x27;</span>,<span class="string">&#x27;AD_VP&#x27;</span>,<span class="string">&#x27;AD_PRES&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="IS-NULL-和-全等"><a href="#IS-NULL-和-全等" class="headerlink" title="IS NULL 和 全等"></a>IS NULL 和 <code>全等</code></h6><ul>
+<li>判断<code>是不是Null</code>，用<code>Is Null</code>，<code>不能用==</code>。</li>
+<li><code>&lt;=&gt;</code>是全等，可以当作等号，还能当作<code>isNull</code>。</li>
+</ul>
+<p><strong>查询5</strong> ： 查询<code>没有奖金的员工</code> 的 员工名称 和奖金率</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> commission_pct <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查询7</strong> ： 查询<code>没有奖金的员工 </code>的 员工名称 和奖金率(使用安全等于)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> commission_pct &lt;=&gt; <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>连接查询分为<code>内连接</code>、<code>外连接(左外、右外)</code>、<code>交叉连接</code>。</p>
+<p>按照连接条件又分为<code>等值连接</code>、<code>非等值链接</code>。</p>
+<p><code>SQL92 标准</code>仅仅支持<code>内连接</code>、<code>交叉连接</code>。</p>
+<p><code>SQL99 标准</code> 支持<code>内连接</code>、<code>外连接</code>、<code>交叉连接</code>。</p>
+<h4 id="SQL-92"><a href="#SQL-92" class="headerlink" title="SQL 92"></a>SQL 92</h4><h6 id="等值内连接"><a href="#等值内连接" class="headerlink" title="等值内连接"></a>等值内连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 等值内连接 */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> beauty b, boys bf</span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id = bf.id</span><br></pre></td></tr></table></figure>
+
+<h6 id="非等值内连接"><a href="#非等值内连接" class="headerlink" title="非等值内连接"></a>非等值内连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees emps, jobs</span><br><span class="line"><span class="keyword">where</span> emps.salary <span class="keyword">BETWEEN</span> jobs.min_salary <span class="keyword">and</span> jobs.max_salary</span><br></pre></td></tr></table></figure>
+
+<h4 id="SQL-99"><a href="#SQL-99" class="headerlink" title="SQL 99"></a>SQL 99</h4><h6 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h6><p><strong>查询一</strong>： 查询<code>部门员工个数大于3</code>的<code>部门名</code>和<code>员工个数</code>，按个数降序。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, department_name,<span class="keyword">count</span>(*) <span class="keyword">as</span> emp_count </span><br><span class="line"><span class="keyword">from</span> employees emps</span><br><span class="line"><span class="keyword">join</span> departments <span class="keyword">on</span> emps.department_id = departments.department_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> emps.department_id</span><br><span class="line"><span class="keyword">HAVING</span> emp_count &gt; <span class="number">3</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> emp_count <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查询二</strong>： 查询<code>工资级别的员工个数</code>，按<code>级别降序</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> grade_level, lowest_sal, highest_sal,<span class="keyword">count</span>(*) <span class="keyword">as</span> emp_count</span><br><span class="line"><span class="keyword">from</span> employees emp</span><br><span class="line"><span class="keyword">JOIN</span> job_grades grade <span class="keyword">on</span> emp.salary <span class="keyword">BETWEEN</span> grade.lowest_sal <span class="keyword">and</span> grade.highest_sal</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> grade.grade_level</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> grade.grade_level <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h6><p><strong>查询一</strong>： 查询<code>没有男朋友</code>的<code>女神名称</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> beauty b</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">JOIN</span> boys bf <span class="keyword">on</span> b.boyfriend_id = bf.id</span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id <span class="keyword">is</span> <span class="literal">null</span> </span><br></pre></td></tr></table></figure>
+
+<h6 id="交叉连接"><a href="#交叉连接" class="headerlink" title="交叉连接"></a>交叉连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* cross join 相当于没条件的 inner join*/</span></span><br><span class="line"><span class="keyword">select</span> b.*,bo.* </span><br><span class="line"><span class="keyword">from</span> beauty b</span><br><span class="line"><span class="keyword">CROSS</span> <span class="keyword">JOIN</span> boys bo</span><br></pre></td></tr></table></figure>
+
+<h4 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h4><ul>
+<li>自连接是<code>当前表连接自己</code></li>
+</ul>
+<p><strong>查询一</strong>： 查询<code>员工名称</code>和<code>上级名称</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp.last_name, emp.manager_id &#39;上级编号&#39;,man.employee_id &#39;MA编号&#39;,man.last_name</span><br><span class="line">from employees emp</span><br><span class="line">JOIN employees man on emp.manager_id &#x3D; man.employee_id</span><br></pre></td></tr></table></figure>
+
+<h3 id="union查询"><a href="#union查询" class="headerlink" title="union查询"></a>union查询</h3><ul>
+<li><code>Union</code>会<code>自动去重</code>，<code>Union All</code>不会自动去重。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* union all */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="comment">/* union */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/05/db/mysql%E5%9F%BA%E7%A1%80/05DQL%E8%AF%AD%E5%8F%A5/" data-id="ckjqs77s8000fk0v9gta3fssp" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/06/db/mysql%E5%9F%BA%E7%A1%80/06.%E5%AD%90%E6%9F%A5%E8%AF%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/05/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/03.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

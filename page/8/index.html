@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-db/mysql必知必会/03.数据库设计范式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/05/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/03.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-01-05T10:32:15.304Z" itemprop="datePublished">2021-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="宽表模式"><a href="#宽表模式" class="headerlink" title="宽表模式"></a>宽表模式</h3><p>简单来说，宽表模式是把<code>一个对象的所有属性放到一个表中</code>。</p>
+<p>会有如下问题</p>
+<ul>
+<li>会有一些列出现冗余数据</li>
+<li>更新时候，对于冗余的行，需要更新多行。</li>
+</ul>
+<p><strong>解决方法</strong></p>
+<ul>
+<li>把数据冗余的列，抽取出来</li>
+</ul>
+<p>适用情况</p>
+<ul>
+<li><code>配合列存储的报表应用</code></li>
+</ul>
+<h3 id="数据库设计范式"><a href="#数据库设计范式" class="headerlink" title="数据库设计范式"></a>数据库设计范式</h3><p>对于数据库，有如下三个<code>范式</code></p>
+<h6 id="范式一-字段不可以再分开"><a href="#范式一-字段不可以再分开" class="headerlink" title="范式一 - 字段不可以再分开"></a>范式一 - 字段不可以再分开</h6><p> <img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118114517247.png" alt="image-20210118114517247"></p>
+<h6 id="范式二-有业务主键，其他列依赖于业务主键"><a href="#范式二-有业务主键，其他列依赖于业务主键" class="headerlink" title="范式二 - 有业务主键，其他列依赖于业务主键"></a>范式二 - 有业务主键，其他列依赖于业务主键</h6><p>解释来说</p>
+<ul>
+<li>不能存在<code>不依赖主键的列</code></li>
+</ul>
+<p>在下面，<code>用户积分</code>不依赖于<code>主键</code>，所以不行。<img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118114905763.png" alt="image-20210118114905763"></p>
+<h6 id="范式三-非主键列之间不存在依赖关系"><a href="#范式三-非主键列之间不存在依赖关系" class="headerlink" title="范式三 - 非主键列之间不存在依赖关系"></a>范式三 - 非主键列之间不存在依赖关系</h6><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118115245251.png" alt="image-20210118115245251"></p>
+<h3 id="实际设计"><a href="#实际设计" class="headerlink" title="实际设计"></a>实际设计</h3><p>在实际设计时候，不会完全遵守<code>数据库设计三范式</code>，会做一些调整。比如</p>
+<ul>
+<li>一般不会使用<code>业务主键</code>，而是使用<code>逻辑主键</code></li>
+<li>对于<code>满足三范式</code>之后，但是还是会<code>数据冗余的列</code>，会抽取出``</li>
+<li>在关联表时候，不会单独抽取出<code>关系表</code>，仅仅对于<code>多对多关系</code>抽取。<code>一对一</code>或者<code>一对多</code>不会淡出抽取出表。</li>
+</ul>
+<h3 id="MySQL常见存储引擎"><a href="#MySQL常见存储引擎" class="headerlink" title="MySQL常见存储引擎"></a>MySQL常见存储引擎</h3><p>如下</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>事务</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MYISAM</td>
+<td>N</td>
+<td>5.6默认，非事务引擎。 数据以<code>堆表</code>存储，没有<code>聚集索引概念</code>，叶子节点指向数据地址，避免了二次查找。读写加锁，频繁读写，大量阻塞。</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>N</td>
+<td>CSV格式，不支持事务。读写加锁。用于不同数据库的数据交换。</td>
+</tr>
+<tr>
+<td>Archive</td>
+<td>N</td>
+<td>不能修改，只能查询和新增数据。用于<code>日志</code>和<code>归档</code>，物理大小小。</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>N</td>
+<td>内存，读写快。MYSQL内部临时存储数据集，加快SQL速度。</td>
+</tr>
+<tr>
+<td>InnoDB</td>
+<td>Y</td>
+<td>支持事务</td>
+</tr>
+</tbody></table>
+<p>InnoDB存储引擎特点</p>
+<ul>
+<li>支持ACID事务(事务引擎表和非事务表不能同时用，回滚时，非事务表不能回滚 )</li>
+<li>按照<code>主键聚集存储</code>，叶子节点指向<code>主键</code>而不是<code>物理位置</code>。</li>
+<li>支持行<code>级别锁</code>和<code>MVCC</code></li>
+<li>支持<code>Btree索引</code>和<code>Hash索引()</code></li>
+<li>支持<code>全文索引</code>和<code>空间索引</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107181228497.png" alt="image-20210107181228497"></p>
+<h3 id="数据类型特点"><a href="#数据类型特点" class="headerlink" title="数据类型特点"></a>数据类型特点</h3><p><code>整型</code>特点</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118123501033.png" alt="image-20210118123501033"></p>
+<ul>
+<li>zerofill仅仅用来做<code>零填充</code>，对于大小没有意义。</li>
+</ul>
+<p>小数 - float、double、decimal</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118124314987.png" alt="image-20210118124314987"></p>
+<ul>
+<li>flocat不精确，运算后和实际会有偏差。但是测试发现，对于<code>对于floca规定了长度</code>，没有发现问题，在长度边长之后，还是有问题。</li>
+</ul>
+<p>时间类型</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118125248286.png" alt="image-20210118125248286"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 设置成东10区</span></span><br><span class="line"><span class="keyword">set</span> time_zone <span class="operator">=</span> <span class="string">&#x27;+10:00&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>存储IP地址，使用整数。配合<code>INTE_ATON</code>、<code>INET_NTOA</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  unsign int 或者 long</span></span><br><span class="line">INET_ATON(<span class="string">&#x27;255.255.255.255&#x27;</span>) <span class="operator">=</span> <span class="number">4294967295</span></span><br><span class="line">INET_NTOA(<span class="number">4294967295</span>) <span class="operator">=</span> <span class="string">&#x27;255.255.255.255&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>对于<code>备注</code>，一般使用<code>varchar</code>。</p>
+</li>
+<li><p>临时表不支持<code>text</code>,在排序时候不会创建出<code>MEM 类型临时表</code>。如果必须使用<code>TEXT</code>，建议分出一个表。Text只能是前缀索引。</p>
+</li>
+<li><p>谨慎使用Text和 Enum，因为在修改时候，会加<code>元数据锁</code></p>
+</li>
+<li><p>财务数据，必须使用<code>decimal</code>。因为财务，会有大量小数和运算。</p>
+</li>
+</ul>
+<h6 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h6><p><code>良好的数据库解构设计</code>是<code>SQL高效运行的前提</code>。</p>
+<p><strong>SQl优化步骤</strong> </p>
+<ul>
+<li>发现问题</li>
+<li>分析<code>执行计划(数据库处理SQL的方式- 全表扫描、索引)</code></li>
+<li>索引优化</li>
+<li>改写SQL</li>
+<li>垂直切分 + 水平切分</li>
+</ul>
+<p><strong>发现问题</strong></p>
+<ul>
+<li>用户上报的应用性能问题</li>
+<li>分析<code>慢查询日志发现SQL问题(应用刚上线，用户量不大，用户柑橘不到，我们可以查看日志)</code></li>
+<li>数据库<code>实时监控长时间运行的SQL</code></li>
+</ul>
+<p><strong>慢查询日志</strong></p>
+<ul>
+<li>默认不启动 set global slow_query_log = [on | off] - </li>
+<li>set gloabl show_query_log_file = /sql_log/slow.log - 日志位置 - s数据目录/主机_show.log</li>
+<li>set global long_query_time = xxx s</li>
+<li>set global long_queries_not_using_indexs = [onn /off] 是否用到索引</li>
+</ul>
+<p>慢查询日志标准宽泛- 要使用工具分析</p>
+<ul>
+<li>mysqldumpslow [opts] [logs]</li>
+<li>pt-query-digest [options] [files] [dsn] - 打印执行计划、抽取相同sql特征</li>
+</ul>
+<p>Percona</p>
+<ul>
+<li>wget - percona-toolkit per-dbd-mysql per-dbi per-time-hires per-io-socket per-termreadkey per-diggest</li>
+<li>输入pt,显示工具软件列表，pt-query-digest</li>
+<li>show variables like ‘long_query_time’，set gloabl long_query_time = 0(0.001)</li>
+<li>show variables like ’slow_query_log‘   set xx = on</li>
+<li>show variables like ‘slow_query)log_file’  /user/local/mysql/sql_log/showlog.log</li>
+<li>TIME/user@host/id/querytime/locktime/row_sent(返回行数)/rows_examined（扫描行数）</li>
+<li>mysqldompslow slow.log - count/time/lock/rows/root@user/sql</li>
+<li>pt-query-digest slow.log sql/pct(占用整个的多少)</li>
+</ul>
+<p><strong>实时监控发现问题</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select id,`user`,`host`,DB,command,`time`,state,info</span><br><span class="line">FROM information_schema.PROCESSLIST</span><br><span class="line">where TIME&gt;= 60</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>查看执行计划</strong></p>
+<ul>
+<li>了解SQL如何访问数据(使用索引查找获取数据，全表烧苗获取数据)</li>
+<li>如何使用索引</li>
+<li>了解查询类型(是否子查询，是否关联查询)、</li>
+<li>explain sql (select|delete |insert|replace|update) | cor connection connection_id</li>
+</ul>
+<p><strong>分析执行计划</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107192757830.png" alt="image-20210107192757830"></p>
+<p>id  num/no，查询执行顺序，none表示union</p>
+<p>​    id相同 由到下。id不同，大到小执行。</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107193021445.png" alt="image-20210107193021445"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107193218534.png" alt="image-20210107193218534"></p>
+<p>select_type 查询类型 SIMPLE不含子查询和UNION PRIMARY 主查询 SUBQUERy 列表子查询  DEPENDNT_SUBQUERY 依赖外部结果子查询</p>
+<p>UNTION 第二个之后查询 DEPENDENTUNION UNION做为子查询</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107193635826.png" alt="image-20210107193635826"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107193714457.png" alt="image-20210107193714457"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107193740885.png" alt="image-20210107193740885"></p>
+<p>table 那个表 - 表明、别名、&lt;union M，N&gt;、<DErived N>/<subquery N> 倒数表</p>
+<p>partitions - 分区表 分区id</p>
+<p>type - 连接类型</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107194155732.png" alt="image-20210107194155732"></p>
+<p>possible_keys - 可能用的所有</p>
+<p>key - 使用的索引</p>
+<p>ke_len - 联合索引，使用索引的最大长度。-（最短长度的字段）</p>
+<p>ref - 列活常量被用于索引查找<img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107195553192.png" alt="image-20210107195553192"></p>
+<p>rows - 预估的需要烧苗的行数 - 内嵌循环次数</p>
+<p>filtered - 结果行数，占用需要读取行数百分比</p>
+<p>extra - 不适合其他咧，二外信息</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107195944841.png" alt="image-20210107195944841"></p>
+<p>单一职责原则  </p>
+<p>搭建出mvc架子 service controller dao entity </p>
+<p>引入 slf4j-log4j12== log4j slf4j-api </p>
+<p> Logger log = LoggerFactory.getLogger(Object.class);</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108135706139.png" alt="image-20210108135706139"></p>
+<p>lombok - 引入</p>
+<p>@Slf4j  @Data</p>
+<p>bo lineID lineName line_Url line_img priotity enable create_date update_date   </p>
+<p>cate_id cate_name cate_desc cate_img priority create_time edit_time parent</p>
+<p>StringExample.getClass()</p>
+<p>IntergerExample.gteClass() - 编译时候校验，编译后是一样的</p>
+<p>javac *.java - lockbox不存在</p>
+<p>javac -cp lombok路径  *.java  -》 idea打开 -》 发现泛型参数没有了</p>
+<p>泛型继承</p>
+<p>实际参数使用 - ？</p>
+<p>进行限制  ？ extends Number  ?usper E</p>
+<p>泛型接口</p>
+<p>RebotFactory&lt;String,Int&gt;</p>
+<p>GerericFactory&lt;T,N&gt;  implements GenericIFactory&lt;T,N&gt;</p>
+<p>泛型方法</p>
+<p>public static <E> void printArray(E[] array)</p>
+<p>ETKVN</p>
+<p>简单工厂模式</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108190135284.png" alt="image-20210108190135284"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108191307736.png" alt="image-20210108191307736"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108191408723.png" alt="image-20210108191408723"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108191551325.png" alt="image-20210108191551325"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108191709417.png" alt="image-20210108191709417"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108192114044.png" alt="image-20210108192114044"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108192658582.png" alt="image-20210108192658582"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108192826330.png" alt="image-20210108192826330"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108193157837.png" alt="image-20210108193157837"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108194110044.png" alt="image-20210108194110044"> <strong>反射</strong></p>
+<p>程序运行时进行<code>自我检测</code>，并对<code>自身状态修改</code></p>
+<p><strong>租用</strong></p>
+<ul>
+<li> 获取所属类</li>
+<li>在运行时，获取类的对象</li>
+<li>访问对象的属性、方法、构造方法</li>
+</ul>
+<p>java.lang.reflect</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108194413631.png" alt="image-20210108194413631"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108194528798.png" alt="image-20210108194528798"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108194741726.png" alt="image-20210108194741726"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108194845891.png" alt="image-20210108194845891"></p>
+<p>getName()</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108195817794.png" alt="image-20210108195817794"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108200442734.png" alt="image-20210108200442734"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108202531140.png" alt="image-20210108202531140"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108203528087.png" alt="image-20210108203528087"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108203950878.png" alt="image-20210108203950878"></p>
+<p>AccessibleObject -&gt; Excutele -&gt; File 、Constructor、Method</p>
+<ul>
+<li>注解保存 <code>MetaData</code></li>
+<li>XML保存<code>MetaData</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108204648591.png" alt="image-20210108204648591"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPloiry.SOURCE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span>  TestAnnotation &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反编译  <code>Javac </code> 查看<code>idea打开 .class文件</code></p>
+<p><code>javap反编译 -verbose demo.annotition.TestAnntation</code></p>
+<ul>
+<li>高数编译器信息，用来代码检测</li>
+<li>告诉编译器信息，动态生成代码</li>
+<li>告诉jvm，保存运行时的信息</li>
+</ul>
+<p><strong>注解分类</strong></p>
+<ul>
+<li>标准注解Ovrride、Deprecated-过时的、SupressWarning</li>
+<li>元注解、@Rentention、@Target、@Inhrerited、@Documented</li>
+<li>自定义注解</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108205751623.png" alt="image-20210108205751623"></p>
+<p>@Target - packages</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108205837973.png" alt="image-20210108205837973"></p>
+<p>@Retention - 注解生命周期</p>
+<ul>
+<li>source 出现在源代码</li>
+<li>CLASS - 出现在class中，不在运行时中</li>
+<li>RUNTIME - 运行时</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108210819774.png" alt="image-20210108210819774"></p>
+<p><strong>自定义注解</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> 注解名 ｛</span><br><span class="line">	修饰符号  类型  名称() 默认值;	</span><br><span class="line">｝</span><br><span class="line">类型 - 基本数据类型、String、Class、Enum、Annotation、数组</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108212746821.png" alt="image-20210108212746821"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210108212937360.png" alt="image-20210108212937360"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210109122223961.png" alt="image-20210109122223961"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210109122829735.png" alt="image-20210109122829735"></p>
+<ul>
+<li><p>类名称，找到字节码</p>
+</li>
+<li><p>加载Java应用的资源（图片等）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ClassLoader <span class="title">getClassLoader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thread.currentThread().getContextClasLoader().;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">extrackPackageClass</span><span class="params">(String pkname)</span> </span>&#123;</span><br><span class="line">    ClassLocader classLoader = getClassLoader();</span><br><span class="line">    <span class="comment">// 2.获取资源</span></span><br><span class="line">    URL url = ClassLoader.getResource(packageName.replace(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;/&quot;</span>));</span><br><span class="line">    <span class="keyword">if</span>(url == <span class="keyword">null</span>) &#123;</span><br><span class="line">        log.warn(<span class="string">&quot;unable toretrive anything frin oackage&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3. 判断类型，获取资源</span></span><br><span class="line">    <span class="keyword">if</span>(url.getProtocal().equalsIgnoreCase(<span class="string">&quot;file&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">new</span> HashSet&lt;Class&lt;?&gt;&gt;</span><br><span class="line">        File packageDirectory = <span class="keyword">new</span> File(url.getPath());</span><br><span class="line">        extractClassFile(set,packageDirectory,packageName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extractClassFile() &#123;</span><br><span class="line">    <span class="comment">// 文件 </span></span><br><span class="line">    <span class="keyword">if</span>(file.isFile()) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 目录</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; file.files(); i++) &#123;</span><br><span class="line">        item = filess[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>单例模式</p>
+<ul>
+<li>饿汉模式</li>
+<li>懒汉模式 - 双重检查锁</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210109134411819.png" alt="image-20210109134411819"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210109134726676.png" alt="image-20210109134726676"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/05/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/03.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F/" data-id="ckqqo0zkq000gisv966wqa8ni" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/Untitled/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T13:35:23.053Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>插入或者查询指定格式</p>
+<p>str_to_date(‘xxx’,format)</p>
+<p>date_format(date/str,’format’)</p>
+<p>unix_timestamp()</p>
+<p>from_unixtime(0)</p>
+<p>select version() / user() / now() / database() </p>
+<p>默认的</p>
+<p>information_schema</p>
+<p>mysql</p>
+<p>performance_schema </p>
+<p>show WARNINGs  查看上一步警告</p>
+<p>use database;</p>
+<p>添加唯一索引</p>
+<p>alter table add unique key|index index_name(xxx)</p>
+<p>alter table drop index</p>
+<p>默认和字段名称一样</p>
+<p>5.5之前，默认存储引擎是<code>MyISAM</code>。</p>
+<p>create table test_myisam (<br>    a int unsigned,<br>    b varchar(20),<br>    c char(20)<br>)engine=MYISAM</p>
+<p>show create table test_myisam</p>
+<p>磁盘中三个文件 .frm-结构 .myd-数据 .myi-索引<br>可以在创建时候，指定数据和索引文件的位置<br>    date directory = 绝对路径 /<br>    index directory = 绝对路径<br>但别最大数据来 2^64<br>每个表最大64个索引，复合索引最大16列<br>MyISAM存储格式<br>    DIXED - 定长 - 数据恢复、插入最快、查早最快<br>    DYNAMIC - 动态<br>    COMPRESSED - 压缩 - myisampack</p>
+<p>show table status like ‘myisam_1’；<br>create table xx() engine=myisam ROW_FORMAT=FIXED;</p>
+<p>myisam_chk 检查数据，进行修复<br>optis_table 消除碎片</p>
+<p>innodb </p>
+<ul>
+<li>支持事务，支持ACID</li>
+<li>支持行锁，多用户并发读写</li>
+<li>支持外键，数据完整性</li>
+<li>独立的缓冲池，innodb_buffer_pool_size </li>
+<li>产生.from  .ibd</li>
+<li>对于i/u/d，用chan buffering优化，提供一致性读，缓冲变更，减少io</li>
+</ul>
+<p>alter table dd</p>
+<p>drop foreign key fk_name;</p>
+<p>alter table dd</p>
+<p>add constraint foreign key  </p>
+<p>ON DELETE ONUPDATE ONINSERT</p>
+<p>CASCADE / </p>
+<p>CASCADE - 父表删除，子表级联删除</p>
+<p>SET NULL - 父表删除，子表级联成null</p>
+<p>NO ACTION | RESTRICT</p>
+<p>PRIMARY KEY</p>
+<p>UNIQUE KEY</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/Untitled/" data-id="ckjqs77rx0004k0v98u4n6tvk" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql基础/04.数据类型和约束" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/" class="article-date">
+  <time class="dt-published" datetime="2021-01-03T14:30:47.385Z" itemprop="datePublished">2021-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><code>Mysql</code>数据类型分为<code>整型</code>、<code>小数</code>、<code>字符型</code>、<code>日期型</code></p>
+<h6 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a><strong>整数类型</strong></h6><p>整数类型分为<code>tinyint</code>、<code>smallint</code>、<code>mediumint</code>、<code>int</code>、<code>bigint</code></p>
+<table>
+<thead>
+<tr>
+<th>tinyint</th>
+<th>-2^7 ~  2^7 -1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>smallint</td>
+<td>-2^15 ~  2^15 -1</td>
+</tr>
+<tr>
+<td>midumint</td>
+<td>-2^23 ~  2^23 -1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>-2^31 ~  2^31 -1</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>-2^63 ~  2^63 -1</td>
+</tr>
+</tbody></table>
+<h6 id="zerofill"><a href="#zerofill" class="headerlink" title="zerofill"></a><strong>zerofill</strong></h6><p>可以配合<code>zerofill</code>进行0填充，在长度不够的时候，前面会补充0。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test2 (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">30</span>),</span><br><span class="line">	age <span class="type">smallint</span>(<span class="number">3</span>) zerofill,</span><br><span class="line">	<span class="keyword">constraint</span> pk_test2 <span class="keyword">primary</span> key(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="小数类型"><a href="#小数类型" class="headerlink" title="小数类型"></a>小数类型</h3><p>小数类型有<code>float(M,D)</code>、<code>double</code>、<code>decimal</code>。</p>
+<ul>
+<li>浮点数，M和D默认没有限制。<code>定点数，默认M=10,D=0</code>。可以理解<code>decimal = float(10,0)</code></li>
+<li>对于float和double指定M和D后，和decimal没有区别。</li>
+<li>插入数据，小数<code>超过长度，自动截断。位数不够，自动补充0</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>float</th>
+<th>-3.4<em>E^38 - 3.4</em>E^38</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>double</td>
+<td>-1.7<em>E^308 - 1.7</em>E^308</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>默认相当于double(10,0)</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> xs1 (</span><br><span class="line">	c1 <span class="type">float</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    c2 <span class="keyword">double</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    c3 <span class="type">decimal</span>(<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h3><p>字符类型包括<code>char</code>、<code>varchar</code>、<code>tinyText</code>、<code>tinyBlob</code>、<code>blob</code>、<code>text</code>、<code>mediumtext</code>、<code>mediumBlob</code>、<code>longText</code>、<code>longBlob</code>。</p>
+<h6 id="char和varChar"><a href="#char和varChar" class="headerlink" title="char和varChar"></a><strong>char和varChar</strong></h6><p>char是定长的，var是不定长度的。</p>
+<ul>
+<li>使用<code>char(n)或者varChar(n)指定最多存储字符个数</code></li>
+<li><code>char最大空间是255byte，varChar是65535</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>char</th>
+<th>最大225byte</th>
+<th>定长，效率高</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>varchar</td>
+<td>最大65535byte</td>
+<td>不定长度，效率低</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> zf1 (</span><br><span class="line">	gender1 <span class="type">char</span>(<span class="number">1</span>),</span><br><span class="line">    gender2 vahrchar(<span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> zf1 <span class="keyword">values</span>(<span class="string">&#x27;男&#x27;</span>，<span class="string">&#x27;女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="其他文本"><a href="#其他文本" class="headerlink" title="其他文本"></a><strong>其他文本</strong></h6><p>存储大文本用<code>tintText</code>、<code>text</code>、<code>mediumText</code>、<code>longText</code>，差别只是存储内容多少区别</p>
+<table>
+<thead>
+<tr>
+<th>tinaytext</th>
+<th>2^8byte,对应85个utf8字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td>2^16byte</td>
+</tr>
+<tr>
+<td>mediumtext</td>
+<td>2^24byte</td>
+</tr>
+<tr>
+<td>longtext</td>
+<td>2^32byte</td>
+</tr>
+</tbody></table>
+<p>分别和<code>tinyblob</code>、<code>blob</code>、<code>mediumblob</code>、<code>longblob</code>对应，用来<code>存储二进制</code>。</p>
+<h6 id="set和enum"><a href="#set和enum" class="headerlink" title="set和enum"></a><strong>set和enum</strong></h6><p><code>enum</code>表示<code>枚举</code>。</p>
+<ul>
+<li>创建表时，声明值的范围</li>
+<li>插入时候，<code>只能插入声明值的一个</code></li>
+<li>查询时候，<code>可以使用enum对应的int值查询</code>。</li>
+<li><code>约束值本来是check的功能，但是mysql不支持。有需求时，可以使用enum或者trigger</code>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s1(</span><br><span class="line">	gender1 enum(<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>)，</span><br><span class="line">  	gender2 <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">check</span>(gender2 <span class="keyword">in</span> (‘男’,<span class="string">&#x27;女&#x27;</span>))               </span><br><span class="line">)</span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="string">&#x27;哈&#x27;</span>,<span class="string">&#x27;女&#x27;</span>) <span class="comment">/* 插入失败*/</span></span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;哈&#x27;</span>) <span class="comment">/* 插入成*/</span></span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="keyword">null</span>,<span class="string">&#x27;哈&#x27;</span>) <span class="comment">/* 插入成*/</span></span><br><span class="line"><span class="comment">/* 查询*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> s1 <span class="keyword">where</span> c1 <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> s1 <span class="keyword">where</span> c1 <span class="operator">=</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>在查询的时候，可以使用enum对应的整数查询</p>
+<h6 id="set类型"><a href="#set类型" class="headerlink" title="set类型"></a><strong>set类型</strong></h6><p><strong>set类型</strong>表示<code>集合类型</code></p>
+<ul>
+<li>创建表，声明值的范围</li>
+<li>插入数据，只能<code>插入声明值的一个或多个</code></li>
+<li>查询时候，<code>使用内置函数查询</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 创建表 */</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> myset (c1 <span class="keyword">set</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>))</span><br><span class="line"><span class="comment">/* 插入数据 - 只能插入指定值 */</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> myset <span class="keyword">values</span> (<span class="string">&#x27;e&#x27;</span>) <span class="comment">/* 插入失败 */</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myset <span class="keyword">VALUES</span>  (<span class="string">&#x27;a,d&#x27;</span>), (<span class="string">&#x27;d,a&#x27;</span>), (<span class="string">&#x27;a,d,a&#x27;</span>), (<span class="string">&#x27;a,d,d&#x27;</span>), (<span class="string">&#x27;d,c,d&#x27;</span>); <span class="comment">/* ok*/</span></span><br><span class="line"><span class="comment">/* 查询数据 - 查询 */</span></span><br><span class="line"><span class="comment">/* 查询c1列包含a的行*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> myset <span class="keyword">where</span> FIND_IN_SET(<span class="string">&#x27;a&#x27;</span>,c1) </span><br><span class="line"><span class="comment">/* 查询c1列包含a和d的行*/</span></span><br><span class="line"><span class="comment">/* 不好，耦合和数据库函数 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> myset <span class="keyword">where</span> FIND_IN_SET(<span class="string">&#x27;a&#x27;</span>,c1) <span class="keyword">and</span> FIND_IN_SET(<span class="string">&#x27;d&#x27;</span>,c1)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 假设 hobby是一列, 查询出hobby是读书的人 */</span></span><br><span class="line"><span class="comment">/* 可以用like解决 */</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@hobby</span>_col <span class="operator">=</span> <span class="string">&#x27;游泳,唱歌,看书&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="comment">/* * from boys where*/</span>FIND_IN_SET(<span class="string">&#x27;看书&#x27;</span>,<span class="string">&#x27;游泳,唱歌,看书&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期类型"><a href="#日期类型" class="headerlink" title="日期类型"></a>日期类型</h3><p>包括<code>year</code>、<code>date</code>、<code>time</code>、<code>timedate</code>、<code>TIMESTAMP</code>。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+<th>插入</th>
+<th>查询</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>year</td>
+<td>1901-2155</td>
+<td>插入超出范围，报错</td>
+<td>查询出来</td>
+</tr>
+<tr>
+<td>date</td>
+<td>0-00-00 到 9999-12-12。错误时间的时间戳是0。</td>
+<td>分隔符做符号,比如y@m@d。插入值是str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>0-00-00 到 9999-12-12。<br>错误时间的时间戳是0。</td>
+<td>分隔符做符号,比如y@m@d。<br> 支持插入值是str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><strong>最大2147483647</strong></td>
+<td>默认是当前时间。 <br>支持插入str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+</tbody></table>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><ul>
+<li>包括<code>null</code>、<code>default</code>、<code>unique</code>、<code>primaryKey</code>、<code>foreignKey</code>，不支持<code>check</code>。</li>
+<li><code>primaryKey</code>和<code>foreignKey</code>一般<code>显示指定constraint名称</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>null</th>
+<th>值不能是null</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default</td>
+<td>默认值</td>
+</tr>
+<tr>
+<td>unisque</td>
+<td>值唯一</td>
+</tr>
+<tr>
+<td>primaryKey</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>foreignKey</td>
+<td>外键</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">EXISTS</span> teacher;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `teacher` (</span><br><span class="line">  `id` <span class="type">int</span> AUTO_INCREMENT,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">unique</span>,</span><br><span class="line">  `age` tinyint <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `sex` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">  <span class="keyword">constraint</span> teacher_pk <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">)<span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">EXISTS</span> student;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	teacher_id <span class="type">int</span>,</span><br><span class="line">	<span class="keyword">constraint</span> student_fk_teacher <span class="keyword">foreign</span> key(teacher_id) <span class="keyword">references</span> teacher(id)</span><br><span class="line">)</span><br><span class="line"><span class="comment">/* 测试约束*/</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;zs&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;zs&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;男&#x27;</span>) <span class="comment">-- unique</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;ls&#x27;</span>,<span class="keyword">null</span>,<span class="string">&#x27;男&#x27;</span>) <span class="comment">-- not null</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age) <span class="keyword">values</span> (<span class="string">&#x27;ls&#x27;</span>,<span class="number">18</span>) <span class="comment">-- default </span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name,teacher_id) <span class="keyword">values</span>(<span class="string">&#x27;ww&#x27;</span>,<span class="number">6</span>) <span class="comment">-- foreign key</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/" data-id="ckjqs77s7000dk0v977zn5x4r" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql基础/03.DML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/03.DML/" class="article-date">
+  <time class="dt-published" datetime="2021-01-03T13:41:00.272Z" itemprop="datePublished">2021-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>DML</code>是<code>Data Modify Language</code>，用来<code>修改数据</code>。</p>
+<h3 id="Insert-插入数据"><a href="#Insert-插入数据" class="headerlink" title="Insert - 插入数据"></a>Insert - 插入数据</h3><h6 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a><strong>插入数据</strong></h6><p>语法是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> table_name(c1,c2,c3,...) <span class="keyword">values</span> (v1,v2,v3,...);</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>省略了列名，值需要全部提供，顺序固定</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">into</span> beauty <span class="keyword">VALUES</span> (<span class="number">14</span>,<span class="string">&#x27;唐艺昕&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;1990-04-23&#x27;</span>,<span class="string">&#x27;12822222222&#x27;</span>,<span class="literal">NULL</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<p>只省略部分。其中<code>not null不能省略</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">into</span> beauty(<span class="string">`name`</span>,sex,borndate,phone,photo,boyfriend_id) <span class="keyword">VALUES</span> (<span class="string">&#x27;唐艺昕&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;1990-04-23&#x27;</span>,<span class="string">&#x27;12822222222&#x27;</span>,<span class="literal">NULL</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<p>更简单的插入方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty </span><br><span class="line"><span class="keyword">set</span> </span><br><span class="line"><span class="keyword">name</span> = <span class="string">&#x27;娜扎&#x27;</span>,phone=<span class="string">&#x27;12345678911&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a><strong>插入多行</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty(<span class="keyword">name</span>,phone)</span><br><span class="line"><span class="keyword">values</span> </span><br><span class="line">(<span class="string">&#x27;唐艺昕1&#x27;</span>,<span class="string">&#x27;18223456789&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;唐艺昕2&#x27;</span>,<span class="string">&#x27;18223456789&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="insert…select"><a href="#insert…select" class="headerlink" title="insert…select"></a><strong>insert…select</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty(<span class="keyword">name</span>,phone)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,phone <span class="keyword">from</span> beauty <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">&#x27;唐艺昕2&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="update-修改数据"><a href="#update-修改数据" class="headerlink" title="update - 修改数据"></a>update - 修改数据</h3><h6 id="单表更新"><a href="#单表更新" class="headerlink" title="单表更新"></a><strong>单表更新</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> beauty </span><br><span class="line"><span class="keyword">set</span> boyfriend_id = <span class="number">5</span></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">&#x27;娜扎%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="多表更新"><a href="#多表更新" class="headerlink" title="多表更新"></a><strong>多表更新</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- sql92</span></span><br><span class="line"><span class="keyword">update</span> beauty b,boys bf</span><br><span class="line"><span class="keyword">set</span> bf.userCP = <span class="number">10</span></span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id = bf.id <span class="comment">-- 连接条件</span></span><br><span class="line"><span class="keyword">and</span> bf.id = <span class="number">5</span></span><br><span class="line"><span class="comment">-- sql99</span></span><br><span class="line"><span class="keyword">update</span> beauty b</span><br><span class="line"><span class="keyword">join</span> boys bf <span class="keyword">on</span> b.boyfriend_id = bf.id</span><br><span class="line"><span class="keyword">set</span> bf.userCP = <span class="number">800</span></span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line">	bf.id = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h3><h6 id="delete删除"><a href="#delete删除" class="headerlink" title="delete删除"></a><strong>delete删除</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> b,bo</span><br><span class="line"><span class="keyword">from</span> beauty b </span><br><span class="line"><span class="keyword">join</span> boys bo <span class="keyword">on</span> b.boyfriend_id = bo.id</span><br><span class="line"><span class="keyword">WHERE</span> bo.boyName = <span class="string">&#x27;张无忌&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="turncate删除"><a href="#turncate删除" class="headerlink" title="turncate删除"></a><strong>turncate删除</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> boys</span><br></pre></td></tr></table></figure>
+
+<p><strong>区别参见</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/alice-cj/p/10354737.html">delete，truncate 和 delete之间的区别</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/03.DML/" data-id="ckjqs77s8000ek0v9ehxu8x3h" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql基础/02.DDL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/02.DDL/" class="article-date">
+  <time class="dt-published" datetime="2021-01-03T12:04:24.934Z" itemprop="datePublished">2021-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>DDL是<code>数据定义语言</code>，用来<code>定义/删除数据库</code>、<code>定义/修改/删除/复制表</code>、<code>添加/删除/修改/重命名列</code>。</p>
+<h3 id="数据库管理"><a href="#数据库管理" class="headerlink" title="数据库管理"></a>数据库管理</h3><h6 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a><strong>创建数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="string">`test`</span></span><br><span class="line"><span class="comment">--  指定字符集</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="string">`test`</span> <span class="keyword">default</span> <span class="keyword">charset</span> <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line"><span class="comment">--  不存在就创建 - 用在脚本中</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> <span class="string">`test`</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a><strong>查看数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看数据库 字符集</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> <span class="string">`test3`</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a><strong>修改数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改字符集</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">database</span> <span class="string">`test`</span> <span class="keyword">default</span> <span class="keyword">charset</span> <span class="string">&#x27;gbk&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a><strong>删除数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 直接删除</span></span><br><span class="line"><span class="keyword">drop</span> databse test1</span><br><span class="line"><span class="comment">-- 存在删除 - 用在脚本中</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> <span class="keyword">if</span> <span class="keyword">exists</span> test2</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h3><h6 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a><strong>创建数据表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 简单创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test1 (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line">	age <span class="built_in">smallint</span>,</span><br><span class="line">	<span class="keyword">constraint</span> pk_test1 primary <span class="keyword">key</span>(<span class="keyword">id</span>)</span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 指定engine、charset、auto_increment开始值</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test1 (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    age <span class="built_in">smallint</span>,</span><br><span class="line">    <span class="keyword">constraint</span> pk_test1 primary <span class="keyword">key</span>(<span class="keyword">id</span>)</span><br><span class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=gbk auto_increment=<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>复制表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> cp </span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> book</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="查看数据表"><a href="#查看数据表" class="headerlink" title="查看数据表"></a><strong>查看数据表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看列 和 约束</span></span><br><span class="line">desc table test1 </span><br><span class="line"><span class="keyword">show</span> <span class="keyword">columns</span> <span class="keyword">from</span> test1</span><br><span class="line"><span class="comment">-- 查看字符集、存储引擎、自动增长</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> test1</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a><strong>修改表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改engine、charset 、auto_increment</span></span><br><span class="line"><span class="comment">-- 修改字符集，只会影响新添加的列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test1 <span class="keyword">default</span> <span class="keyword">charset</span>=utf8 <span class="keyword">engine</span>=<span class="keyword">innodb</span> auto_increment=<span class="number">12</span></span><br><span class="line"><span class="comment">-- 重新命名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">test</span> <span class="keyword">rename</span> [<span class="keyword">to</span>] test2</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a><strong>删除表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 直接删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> test1 </span><br><span class="line"><span class="comment">-- 存在，就删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> test1</span><br></pre></td></tr></table></figure>
+
+<h3 id="列操作"><a href="#列操作" class="headerlink" title="列操作"></a>列操作</h3><h6 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a><strong>添加列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 <span class="keyword">add</span> <span class="keyword">column</span> bitth <span class="built_in">TIMESTAMP</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a><strong>修改列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改列类型和约束，都是必填的</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 <span class="keyword">modify</span> <span class="keyword">column</span> bitth <span class="built_in">date</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br><span class="line"><span class="comment">-- 修改列名称、类型、约束,都是必填 </span></span><br><span class="line"><span class="comment">-- 类型不兼容，修改失败。类型兼容，可能丢失精度</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 <span class="keyword">change</span> <span class="keyword">column</span> bitth bitth1 <span class="built_in">timestamp</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="查看列"><a href="#查看列" class="headerlink" title="查看列"></a><strong>查看列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看详细信息(约束、trigger)、chanrset、权限</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">full</span> <span class="keyword">columns</span> <span class="keyword">from</span> test2 </span><br></pre></td></tr></table></figure>
+
+<h6 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a><strong>删除列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">drop</span> <span class="keyword">column</span> birth;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/02.DDL/" data-id="ckjqs77s6000ck0v9b5agepfl" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql基础/01.Mysql安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/01.Mysql%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2021-01-03T11:16:33.853Z" itemprop="datePublished">2021-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Mysql安装"><a href="#Mysql安装" class="headerlink" title="Mysql安装"></a>Mysql安装</h3><p>下载地址是<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/">中科大镜像</a>。</p>
+<p>这里只安装了<code>Mysql Server</code>和<code>Mysql for Excel</code> 和<code>Mysql Notifer</code>。</p>
+<h3 id="Mysql启动停止"><a href="#Mysql启动停止" class="headerlink" title="Mysql启动停止"></a>Mysql启动停止</h3><p>方式1 Services面板</p>
+<ul>
+<li><code>计算机管理</code> -&gt; <code>服务</code> -&gt; <code>开启Mysql</code></li>
+<li><code>windows + r</code> -&gt; <code>services</code> </li>
+</ul>
+<p>方式2 <code>Cmd</code>运行如下</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 开启mysql</span><br><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mysql服务名称</span><br><span class="line"># 关闭mysql </span><br><span class="line"><span class="built_in">net</span> stop mysql服务名称</span><br></pre></td></tr></table></figure>
+
+<p>方式3 <code>Mysql Notifier</code>运行和停止</p>
+<h3 id="Mysql配置"><a href="#Mysql配置" class="headerlink" title="Mysql配置"></a>Mysql配置</h3><p><code>Mysql配置文件</code>在<code>programData/Mysql/MySeql Server/my.ini</code>中。</p>
+<p>可以用<code>MysqlInstatceConfig</code>进行可视化配置，位置是<code>Mysql安装目录/bin/MysqlInstanceConfig</code>。</p>
+<h3 id="连接MySql"><a href="#连接MySql" class="headerlink" title="连接MySql"></a>连接MySql</h3><p>方式1 <code>命令行客户端 - mysql.exe</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cmd中运行如下</span></span><br><span class="line">mysql -h 127.0.0.1 -P 3306 -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>方式2 图形客户端 - 比如<code>navicat</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hfxtest/p/12513210.html">Navicat激活</a></p>
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br><span class="line"><span class="comment">-- 切换数据库</span></span><br><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="comment">-- 查看表</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span> [<span class="keyword">from</span> mysql];</span><br><span class="line"><span class="comment">-- 查看表信息</span></span><br><span class="line">desc mysql.db</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/03/db/mysql%E5%9F%BA%E7%A1%80/01.Mysql%E5%AE%89%E8%A3%85/" data-id="ckjqs77s5000ak0v96ah755jo" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Sublime插件 - Reveal in Side Bar" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/26/Sublime%E6%8F%92%E4%BB%B6%20-%20Reveal%20in%20Side%20Bar/" class="article-date">
+  <time class="dt-published" datetime="2020-12-26T03:54:15.516Z" itemprop="datePublished">2020-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/26/Sublime%E6%8F%92%E4%BB%B6%20-%20Reveal%20in%20Side%20Bar/">Sublime插件 - SyncedSideBar</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>用Sublime时候，<code>文件不能拖入Sidebar</code>。</p>
+<p><code>SyncedSideBar</code>可以解决这个问题，这里记录下安装过程。</p>
+<ol>
+<li>打开<code>命令面板(ctrl + shift + p)</code>，输入 <code>package Control</code>，找到<code>package Control:install package</code>。</li>
+<li>搜索<code>SyncedSideBar</code>，点击安装。</li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/26/Sublime%E6%8F%92%E4%BB%B6%20-%20Reveal%20in%20Side%20Bar/" data-id="ckjqs77rw0003k0v9hynie2iw" data-title="Sublime插件 - SyncedSideBar" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sublime/Sublime插件 - A File Icon" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/25/sublime/Sublime%E6%8F%92%E4%BB%B6%20-%20A%20File%20Icon/" class="article-date">
+  <time class="dt-published" datetime="2020-12-25T13:37:10.374Z" itemprop="datePublished">2020-12-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/25/sublime/Sublime%E6%8F%92%E4%BB%B6%20-%20A%20File%20Icon/">Sublime插件 - A File Icon</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>做项目的时候，发现了如下问题</p>
+<ul>
+<li><p>多了很多文件夹和文件</p>
+</li>
+<li><p>需要来回切换</p>
+</li>
+<li><p><strong>很难直接看出需要的文件类型</strong></p>
+</li>
+</ul>
+<p>于是安装了<strong>A File Icon</strong>，记录下安装过程。</p>
+<ol>
+<li>打开<code>命令面板(ctrl + shift + p)</code>，输入 <code>package Control</code>，找到<code>package Control:install package</code>。</li>
+<li>输入<code>A File Icon</code>，点击。</li>
+<li>成功</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/25/sublime/Sublime%E6%8F%92%E4%BB%B6%20-%20A%20File%20Icon/" data-id="ckjqs77s6000bk0v92s0ph5vt" data-title="Sublime插件 - A File Icon" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-J2se/Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/25/J2se/Untitled/" class="article-date">
+  <time class="dt-published" datetime="2020-12-25T13:00:07.760Z" itemprop="datePublished">2020-12-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>equals()/hashcode</td>
+<td></td>
+</tr>
+<tr>
+<td>toString</td>
+<td></td>
+</tr>
+<tr>
+<td>getClass</td>
+<td></td>
+</tr>
+<tr>
+<td>clone()</td>
+<td></td>
+</tr>
+<tr>
+<td>finalize</td>
+<td></td>
+</tr>
+<tr>
+<td>wait / notify</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/25/J2se/Untitled/" data-id="ckqqo0zkh0006isv994pi572l" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-J2se/02.Java基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/24/J2se/02.Java%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2020-12-24T11:33:41.635Z" itemprop="datePublished">2020-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h3><p>任何编程语言都有<strong>变量</strong>和<strong>常量</strong>概念。</p>
+<h6 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a><strong>命名规则</strong></h6><ul>
+<li><p>字母(a-z)、数字(0-9)、下划线(_)、美元符号($)</p>
+</li>
+<li><p>不能以数字(0-9)开头</p>
+</li>
+</ul>
+<h6 id="常量-final"><a href="#常量-final" class="headerlink" title="常量 - final"></a><strong>常量 - final</strong></h6><ul>
+<li>常量<code>必须赋值一次，不用立即赋值</code></li>
+<li>最好声明时候直接赋值</li>
+<li>有局部常量、属性常量、静态常量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class TestFinal &#123;</span><br><span class="line">    main() &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> fin1; <span class="comment">// 局部常量</span></span><br><span class="line">        fin1 = <span class="number">1</span>; <span class="comment">// 可以不用立即赋值</span></span><br><span class="line">	&#125;</span><br><span class="line">   	<span class="comment">// 属性常量</span></span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">int</span> fin1 = <span class="number">12</span>; <span class="comment">// 好的方式，声明时候赋值</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> fin_s; <span class="comment">// 静态常量</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        fin_s = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型分为<code>基本数据类型</code>和<code>对象类型</code>。</p>
+<p><code>对象类型</code>是<code>引用类型</code>，由<code>基本数据类型</code>组成。</p>
+<h6 id="基本数据类型分类"><a href="#基本数据类型分类" class="headerlink" title="基本数据类型分类"></a><strong>基本数据类型分类</strong></h6><ul>
+<li>整数类型 - byte(1) short(2) int(4) long(8)</li>
+<li>小数类型 - float(1.4E-45<del>3.4E10+38) double(4.9E-324</del>1.7E+308)</li>
+<li>字符类型 - </li>
+<li>布尔类型 - true/false</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th>idea快捷键</th>
+<th>eclipse快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生成变量名称</td>
+<td>.var</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>ctrl + alt + v</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">运行代码</td>
+<td>ctrl + alt + f10</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>选中多块</p>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>idea快捷键</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + w</td>
+<td>快速选中，每次都扩充</td>
+<td></td>
+</tr>
+<tr>
+<td>alt + j</td>
+<td>选中下一个相同内容</td>
+<td></td>
+</tr>
+<tr>
+<td>alt+ f6/ctrl + alt + shift + j</td>
+<td>选择所有相同内容</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>修改</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + d</td>
+<td>复制一行</td>
+<td></td>
+</tr>
+<tr>
+<td>ctrl + shift + ↑/↓</td>
+<td>上下移动</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置</td>
+<td>ctrl  + alt  +  s</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/24/J2se/02.Java%E5%9F%BA%E7%A1%80/" data-id="ckqqo0zkg0004isv9gqzqey28" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

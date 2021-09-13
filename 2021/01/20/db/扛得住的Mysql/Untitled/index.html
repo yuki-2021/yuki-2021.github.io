@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="在数据比较少时候，表中数据可以完全缓存到内存，全表扫描也不会太慢。 数据越来越多，不能完全缓存，索引作用越来越明显。 Mysql中有Btree和Hash索引。不同的存储引擎对于索引的实现方式可以能不同 BeTree索引  数据解构是B+树。对于InnoDB，指针指向的是主键索引位置。对于MyIsaM,索引指向的是数据的物理地址。 使用索引，查找合适范围的数据，根据指针，找到主键，根据主键找到物理地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/Untitled/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在数据比较少时候，表中数据可以完全缓存到内存，全表扫描也不会太慢。 数据越来越多，不能完全缓存，索引作用越来越明显。 Mysql中有Btree和Hash索引。不同的存储引擎对于索引的实现方式可以能不同 BeTree索引  数据解构是B+树。对于InnoDB，指针指向的是主键索引位置。对于MyIsaM,索引指向的是数据的物理地址。 使用索引，查找合适范围的数据，根据指针，找到主键，根据主键找到物理地">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120122036591.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120124938574.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120130144070.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120130555886.png">
+<meta property="article:published_time" content="2021-01-20T03:30:52.798Z">
+<meta property="article:modified_time" content="2021-02-14T05:32:43.750Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210120122036591.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-db/扛得住的Mysql/Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/Untitled/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T03:30:52.798Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在数据比较少时候，表中数据可以完全缓存到内存，全表扫描也不会太慢。</p>
+<p>数据越来越多，不能完全缓存，索引作用越来越明显。</p>
+<p>Mysql中有<code>Btree</code>和<code>Hash</code>索引。不同的存储引擎对于索引的实现方式可以能不同</p>
+<p><strong>BeTree索引</strong></p>
+<ul>
+<li>数据解构是B+树。对于InnoDB，指针指向的是主键索引位置。对于MyIsaM,索引指向的是<code>数据的物理地址</code>。</li>
+<li>使用索引，查找合适范围的数据，根据指针，找到主键，根据主键找到物理地址，只需要加载少量内容。</li>
+<li>适合范围查找，数据顺序存储。</li>
+</ul>
+<p><strong>Betree使用</strong></p>
+<p><code>单列索引</code></p>
+<ul>
+<li>精确匹配、模糊前缀匹配、范围查询(between and 、&gt;)</li>
+<li>Not in 和!= 无法用索引</li>
+</ul>
+<p><code>多列索引</code></p>
+<ul>
+<li>最左前缀匹配</li>
+<li>前面的列只有是<code>精切匹配</code>，后面的列<code>才会生效</code></li>
+<li>范围查询和模糊匹配的右边列无法生效</li>
+</ul>
+<p><code>Betree使用限制</code></p>
+<ul>
+<li><p>使用索引，命中了大部分的数据，可能会导致采用全表扫描，而不是索引。</p>
+</li>
+<li><p>不是最左匹配，那么无法使用索引。</p>
+</li>
+</ul>
+<p><strong>Hash索引</strong></p>
+<ul>
+<li>在InnoDB中，不能自己建立，InnoDB根据Betree的使用情况，自动建立Hash索引。</li>
+<li>Hash索引中存储的是<code>Hash码</code>和<code>指针</code>。</li>
+<li>Hash索引只能用于精确匹配。</li>
+<li>Hash索引需要两次读取，先找到行，然后对行进行读取。</li>
+<li>无法用于排序</li>
+<li>只能全键值匹配，</li>
+<li>Hash索引可能导致Hash冲突  - 不适合选择性差的列上</li>
+</ul>
+<p><strong>索引好处</strong></p>
+<ul>
+<li>减少需要扫描数据的数据量。数据存储在页中，一页数据越多，效率越高。</li>
+<li>可以使用索引排序，避免了用临时表排序。</li>
+<li>可以把I/O编程顺序IO。</li>
+</ul>
+<p><strong>索引越多越好</strong></p>
+<ul>
+<li>索引会导致写成本。</li>
+<li>索引会增加查询优化器的选择时间。</li>
+</ul>
+<p><strong>索引优化策略</strong></p>
+<ul>
+<li><code>索引列上不能使用函数表达</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120122036591.png" alt="image-20210120122036591"></p>
+<ul>
+<li>Betree索引大小有限制，对于InnoDB，最大是700+Byte。对于MyIsam是1000Byte。对于<code>Text</code>等大文本，建立前缀索引。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> index idx_name <span class="keyword">on</span> <span class="keyword">table</span>(col(n))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>5.0之前，只能用单列索引。5.0之后，有了索引合并的概念。可以使用<code>联合索引</code>。可以 - 1. 经常用于查询的列优先  2. 选择性高的列优先。3.宽度小的列优先</p>
+</li>
+<li><p>覆盖索引。直接在Betree索引上获取数据，而不需要读取表。全不知，不止是where包括select和groupby和orderby中的值。好处 1. - 可以优化缓存，减少磁盘IO操作。2. - 减少随机IO，变随机IO为顺序IO. 3. - 避免对InoDB主键索引的二次查询 4. - 可以避免MyISAM，避免系统带哦用。 <code>无法用</code> - 1. 不都支持覆盖索引，Memeory。2. hash不能当作覆盖索引 3. 查询太多列，没必要建立覆盖索引 3. - 不能有like%%的查询  using index - using where</p>
+<p><strong>查询优化中</strong></p>
+<p><code>优化排序</code> -  using index</p>
+<p>按照索引顺序扫描数据，进行排序。</p>
+<ul>
+<li>索引顺序和Order by 子句顺序完全一直</li>
+<li>索引排序顺序和asc、desc完全一直</li>
+<li>关联查询，orderby字段在第一个表中</li>
+</ul>
+<p><code>模拟Hash索引</code></p>
+<p><code>Hash索引</code>优化<code>大文本查询</code></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120124938574.png" alt="image-20210120124938574"></p>
+</li>
+</ul>
+<p><strong>索引优化下</strong></p>
+<ul>
+<li>Inodb行锁。使用索不到行，对行加锁，在内存中过滤。过滤到行，减少锁定行数。</li>
+<li>加快处理速度，加快锁的释放熟读</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">begin</span> ;</span><br><span class="line"><span class="comment">-- 加入排他锁</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">-- sql 2  -- 发现足诸塞勒</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">/* 加上索引  */</span></span><br><span class="line"><span class="keyword">create</span> index idx_lastName <span class="keyword">on</span> actor(lastName);</span><br><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">begin</span> ;</span><br><span class="line"><span class="comment">-- 加入排他锁</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">-- sql 2  -- 发现足诸塞勒</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>重复索引</li>
+<li>primary key(id),unique key(id),index(id)</li>
+<li>index(a),index(a,b)</li>
+<li>primary key(id),index(a,id)</li>
+<li>删除重复和冗余索引</li>
+<li>pt-duplicate-key-check h = 127.0.0.1</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120130144070.png" alt="image-20210120130144070"></p>
+<p>未被使用的索引</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120130555886.png" alt="image-20210120130555886"></p>
+<ul>
+<li>更新索引统计信息 和 减少索引随便</li>
+<li>analyze table table_name </li>
+<li>optimize table table_name</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">MyISAM产生</span><br><span class="line"> frm <span class="operator">-</span> 表文件</span><br><span class="line"> myd <span class="operator">-</span> 数据文件</span><br><span class="line"> myi <span class="operator">-</span> 索引文件</span><br><span class="line"></span><br><span class="line">建表时指定数据文件和索引文件位置</span><br><span class="line"> DATA DIRECTORT</span><br><span class="line">INDEX DIRECTORY </span><br><span class="line">MYISAM最大数据是<span class="number">2</span><span class="operator">^</span><span class="number">64</span>，最多<span class="number">64</span>个索引，符合索引最大<span class="number">1000</span>B和<span class="number">16</span>个字段</span><br><span class="line"></span><br><span class="line">存储格式</span><br><span class="line">定长 <span class="operator">-</span> FIXED静态</span><br><span class="line">动态 <span class="operator">-</span> <span class="keyword">DYNAMIC</span></span><br><span class="line">压缩 <span class="operator">-</span> COMPRESSED</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> status <span class="keyword">like</span> `mysiam_1`;</span><br><span class="line"></span><br><span class="line">INNODB </span><br><span class="line">支持ACID特性</span><br><span class="line">采用行锁，提升并发性能</span><br><span class="line">支持外键</span><br><span class="line">独立缓冲池，数据和索引缓存中</span><br><span class="line">对于<span class="keyword">Insert</span>、update、<span class="keyword">delete</span>，采用 change buffering自动优化。提供一致性读，减少io，提升性能</span><br><span class="line">。frm .idb  数据和索引存储在表空间中</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/Untitled/" data-id="ckqqo0zkt000kisv9g0ep3yz6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%84%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/java-frame/spring/spring-base/01.spring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

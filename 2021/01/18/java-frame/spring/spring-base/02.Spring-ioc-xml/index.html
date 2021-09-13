@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Spring获取Bean实例可以在BeanFactory和ApplicationContex中获取，区别如下  初始化时机。BeanFactory获取时初始化，ApplicationContext创建时初始化。 ApplicationContext提供了诸如事件传递、国际化、资源加载等功能。   demo1- 获取用户列表123456&#x2F;&#x2F; init contextApplicationContex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/18/java-frame/spring/spring-base/02.Spring-ioc-xml/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring获取Bean实例可以在BeanFactory和ApplicationContex中获取，区别如下  初始化时机。BeanFactory获取时初始化，ApplicationContext创建时初始化。 ApplicationContext提供了诸如事件传递、国际化、资源加载等功能。   demo1- 获取用户列表123456&#x2F;&#x2F; init contextApplicationContex">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210118184656853.png">
+<meta property="article:published_time" content="2021-01-18T08:31:38.831Z">
+<meta property="article:modified_time" content="2021-01-21T04:26:32.780Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210118184656853.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-frame/spring/spring-base/02.Spring-ioc-xml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/java-frame/spring/spring-base/02.Spring-ioc-xml/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T08:31:38.831Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring获取Bean实例"><a href="#Spring获取Bean实例" class="headerlink" title="Spring获取Bean实例"></a>Spring获取Bean实例</h3><p>可以在<code>BeanFactory</code>和<code>ApplicationContex</code>中获取，区别如下</p>
+<ul>
+<li>初始化时机。<code>BeanFactory</code>获取时初始化，<code>ApplicationContext</code>创建时<code>初始化</code>。</li>
+<li><code>ApplicationContext</code>提供了诸如<code>事件传递</code>、<code>国际化</code>、<code>资源加载</code>等功能。</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118184656853.png" alt="image-20210118184656853"></p>
+<h6 id="demo1-获取用户列表"><a href="#demo1-获取用户列表" class="headerlink" title="demo1- 获取用户列表"></a><strong>demo1-</strong> 获取用户列表</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// init context</span></span><br><span class="line">ApplicationContext context =</span><br><span class="line">                <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line"><span class="comment">// getBean</span></span><br><span class="line">UserService userService = context.getBean(UserService.class);</span><br><span class="line">userService.getUsers();</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建Bean的方式"><a href="#创建Bean的方式" class="headerlink" title="创建Bean的方式"></a>创建Bean的方式</h3><h6 id="普通bean-id、name、class"><a href="#普通bean-id、name、class" class="headerlink" title="普通bean - id、name、class"></a>普通bean - id、name、class</h6><ul>
+<li><code>id</code>和<code>name</code>表示<code>用来标志唯一的Bean</code></li>
+<li>可以同时有<code>id</code>和<code>name</code></li>
+<li><code>name</code>和<code>id</code>不能重复</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	id 和 name 是唯一的</span></span><br><span class="line"><span class="comment">	可以同时有name和id，不过没必要</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">name</span>=<span class="string">&quot;userService4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="工厂方法Bean-factoryMethod"><a href="#工厂方法Bean-factoryMethod" class="headerlink" title="工厂方法Bean - factoryMethod"></a>工厂方法Bean - factoryMethod</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- staicFactory --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceFactoryMethod&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.dmo1.FactoryMethod&quot;</span> <span class="attr">f</span></span></span><br><span class="line"><span class="tag">      <span class="attr">actory-method</span>=<span class="string">&quot;fac&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="简单工厂Bean-factoryBean和factoryMethod"><a href="#简单工厂Bean-factoryBean和factoryMethod" class="headerlink" title="简单工厂Bean - factoryBean和factoryMethod"></a>简单工厂Bean - factoryBean和factoryMethod</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- SimpleFactory  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;simpleFac&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.dmo1.SimpleFactory&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceSimpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-bean</span>=<span class="string">&quot;simpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-method</span>=<span class="string">&quot;fac&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="abstrct-抽象Bean"><a href="#abstrct-抽象Bean" class="headerlink" title="abstrct - 抽象Bean"></a>abstrct - 抽象Bean</h6><ul>
+<li>配置了<code>abstrct</code>的类<code>不能实例化</code>。</li>
+<li>一般和<code>parent</code>一起使用，作为通用配置。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 可能写很多通用的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> <span class="attr">abstract</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--- 大部分配置和parent的一样，少部分自己写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService3&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">parent</span>=<span class="string">&quot;userService1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="parent-继承配置"><a href="#parent-继承配置" class="headerlink" title="parent - 继承配置"></a>parent - 继承配置</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 可能写很多通用的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> <span class="attr">abstract</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--- 大部分配置和parent的一样，少部分自己写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService3&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">parent</span>=<span class="string">&quot;userService1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="depends-on-指定启动顺序"><a href="#depends-on-指定启动顺序" class="headerlink" title="depends-on - 指定启动顺序"></a>depends-on - 指定启动顺序</h6><p><code>depends-on</code>来<code>指定实例化顺序</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceSimpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-bean</span>=<span class="string">&quot;simpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-method</span>=<span class="string">&quot;fac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">depends-on</span>=<span class="string">&quot;userService&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><h6 id="属性注入-ref、value、内部bean"><a href="#属性注入-ref、value、内部bean" class="headerlink" title="属性注入 - ref、value、内部bean"></a>属性注入 - ref、value、内部bean</h6><ul>
+<li><code>ref</code>注入引用类型</li>
+<li><code>内部Bean</code>用于注入<code>只使用一次</code>或者<code>需要匿名的</code>bean</li>
+<li><code>value</code>注入值</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- car --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;car1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Car&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- value类型的注入=============--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;red&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;brand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;byd&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- property注入 - 属性注入 - value/ref/内部bean--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;emp1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Employee&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;id&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;tom&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ref类型的注入=============--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;car&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;car1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dept&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 内部bean的注入=============--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Department&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;开发部&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;address&quot;</span> <span class="attr">value</span>=<span class="string">&quot;xx大厦-B201&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="构造注入-construct"><a href="#构造注入-construct" class="headerlink" title="构造注入 - construct"></a>构造注入 - construct</h6><p>默认情况如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;cat1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;cat1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>方法<code>参数的类型不重复</code>，可以使用<code>type</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cat2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;int&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.String&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>方法<code>参数类型重复</code>，使用<code>name</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cat3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cat3&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;red&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="注入null"><a href="#注入null" class="headerlink" title="注入null"></a>注入null</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;cat4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cat4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&quot;4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注入null =====================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">null</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="其他类型-set-list-array-map-props"><a href="#其他类型-set-list-array-map-props" class="headerlink" title="其他类型 - set/list/array/map/props"></a>其他类型 - set/list/array/map/props</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;collectBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.CollectBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注入list==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Java<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>C#<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>C++<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入set==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;set&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>English<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Chinese<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Jepanese<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入arr==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;arr&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>sing<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>eat<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>sleep<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入map==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;map&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;math&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;chinese&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;english&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入props==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;props&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;cat&quot;</span>&gt;</span>100<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;dog&quot;</span>&gt;</span>200<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;rabbit&quot;</span>&gt;</span>300<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><code>Bean初始化时候</code>，会经历如下<code>生命周期</code></p>
+<ul>
+<li><code>STEP1</code> -  调用<code>构造函数</code>或者<code>factory-method</code>。</li>
+<li><code>STEP2</code> -  设置<code>属性</code>，调用<code>setXXX()</code>。</li>
+<li><code>STEP3</code> -  调用<code>BeanNameAware</code>的<code>setBeanName()</code></li>
+<li><code>STEP4</code> - - 调用<code>ApplicationContextAware</code>的<code>setApplicationContext()</code></li>
+<li><code>STEP5</code> - 调用<code>BeanPostProcessor</code>的<code>beforeInit</code>，表示开始<code>init初始化</code>。</li>
+<li><code>STEP6</code> - 调用<code>InitlizingBean</code>的<code>afterPropertySet</code>，表示属性<code>设置完毕</code>。</li>
+<li><code>STEP7</code>- 调用<code>init-method</code></li>
+<li><code>STEP8</code> - 待用<code>BeanPostProcessor</code>的<code>afterInit</code>,表示<code>init完毕</code>。</li>
+<li><code>STEP9</code> - 用户可以使用Bean了</li>
+<li><code>STEP10</code> - 调用<code>DisposableBean</code>的<code>destory</code>方法</li>
+<li><code>STEP11</code> - 调用<code>destory-method</code>方法</li>
+</ul>
+<h6 id="Demo如下"><a href="#Demo如下" class="headerlink" title="Demo如下"></a>Demo如下</h6><p><strong>LifeBean代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeBean</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span>,<span class="title">ApplicationContextAware</span>, <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> name;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LifeBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step1 -  LifeBean的构造方法&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step2 -  调用setXXX方法&quot;</span> );</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step3 - 调用BeanNameAware的setBeanName&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step4 - ApplicationAware的setAoolicationContext方法&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step6 - 调用initlizeBean方法afterProperiesSet方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step7 - 调用init方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">life</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step9 - 调用业务方法life&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step10 - 调用DisposeBean方法destory方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">des</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step11 - 调用des方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>BeanPostProcessor代码如下</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step5 - 调用BeanPostProcessor的beforeInit方法&quot;</span> );</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step8 - 调用BeanPostProcessor的afterInit方法&quot;</span> );</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>xml配置如下</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo3.LifeBeanPostProcessor&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;lifeBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo3.LifeBean&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">init-method</span>=<span class="string">&quot;init&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;des&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Bean作用域scope-prototype-singleton-request-session"><a href="#Bean作用域scope-prototype-singleton-request-session" class="headerlink" title="Bean作用域scope - prototype/singleton/request/session"></a>Bean作用域scope - prototype/singleton/request/session</h6><table>
+<thead>
+<tr>
+<th>singleton</th>
+<th>单例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prototype</td>
+<td>每次请求创建一个</td>
+</tr>
+<tr>
+<td>request</td>
+<td>每次请求一个(很少用)</td>
+</tr>
+<tr>
+<td>session</td>
+<td>每个session创建一个(很少用)</td>
+</tr>
+</tbody></table>
+<p><code>对于Web</code>应用，<code>Dao层、controller层、sevice层</code>的对象基本都是单例的。</p>
+<p>如果用户需要<code>会话Session</code>，我们会自己创建Session，把<code>实例放到Session中</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/java-frame/spring/spring-base/02.Spring-ioc-xml/" data-id="ckqqo0zky000uisv9e6aebfr8" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/18/java-frame/spring/spring-base/01.spring/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/04.DCL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

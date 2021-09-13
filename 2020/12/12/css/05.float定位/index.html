@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>float浮动 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Css中布局机制有很多  普通流 - 默认机制，左到右，上到下 浮动 定位(position) 多列布局 flex布局 grid布局(网格)  普通流默认机制，元素 从左到右，从上到下。 浮动Float ，元素脱离普通流，不脱离文字流。  浮动后，脱离文档流，不脱离文字流 - 文字环绕  多元素浮动，紧跟同类，过长下移  脱离文档流，造成高度塌陷，影响后面元素   文字环绕 - 脱离文档流，不脱落">
+<meta property="og:type" content="article">
+<meta property="og:title" content="float浮动">
+<meta property="og:url" content="http://example.com/2020/12/12/css/05.float%E5%AE%9A%E4%BD%8D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Css中布局机制有很多  普通流 - 默认机制，左到右，上到下 浮动 定位(position) 多列布局 flex布局 grid布局(网格)  普通流默认机制，元素 从左到右，从上到下。 浮动Float ，元素脱离普通流，不脱离文字流。  浮动后，脱离文档流，不脱离文字流 - 文字环绕  多元素浮动，紧跟同类，过长下移  脱离文档流，造成高度塌陷，影响后面元素   文字环绕 - 脱离文档流，不脱落">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213103857256.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213104219307.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213104515455.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213104800286.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213111342520.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213111444124.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213111535706.png">
+<meta property="article:published_time" content="2020-12-12T14:18:30.484Z">
+<meta property="article:modified_time" content="2020-12-13T03:33:30.833Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201213103857256.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-css/05.float定位" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/12/css/05.float%E5%AE%9A%E4%BD%8D/" class="article-date">
+  <time class="dt-published" datetime="2020-12-12T14:18:30.484Z" itemprop="datePublished">2020-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      float浮动
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Css中<strong>布局机制</strong>有很多</p>
+<ul>
+<li>普通流 - 默认机制，左到右，上到下</li>
+<li>浮动</li>
+<li>定位(position)</li>
+<li>多列布局</li>
+<li>flex布局</li>
+<li>grid布局(网格)</li>
+</ul>
+<h2 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h2><p>默认机制，元素 <strong>从左到右，从上到下</strong>。</p>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><p>Float ，元素<strong>脱离普通流</strong>，<strong>不脱离文字流</strong>。</p>
+<ul>
+<li><p>浮动后，<strong>脱离文档流，不脱离文字流</strong> - 文字环绕</p>
+</li>
+<li><p><strong>多元素浮动，紧跟同类，过长下移</strong></p>
+</li>
+<li><p>脱离文档流，造成<strong>高度塌陷</strong>，影响后面元素</p>
+</li>
+</ul>
+<p><strong>文字环绕</strong> - 脱离文档流，不脱落文字流</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213103857256.png" alt="image-20201213103857256"></h4><p><strong>紧跟浮动，过长下移</strong></p>
+<p>没浮动时，如下</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213104219307.png" alt="image-20201213104219307"></p>
+<p>ABCDE同时浮动，可以发现 -&gt; <strong>紧跟同类浮动的后面</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213104515455.png" alt="image-20201213104515455"></p>
+<p>当E过长，发现 -&gt; <strong>长度过长会下移</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213104800286.png" alt="image-20201213104800286"></p>
+<p><strong>高度塌陷</strong></p>
+<p>开始如下</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213111342520.png" alt="image-20201213111342520"></p>
+<p>A浮动 -&gt; <strong>A脱离文档流，其他三个按照文档流分布</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213111444124.png" alt="image-20201213111444124"></p>
+<p>ADC浮动 -&gt; <strong>容器高度完全塌陷</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213111535706.png" alt="image-20201213111535706"></p>
+<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><p>有如下方法</p>
+<ul>
+<li>父元素<strong>overflow:hidden</strong></li>
+<li>父元素内部添加div,设置clear</li>
+<li>使用伪元素(::after)和clear</li>
+</ul>
+<p><strong>父元素overflow</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.clear1</span> &#123;<span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clear1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>内部添加div，设置clear</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="comment">/* cl*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.clear2</span> &#123;<span class="attribute">clear</span>: both;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clear2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用伪元素</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line">        content: &quot;&quot;;</span><br><span class="line"><span class="css">        <span class="selector-tag">display</span>: <span class="selector-tag">block</span>; <span class="comment">/*ds*/</span></span></span><br><span class="line">        clear: both;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span>&#123;<span class="attribute">-ms-zoom</span>: <span class="number">1</span>; <span class="comment">/*for ie 6-7*/</span>&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/12/css/05.float%E5%AE%9A%E4%BD%8D/" data-id="ckimkm84f0002pkv9h42dgtjd" data-title="float浮动" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/13/css/06.position%E5%AE%9A%E4%BD%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          position定位
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/12/css/04.css%E8%83%8C%E6%99%AF%E5%92%8C%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">背景和边框</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

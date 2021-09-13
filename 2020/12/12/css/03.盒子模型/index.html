@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>盒子模型 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="盒子模型css引入了盒子模型，用来布局。每个元素都是一个盒子。  块元素和行内元素，盒子有如下区别：  行内元素没有width和height 行内元素的margin-top和margin-bottom失效 h1~h6、p、ul、ol、li、dl、dt、dd、table、form、div等是块元素 修饰标签(b,strong,em,i,sup等)、img、a、表单元素(input、select、te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盒子模型">
+<meta property="og:url" content="http://example.com/2020/12/12/css/03.%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="盒子模型css引入了盒子模型，用来布局。每个元素都是一个盒子。  块元素和行内元素，盒子有如下区别：  行内元素没有width和height 行内元素的margin-top和margin-bottom失效 h1~h6、p、ul、ol、li、dl、dt、dd、table、form、div等是块元素 修饰标签(b,strong,em,i,sup等)、img、a、表单元素(input、select、te">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201022175735444.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201022183420462.png">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201022183913607.png">
+<meta property="article:published_time" content="2020-12-12T07:35:16.728Z">
+<meta property="article:modified_time" content="2020-12-12T10:54:17.804Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20201022175735444.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-css/03.盒子模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/12/css/03.%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2020-12-12T07:35:16.728Z" itemprop="datePublished">2020-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      盒子模型
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>css引入了<strong>盒子模型</strong>，用来布局。每个元素都是一个盒子。</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022175735444.png" alt="image-20201022175735444"></p>
+<p>块元素和行内元素，盒子有如下区别：</p>
+<ul>
+<li>行内元素没有width和height</li>
+<li>行内元素的margin-top和margin-bottom失效</li>
+<li><code>h1~h6</code>、<code>p</code>、<code>ul</code>、<code>ol</code>、<code>li</code>、<code>dl</code>、<code>dt</code>、<code>dd</code>、<code>table</code>、<code>form</code>、<code>div</code>等是块元素</li>
+<li><code>修饰标签(b,strong,em,i,sup等)</code>、<code>img</code>、<code>a</code>、<code>表单元素(input、select、texearea)</code>是行内元素</li>
+</ul>
+<p>盒子相关属性如下</p>
+<ul>
+<li>width|max-width|min-width: 长度 | 最大长度|最小长度 </li>
+<li>height | max-height | min-height: 高度 | 最大高度 | 最小高度</li>
+<li>padding 内填充</li>
+<li>margin 外填充</li>
+<li>border 边框</li>
+</ul>
+<p><strong>width、height</strong> - 宽高</p>
+<ul>
+<li>IE不支持<code>max-height、min-heiht、max-width、min-width</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*w h minH maxH**/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">200px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>border</strong> - 边框</p>
+<ul>
+<li>细分为<code>border-width</code>、<code>border-color</code>、<code>border-style</code></li>
+<li>边框可以设置透明<code>transparent</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bd bdl bdr bdt bdb*/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">border-width</span>:<span class="number">1px</span>; <span class="attribute">border-style</span>:solid;<span class="attribute">border-color</span>:red; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> solid red; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>透明边框transparent</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-color</span>: <span class="selector-tag">transparent</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>padding</strong> - 内填充</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 四个填充</span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span>;</span><br><span class="line">// 上下5<span class="selector-tag">px</span>,左右10<span class="selector-tag">px</span></span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span> 10<span class="selector-tag">px</span>;</span><br><span class="line">// 上5<span class="selector-tag">px</span>  左右10<span class="selector-tag">px</span> 下8<span class="selector-tag">px</span></span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> 8<span class="selector-tag">px</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>margin</strong> - 外填充</p>
+<ul>
+<li>绝对定位四个方向都是0，<code>margin auto</code> 实现居中</li>
+<li><code>margin:auto</code> 水平居中</li>
+<li>上下margin重合，取大的值</li>
+</ul>
+<p><code>margin</code>设置为<code>auto</code>居中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin: 10 auto;</span><br></pre></td></tr></table></figure>
+
+<p>配合<code>absolute设置绝对居中</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolue</span>;<span class="selector-tag">top</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">right</span><span class="selector-pseudo">:0</span><span class="selector-pseudo">:bottom</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">left</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">margin</span><span class="selector-pseudo">:auto</span>;</span><br><span class="line">// 另外一种方式</span><br><span class="line"><span class="selector-tag">postion</span><span class="selector-pseudo">:absolute</span>;<span class="selector-tag">top</span><span class="selector-pseudo">:50</span>%;<span class="selector-tag">left</span><span class="selector-pseudo">:50</span>%;<span class="selector-tag">tansform</span>: <span class="selector-tag">translate</span>(<span class="selector-tag">-50</span>%,<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure>
+
+<p>上下<code>margin</code>会<code>重叠取较大的</code>，<code>左右不会重叠</code>。</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022183420462.png" alt="image-20201022183420462"></p>
+<h2 id="不同的盒子模型"><a href="#不同的盒子模型" class="headerlink" title="不同的盒子模型"></a>不同的盒子模型</h2><p>虽然有<code>标准盒子模型</code>，但是我大IE就是特例独行，也提出了<code>IE盒子模型</code>。</p>
+<p>浏览器如何创建盒子</p>
+<ul>
+<li>声明了 <code>&lt;!doctype html&gt;</code> -&gt; 标准盒子</li>
+<li>没声明 -&gt;  ie= IE盒子  其他浏览器 = 标准盒子</li>
+</ul>
+<p><strong>IE盒子</strong> - 做IE就是要与众不同</p>
+<ul>
+<li>在IE盒子中 width = content + padding</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">width = width + border-left + border-right + margin-left + margin-right</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022183913607.png" alt="image-20201022183913607"></p>
+<h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p><strong>display</strong> - 改变盒子类型(改变块or内联)</p>
+<ul>
+<li>inline</li>
+<li>block</li>
+<li>inline-block</li>
+<li>none -  不显示(不支持动画)</li>
+<li>table </li>
+<li>table-cell  - 配合上面可以实现居中</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/12/css/03.%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" data-id="ckimkm84b0000pkv97pacfdec" data-title="盒子模型" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/12/css/04.css%E8%83%8C%E6%99%AF%E5%92%8C%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          背景和边框
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/11/css/02.css%E6%96%87%E6%9C%AC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">字体和文本</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

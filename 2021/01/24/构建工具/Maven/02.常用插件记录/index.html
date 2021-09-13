@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="archetype-plugin - 生成项目结构generate目标来生成项目结构。 1mvn archetype:generate  jar-plugin - 打包jar-plugin的作用包括三个  打包 - 打出的是maven包，不包含三方jar和manifest。 生成Manifest - 生成Manifest文件 exclude和include文件  - 原则是多数文件默认，少数exc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/02.%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="archetype-plugin - 生成项目结构generate目标来生成项目结构。 1mvn archetype:generate  jar-plugin - 打包jar-plugin的作用包括三个  打包 - 打出的是maven包，不包含三方jar和manifest。 生成Manifest - 生成Manifest文件 exclude和include文件  - 原则是多数文件默认，少数exc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-24T10:01:15.158Z">
+<meta property="article:modified_time" content="2021-01-24T14:16:20.778Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-构建工具/Maven/02.常用插件记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/02.%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-01-24T10:01:15.158Z" itemprop="datePublished">2021-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="archetype-plugin-生成项目结构"><a href="#archetype-plugin-生成项目结构" class="headerlink" title="archetype-plugin - 生成项目结构"></a>archetype-plugin - 生成项目结构</h3><p><code>generate目标</code>来<code>生成项目结构</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br></pre></td></tr></table></figure>
+
+<h3 id="jar-plugin-打包"><a href="#jar-plugin-打包" class="headerlink" title="jar-plugin - 打包"></a>jar-plugin - 打包</h3><p><code>jar-plugin</code>的作用包括三个</p>
+<ul>
+<li><code>打包</code> - 打出的是maven包，<code>不包含三方jar和manifest</code>。</li>
+<li><code>生成Manifest</code> - 生成<code>Manifest文件</code></li>
+<li><code>exclude</code>和<code>include</code>文件  - 原则是多数文件默认，少数<code>exclude掉</code></li>
+</ul>
+<h6 id="生成Manifest"><a href="#生成Manifest" class="headerlink" title="生成Manifest"></a>生成Manifest</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定如何创建 MainFest--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">archive</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- classpath相关  --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 是否在Manifest中添加classpath字段--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">addClasspath</span>&gt;</span>true<span class="tag">&lt;/<span class="name">addClasspath</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 指定classpath字段的值(第三方jar存放目录)--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">classpathPrefix</span>&gt;</span>lib/<span class="tag">&lt;/<span class="name">classpathPrefix</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- Main-Class --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>jar.App<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">archive</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="生成可执行Jar-配合dependency-plugin"><a href="#生成可执行Jar-配合dependency-plugin" class="headerlink" title="生成可执行Jar - 配合dependency-plugin"></a>生成可执行Jar - 配合dependency-plugin</h6><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranran-liang123/p/11274189.html">Maven打包插件：依赖包打包到lib 依赖包打包到jar中</a></p>
+<h6 id="详细配置"><a href="#详细配置" class="headerlink" title="详细配置"></a>详细配置</h6><p><a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-dependency-plugin/">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://maven.ityuan.com/article/3435">maven-jar-plugin的使用及详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://copyfuture.com/blogs-details/201909052225454526983ha4r2is3zm3">maven-jar-plugin配置详解</a></p>
+<h3 id="assembly-plugin"><a href="#assembly-plugin" class="headerlink" title="assembly-plugin"></a>assembly-plugin</h3><p><code>assembly-plugin</code>作用如下</p>
+<ul>
+<li>创建包含<code>dependencies</code>、<code>modules</code>、<code>document</code>、<code>其他文件的包</code></li>
+<li>创建各种格式的包</li>
+<li>创建<code>Manifest</code></li>
+<li><code>排除和包含</code>文件</li>
+</ul>
+<h6 id="打自定义格式包"><a href="#打自定义格式包" class="headerlink" title="打自定义格式包"></a>打自定义格式包</h6><p>首先配置<code>assimble.xml</code>描述文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">assembly</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目名称 + id --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>SNAPSHOT<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 打包格式 - 支持zip、tar、tar.gz (or tgz)、tar.bz2 (or tbz2)、jar、dir、war --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可以同时指定多个打包格式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">format</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- false - 是否直接放在根目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includeBaseDirectory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">includeBaseDirectory</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 依赖处理 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 是否包含同一个工程的其他包 --&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">useProjectArtifact</span>&gt;</span>true<span class="tag">&lt;/<span class="name">useProjectArtifact</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 依赖存放位置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>lib<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 文件集合 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fileSets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.outputDirectory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileSets</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后<code>配置assembly-plugin</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  assembly包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 指定自定义内容 project-name/depenencies/project-files--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">descriptors</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">descriptor</span>&gt;</span>assembly.xml<span class="tag">&lt;/<span class="name">descriptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">descriptors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 指定MANIFEST --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">archive</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- add --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">addClasspath</span>&gt;</span>true<span class="tag">&lt;/<span class="name">addClasspath</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">classpathPrefix</span>&gt;</span>lib/<span class="tag">&lt;/<span class="name">classpathPrefix</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Main-Class --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>jar.App<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">archive</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 执行阶段 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goal</span>&gt;</span>single<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="生成可执行Jar文件"><a href="#生成可执行Jar文件" class="headerlink" title="生成可执行Jar文件"></a>生成可执行Jar文件</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">descriptors</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">descriptor</span>&gt;</span>src/assembly/src.xml<span class="tag">&lt;/<span class="name">descriptor</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">descriptors</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011955252/article/details/78927175">maven－assembly-plugin 打包的配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chujia1956/article/details/100674232">maven-assembly-plugin配置详解</a></p>
+<h3 id="maven-shade-plugin"><a href="#maven-shade-plugin" class="headerlink" title="maven-shade-plugin"></a>maven-shade-plugin</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangguosb/article/details/80619481">https://blog.csdn.net/yangguosb/article/details/80619481</a></p>
+<h3 id="maven-dependency-plugin"><a href="#maven-dependency-plugin" class="headerlink" title="maven-dependency-plugin"></a>maven-dependency-plugin</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/clarino/p/12089002.html">https://www.cnblogs.com/clarino/p/12089002.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/02.%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/" data-id="ckqqo0zkw000qisv9drgtakm1" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/01.Maven/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

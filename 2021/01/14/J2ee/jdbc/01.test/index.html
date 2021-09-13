@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="DriverManager - 用来注册驱动、设置timeOut(连接超时) 、获取connection Connection 添加到build path 1234567891011121314151617&#x2F;&#x2F; 1.加载驱动DriverManager.registerDriver(new Driver());&#x2F;&#x2F; 2. 获取连接Connection conn &#x3D; DriverManager.get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/14/J2ee/jdbc/01.test/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DriverManager - 用来注册驱动、设置timeOut(连接超时) 、获取connection Connection 添加到build path 1234567891011121314151617&#x2F;&#x2F; 1.加载驱动DriverManager.registerDriver(new Driver());&#x2F;&#x2F; 2. 获取连接Connection conn &#x3D; DriverManager.get">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210114141324842.png">
+<meta property="article:published_time" content="2021-01-14T05:06:00.743Z">
+<meta property="article:modified_time" content="2021-01-22T15:42:27.207Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yuki/AppData/Roaming/Typora/typora-user-images/image-20210114141324842.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-J2ee/jdbc/01.test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/14/J2ee/jdbc/01.test/" class="article-date">
+  <time class="dt-published" datetime="2021-01-14T05:06:00.743Z" itemprop="datePublished">2021-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>DriverManager</code> - 用来<code>注册驱动</code>、<code>设置timeOut(连接超时)</code> 、<code>获取connection</code></p>
+<p><code>Connection</code></p>
+<p>添加到<code>build path</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.加载驱动</span></span><br><span class="line">DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line"><span class="comment">// 2. 获取连接</span></span><br><span class="line">Connection conn = DriverManager.getConnection(<span class="string">&quot;jdbc:mysql://localhost:3306/jdbctest&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;123456&quot;</span>);</span><br><span class="line"><span class="comment">// 3. 创建执行SQL语句</span></span><br><span class="line">String sql =  <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">Statement stmt = conn.createStatement();</span><br><span class="line"><span class="comment">// 4. 执行SQL</span></span><br><span class="line">ResultSet resultSet = stmt.executeQuery(sql);</span><br><span class="line"><span class="keyword">while</span>(resultSet.next()) &#123;</span><br><span class="line">    <span class="keyword">int</span> uid = result.getInt(<span class="string">&quot;uid&quot;</span>);</span><br><span class="line">    String username = result.getString(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 5. 释放支援</span></span><br><span class="line">res.close();</span><br><span class="line">stat.close();</span><br><span class="line">conn.close();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注册两次驱动</span></span><br><span class="line">DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line"><span class="comment">// 可以使用 forName的方式</span></span><br><span class="line">Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>); <span class="comment">// 加载类，静态代码块可以执行</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 1. 创建执行SQL的对象</span></span><br><span class="line">setLoginTimeout(<span class="keyword">int</span> seconds)</span><br><span class="line">createStatement();</span><br><span class="line">preparedStatement();</span><br><span class="line">prepareCall(); <span class="comment">// callableStatement</span></span><br><span class="line"><span class="comment">// 2. 进行事务管理</span></span><br><span class="line">setAuotCommit();</span><br><span class="line">commit();</span><br><span class="line">rollback();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//Statement 执行SQL语句 </span></span><br><span class="line">execute();		<span class="comment">// boolean DDL/DCL</span></span><br><span class="line">executeQuery(); <span class="comment">// resultSet DQL</span></span><br><span class="line">executeUpdate(); <span class="comment">// int - DML</span></span><br><span class="line"><span class="comment">// 批处理操作</span></span><br><span class="line">addBatch();  <span class="comment">//添加到批处理</span></span><br><span class="line">executeBatch(); <span class="comment">// 执行批处理</span></span><br><span class="line">clearBatch(); <span class="comment">// 清空批处理操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ResultSet - 结果集 - 包含了Select执行的结果</span></span><br><span class="line">next();</span><br><span class="line">getXXX();</span><br><span class="line">getObject(<span class="keyword">int</span>/str,)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>抽取<code>JDBC</code>工具类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jdbc.utils;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JdbcUtils</span>｛</span></span><br><span class="line"><span class="class">    <span class="title">private</span> <span class="title">static</span> <span class="title">final</span> <span class="title">String</span> <span class="title">driverClass</span></span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String url;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String username;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String password;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 读取配置文件 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">loadProps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	Propertis props = <span class="keyword">new</span> Propsies();</span><br><span class="line">        props.load(JDNCUtils.class.getClassLoader().getResourceAsStream(<span class="string">&quot;jdbc.properties&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* 注册却动*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadDriver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* 获取连接 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        loaderDriver();</span><br><span class="line">        <span class="keyword">return</span> DriverManager.getConnection(url,user,apssword)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">/* 资源释放 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Statement stat,Connection conn)</span> </span>&#123;   </span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>&#123;</span><br><span class="line">        res.close();</span><br><span class="line">        state.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>SQL注入漏洞</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">&quot;select * from user where username = username and password  = passwor&quot;</span>;</span><br><span class="line">login(<span class="string">&quot;aaa&#x27; or &#x27;1=1&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210114141324842.png" alt="image-20210114141324842"></p>
+<p>Connection</p>
+<p>createStatement()/createPreparedStatement()/<strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Connection.html#prepareCall(java.lang.String)">prepareCall</a></strong>(<a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html">String</a> sql)</p>
+<p>getAutoCommit()/<strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Connection.html#setAutoCommit(boolean)">setAutoCommit</a></strong>()/<strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Connection.html#releaseSavepoint(java.sql.Savepoint)"> releaseSavepoint</a></strong>()/<strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Connection.html#rollback()">rollback</a></strong>()</p>
+<p><strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Connection.html#setSavepoint(java.lang.String)">setSavepoint</a></strong>()/commit()/setTransactionIsolation()</p>
+<p>Statement</p>
+<ul>
+<li>execute()/executeQuery()/executeUpdate()</li>
+<li>addBatch()/clearBatch()/executeNatch()</li>
+<li>getGenerateSize()</li>
+<li><strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Statement.html#getMaxRows()">getMaxRows</a></strong>()/getMoreResultes()</li>
+</ul>
+<p><strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Statement.html#getUpdateCount()">getUpdateCount</a></strong>()</p>
+<p><strong><a target="_blank" rel="noopener" href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/sql/Statement.html#isPoolable()">isPoolable</a></strong>()</p>
+<p>setFetchSize()</p>
+<p>ResultSet</p>
+<ul>
+<li><p>getXXX</p>
+</li>
+<li><p>updateXXX/updateRow()</p>
+</li>
+<li><p>setFetchSize(int rows) -对于mysql，自动行为是全部加载到内存中，然后遍历内存数据，瑞昱orcal，执行查询后，读取fetchsize个</p>
+</li>
+<li><p>insertRow()/movetoInsertRow()/movetoCurrentRow()/updatexxx</p>
+</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/14/J2ee/jdbc/01.test/" data-id="ckqqo0zki0007isv9czm85z6s" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/14/linux/CentOS/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/13/db/mysql%E5%9F%BA%E7%A1%80/07.Mysql%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

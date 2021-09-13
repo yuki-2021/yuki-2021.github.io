@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="RPM方式安装Mysql下载下载地址是中科大镜像。我下载了 1234mysql-community-common-8.0.21-1.el7.x86_64.rpmmysql-community-libs-8.0.21-1.el7.x86_64.rpmmysql-community-server-8.0.21-1.el7.x86_64.rpmmysql-community-client-8.0.21-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/01.Liunx%E5%AE%89%E8%A3%85Mysql/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RPM方式安装Mysql下载下载地址是中科大镜像。我下载了 1234mysql-community-common-8.0.21-1.el7.x86_64.rpmmysql-community-libs-8.0.21-1.el7.x86_64.rpmmysql-community-server-8.0.21-1.el7.x86_64.rpmmysql-community-client-8.0.21-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-06T13:42:32.417Z">
+<meta property="article:modified_time" content="2021-01-06T15:46:02.029Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-db/mysql高级/01.Liunx安装Mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/01.Liunx%E5%AE%89%E8%A3%85Mysql/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T13:42:32.417Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="RPM方式安装Mysql"><a href="#RPM方式安装Mysql" class="headerlink" title="RPM方式安装Mysql"></a>RPM方式安装Mysql</h3><h6 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h6><p><code>下载地址</code>是<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/">中科大镜像</a>。我下载了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql-community-common-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-libs-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-server-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-client-8.0.21-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<h6 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h6><p>检查<code>是否安装了Mysql</code>，使用<code>wheris</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> wheeris</span></span><br><span class="line">whereis mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span></span> </span><br><span class="line">which mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用rpm方式</span></span><br><span class="line">rpm -qa | grep ‘mysql’</span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载</span></span><br><span class="line">rpm -e [--nodeps] mysql-community-server-8.0.21-1.el7.x86_64.rpm </span><br><span class="line">rpm -e [--nodeps] mysql-community-server-8.0.21-1.el7.x86_64.rpm </span><br></pre></td></tr></table></figure>
+
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><p>使用 <code>rpm -ivh</code> 安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照顺序安装</span></span><br><span class="line">rpm -ivh mysql-community-common-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.21-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p><strong>出现的问题</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ypp91zr/article/details/84801204">RPM安装mysql错误 - mariadb-libs 被 mysql-community-libs-8.0.13-1取代</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30840253/article/details/95006916">缺少Perl依赖(在/dev/cdrom/Packages中有)</a></li>
+</ul>
+<h6 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  查看版本</span></span><br><span class="line">mysql --version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装Ok</span></span><br><span class="line">whereis mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql内容"><a href="#Mysql内容" class="headerlink" title="Mysql内容"></a>Mysql内容</h3><ol>
+<li>默认创建<code>mysql用户</code>和<code>mysql用户组</code>。<code>id27，是虚拟用户</code>。家目录是<code>/var/lib/mysql</code>。<code>不允许登陆</code>。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 用户名: 密码(X) : 用户id : 组id : 注释信息 : 家目录 : 登陆方式(不允许登陆)</span></span><br><span class="line">mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p><code>配置文件</code>在<code>/etc/my.ini</code>位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/my.ini</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日志文件在<code>/var/log/mysqld.log</code>位置。</p>
+</li>
+<li><p><code>其他目录</code>如下。可用<code>rpm -ql 软件名称</code>查看。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> lib库的位置，扩展的时候需要用到</span></span><br><span class="line">/usr/lin64/mysql/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 客户端命令存放位置</span></span><br><span class="line">/usr/bin/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务端存放位置</span></span><br><span class="line">/usr/sbin/mysqld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mysqld</code>用来<code>启动服务器</code>，<code>mysql</code>用来<code>连接</code>。</p>
+</li>
+</ol>
+<h3 id="初始化Mysql"><a href="#初始化Mysql" class="headerlink" title="初始化Mysql"></a>初始化Mysql</h3><ul>
+<li>初始化密码</li>
+<li>允许远程登陆</li>
+<li>开机启动</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">Systemctl start mysqld</span><br></pre></td></tr></table></figure>
+
+<p>会在<code>/var/log/mysqld.log</code>中生成随机密码。用<code>随机密码登陆，更改密码</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep -A 2 &quot;password&quot; /var/log/mysqld.log</span><br><span class="line"><span class="meta">#</span><span class="bash"> 登陆 默认root只能localhost登陆</span></span><br><span class="line">mysql -h 127.0.0.1 -P 3306 -u root -p</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改密码 - 如果不能修改，要设置`valiable_password`</span></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY 123456</span><br></pre></td></tr></table></figure>
+
+<p><code>开启远程权限</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&#x27;a123456&#x27;</span>;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">PRIVILEGES</span>; </span><br></pre></td></tr></table></figure>
+
+<p>设置<code>开机启动</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld </span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">systemctl list-unit-files -type=service | grep mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或则</span></span><br><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
+
+<p><strong>出现的问题</strong></p>
+<ul>
+<li><p><a href="../mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81.md">意外的原因删除了随机密码，导致无法登陆</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.58jb.com/html/162.html">密码不合格 - validate_password插件</a></p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ypp91zr/article/details/84801204">RPM安装mysql错误 - mariadb-libs 被 mysql-community-libs-8.0.13-1取代</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/01.Liunx%E5%AE%89%E8%A3%85Mysql/" data-id="ckjqs77sb000kk0v9caxy55ap" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled%201/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

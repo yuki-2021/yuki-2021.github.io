@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-java-frame/spring/spring-base/02.Spring-ioc2-anno" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/java-frame/spring/spring-base/02.Spring-ioc2-anno/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T13:25:34.890Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="创建Bean"><a href="#创建Bean" class="headerlink" title="创建Bean"></a>创建Bean</h3><h6 id="Bean-Configuration-构造方法Bean"><a href="#Bean-Configuration-构造方法Bean" class="headerlink" title="@Bean/@Configuration - 构造方法Bean"></a>@Bean/@Configuration - 构造方法Bean</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserService <span class="title">userService1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UserServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Bean-工厂方法Bean"><a href="#Bean-工厂方法Bean" class="headerlink" title="@Bean - 工厂方法Bean"></a>@Bean - 工厂方法Bean</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> UserService <span class="title">userService2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> FactoryMethod.fac();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Bean-简单工厂Bean"><a href="#Bean-简单工厂Bean" class="headerlink" title="@Bean - 简单工厂Bean"></a>@Bean - 简单工厂Bean</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> UserService <span class="title">userService3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SimpleFactory().fac();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="DependsOn-指定先后顺序"><a href="#DependsOn-指定先后顺序" class="headerlink" title="@DependsOn - 指定先后顺序"></a>@DependsOn - 指定先后顺序</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@DependsOn(&quot;userService2&quot;)</span> <span class="comment">// 指定先后顺序=========================</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> UserService <span class="title">userService3</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> SimpleFactory().fac();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><h6 id="通过set方式注入"><a href="#通过set方式注入" class="headerlink" title="通过set方式注入"></a>通过set方式注入</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Car <span class="title">car1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Car car = <span class="keyword">new</span> Car();</span><br><span class="line">    car.setColor(<span class="string">&quot;red&quot;</span>);</span><br><span class="line">    car.setBrand(<span class="string">&quot;byd&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> car;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Employee <span class="title">emp1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    <span class="comment">// 这里实现了car1()的重复使用</span></span><br><span class="line">    employee.setCar(car1());</span><br><span class="line">    employee.setId(<span class="number">1</span>);</span><br><span class="line">    employee.setName(<span class="string">&quot;jack&quot;</span>);</span><br><span class="line">    Department dept = <span class="keyword">new</span> Department(<span class="string">&quot;开发部&quot;</span>, <span class="string">&quot;xx大厦-B102&quot;</span>);</span><br><span class="line">    employee.setDept(dept);</span><br><span class="line">    <span class="keyword">return</span> employee;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="通过构造函数注入"><a href="#通过构造函数注入" class="headerlink" title="通过构造函数注入"></a>通过构造函数注入</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Cat <span class="title">cat1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Cat(<span class="string">&quot;悠米&quot;</span>,<span class="number">12</span>,<span class="string">&quot;red&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="注入null"><a href="#注入null" class="headerlink" title="注入null"></a>注入null</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Cat <span class="title">cat2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 直接传入Null就好==============================</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Cat(<span class="string">&quot;悠米&quot;</span>,<span class="number">12</span>,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="注入set-list-arr-map-props"><a href="#注入set-list-arr-map-props" class="headerlink" title="注入set/list/arr/map/props"></a>注入set/list/arr/map/props</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CollectBean <span class="title">collect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CollectBean collectBean = <span class="keyword">new</span> CollectBean();</span><br><span class="line">    <span class="comment">// 注入Array============================================</span></span><br><span class="line">    collectBean.setList(Arrays.asList(<span class="string">&quot;Java&quot;</span>,<span class="string">&quot;C#&quot;</span>,<span class="string">&quot;PHP&quot;</span>));</span><br><span class="line">    <span class="comment">// 注入Arr==============================================</span></span><br><span class="line">    collectBean.setArr(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>&#125;);</span><br><span class="line">    <span class="keyword">return</span> collectBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><h6 id="scope-指定作用域"><a href="#scope-指定作用域" class="headerlink" title="@scope - 指定作用域"></a>@scope - 指定作用域</h6><p>有两个属性</p>
+<ul>
+<li>value - 表示scope范围，对于<code>singleton</code>和<code>prototype</code>不要配置。</li>
+<li>proxyMode - 仅仅对于request和session范围有效</li>
+</ul>
+<p>对于<code>Value</code></p>
+<table>
+<thead>
+<tr>
+<th>范围</th>
+<th>说明</th>
+<th>常量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prototype</td>
+<td>实例</td>
+<td>ConfigurableBeanFactory.SCOPE_PROTOTYPE</td>
+</tr>
+<tr>
+<td>singletom</td>
+<td>单例</td>
+<td>ConfigurableBeanFactory.SCIPE_SIMGLETON</td>
+</tr>
+<tr>
+<td>request</td>
+<td></td>
+<td>WebApplicationContext.SCOPE_REQUEST</td>
+</tr>
+<tr>
+<td>session</td>
+<td></td>
+<td>WebApplicationContext.SCOPE_SESSION</td>
+</tr>
+</tbody></table>
+<p><code>proxyMode</code>主要可以返回一个<code>代理类</code>，主要有两个作用</p>
+<ul>
+<li>在Session或者request到来后，代理类<code>动态创建target</code>或者<code>返回target</code>。</li>
+<li>被<code>singleton</code>的对象引用，<code>代理类</code>是<code>context</code>初始化后就<code>创建了</code>，可以被<code>singleton</code>引用。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>proxyMode</th>
+<th>jdk动态代理类</th>
+<th>ScopedProxyMode.INTERFACES</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>proxyMode</td>
+<td>cglib代理类</td>
+<td>ScopedProxyMode.TARGET_CLASS</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Cat <span class="title">catPrototype</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Cat cat = <span class="keyword">new</span> Cat();</span><br><span class="line">    <span class="keyword">return</span> cat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="互相引用"><a href="#互相引用" class="headerlink" title="互相引用"></a>互相引用</h3><h6 id="Import、-ImportSource-注解配置中引入注解配置和xml配置"><a href="#Import、-ImportSource-注解配置中引入注解配置和xml配置" class="headerlink" title="@Import、@ImportSource - 注解配置中引入注解配置和xml配置"></a>@Import、@ImportSource - <code>注解配置</code>中引入<code>注解配置</code>和<code>xml配置</code></h6><p>分别用到了<code>@Import标签</code>和<code>@ImportSource</code>标签</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import(&#123;ConfigInner.class&#125;)</span> <span class="comment">// 引入@Configuration=========================</span></span><br><span class="line"><span class="meta">@ImportResource(&#123;&quot;classpath:inner.xml&quot;&#125;)</span> <span class="comment">// 引入xml========================</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigOutter</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="import、context-annotation-config-xml配置中引入注解配置和xml配置"><a href="#import、context-annotation-config-xml配置中引入注解配置和xml配置" class="headerlink" title="import、context-annotation-config -xml配置中引入注解配置和xml配置"></a>import、context-annotation-config -<code>xml配置</code>中引入<code>注解配置</code>和<code>xml配置</code></h6><p>分别使用到了<code>&lt;import /&gt;</code>和<code>&lt;context:annotation-config /&gt;</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引入xml配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">&quot;inner.xml&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入@Configuration --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:annotation-config</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo2a.ConfigInner&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/java-frame/spring/spring-base/02.Spring-ioc2-anno/" data-id="ckqqo0zkz000visv94biy4p95" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-redis/一站式学习Redis/02.redis-api" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/02.redis-api/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T08:41:43.317Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取满足pattern的key  - O(n）-热备从节点</span></span><br><span class="line">keys pattern</span><br><span class="line">keys he*</span><br><span class="line"><span class="meta">#</span><span class="bash"> key的个数</span></span><br><span class="line">dbsize</span><br><span class="line"><span class="meta">#</span><span class="bash"> key是否存在</span></span><br><span class="line">exists key </span><br><span class="line"><span class="meta">#</span><span class="bash"> key的类型</span></span><br><span class="line">type key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除key</span></span><br><span class="line">del key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置key过期</span></span><br><span class="line">exipre key seconds</span><br><span class="line">ttl key</span><br><span class="line">persist key </span><br></pre></td></tr></table></figure>
+
+<h3 id="数据解构和内部编码"><a href="#数据解构和内部编码" class="headerlink" title="数据解构和内部编码"></a>数据解构和内部编码</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173042571.png" alt="image-20210120173042571"></p>
+<p> 时间换空间  还是 空间 换取时间</p>
+<p>type / encoding</p>
+<h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173405837.png" alt="image-20210120173405837"></p>
+<ul>
+<li>存内存 - 写文件时候不是单线程</li>
+<li>非阻塞IO  epop多路复用</li>
+<li>避免线程切换和静态消耗</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173546135.png" alt="image-20210120173546135"></p>
+<p>拒绝常命令</p>
+<p>keys flushall、flushdb、show lua scripts、multi/exec、operate、big value</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120173711293.png" alt="image-20210120173711293"></p>
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3><p>str/int/二进制/json串/</p>
+<p>up to 512Mb – 100KB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取key</span></span><br><span class="line">get key</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置</span></span><br><span class="line">set key value</span><br><span class="line">setnx key value #分布式锁</span><br><span class="line">set key value</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除Key</span></span><br><span class="line">del key</span><br><span class="line"><span class="meta">#</span><span class="bash"> getset append strlen</span></span><br><span class="line">getset key newValue </span><br><span class="line">append key value # 追加内容</span><br><span class="line"><span class="meta">#</span><span class="bash"> mget mset 批量获取和设置</span></span><br><span class="line">mget k1 k2 k3</span><br><span class="line">mset k1 v1 k2 v2 k3 v3</span><br><span class="line"></span><br><span class="line">strlen key # 返回字节数字</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 计数</span></span><br><span class="line">incr key # 自增1</span><br><span class="line">decr     # 自减1</span><br><span class="line">incrby key n # 增加n </span><br><span class="line">decrby		 # 减少n</span><br><span class="line"><span class="meta">#</span><span class="bash"> incrbyfloat</span></span><br><span class="line">incrbyfloat 3.5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">incr userid:pageview (单线程：无竞争)</span><br><span class="line">缓存视频基本信息</span><br><span class="line"></span><br><span class="line">getrange key start end</span><br><span class="line">setrange key start end</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120175429816.png" alt="image-20210120175429816"><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120175449410.png" alt="image-20210120175449410"></p>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取和设置</span></span><br><span class="line">hget key field</span><br><span class="line">hset key field value </span><br><span class="line">hdel key field</span><br><span class="line">hgetall key </span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line">hmget key f1 f2 f3</span><br><span class="line">hmset key f1 v1 f2 v2 f3 v3</span><br><span class="line"><span class="meta">#</span><span class="bash"> filed的个数</span></span><br><span class="line">hlen key </span><br><span class="line"><span class="meta">#</span><span class="bash"> field是否存在</span></span><br><span class="line">hexists key field</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line">hgetall key</span><br><span class="line">hvals key</span><br><span class="line">hkeys key</span><br><span class="line"></span><br><span class="line">hsetbx key filed value</span><br><span class="line">hincrby key field v</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">用户个人主页的访问量</span></span><br><span class="line">hincrby user:1:info pageView count</span><br><span class="line"><span class="meta">#</span><span class="bash"> 储存视频基本信息</span></span><br><span class="line">redis.hgetAll()</span><br><span class="line">redis.hmset(redisKey,transferToMap())</span><br></pre></td></tr></table></figure>
+
+<p>存储方式是<code>hastable</code>和<code>ziplist</code></p>
+<p><strong>对比</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181530064.png" alt="image-20210120181530064"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181541782.png" alt="image-20210120181541782"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120181703580.png" alt="image-20210120181703580"></p>
+<h3 id="List列表"><a href="#List列表" class="headerlink" title="List列表"></a>List列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 列表 - 有序 重复</span></span><br><span class="line">rpush key v1 v2 ... vn</span><br><span class="line">lpush key v1 v2 ... vn</span><br><span class="line">linsert key before|after value newValue</span><br><span class="line">lset key index newValue</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出</span></span><br><span class="line">lpop key</span><br><span class="line">rpop key</span><br><span class="line"><span class="meta">#</span><span class="bash"> c&lt;0 删除count个value</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> c&gt;0 右边删除count个value</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> c=0 删除所有的valuse</span></span><br><span class="line">lrem key count value</span><br><span class="line">ltrim key start end # 保留start到end</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查询</span></span><br><span class="line">lrange key start end  # [start,end]</span><br><span class="line">llen key#长度</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Set集合类型"><a href="#Set集合类型" class="headerlink" title="Set集合类型"></a>Set集合类型</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 加入内容</span></span><br><span class="line">sadd key ele</span><br><span class="line">srem key ele</span><br><span class="line">spop</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查询</span></span><br><span class="line">srandmember # 随机返回</span><br><span class="line">smembers</span><br><span class="line">scan</span><br><span class="line"><span class="meta">#</span><span class="bash"> 其他API</span></span><br><span class="line">scard # 集合大小</span><br><span class="line">sismember # 是否存在</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 抽奖活动</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Zset"><a href="#Zset" class="headerlink" title="Zset"></a>Zset</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120184226604.png" alt="image-20210120184226604"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/02.redis-api/" data-id="ckqqo0zkv000oisv9d0n9eanq" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-redis/一站式学习Redis/01.redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/01.redis/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T05:45:39.564Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="初识Redis"><a href="#初识Redis" class="headerlink" title="初识Redis"></a>初识Redis</h3><p><strong>1-1</strong></p>
+<p>topline、慢查询、发布订阅、geo、位图。</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120140525851.png" alt="image-20210120140525851"></p>
+<p><strong>1-3 谁在使用初识</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120140829132.png" alt="image-20210120140829132"></p>
+<p><strong>1-4 redis特性</strong></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120140955215.png" alt="image-20210120140955215"></p>
+<p>10w ops  数据存在内存中  C语言实现 单线程模型 多路复用</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120155550017.png" alt="image-20210120155550017"></p>
+<p>String、Blob说、Bitmaps/hashmap/linkedlist/sets/sorted set</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120155934905.png" alt="image-20210120155934905"></p>
+<p>RDB、AOF、bitmaps、hyperLoglog(唯一值计数 12K)、geo(地理信息定位)</p>
+<p>发布订阅、事务、Lua脚本、Pipeline</p>
+<p>蛀虫复制、分布式、高可用</p>
+<p>蛀虫复制实现高可用很困难</p>
+<p>redis-sentinel 高可用</p>
+<p>redis-clusrer - 分布式</p>
+<h3 id="Redis场景"><a href="#Redis场景" class="headerlink" title="Redis场景"></a>Redis场景</h3><ul>
+<li>缓存系统</li>
+<li>计数器</li>
+<li>消息队列系统</li>
+<li>排行榜</li>
+<li>社交网络</li>
+<li>实时系统</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120161244466.png" alt="image-20210120161244466"></p>
+<h3 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget http://downlocad.redis.io/releases/redis-307.tar,gz</span><br><span class="line">tar -zvf 3.0.7.tar.gz</span><br><span class="line">ln -s redis-3.0.7 redis</span><br><span class="line">cd redis</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>redis-server</th>
+<th>Redis服务器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>redis-cli</td>
+<td>客户端</td>
+</tr>
+<tr>
+<td>redis-benchmark</td>
+<td>基准测试</td>
+</tr>
+<tr>
+<td>redis-check-aof</td>
+<td>对aof文件修复</td>
+</tr>
+<tr>
+<td>redis-check-rdb</td>
+<td>rdb文件修复</td>
+</tr>
+<tr>
+<td>redis-sentinel</td>
+<td>哨兵</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认启动 - 用默认配置</span></span><br><span class="line">redis-server</span><br><span class="line">ps -ef| grep redis</span><br><span class="line">netstat -lntup redis</span><br><span class="line"><span class="meta">#</span><span class="bash"> 动态参数启动 -</span> </span><br><span class="line">redis --port 6380</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件启动</span></span><br><span class="line">redis configPath</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 连接</span></span><br><span class="line">redis-cli -h 10.0.0.1 -o 6384</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置String类型数据</span></span><br><span class="line">set hello world</span><br><span class="line"><span class="meta">#</span><span class="bash"> ping</span></span><br><span class="line">pibg</span><br><span class="line"><span class="meta">#</span><span class="bash"> Gello</span></span><br><span class="line">get hello</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120162713956.png" alt="image-20210120162713956"></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120162737319.png" alt="image-20210120162737319"></p>
+<h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 是否守护进程方式启动</span></span><br><span class="line">daemonize no</span><br><span class="line"><span class="meta">#</span><span class="bash"> 端口</span></span><br><span class="line">port 6379</span><br><span class="line"><span class="meta">#</span><span class="bash"> 日志名称、日志目录</span></span><br><span class="line">logfile</span><br><span class="line">dir </span><br></pre></td></tr></table></figure>
+
+<p>默认配置在/redis/config中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建redis6382</span></span><br><span class="line">cat redis-6381.conf | grep -v &quot;#&quot; | grep -v &quot;^$&quot; &gt; redis-6382.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/redis/%E4%B8%80%E7%AB%99%E5%BC%8F%E5%AD%A6%E4%B9%A0Redis/01.redis/" data-id="ckqqo0zku000nisv91cil8i3d" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/扛得住的Mysql/04.数据库解构设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%84%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T05:14:05.341Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="数据库解构优化"><a href="#数据库解构优化" class="headerlink" title="数据库解构优化"></a>数据库解构优化</h3><ul>
+<li>减少数据冗余</li>
+<li>避免数据插入异常 - 冗余数据在更新时候，会有异常</li>
+<li>节省存储空间</li>
+<li>提升查询效率</li>
+</ul>
+<h3 id="数据库解构设计"><a href="#数据库解构设计" class="headerlink" title="数据库解构设计"></a>数据库解构设计</h3><p><code>需求分析</code> </p>
+<ul>
+<li>了解存储需求</li>
+<li>数据处理需求</li>
+<li>数据的安全性和完整性</li>
+</ul>
+<p><code>逻辑设计</code></p>
+<ul>
+<li>数据实体的逻辑关系</li>
+<li>解决数据冗余和冗余数据维护异常</li>
+<li>参考数据库涉及范式</li>
+</ul>
+<p>物理设计 - <code>业务和数据库类型</code></p>
+<ul>
+<li>根据<code>数据库特点</code>进行表解构设计 </li>
+</ul>
+<p><code>优化</code> - <code>索引和解构优化</code></p>
+<h3 id="数据库范式-和反范式"><a href="#数据库范式-和反范式" class="headerlink" title="数据库范式 和反范式"></a>数据库范式 和反范式</h3><ul>
+<li>列不能再分</li>
+<li>对于主键列的依赖需要依赖全部列，不能是不分列</li>
+<li>其他列只能依赖主键</li>
+</ul>
+<p>反范式</p>
+<ul>
+<li>使用逻辑主键代替业务主键</li>
+<li>在处理关联关系时候，一般会通过外键额外添加一列。而不是多一个表</li>
+<li>在数据冗余时候，会提取出来。</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120133153877.png" alt="image-20210120133153877"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/04.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%84%E8%AE%BE%E8%AE%A1/" data-id="ckqqo0zkt000lisv92imt7df4" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/扛得住的Mysql/Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/Untitled/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T03:30:52.798Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在数据比较少时候，表中数据可以完全缓存到内存，全表扫描也不会太慢。</p>
+<p>数据越来越多，不能完全缓存，索引作用越来越明显。</p>
+<p>Mysql中有<code>Btree</code>和<code>Hash</code>索引。不同的存储引擎对于索引的实现方式可以能不同</p>
+<p><strong>BeTree索引</strong></p>
+<ul>
+<li>数据解构是B+树。对于InnoDB，指针指向的是主键索引位置。对于MyIsaM,索引指向的是<code>数据的物理地址</code>。</li>
+<li>使用索引，查找合适范围的数据，根据指针，找到主键，根据主键找到物理地址，只需要加载少量内容。</li>
+<li>适合范围查找，数据顺序存储。</li>
+</ul>
+<p><strong>Betree使用</strong></p>
+<p><code>单列索引</code></p>
+<ul>
+<li>精确匹配、模糊前缀匹配、范围查询(between and 、&gt;)</li>
+<li>Not in 和!= 无法用索引</li>
+</ul>
+<p><code>多列索引</code></p>
+<ul>
+<li>最左前缀匹配</li>
+<li>前面的列只有是<code>精切匹配</code>，后面的列<code>才会生效</code></li>
+<li>范围查询和模糊匹配的右边列无法生效</li>
+</ul>
+<p><code>Betree使用限制</code></p>
+<ul>
+<li><p>使用索引，命中了大部分的数据，可能会导致采用全表扫描，而不是索引。</p>
+</li>
+<li><p>不是最左匹配，那么无法使用索引。</p>
+</li>
+</ul>
+<p><strong>Hash索引</strong></p>
+<ul>
+<li>在InnoDB中，不能自己建立，InnoDB根据Betree的使用情况，自动建立Hash索引。</li>
+<li>Hash索引中存储的是<code>Hash码</code>和<code>指针</code>。</li>
+<li>Hash索引只能用于精确匹配。</li>
+<li>Hash索引需要两次读取，先找到行，然后对行进行读取。</li>
+<li>无法用于排序</li>
+<li>只能全键值匹配，</li>
+<li>Hash索引可能导致Hash冲突  - 不适合选择性差的列上</li>
+</ul>
+<p><strong>索引好处</strong></p>
+<ul>
+<li>减少需要扫描数据的数据量。数据存储在页中，一页数据越多，效率越高。</li>
+<li>可以使用索引排序，避免了用临时表排序。</li>
+<li>可以把I/O编程顺序IO。</li>
+</ul>
+<p><strong>索引越多越好</strong></p>
+<ul>
+<li>索引会导致写成本。</li>
+<li>索引会增加查询优化器的选择时间。</li>
+</ul>
+<p><strong>索引优化策略</strong></p>
+<ul>
+<li><code>索引列上不能使用函数表达</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120122036591.png" alt="image-20210120122036591"></p>
+<ul>
+<li>Betree索引大小有限制，对于InnoDB，最大是700+Byte。对于MyIsam是1000Byte。对于<code>Text</code>等大文本，建立前缀索引。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> index idx_name <span class="keyword">on</span> <span class="keyword">table</span>(col(n))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>5.0之前，只能用单列索引。5.0之后，有了索引合并的概念。可以使用<code>联合索引</code>。可以 - 1. 经常用于查询的列优先  2. 选择性高的列优先。3.宽度小的列优先</p>
+</li>
+<li><p>覆盖索引。直接在Betree索引上获取数据，而不需要读取表。全不知，不止是where包括select和groupby和orderby中的值。好处 1. - 可以优化缓存，减少磁盘IO操作。2. - 减少随机IO，变随机IO为顺序IO. 3. - 避免对InoDB主键索引的二次查询 4. - 可以避免MyISAM，避免系统带哦用。 <code>无法用</code> - 1. 不都支持覆盖索引，Memeory。2. hash不能当作覆盖索引 3. 查询太多列，没必要建立覆盖索引 3. - 不能有like%%的查询  using index - using where</p>
+<p><strong>查询优化中</strong></p>
+<p><code>优化排序</code> -  using index</p>
+<p>按照索引顺序扫描数据，进行排序。</p>
+<ul>
+<li>索引顺序和Order by 子句顺序完全一直</li>
+<li>索引排序顺序和asc、desc完全一直</li>
+<li>关联查询，orderby字段在第一个表中</li>
+</ul>
+<p><code>模拟Hash索引</code></p>
+<p><code>Hash索引</code>优化<code>大文本查询</code></p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120124938574.png" alt="image-20210120124938574"></p>
+</li>
+</ul>
+<p><strong>索引优化下</strong></p>
+<ul>
+<li>Inodb行锁。使用索不到行，对行加锁，在内存中过滤。过滤到行，减少锁定行数。</li>
+<li>加快处理速度，加快锁的释放熟读</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">begin</span> ;</span><br><span class="line"><span class="comment">-- 加入排他锁</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">-- sql 2  -- 发现足诸塞勒</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">/* 加上索引  */</span></span><br><span class="line"><span class="keyword">create</span> index idx_lastName <span class="keyword">on</span> actor(lastName);</span><br><span class="line"><span class="comment">-- 开始事务</span></span><br><span class="line"><span class="keyword">begin</span> ;</span><br><span class="line"><span class="comment">-- 加入排他锁</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br><span class="line"><span class="comment">-- sql 2  -- 发现足诸塞勒</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">last</span> name <span class="operator">=</span> <span class="string">&#x27;wood&#x27;</span> <span class="keyword">for</span> update;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>重复索引</li>
+<li>primary key(id),unique key(id),index(id)</li>
+<li>index(a),index(a,b)</li>
+<li>primary key(id),index(a,id)</li>
+<li>删除重复和冗余索引</li>
+<li>pt-duplicate-key-check h = 127.0.0.1</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120130144070.png" alt="image-20210120130144070"></p>
+<p>未被使用的索引</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210120130555886.png" alt="image-20210120130555886"></p>
+<ul>
+<li>更新索引统计信息 和 减少索引随便</li>
+<li>analyze table table_name </li>
+<li>optimize table table_name</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">MyISAM产生</span><br><span class="line"> frm <span class="operator">-</span> 表文件</span><br><span class="line"> myd <span class="operator">-</span> 数据文件</span><br><span class="line"> myi <span class="operator">-</span> 索引文件</span><br><span class="line"></span><br><span class="line">建表时指定数据文件和索引文件位置</span><br><span class="line"> DATA DIRECTORT</span><br><span class="line">INDEX DIRECTORY </span><br><span class="line">MYISAM最大数据是<span class="number">2</span><span class="operator">^</span><span class="number">64</span>，最多<span class="number">64</span>个索引，符合索引最大<span class="number">1000</span>B和<span class="number">16</span>个字段</span><br><span class="line"></span><br><span class="line">存储格式</span><br><span class="line">定长 <span class="operator">-</span> FIXED静态</span><br><span class="line">动态 <span class="operator">-</span> <span class="keyword">DYNAMIC</span></span><br><span class="line">压缩 <span class="operator">-</span> COMPRESSED</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> status <span class="keyword">like</span> `mysiam_1`;</span><br><span class="line"></span><br><span class="line">INNODB </span><br><span class="line">支持ACID特性</span><br><span class="line">采用行锁，提升并发性能</span><br><span class="line">支持外键</span><br><span class="line">独立缓冲池，数据和索引缓存中</span><br><span class="line">对于<span class="keyword">Insert</span>、update、<span class="keyword">delete</span>，采用 change buffering自动优化。提供一致性读，减少io，提升性能</span><br><span class="line">。frm .idb  数据和索引存储在表空间中</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/db/%E6%89%9B%E5%BE%97%E4%BD%8F%E7%9A%84Mysql/Untitled/" data-id="ckqqo0zkt000kisv9g0ep3yz6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java-frame/spring/spring-base/01.spring" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/java-frame/spring/spring-base/01.spring/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T08:31:38.831Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h3><p><code>Spring</code>是一个用于<code>组件管理的容器</code>。</p>
+<ul>
+<li><p>我们把<code>配置信息</code>提供给<code>Spring</code>，<code>Spring</code>把配置信息转换成<code>BeanDefinition</code>，帮我们完成<code>依赖注入</code>。这个过程叫做<code>IOC</code>。</p>
+</li>
+<li><p>Spring支持<code>AOP</code>。我们把<code>横切逻辑</code>放到<code>Advice</code>，Spring在创建Bean的时候，会采用<code>gdk动态代理</code>或者<code>cglib</code>方式，给我们返回<code>代理类</code>。</p>
+</li>
+<li><p>Spring支持<code>组件扫描</code>和<code>自动注入</code>和<code>自动代理</code>。我们不再需要<code>自己提供配置信息</code>，<code>Spring</code>自动完成<code>组件扫描</code>和<code>依赖注入DI</code>。</p>
+</li>
+<li><p>使用Spring可以整合<code>ORM</code>、<code>aspectj</code>、<code>spring mvc</code>、<code>Spring Transition</code>和<code>J2ee</code>技术。</p>
+</li>
+<li><p>Spring程序支持多种<code>单元测试框架</code>，比如<code>Junit</code>，可以容易的获取到<code>ApplicationContext</code>。</p>
+</li>
+</ul>
+<h3 id="Spring架构图"><a href="#Spring架构图" class="headerlink" title="Spring架构图"></a>Spring架构图</h3><p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118180557491.png" alt="image-20210118180557491"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/java-frame/spring/spring-base/01.spring/" data-id="ckqqo0zky000tisv9huwydw53" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java-frame/spring/spring-base/02.Spring-ioc-xml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/java-frame/spring/spring-base/02.Spring-ioc-xml/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T08:31:38.831Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring获取Bean实例"><a href="#Spring获取Bean实例" class="headerlink" title="Spring获取Bean实例"></a>Spring获取Bean实例</h3><p>可以在<code>BeanFactory</code>和<code>ApplicationContex</code>中获取，区别如下</p>
+<ul>
+<li>初始化时机。<code>BeanFactory</code>获取时初始化，<code>ApplicationContext</code>创建时<code>初始化</code>。</li>
+<li><code>ApplicationContext</code>提供了诸如<code>事件传递</code>、<code>国际化</code>、<code>资源加载</code>等功能。</li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210118184656853.png" alt="image-20210118184656853"></p>
+<h6 id="demo1-获取用户列表"><a href="#demo1-获取用户列表" class="headerlink" title="demo1- 获取用户列表"></a><strong>demo1-</strong> 获取用户列表</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// init context</span></span><br><span class="line">ApplicationContext context =</span><br><span class="line">                <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line"><span class="comment">// getBean</span></span><br><span class="line">UserService userService = context.getBean(UserService.class);</span><br><span class="line">userService.getUsers();</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建Bean的方式"><a href="#创建Bean的方式" class="headerlink" title="创建Bean的方式"></a>创建Bean的方式</h3><h6 id="普通bean-id、name、class"><a href="#普通bean-id、name、class" class="headerlink" title="普通bean - id、name、class"></a>普通bean - id、name、class</h6><ul>
+<li><code>id</code>和<code>name</code>表示<code>用来标志唯一的Bean</code></li>
+<li>可以同时有<code>id</code>和<code>name</code></li>
+<li><code>name</code>和<code>id</code>不能重复</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	id 和 name 是唯一的</span></span><br><span class="line"><span class="comment">	可以同时有name和id，不过没必要</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">name</span>=<span class="string">&quot;userService4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="工厂方法Bean-factoryMethod"><a href="#工厂方法Bean-factoryMethod" class="headerlink" title="工厂方法Bean - factoryMethod"></a>工厂方法Bean - factoryMethod</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- staicFactory --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceFactoryMethod&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.dmo1.FactoryMethod&quot;</span> <span class="attr">f</span></span></span><br><span class="line"><span class="tag">      <span class="attr">actory-method</span>=<span class="string">&quot;fac&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="简单工厂Bean-factoryBean和factoryMethod"><a href="#简单工厂Bean-factoryBean和factoryMethod" class="headerlink" title="简单工厂Bean - factoryBean和factoryMethod"></a>简单工厂Bean - factoryBean和factoryMethod</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- SimpleFactory  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;simpleFac&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.dmo1.SimpleFactory&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceSimpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-bean</span>=<span class="string">&quot;simpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-method</span>=<span class="string">&quot;fac&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="abstrct-抽象Bean"><a href="#abstrct-抽象Bean" class="headerlink" title="abstrct - 抽象Bean"></a>abstrct - 抽象Bean</h6><ul>
+<li>配置了<code>abstrct</code>的类<code>不能实例化</code>。</li>
+<li>一般和<code>parent</code>一起使用，作为通用配置。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 可能写很多通用的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> <span class="attr">abstract</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--- 大部分配置和parent的一样，少部分自己写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService3&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">parent</span>=<span class="string">&quot;userService1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="parent-继承配置"><a href="#parent-继承配置" class="headerlink" title="parent - 继承配置"></a>parent - 继承配置</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 可能写很多通用的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> <span class="attr">abstract</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--- 大部分配置和parent的一样，少部分自己写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService3&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;com.yuki.service.UserServiceImpl&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">parent</span>=<span class="string">&quot;userService1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="depends-on-指定启动顺序"><a href="#depends-on-指定启动顺序" class="headerlink" title="depends-on - 指定启动顺序"></a>depends-on - 指定启动顺序</h6><p><code>depends-on</code>来<code>指定实例化顺序</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceSimpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-bean</span>=<span class="string">&quot;simpleFac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">factory-method</span>=<span class="string">&quot;fac&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">depends-on</span>=<span class="string">&quot;userService&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><h6 id="属性注入-ref、value、内部bean"><a href="#属性注入-ref、value、内部bean" class="headerlink" title="属性注入 - ref、value、内部bean"></a>属性注入 - ref、value、内部bean</h6><ul>
+<li><code>ref</code>注入引用类型</li>
+<li><code>内部Bean</code>用于注入<code>只使用一次</code>或者<code>需要匿名的</code>bean</li>
+<li><code>value</code>注入值</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- car --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;car1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Car&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- value类型的注入=============--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;red&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;brand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;byd&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- property注入 - 属性注入 - value/ref/内部bean--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;emp1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Employee&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;id&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;tom&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ref类型的注入=============--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;car&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;car1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dept&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 内部bean的注入=============--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Department&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;开发部&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;address&quot;</span> <span class="attr">value</span>=<span class="string">&quot;xx大厦-B201&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="构造注入-construct"><a href="#构造注入-construct" class="headerlink" title="构造注入 - construct"></a>构造注入 - construct</h6><p>默认情况如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;cat1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;cat1&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>方法<code>参数的类型不重复</code>，可以使用<code>type</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cat2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;int&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.String&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>方法<code>参数类型重复</code>，使用<code>name</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cat3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cat3&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;red&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="注入null"><a href="#注入null" class="headerlink" title="注入null"></a>注入null</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;cat4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.Cat&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;cat4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&quot;4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注入null =====================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">null</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="其他类型-set-list-array-map-props"><a href="#其他类型-set-list-array-map-props" class="headerlink" title="其他类型 - set/list/array/map/props"></a>其他类型 - set/list/array/map/props</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;collectBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.entity.CollectBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注入list==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Java<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>C#<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>C++<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入set==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;set&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>English<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Chinese<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Jepanese<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入arr==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;arr&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>sing<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>eat<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>sleep<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入map==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;map&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;math&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;chinese&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;english&quot;</span> <span class="attr">value</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 注入props==========================--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;props&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;cat&quot;</span>&gt;</span>100<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;dog&quot;</span>&gt;</span>200<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;rabbit&quot;</span>&gt;</span>300<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p><code>Bean初始化时候</code>，会经历如下<code>生命周期</code></p>
+<ul>
+<li><code>STEP1</code> -  调用<code>构造函数</code>或者<code>factory-method</code>。</li>
+<li><code>STEP2</code> -  设置<code>属性</code>，调用<code>setXXX()</code>。</li>
+<li><code>STEP3</code> -  调用<code>BeanNameAware</code>的<code>setBeanName()</code></li>
+<li><code>STEP4</code> - - 调用<code>ApplicationContextAware</code>的<code>setApplicationContext()</code></li>
+<li><code>STEP5</code> - 调用<code>BeanPostProcessor</code>的<code>beforeInit</code>，表示开始<code>init初始化</code>。</li>
+<li><code>STEP6</code> - 调用<code>InitlizingBean</code>的<code>afterPropertySet</code>，表示属性<code>设置完毕</code>。</li>
+<li><code>STEP7</code>- 调用<code>init-method</code></li>
+<li><code>STEP8</code> - 待用<code>BeanPostProcessor</code>的<code>afterInit</code>,表示<code>init完毕</code>。</li>
+<li><code>STEP9</code> - 用户可以使用Bean了</li>
+<li><code>STEP10</code> - 调用<code>DisposableBean</code>的<code>destory</code>方法</li>
+<li><code>STEP11</code> - 调用<code>destory-method</code>方法</li>
+</ul>
+<h6 id="Demo如下"><a href="#Demo如下" class="headerlink" title="Demo如下"></a>Demo如下</h6><p><strong>LifeBean代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeBean</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span>,<span class="title">ApplicationContextAware</span>, <span class="title">InitializingBean</span>, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> name;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LifeBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step1 -  LifeBean的构造方法&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step2 -  调用setXXX方法&quot;</span> );</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step3 - 调用BeanNameAware的setBeanName&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step4 - ApplicationAware的setAoolicationContext方法&quot;</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step6 - 调用initlizeBean方法afterProperiesSet方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step7 - 调用init方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">life</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step9 - 调用业务方法life&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step10 - 调用DisposeBean方法destory方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">des</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step11 - 调用des方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>BeanPostProcessor代码如下</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step5 - 调用BeanPostProcessor的beforeInit方法&quot;</span> );</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;step8 - 调用BeanPostProcessor的afterInit方法&quot;</span> );</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>xml配置如下</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo3.LifeBeanPostProcessor&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;lifeBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo3.LifeBean&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">init-method</span>=<span class="string">&quot;init&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;des&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Bean作用域scope-prototype-singleton-request-session"><a href="#Bean作用域scope-prototype-singleton-request-session" class="headerlink" title="Bean作用域scope - prototype/singleton/request/session"></a>Bean作用域scope - prototype/singleton/request/session</h6><table>
+<thead>
+<tr>
+<th>singleton</th>
+<th>单例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prototype</td>
+<td>每次请求创建一个</td>
+</tr>
+<tr>
+<td>request</td>
+<td>每次请求一个(很少用)</td>
+</tr>
+<tr>
+<td>session</td>
+<td>每个session创建一个(很少用)</td>
+</tr>
+</tbody></table>
+<p><code>对于Web</code>应用，<code>Dao层、controller层、sevice层</code>的对象基本都是单例的。</p>
+<p>如果用户需要<code>会话Session</code>，我们会自己创建Session，把<code>实例放到Session中</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/java-frame/spring/spring-base/02.Spring-ioc-xml/" data-id="ckqqo0zky000uisv9e6aebfr8" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql必知必会/04.DCL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/04.DCL/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T05:40:32.638Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>DCL</code>是<code>Data Control Languale</code>，用于<code>权限控制</code>。</p>
+<h3 id="Create-User-创建用户"><a href="#Create-User-创建用户" class="headerlink" title="Create User - 创建用户"></a>Create User - 创建用户</h3><p>语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 语法如下 */</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;username@192.168.1&#x27;</span></span><br><span class="line">IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span></span><br><span class="line">IDENTIFIED <span class="keyword">WITH</span> auth_plugin</span><br><span class="line"><span class="keyword">DEFAULT</span> ROLE role,role1,role2,...</span><br><span class="line">WIDTH resource_option </span><br><span class="line">password_option</span><br><span class="line"><span class="comment">/* 查看密码插件 */</span></span><br><span class="line"><span class="keyword">show</span> plugins</span><br></pre></td></tr></table></figure>
+
+<p>可以如下创建</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">	MYSQL 5.7之前 默认插件是 mysql_native_password </span></span><br><span class="line"><span class="comment">	IDETIFIED BY 和 IDENTIFIED WITH 不能一起</span></span><br><span class="line"><span class="comment">	不支持其他操作</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/* as 指定的是salt,在加密的时候，会按照salt加密 */</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">IDENTIFIED <span class="keyword">WITH</span> <span class="string">&#x27;mysql_native_password&#x27;</span> <span class="keyword">as</span> <span class="string">&#x27;123456&#x27;</span></span><br><span class="line"><span class="comment">/* 修改密码 */</span></span><br><span class="line"><span class="keyword">SET</span> PASSWORD <span class="keyword">FOR</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span><span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">CREATE</span> <span class="keyword">on</span> myemployees <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span></span><br><span class="line"><span class="comment">/* 其他内容*/</span></span><br><span class="line">update mysql.user <span class="keyword">set</span> MAX_USER_CONNECTIONS<span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line">`host` <span class="operator">=</span> <span class="string">&#x27;127.0.0.1&#x27;</span> <span class="keyword">and</span> `<span class="keyword">User</span>`<span class="operator">=</span><span class="string">&#x27;u1&#x27;</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	mysql 8 直接一条语句</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">IDENTIFIED <span class="keyword">WITH</span> <span class="string">&#x27;mysql_native_password&#x27;</span> <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span></span><br><span class="line"><span class="keyword">WITH</span> MAX_USER_CONNECTIONS <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* mysql 5.5 */</span></span><br><span class="line"><span class="keyword">set</span> password <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span><span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="comment">-- method 2</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> myemployees <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456&#x27;</span></span><br><span class="line"><span class="comment">-- method 3</span></span><br><span class="line">update mysql.user <span class="keyword">set</span> password<span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line"><span class="keyword">user</span> <span class="operator">=</span> <span class="string">&#x27;u1&#x27;</span> <span class="keyword">and</span> <span class="string">&#x27;host&#x27;</span> <span class="operator">=</span> <span class="string">&#x27;127.0.0.1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>对于<code>mysql8</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* 多了 alter方式 */ </span><br><span class="line">alter user &#x27;u1&#x27;@&#x27;127.0.0.1&#x27; IDENTIFIED BY &#x27;123456&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="grant"><a href="#grant" class="headerlink" title="grant"></a>grant</h3><p>语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="string">&#x27;permission&#x27;</span> </span><br><span class="line"><span class="keyword">ON</span> db<span class="operator">|</span><span class="keyword">table</span><span class="operator">|</span>progress<span class="operator">|</span><span class="keyword">function</span></span><br><span class="line"><span class="keyword">TO</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTIONS</span><br><span class="line"><span class="comment">/* 查看权限列表 */</span></span><br><span class="line"><span class="keyword">show</span> privileges;</span><br></pre></td></tr></table></figure>
+
+<p>如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* references - 可以看到数据库*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">references</span> <span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="comment">/* alter - 修改表权限*/</span></span><br><span class="line"><span class="comment">/* alter rountine - 修改procedure和functions*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">alter</span> <span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="comment">/* create - 创建表权限*/</span></span><br><span class="line"><span class="comment">/* create view - 视图 */</span></span><br><span class="line"><span class="comment">/* create temporary tables - 创建内存表 */</span></span><br><span class="line"><span class="comment">/* create rountine - 创建procedure和functions*/</span></span><br><span class="line"><span class="comment">/* create user - 创建用户 */</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">references</span> <span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">	EXECUTE -　执行func和 produce</span></span><br><span class="line"><span class="comment">	DELETE - 删除</span></span><br><span class="line"><span class="comment">	DROP   - 删除</span></span><br><span class="line"><span class="comment">	EVENT  - 事件</span></span><br><span class="line"><span class="comment">	FILE  - 没搞懂</span></span><br><span class="line"><span class="comment">	CRANT options - 授权上面内容</span></span><br><span class="line"><span class="comment">	INDEX - create drio indexs</span></span><br><span class="line"><span class="comment">	INSERt -插入</span></span><br><span class="line"><span class="comment">	select -查询</span></span><br><span class="line"><span class="comment">	show database / show view</span></span><br><span class="line"><span class="comment">	shutdown 关闭服务器</span></span><br><span class="line"><span class="comment">	super  kill thread ,set global ,change master</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>我想</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 对于那些只查询的用户 - 可以给  */</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">references</span>,<span class="keyword">select</span>,<span class="keyword">show</span> database,<span class="keyword">show</span> <span class="keyword">view</span>,process <span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span> </span><br><span class="line"><span class="comment">/* 如果不影响使用的话 - 但是没有 控制权限年*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> PRIVILEGES <span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span> </span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">create</span> <span class="keyword">user</span>,event,<span class="keyword">grant</span> option,proxy,reload,shutdown,super,</span><br><span class="line"><span class="keyword">on</span> myemployees.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;127.0.0.1&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="Revoke-权限回收"><a href="#Revoke-权限回收" class="headerlink" title="Revoke  - 权限回收"></a>Revoke  - 权限回收</h3><p>语法和<code>grant</code>一样。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/04.DCL/" data-id="ckqqo0zkr000hisv9cdygg0jx" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql基础/08.其他结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/db/mysql%E5%9F%BA%E7%A1%80/08.%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T03:17:09.369Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/db/mysql%E5%9F%BA%E7%A1%80/08.%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84/" data-id="ckqqo0zk70002isv94l1k7pk6" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-db/mysql必知必会/02.数据库选型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/17/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-01-17T14:19:39.349Z" itemprop="datePublished">2021-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="数据库选型思路"><a href="#数据库选型思路" class="headerlink" title="数据库选型思路"></a>数据库选型思路</h3><p>虽然<code>数据库技术选型</code>不是自己的工作，这里还是记录下笔记。</p>
+<p>主要思路如下</p>
+<ul>
+<li><code>确定数据库类型</code> - <code>关系型数据库(SQL)</code>和<code>非关系型数据库(NOSQL)</code></li>
+<li><code>确定数据产品</code> </li>
+</ul>
+<h3 id="数据库定型"><a href="#数据库定型" class="headerlink" title="数据库定型"></a>数据库定型</h3><h6 id="数据库特点"><a href="#数据库特点" class="headerlink" title="数据库特点"></a>数据库特点</h6><p><code>关系型数据库</code>特点如下</p>
+<ul>
+<li>表结构预先定义 - 适合列固定的数据</li>
+<li>支持事务 - 保证数据完整性</li>
+<li>使用SQL - 支持复制查询</li>
+</ul>
+<p><code>NOSQL</code>以Mongo为例，特点如下</p>
+<ul>
+<li>数据列不固定</li>
+<li>不支持事务 - 并发能力高</li>
+<li>数据操作比较简单的简单</li>
+</ul>
+<h6 id="根据业务选数据库"><a href="#根据业务选数据库" class="headerlink" title="根据业务选数据库"></a>根据业务选数据库</h6><p><code>接着，根据业务选择合适的数据库</code>。</p>
+<ul>
+<li>比如，用来存储<code>苹果的特点</code>，<code>这些特点可以动态变化</code>，这就要用NOSQL。</li>
+<li>比如，你要做<code>日志存储</code>和<code>用户行为分析</code>，一两条数据丢失，不会对总体产生影响，这时候纪要用NOSQL。</li>
+<li>比如，你要存储<code>财务数据</code>，这时就要用<code>SQL</code>。</li>
+</ul>
+<h3 id="产品定型"><a href="#产品定型" class="headerlink" title="产品定型"></a>产品定型</h3><p>产品定型考虑因素</p>
+<ul>
+<li>数据库<code>可用性(可用率达到多少)</code>、<code>安全性(数据库安全控制怎么样)</code>、<code>扩展性(是不是能换存储引擎、插件多少)</code></li>
+<li>考虑<code>是否免费</code>和<code>开发人员成本(开发人员是否容易招聘)</code></li>
+<li><code>广泛性(使用率如何、是否容易找相关文章)</code></li>
+</ul>
+<p>对于<code>MySQL</code>来说</p>
+<ul>
+<li><code>Mysql主从复制集群</code>能达到<code>99%可用</code>，对于<code>高可用架构配合主从复制</code>可以达到<code>99.99%</code>可用。</li>
+<li>Mysql支持列级别的安全控制</li>
+<li>Mysql支持众多的<code>数据库中间件(和业务无关的通用插件)</code>,支持<code>读写分离</code>和<code>分库分表</code>。</li>
+<li>Mysql支持<code>二进制的日志逻辑复制</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/17/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/" data-id="ckqqo0zkp000fisv9gc8dd0sm" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

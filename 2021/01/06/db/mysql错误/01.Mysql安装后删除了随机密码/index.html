@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题描述安装Mysql后，使用mysqld启动，在&#x2F;var&#x2F;log&#x2F;mysqld.log中生成随机密码。 不小心删除了mysql.log。 导致不知道登陆密码是什么。 问题解决关闭mysql1234# 查看进程号ps -ef | grep mysqld# 关闭kill -p pid  以安全模式启动-skip-grant-tables如下 1mysqld -skip-grant-tables  报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题描述安装Mysql后，使用mysqld启动，在&#x2F;var&#x2F;log&#x2F;mysqld.log中生成随机密码。 不小心删除了mysql.log。 导致不知道登陆密码是什么。 问题解决关闭mysql1234# 查看进程号ps -ef | grep mysqld# 关闭kill -p pid  以安全模式启动-skip-grant-tables如下 1mysqld -skip-grant-tables  报">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-06T14:44:35.594Z">
+<meta property="article:modified_time" content="2021-01-06T15:29:06.002Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-db/mysql错误/01.Mysql安装后删除了随机密码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T14:44:35.594Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>安装Mysql后，使用<code>mysqld</code>启动，在<code>/var/log/mysqld.log</code>中生成随机密码。</p>
+<p>不小心删除了<code>mysql.log</code>。</p>
+<p><strong>导致不知道登陆密码是什么</strong>。</p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><h6 id="关闭mysql"><a href="#关闭mysql" class="headerlink" title="关闭mysql"></a>关闭mysql</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看进程号</span></span><br><span class="line">ps -ef | grep mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭</span></span><br><span class="line">kill -p pid</span><br></pre></td></tr></table></figure>
+
+<h6 id="以安全模式启动"><a href="#以安全模式启动" class="headerlink" title="以安全模式启动"></a>以安全模式启动</h6><p><code>-skip-grant-tables</code>如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -skip-grant-tables</span><br></pre></td></tr></table></figure>
+
+<p>报如下<code>错误日志</code>，原因是<code>默认情况下，root用户不能以安全模式启动mysql</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-01-06T15:02:28.875450Z 0 [ERROR] [MY-010123] [Server] Fatal error: Please read &quot;Security&quot; section of the manual to find out how to run mysqld as root!</span><br><span class="line">2021-01-06T15:02:28.875541Z 0 [ERROR] [MY-010119] [Server] Aborting</span><br></pre></td></tr></table></figure>
+
+<p>解决如下(<code>补充下，这样启动创建的日志的owner全是root</code>，<code>正常启动时候</code>可能会出如下[问题](./02.Mysql日志- File’.binlog.index’.md))</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -skip-grant-tables -user=root</span><br></pre></td></tr></table></figure>
+
+<p>登陆，修改密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 登入</span></span><br><span class="line">mysql -u root</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改密码(如果修改不了，你需要设置下validate_password变量)</span></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY 123456</span><br><span class="line"><span class="meta">#</span><span class="bash"> 刷新特权</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><strong>可能有如下问题</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hello_world_qwp/article/details/79551789">密码不合格解决方法 - (validatee_password插件，密码不合格)</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36350532/article/details/79591803">安全模式下不允许root用户</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/" data-id="ckjqs77s9000hk0v91vp4cyzd" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/02.Mysql%E6%97%A5%E5%BF%97-%20File%20'.binlog.index'/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled%201/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/04.Vue%E5%8A%A8%E7%94%BB/">vue动画</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/03.vue%E7%BB%84%E4%BB%B6/">Vue组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-on/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-model/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/%E5%89%8D%E7%AB%AF/vue/02a.v-if/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
