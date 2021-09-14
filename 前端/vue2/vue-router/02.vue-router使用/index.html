@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="使用使用分三步  用Vue.use(VueRouter)引入VueRouter 创建VueRouter实例，提供配置。 提供给Vue实例  12345678910111213&#x2F;&#x2F; 12 引入VueRouter，并创建实例Vue.use(VueRouter);var router &#x3D; new VueRouter(&amp;#123;    routes: [        &amp;#123; path: &amp;#x2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-router使用">
+<meta property="og:url" content="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vue-router/02.vue-router%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="使用使用分三步  用Vue.use(VueRouter)引入VueRouter 创建VueRouter实例，提供配置。 提供给Vue实例  12345678910111213&#x2F;&#x2F; 12 引入VueRouter，并创建实例Vue.use(VueRouter);var router &#x3D; new VueRouter(&amp;#123;    routes: [        &amp;#123; path: &amp;#x2">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yuki-2021/picx-images@master/vue/vue-router-history%E6%A8%A1%E5%BC%8F.64ru0aetul80.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yuki-2021/picx-images@master/vue/vue-router-history%E6%A8%A1%E5%BC%8F.64ru0aetul80.gif">
+<meta property="article:published_time" content="2021-09-14T08:48:09.192Z">
+<meta property="article:modified_time" content="2021-09-14T14:03:43.495Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="vue-router">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yuki-2021/picx-images@master/vue/vue-router-history%E6%A8%A1%E5%BC%8F.64ru0aetul80.gif">
+
+
+<link rel="canonical" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vue-router/02.vue-router%E4%BD%BF%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/%E5%89%8D%E7%AB%AF/vue2/vue-router/02.vue-router%E4%BD%BF%E7%94%A8/","path":"前端/vue2/vue-router/02.vue-router使用/","title":"vue-router使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue-router使用 | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VueRouter"><span class="nav-number">2.</span> <span class="nav-text">VueRouter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#path-%E8%B7%AF%E5%BE%84"><span class="nav-number">2.0.1.</span> <span class="nav-text">path - 路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#path-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="nav-number">2.0.2.</span> <span class="nav-text">path -  动态路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#name-%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1"><span class="nav-number">2.0.3.</span> <span class="nav-text">name - 命名路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-%E5%91%BD%E5%90%8D%E8%A7%86%E5%9B%BE"><span class="nav-number">2.0.4.</span> <span class="nav-text">components - 命名视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#children-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="nav-number">2.0.5.</span> <span class="nav-text">children -  嵌套路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redirect-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">2.0.6.</span> <span class="nav-text">redirect - 重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alias-%E5%88%AB%E5%90%8D"><span class="nav-number">2.0.7.</span> <span class="nav-text">alias - 别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mode-%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.0.8.</span> <span class="nav-text">mode - 路由模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">3.</span> <span class="nav-text">标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#router-link"><span class="nav-number">3.0.1.</span> <span class="nav-text">router-link</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#router-view"><span class="nav-number">3.0.2.</span> <span class="nav-text">router-view</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#router"><span class="nav-number">4.0.1.</span> <span class="nav-text">$router</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#route"><span class="nav-number">4.0.2.</span> <span class="nav-text">$route</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vue-router/02.vue-router%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue-router使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-09-14 16:48:09 / عُدل: 22:03:43" itemprop="dateCreated datePublished" datetime="2021-09-14T16:48:09+08:00">2021-09-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>使用分<code>三步</code></p>
+<ul>
+<li>用<code>Vue.use(VueRouter)</code>引入<code>VueRouter</code></li>
+<li>创建<code>VueRouter实例</code>，提供<code>配置</code>。</li>
+<li>提供给<code>Vue实例</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 12 引入VueRouter，并创建实例</span></span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/foo&#x27;</span>, <span class="attr">Component</span>: Foo&#125;,</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/bar&#x27;</span>, <span class="attr">Component</span>: Bar&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 3 提供给vue</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    router</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="VueRouter"><a href="#VueRouter" class="headerlink" title="VueRouter"></a>VueRouter</h2><p><code>VueRouter</code>表示<code>vue-router</code>，包含了<code>如下参数</code></p>
+<ul>
+<li><code>path</code> -  路径，支持<code>:xxx(动态路由)</code>、<code>*(通配符)</code>、<code>?p1=v1&amp;p2=v2(查询参数)</code></li>
+<li><code>name</code> -  可以实现<code>命名路由(按照name进行映射)</code></li>
+<li><code>component</code> - 组件</li>
+<li><code>components</code> - 可以实现<code>命名视图(把一个path映射到多个Router-View)</code></li>
+<li><code>children</code> -  可以实现<code>嵌套路由(url映射到组件，组件内部提供router-view,同时可以映射子组件)</code></li>
+<li><code>redirect</code> - 重定向</li>
+<li><code>alias</code> - 别名</li>
+</ul>
+<p>提供了，如下<code>标签</code></p>
+<ul>
+<li><code>&lt;router-link to=&#39;xx&#39;&gt;</code> - 解析成<code>&lt;a&gt;标签</code></li>
+<li><code>&lt;router-view&gt;</code> - 会在<code>router-view</code>中，展示<code>Component</code></li>
+</ul>
+<p>最后，提供了<code>$router</code>和<code>$routes</code>两个对象。</p>
+<ul>
+<li><code>$router</code> - 有<code>push()</code>和<code>go()</code>方法，</li>
+<li><code>$route</code> - 访问<code>params</code>和<code>queryPrams</code></li>
+</ul>
+<h4 id="path-路径"><a href="#path-路径" class="headerlink" title="path - 路径"></a>path - 路径</h4><p><code>path</code> 用于<code>把url映射到component</code>。</p>
+<ul>
+<li>支持<code>*通配符</code>，用<code>this.$route.params.pathMatch</code>访问<code>匹配的路径</code>。</li>
+<li>支持<code>:xxxx</code>，实现<code>动态路由</code>，用<code>this.$route.params</code>访问<code>参数</code>。</li>
+<li>在你使用<code>this.$router.push</code>时候，可以把<code>params</code>和<code>query</code>放到<code>path串中</code>，也可以放在<code>参数中</code></li>
+<li><code>path</code>和<code>param</code>不能一起使用，如果需要，放到<code>path串中</code>。</li>
+</ul>
+<p>支持<code>通配符</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">    	&#123;<span class="attr">path</span>: <span class="string">&quot;/u*/:id&quot;</span>, <span class="attr">component</span>: User&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在<code>this.$router.push</code>中，<code>param</code>和<code>path</code>不能一起用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="built_in">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="string">&#x27;/user&#x27;</span>, <span class="attr">params</span>: &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">1</span>&#125; &#125;)</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="built_in">this</span>.$router.push(&#123;<span class="string">&quot;path&quot;</span>: <span class="string">&#x27;/user/1&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="path-动态路由"><a href="#path-动态路由" class="headerlink" title="path -  动态路由"></a>path -  动态路由</h4><p>当<code>path</code>中有<code>:xxx</code>，这时候，就叫<code>动态路由</code>。</p>
+<ul>
+<li>在<code>path</code>中，使用<code>:xxx</code></li>
+<li>在<code>组件</code>中，用<code>this.$routes.params</code>访问<code>参数</code>。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义Router</span></span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/u*/:id/post/:postId&#x27;</span>,</span><br><span class="line">            <span class="attr">component</span>: Post</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 访问</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> &#123;&#123; $route.params&#125;&#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>如果，你用了<code>this.$route.push(&#123;xxx&#125;)</code>。</p>
+<ul>
+<li><code>path</code>和<code>params</code>不能一起用</li>
+<li>都写到<code>path串</code>中</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="built_in">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="string">&#x27;/user&#x27;</span>, <span class="attr">params</span>: &#123;<span class="string">&#x27;id&#x27;</span>: <span class="number">1</span>&#125; &#125;)</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="built_in">this</span>.$router.push(&#123;<span class="string">&quot;path&quot;</span>: <span class="string">&#x27;/user/1&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="name-命名路由"><a href="#name-命名路由" class="headerlink" title="name - 命名路由"></a>name - 命名路由</h4><p>可以根据<code>name</code>进行<code>组件映射</code>。如果有<code>name</code>，就叫<code>命名路由</code>。</p>
+<ul>
+<li>在<code>routes</code>中，定义<code>name</code>。</li>
+<li>使用<code>&lt;router-link to=&#39;&#123;name: &#39;xxx&#39;, params: &#123;xxx&#125;, query: &#123;xxx&#125; &#125;&#39;&gt;</code>进行<code>访问</code></li>
+<li>使用<code>this.$router.push(&#123;name: &#39;xxx&#39;,params: &#123;xxx&#125;, query:&#123;xxx&#125; &#125;)</code>进行<code>访问</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义</span></span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">             <span class="attr">path</span>: <span class="string">&#x27;/user/:id/post/:postId&#x27;</span>,</span><br><span class="line">			<span class="attr">name</span>: <span class="string">&#x27;user-post&#x27;</span>,</span><br><span class="line">			<span class="attr">component</span>: Post</span><br><span class="line">		&#125;</span><br><span class="line">	]	</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>用<code>&lt;router-link to=&#39;xxx&#39;&gt;</code>导航。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123;name:&#x27;user-post&#x27;,params:&#123;id:1,postId:123&#125; &#125;&quot;</span>&gt;</span>Post1<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用<code>this.$router.push()</code>访问</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$router.push(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;user-post&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>:&#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">postId</span>: <span class="number">2</span>&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="components-命名视图"><a href="#components-命名视图" class="headerlink" title="components - 命名视图"></a>components - 命名视图</h4><p><code>命名视图</code>，是把<code>url</code>映射到<code>多个组件</code>。</p>
+<ul>
+<li>使用<code>&lt;router-view name=&#39;xxx&#39;&gt;</code>定义多个</li>
+<li>用<code>components</code>来把<code>url映射到多个组件</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义VueRouter</span></span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">            <span class="attr">components</span>: &#123;</span><br><span class="line">                <span class="attr">default</span>: UserInfo,</span><br><span class="line">                <span class="attr">postList</span>: PostList</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 定义多个router-view</span></span><br><span class="line"> App</span><br><span class="line">&lt;!-- router-link是渲染标签 --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/user/1/post/2&quot;</span>&gt;</span>Post1<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line">&lt;hr&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--渲染地址  --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">&quot;default&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span> </span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">&quot;postList&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span> </span><br></pre></td></tr></table></figure>
+
+<h4 id="children-嵌套路由"><a href="#children-嵌套路由" class="headerlink" title="children -  嵌套路由"></a>children -  嵌套路由</h4><p><code>嵌套路由</code>，使用<code>children</code>实现。</p>
+<ul>
+<li>在<code>routes</code>中定义<code>children</code></li>
+<li><code>在组件中</code>定义<code>&lt;router-view&gt;</code></li>
+<li>当<code>url映射到组件</code>，<code>在组的&lt;router-view&gt;</code>中映射<code>children</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义childrem</span></span><br><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">            <span class="attr">component</span>: User,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">path</span>: <span class="string">&#x27;post/:postId&#x27;</span>,</span><br><span class="line">                    <span class="attr">component</span>: Post</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 给子组件，中定义&lt;router-view&gt;</span></span><br><span class="line"> <span class="keyword">const</span> User = &#123;</span><br><span class="line">     <span class="attr">template</span>: <span class="string">`&lt;div&gt; &#123;&#123; $route.params.id&#125;&#125;  --  &lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;`</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="redirect-重定向"><a href="#redirect-重定向" class="headerlink" title="redirect - 重定向"></a>redirect - 重定向</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,  <span class="attr">redirect</span>: <span class="string">&#x27;/home&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="alias-别名"><a href="#alias-别名" class="headerlink" title="alias - 别名"></a>alias - 别名</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span>, <span class="attr">alias</span>: <span class="string">&#x27;/&#x27;</span>,  <span class="attr">component</span>: Home &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="mode-路由模式"><a href="#mode-路由模式" class="headerlink" title="mode - 路由模式"></a>mode - 路由模式</h4><p>支持<code>hash</code>和<code>history</code>两种模式</p>
+<ul>
+<li><code>hash模式</code>，<code>url中有#</code>，使用<code>url锚点实现</code>。</li>
+<li><code>history模式</code>，使用<code>history.pushStateApi()</code>实现，直接访问<code>url</code>，会返回<code>404</code>。</li>
+</ul>
+<p>区别如下</p>
+<ul>
+<li><code>url不同</code></li>
+<li>当部署后，如果是<code>history模式</code>，<code>访问不存在的url</code>，<code>history会报错</code>。对于<code>hash模式</code>，访问<code>不存在的url</code>，<code>hash模式返回首页(因为#的原因)</code>。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">    <span class="attr">routes</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>history模式</code>如下<br><img src="https://cdn.jsdelivr.net/gh/yuki-2021/picx-images@master/vue/vue-router-history%E6%A8%A1%E5%BC%8F.64ru0aetul80.gif" alt="hitory模式"><br><code>hash模式</code>如下<br><img src="https://cdn.jsdelivr.net/gh/yuki-2021/picx-images@master/vue/vue-router-history%E6%A8%A1%E5%BC%8F.64ru0aetul80.gif" alt="hash模式"></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h4 id="router-link"><a href="#router-link" class="headerlink" title="router-link"></a>router-link</h4><p><code>&lt;router-link /&gt;</code>会被渲染成<code>&lt;a&gt;标签</code>。属性如下</p>
+<ul>
+<li><code>to</code> - 目的地</li>
+<li><code>router-link-active</code> - 类名。另外，可以通过<code>router</code>的<code>linkActiveClass属性</code>实现<code>全局设置</code></li>
+</ul>
+<p><code>to</code>传递<code>str</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;/post/1&quot;</span>&gt;</span>Post1<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>to传递<code>obj</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123;name:&#x27;user-post&#x27;,params:&#123;id:1,postId:123&#125; &#125;&quot;</span>&gt;</span>Post1<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="router-view"><a href="#router-view" class="headerlink" title="router-view"></a><code>router-view</code></h4><p><code>router-view</code>是<code>渲染Comp的地方</code>。</p>
+<ul>
+<li>支持<code>name属性(实现命名试图)</code></li>
+<li>可以放在<code>&lt;transition &gt;</code>中，会有动画</li>
+<li>可以放在<code>&lt;kepp-alive&gt;</code>中，会<code>焕缓存</code></li>
+</ul>
+<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><h4 id="router"><a href="#router" class="headerlink" title="$router"></a>$router</h4><p><code>$router</code>就是<code>ViewRouwer</code>，用于<code>路由</code>。方法如下</p>
+<ul>
+<li><code>$router.push(&#123;name: &#39;xx&#39;, path: &#39;xxx&#39;,params: &#39;xx&#39;, query: &#39;&#39; &#125;)</code> - 用于<code>编程式路由</code>，注意<code>path</code>和<code>params</code>别一起用。</li>
+<li><code>$oute.go()</code> - 和<code>window.history</code>的<code>go</code>，用法一样</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">&#x27;home&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名的路由</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">&#x27;123&#x27;</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">&#x27;register&#x27;</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">&#x27;private&#x27;</span> &#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="route"><a href="#route" class="headerlink" title="$route"></a>$route</h4><p><code>$route</code>用来访问<code>路由传递</code>的<code>参数</code>。</p>
+<ul>
+<li><code>$route.params</code> - 访问<code>:xxx</code></li>
+<li><code>$route.params.pathMatch</code> - 访问<code>通配符*匹配的内容</code></li>
+<li><code>$route.query</code> - 访问<code>?xxx</code>的内容</li>
+<li><code>$route.meta</code> - 访问<code>元数据</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$route.meta</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/vue-router/" rel="tag"># vue-router</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/vue-router/01.vue-router%E5%AE%89%E8%A3%85/" rel="prev" title="vue-router安装">
+                  <i class="fa fa-chevron-left"></i> vue-router安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/vue-router/03.vue-router%E8%BF%9B%E9%98%B6/" rel="next" title="vue-router进阶">
+                  vue-router进阶 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

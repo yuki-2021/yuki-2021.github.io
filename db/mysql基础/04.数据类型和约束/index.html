@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="数据类型Mysql数据类型分为整型、小数、字符型、日期型 整数类型整数类型分为tinyint、smallint、mediumint、int、bigint    tinyint -2^7 ~  2^7 -1    smallint -2^15 ~  2^15 -1   midumint -2^23 ~  2^23 -1   int -2^31 ~  2^31 -1   bigint -2^63 ~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:url" content="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="数据类型Mysql数据类型分为整型、小数、字符型、日期型 整数类型整数类型分为tinyint、smallint、mediumint、int、bigint    tinyint -2^7 ~  2^7 -1    smallint -2^15 ~  2^15 -1   midumint -2^23 ~  2^23 -1   int -2^31 ~  2^31 -1   bigint -2^63 ~">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-03T14:30:47.385Z">
+<meta property="article:modified_time" content="2021-01-13T14:54:37.458Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/","path":"db/mysql基础/04.数据类型和约束/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">整数类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#zerofill"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">zerofill</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">小数类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">字符类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#char%E5%92%8CvarChar"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">char和varChar</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E6%9C%AC"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">其他文本</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set%E5%92%8Cenum"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">set和enum</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">set类型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">日期类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F"><span class="nav-number">5.</span> <span class="nav-text">约束</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/04.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%BA%A6%E6%9D%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-01-03 22:30:47" itemprop="dateCreated datePublished" datetime="2021-01-03T22:30:47+08:00">2021-01-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-01-13 22:54:37" itemprop="dateModified" datetime="2021-01-13T22:54:37+08:00">2021-01-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><code>Mysql</code>数据类型分为<code>整型</code>、<code>小数</code>、<code>字符型</code>、<code>日期型</code></p>
+<h6 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a><strong>整数类型</strong></h6><p>整数类型分为<code>tinyint</code>、<code>smallint</code>、<code>mediumint</code>、<code>int</code>、<code>bigint</code></p>
+<table>
+<thead>
+<tr>
+<th>tinyint</th>
+<th>-2^7 ~  2^7 -1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>smallint</td>
+<td>-2^15 ~  2^15 -1</td>
+</tr>
+<tr>
+<td>midumint</td>
+<td>-2^23 ~  2^23 -1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>-2^31 ~  2^31 -1</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>-2^63 ~  2^63 -1</td>
+</tr>
+</tbody></table>
+<h6 id="zerofill"><a href="#zerofill" class="headerlink" title="zerofill"></a><strong>zerofill</strong></h6><p>可以配合<code>zerofill</code>进行0填充，在长度不够的时候，前面会补充0。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test2 (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">30</span>),</span><br><span class="line">	age <span class="type">smallint</span>(<span class="number">3</span>) zerofill,</span><br><span class="line">	<span class="keyword">constraint</span> pk_test2 <span class="keyword">primary</span> key(id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="小数类型"><a href="#小数类型" class="headerlink" title="小数类型"></a>小数类型</h3><p>小数类型有<code>float(M,D)</code>、<code>double</code>、<code>decimal</code>。</p>
+<ul>
+<li>浮点数，M和D默认没有限制。<code>定点数，默认M=10,D=0</code>。可以理解<code>decimal = float(10,0)</code></li>
+<li>对于float和double指定M和D后，和decimal没有区别。</li>
+<li>插入数据，小数<code>超过长度，自动截断。位数不够，自动补充0</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>float</th>
+<th>-3.4<em>E^38 - 3.4</em>E^38</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>double</td>
+<td>-1.7<em>E^308 - 1.7</em>E^308</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>默认相当于double(10,0)</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> xs1 (</span><br><span class="line">	c1 <span class="type">float</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    c2 <span class="keyword">double</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    c3 <span class="type">decimal</span>(<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h3><p>字符类型包括<code>char</code>、<code>varchar</code>、<code>tinyText</code>、<code>tinyBlob</code>、<code>blob</code>、<code>text</code>、<code>mediumtext</code>、<code>mediumBlob</code>、<code>longText</code>、<code>longBlob</code>。</p>
+<h6 id="char和varChar"><a href="#char和varChar" class="headerlink" title="char和varChar"></a><strong>char和varChar</strong></h6><p>char是定长的，var是不定长度的。</p>
+<ul>
+<li>使用<code>char(n)或者varChar(n)指定最多存储字符个数</code></li>
+<li><code>char最大空间是255byte，varChar是65535</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>char</th>
+<th>最大225byte</th>
+<th>定长，效率高</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>varchar</td>
+<td>最大65535byte</td>
+<td>不定长度，效率低</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> zf1 (</span><br><span class="line">	gender1 <span class="type">char</span>(<span class="number">1</span>),</span><br><span class="line">    gender2 vahrchar(<span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> zf1 <span class="keyword">values</span>(<span class="string">&#x27;男&#x27;</span>，<span class="string">&#x27;女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="其他文本"><a href="#其他文本" class="headerlink" title="其他文本"></a><strong>其他文本</strong></h6><p>存储大文本用<code>tintText</code>、<code>text</code>、<code>mediumText</code>、<code>longText</code>，差别只是存储内容多少区别</p>
+<table>
+<thead>
+<tr>
+<th>tinaytext</th>
+<th>2^8byte,对应85个utf8字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td>2^16byte</td>
+</tr>
+<tr>
+<td>mediumtext</td>
+<td>2^24byte</td>
+</tr>
+<tr>
+<td>longtext</td>
+<td>2^32byte</td>
+</tr>
+</tbody></table>
+<p>分别和<code>tinyblob</code>、<code>blob</code>、<code>mediumblob</code>、<code>longblob</code>对应，用来<code>存储二进制</code>。</p>
+<h6 id="set和enum"><a href="#set和enum" class="headerlink" title="set和enum"></a><strong>set和enum</strong></h6><p><code>enum</code>表示<code>枚举</code>。</p>
+<ul>
+<li>创建表时，声明值的范围</li>
+<li>插入时候，<code>只能插入声明值的一个</code></li>
+<li>查询时候，<code>可以使用enum对应的int值查询</code>。</li>
+<li><code>约束值本来是check的功能，但是mysql不支持。有需求时，可以使用enum或者trigger</code>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> s1(</span><br><span class="line">	gender1 enum(<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>)，</span><br><span class="line">  	gender2 <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">check</span>(gender2 <span class="keyword">in</span> (‘男’,<span class="string">&#x27;女&#x27;</span>))               </span><br><span class="line">)</span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="string">&#x27;哈&#x27;</span>,<span class="string">&#x27;女&#x27;</span>) <span class="comment">/* 插入失败*/</span></span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;哈&#x27;</span>) <span class="comment">/* 插入成*/</span></span><br><span class="line">inser <span class="keyword">into</span> s1 <span class="keyword">values</span>(<span class="keyword">null</span>,<span class="string">&#x27;哈&#x27;</span>) <span class="comment">/* 插入成*/</span></span><br><span class="line"><span class="comment">/* 查询*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> s1 <span class="keyword">where</span> c1 <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> s1 <span class="keyword">where</span> c1 <span class="operator">=</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>在查询的时候，可以使用enum对应的整数查询</p>
+<h6 id="set类型"><a href="#set类型" class="headerlink" title="set类型"></a><strong>set类型</strong></h6><p><strong>set类型</strong>表示<code>集合类型</code></p>
+<ul>
+<li>创建表，声明值的范围</li>
+<li>插入数据，只能<code>插入声明值的一个或多个</code></li>
+<li>查询时候，<code>使用内置函数查询</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 创建表 */</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> myset (c1 <span class="keyword">set</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>))</span><br><span class="line"><span class="comment">/* 插入数据 - 只能插入指定值 */</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> myset <span class="keyword">values</span> (<span class="string">&#x27;e&#x27;</span>) <span class="comment">/* 插入失败 */</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myset <span class="keyword">VALUES</span>  (<span class="string">&#x27;a,d&#x27;</span>), (<span class="string">&#x27;d,a&#x27;</span>), (<span class="string">&#x27;a,d,a&#x27;</span>), (<span class="string">&#x27;a,d,d&#x27;</span>), (<span class="string">&#x27;d,c,d&#x27;</span>); <span class="comment">/* ok*/</span></span><br><span class="line"><span class="comment">/* 查询数据 - 查询 */</span></span><br><span class="line"><span class="comment">/* 查询c1列包含a的行*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> myset <span class="keyword">where</span> FIND_IN_SET(<span class="string">&#x27;a&#x27;</span>,c1) </span><br><span class="line"><span class="comment">/* 查询c1列包含a和d的行*/</span></span><br><span class="line"><span class="comment">/* 不好，耦合和数据库函数 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> myset <span class="keyword">where</span> FIND_IN_SET(<span class="string">&#x27;a&#x27;</span>,c1) <span class="keyword">and</span> FIND_IN_SET(<span class="string">&#x27;d&#x27;</span>,c1)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 假设 hobby是一列, 查询出hobby是读书的人 */</span></span><br><span class="line"><span class="comment">/* 可以用like解决 */</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@hobby</span>_col <span class="operator">=</span> <span class="string">&#x27;游泳,唱歌,看书&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="comment">/* * from boys where*/</span>FIND_IN_SET(<span class="string">&#x27;看书&#x27;</span>,<span class="string">&#x27;游泳,唱歌,看书&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期类型"><a href="#日期类型" class="headerlink" title="日期类型"></a>日期类型</h3><p>包括<code>year</code>、<code>date</code>、<code>time</code>、<code>timedate</code>、<code>TIMESTAMP</code>。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+<th>插入</th>
+<th>查询</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>year</td>
+<td>1901-2155</td>
+<td>插入超出范围，报错</td>
+<td>查询出来</td>
+</tr>
+<tr>
+<td>date</td>
+<td>0-00-00 到 9999-12-12。错误时间的时间戳是0。</td>
+<td>分隔符做符号,比如y@m@d。插入值是str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>0-00-00 到 9999-12-12。<br>错误时间的时间戳是0。</td>
+<td>分隔符做符号,比如y@m@d。<br> 支持插入值是str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><strong>最大2147483647</strong></td>
+<td>默认是当前时间。 <br>支持插入str或者date。</td>
+<td>查询结果自动格式化成str</td>
+</tr>
+</tbody></table>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><ul>
+<li>包括<code>null</code>、<code>default</code>、<code>unique</code>、<code>primaryKey</code>、<code>foreignKey</code>，不支持<code>check</code>。</li>
+<li><code>primaryKey</code>和<code>foreignKey</code>一般<code>显示指定constraint名称</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>null</th>
+<th>值不能是null</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default</td>
+<td>默认值</td>
+</tr>
+<tr>
+<td>unisque</td>
+<td>值唯一</td>
+</tr>
+<tr>
+<td>primaryKey</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>foreignKey</td>
+<td>外键</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">EXISTS</span> teacher;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `teacher` (</span><br><span class="line">  `id` <span class="type">int</span> AUTO_INCREMENT,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">unique</span>,</span><br><span class="line">  `age` tinyint <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `sex` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">  <span class="keyword">constraint</span> teacher_pk <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">)<span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">EXISTS</span> student;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	teacher_id <span class="type">int</span>,</span><br><span class="line">	<span class="keyword">constraint</span> student_fk_teacher <span class="keyword">foreign</span> key(teacher_id) <span class="keyword">references</span> teacher(id)</span><br><span class="line">)</span><br><span class="line"><span class="comment">/* 测试约束*/</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;zs&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;zs&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;男&#x27;</span>) <span class="comment">-- unique</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age,sex) <span class="keyword">values</span> (<span class="string">&#x27;ls&#x27;</span>,<span class="keyword">null</span>,<span class="string">&#x27;男&#x27;</span>) <span class="comment">-- not null</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> teacher(name,age) <span class="keyword">values</span> (<span class="string">&#x27;ls&#x27;</span>,<span class="number">18</span>) <span class="comment">-- default </span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name,teacher_id) <span class="keyword">values</span>(<span class="string">&#x27;ww&#x27;</span>,<span class="number">6</span>) <span class="comment">-- foreign key</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/db/mysql%E5%9F%BA%E7%A1%80/03.DML/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Untitled/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

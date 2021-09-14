@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="数据库选型思路虽然数据库技术选型不是自己的工作，这里还是记录下笔记。 主要思路如下  确定数据库类型 - 关系型数据库(SQL)和非关系型数据库(NOSQL) 确定数据产品   数据库定型数据库特点关系型数据库特点如下  表结构预先定义 - 适合列固定的数据 支持事务 - 保证数据完整性 使用SQL - 支持复制查询  NOSQL以Mongo为例，特点如下  数据列不固定 不支持事务 - 并发能力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:url" content="http://example.com/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="数据库选型思路虽然数据库技术选型不是自己的工作，这里还是记录下笔记。 主要思路如下  确定数据库类型 - 关系型数据库(SQL)和非关系型数据库(NOSQL) 确定数据产品   数据库定型数据库特点关系型数据库特点如下  表结构预先定义 - 适合列固定的数据 支持事务 - 保证数据完整性 使用SQL - 支持复制查询  NOSQL以Mongo为例，特点如下  数据列不固定 不支持事务 - 并发能力">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-17T14:19:39.349Z">
+<meta property="article:modified_time" content="2021-01-18T03:30:13.088Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/","path":"db/mysql必知必会/02.数据库选型/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">数据库选型思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">数据库定型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%B9%E7%82%B9"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">数据库特点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E4%B8%9A%E5%8A%A1%E9%80%89%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">根据业务选数据库</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%AE%9A%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">产品定型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/02.%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-01-17 22:19:39" itemprop="dateCreated datePublished" datetime="2021-01-17T22:19:39+08:00">2021-01-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-01-18 11:30:13" itemprop="dateModified" datetime="2021-01-18T11:30:13+08:00">2021-01-18</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="数据库选型思路"><a href="#数据库选型思路" class="headerlink" title="数据库选型思路"></a>数据库选型思路</h3><p>虽然<code>数据库技术选型</code>不是自己的工作，这里还是记录下笔记。</p>
+<p>主要思路如下</p>
+<ul>
+<li><code>确定数据库类型</code> - <code>关系型数据库(SQL)</code>和<code>非关系型数据库(NOSQL)</code></li>
+<li><code>确定数据产品</code> </li>
+</ul>
+<h3 id="数据库定型"><a href="#数据库定型" class="headerlink" title="数据库定型"></a>数据库定型</h3><h6 id="数据库特点"><a href="#数据库特点" class="headerlink" title="数据库特点"></a>数据库特点</h6><p><code>关系型数据库</code>特点如下</p>
+<ul>
+<li>表结构预先定义 - 适合列固定的数据</li>
+<li>支持事务 - 保证数据完整性</li>
+<li>使用SQL - 支持复制查询</li>
+</ul>
+<p><code>NOSQL</code>以Mongo为例，特点如下</p>
+<ul>
+<li>数据列不固定</li>
+<li>不支持事务 - 并发能力高</li>
+<li>数据操作比较简单的简单</li>
+</ul>
+<h6 id="根据业务选数据库"><a href="#根据业务选数据库" class="headerlink" title="根据业务选数据库"></a>根据业务选数据库</h6><p><code>接着，根据业务选择合适的数据库</code>。</p>
+<ul>
+<li>比如，用来存储<code>苹果的特点</code>，<code>这些特点可以动态变化</code>，这就要用NOSQL。</li>
+<li>比如，你要做<code>日志存储</code>和<code>用户行为分析</code>，一两条数据丢失，不会对总体产生影响，这时候纪要用NOSQL。</li>
+<li>比如，你要存储<code>财务数据</code>，这时就要用<code>SQL</code>。</li>
+</ul>
+<h3 id="产品定型"><a href="#产品定型" class="headerlink" title="产品定型"></a>产品定型</h3><p>产品定型考虑因素</p>
+<ul>
+<li>数据库<code>可用性(可用率达到多少)</code>、<code>安全性(数据库安全控制怎么样)</code>、<code>扩展性(是不是能换存储引擎、插件多少)</code></li>
+<li>考虑<code>是否免费</code>和<code>开发人员成本(开发人员是否容易招聘)</code></li>
+<li><code>广泛性(使用率如何、是否容易找相关文章)</code></li>
+</ul>
+<p>对于<code>MySQL</code>来说</p>
+<ul>
+<li><code>Mysql主从复制集群</code>能达到<code>99%可用</code>，对于<code>高可用架构配合主从复制</code>可以达到<code>99.99%</code>可用。</li>
+<li>Mysql支持列级别的安全控制</li>
+<li>Mysql支持众多的<code>数据库中间件(和业务无关的通用插件)</code>,支持<code>读写分离</code>和<code>分库分表</code>。</li>
+<li>Mysql支持<code>二进制的日志逻辑复制</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/J2ee/xml/02.Java%E4%B8%AD%E7%9A%84xml/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/db/mysql%E5%9F%BA%E7%A1%80/08.%E5%85%B6%E4%BB%96%E7%BB%93%E6%9E%84/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

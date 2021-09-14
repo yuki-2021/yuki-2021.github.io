@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="v-modelv-model用于双向绑定，通俗来说  在input可以修改data  实现方式是  使用:value&#x3D;&#39;xx&#39;，给input绑定data，用于预览 使用@input监控键盘事件，在事件回调函数中更新data  根据你的&lt;input type&#x3D;&#39;&#39;&gt;的type不同，监听的事件和绑定的property可能不同。  text 和 textare">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:url" content="http://example.com/%E5%89%8D%E7%AB%AF/vue2/02a.v-model/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="v-modelv-model用于双向绑定，通俗来说  在input可以修改data  实现方式是  使用:value&#x3D;&#39;xx&#39;，给input绑定data，用于预览 使用@input监控键盘事件，在事件回调函数中更新data  根据你的&lt;input type&#x3D;&#39;&#39;&gt;的type不同，监听的事件和绑定的property可能不同。  text 和 textare">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-08T06:59:00.210Z">
+<meta property="article:modified_time" content="2021-09-02T14:48:38.329Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/02a.v-model/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/%E5%89%8D%E7%AB%AF/vue2/02a.v-model/","path":"前端/vue2/02a.v-model/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-model"><span class="nav-number">1.</span> <span class="nav-text">v-model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%9C%AC"><span class="nav-number">1.0.1.</span> <span class="nav-text">文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E9%80%89%E6%A1%86"><span class="nav-number">1.0.2.</span> <span class="nav-text">单选框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%80%89%E6%A1%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">多选框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.4.</span> <span class="nav-text">选择</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lazy"><span class="nav-number">2.1.</span> <span class="nav-text">.lazy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#number"><span class="nav-number">2.2.</span> <span class="nav-text">.number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trim"><span class="nav-number">2.3.</span> <span class="nav-text">.trim</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/02a.v-model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-09-08 14:59:00" itemprop="dateCreated datePublished" datetime="2021-09-08T14:59:00+08:00">2021-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-09-02 22:48:38" itemprop="dateModified" datetime="2021-09-02T22:48:38+08:00">2021-09-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h2><p><code>v-model</code>用于<code>双向绑定</code>，通俗来说</p>
+<ul>
+<li>在<code>input</code>可以修改<code>data</code></li>
+</ul>
+<p>实现方式是</p>
+<ul>
+<li>使用<code>:value=&#39;xx&#39;</code>，给<code>input</code>绑定<code>data</code>，用于预览</li>
+<li>使用<code>@input</code>监控<code>键盘事件</code>，在<code>事件回调函数</code>中更新<code>data</code></li>
+</ul>
+<p>根据你的<code>&lt;input type=&#39;&#39;&gt;</code>的<code>type不同</code>，<code>监听的事件</code>和<code>绑定的property</code>可能不同。</p>
+<ul>
+<li>text 和 textarea 元素使用 <code>value</code> property 和 <code>input</code> 事件；</li>
+<li>checkbox 和 radio 使用 <code>checked</code> property 和 <code>change</code> 事件；</li>
+<li>select 字段将 <code>value</code> 作为 prop 并将 <code>change</code> 作为事件。</li>
+</ul>
+<h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 单行文本 --&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&#x27;input_text&#x27;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 单、多行文本 --&gt;</span><br><span class="line">&lt;textarea v-model=&#x27;input_textarea&#x27;&gt;&lt;/textarea&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="单选框"><a href="#单选框" class="headerlink" title="单选框"></a>单选框</h4><p>单选框，绑定<code>str</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- radio - 绑定str --&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; v-model=&#x27;input_radio&#x27; value=&quot;sing&quot; &gt; sing</span><br><span class="line">&lt;input type=&quot;radio&quot; v-model=&#x27;input_radio&#x27; value=&quot;dance&quot; &gt; dance</span><br><span class="line">&lt;input type=&quot;radio&quot; v-model=&#x27;input_radio&#x27; value=&quot;swim&quot; &gt;  swim  ----  爱好是&#123;&#123; input_radio &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多选框"><a href="#多选框" class="headerlink" title="多选框"></a>多选框</h4><p>多选框可以绑定</p>
+<ul>
+<li><code>bool</code>（不常用）</li>
+<li>数组</li>
+</ul>
+<p>绑定<code>bool</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- checkbox - 绑定bool --&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; v-model=&#x27;input_checkbox&#x27; &gt; 男√女×  ---  ----  性别是：&#123;&#123;input_checkbox&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绑定<code>数组</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--  checkbox - 绑定数组 - &lt;--&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; v-model=&#x27;input_hobby&#x27; value=&quot;sing&quot; &gt; sing</span><br><span class="line">&lt;input type=&quot;checkbox&quot; v-model=&#x27;input_hobby&#x27; value=&quot;dance&quot; &gt; dance</span><br><span class="line">&lt;input type=&quot;checkbox&quot; v-model=&#x27;input_hobby&#x27; value=&quot;swim&quot; &gt;  swim  ----  爱好是&#123;&#123; input_hobby &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><p><code>selct</code>可以绑定</p>
+<ul>
+<li><code>str</code></li>
+<li><code>数组</code></li>
+</ul>
+<p>绑定<code>str</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- select - - 绑定str --&gt;</span><br><span class="line">&lt;select v-model=&quot;input_select_str&quot;&gt;</span><br><span class="line">    &lt;option disabled true&gt;请选择&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;A&quot;&gt;A&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;B&quot;&gt;B&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;C&quot;&gt;C&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;  -- &#123;&#123; input_select_str &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绑定<code>数组</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- select - - 数组 --&gt;</span><br><span class="line">&lt;select v-model=&quot;input_select_arr&quot; multiple&gt;</span><br><span class="line">    &lt;option disabled true&gt;请选择&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;dance&quot;&gt;dance&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;sing&quot;&gt;sing&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;swim&quot;&gt;swim&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;  -- &#123;&#123; input_select_arr &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="lazy"><a href="#lazy" class="headerlink" title=".lazy"></a><code>.lazy</code></h3><p>默认情况，每次<code>输入内容(input事件)</code>，就会同步数据。</p>
+<p><code>.lazy</code>后，在<code>change事件(失去焦点)</code>后，同步数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model.lazy=&quot;input_lazy&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="number"><a href="#number" class="headerlink" title=".number"></a><code>.number</code></h3><p>相当于<code>对输入的值自动执行parseFloat()</code>。</p>
+<p>比如，当我输入<code>17aaaa</code>，会自动<code>parseFloat()</code>，转成<code>17</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model.number=&quot;input_number&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="trim"><a href="#trim" class="headerlink" title=".trim"></a><code>.trim</code></h3><p>懂得都懂</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim=&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/02a.v-if/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/03.vue%E7%BB%84%E4%BB%B6/" rel="next" title="Vue组件">
+                  Vue组件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

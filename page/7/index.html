@@ -115,9 +115,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
       </div>
   </nav>
 </div>
@@ -154,7 +158,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/09/JMV%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/07.Mysql%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +171,837 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/09/JMV%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/db/mysql%E5%9F%BA%E7%A1%80/07.Mysql%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-01-13 22:16:03" itemprop="dateCreated datePublished" datetime="2021-01-13T22:16:03+08:00">2021-01-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-01-18 16:26:49" itemprop="dateModified" datetime="2021-01-18T16:26:49+08:00">2021-01-18</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Math函数"><a href="#Math函数" class="headerlink" title="Math函数"></a>Math函数</h3><h6 id="PI-圆周率"><a href="#PI-圆周率" class="headerlink" title="PI() - 圆周率"></a><strong>PI() - 圆周率</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> pi()</span><br></pre></td></tr></table></figure>
+
+<h6 id="ABS-SIGN-绝对值和符号"><a href="#ABS-SIGN-绝对值和符号" class="headerlink" title="ABS() / SIGN() - 绝对值和符号"></a><strong>ABS() / SIGN() - 绝对值和符号</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sign(<span class="number">3</span>) <span class="comment">-- -1 或者1</span></span><br></pre></td></tr></table></figure>
+<h6 id="POWER-EXP-密运算"><a href="#POWER-EXP-密运算" class="headerlink" title="POWER() / EXP() - 密运算"></a><strong>POWER() / EXP() - 密运算</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">POWER</span>(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">EXP</span>(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="MOD-算数运算"><a href="#MOD-算数运算" class="headerlink" title="MOD() - 算数运算"></a><strong>MOD() - 算数运算</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">mod</span>(<span class="number">3</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h6 id="CEIL-FLOOR-ROUND-取近视"><a href="#CEIL-FLOOR-ROUND-取近视" class="headerlink" title="CEIL() / FLOOR() / ROUND() - 取近视"></a><strong>CEIL() / FLOOR() / ROUND() - 取近视</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">CEIL</span>(<span class="number">2.5</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="RAND-RAND-X-取随机数"><a href="#RAND-RAND-X-取随机数" class="headerlink" title="RAND() / RAND(X) - 取随机数"></a><strong>RAND() / RAND(X) - 取随机数</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> RAND(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="TRUNCATE-截取"><a href="#TRUNCATE-截取" class="headerlink" title="TRUNCATE() - 截取"></a><strong>TRUNCATE() - 截取</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">TRUNCATE</span>(pi(),<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><h6 id="CHAR-LENGTH-LENGTH-长度"><a href="#CHAR-LENGTH-LENGTH-长度" class="headerlink" title="CHAR_LENGTH() / LENGTH()  - 长度"></a><strong>CHAR_LENGTH() / LENGTH()  - 长度</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CHAR_LENGTH</span>(&quot;你哈&quot;),LENGTH(&quot;你哈&quot;) </span><br></pre></td></tr></table></figure>
+
+<h6 id="POSITION-INSTR-查找位置"><a href="#POSITION-INSTR-查找位置" class="headerlink" title="POSITION() / INSTR() - 查找位置"></a><strong>POSITION() / INSTR() - 查找位置</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">POSITION</span>(<span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;aaa&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> INSTR(<span class="string">&#x27;aaa&#x27;</span>,<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> LOCALE(<span class="string">&#x27;aaa&#x27;</span>,<span class="string">&#x27;aaa&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="其他格式-REVERSE-SUBSTRING-LEFT-RIGHT-LPAD-RPAD-REPEAT-CONCAT-CONCAT-WS-TRIM-LTRIM-RTRIM-FORMAT"><a href="#其他格式-REVERSE-SUBSTRING-LEFT-RIGHT-LPAD-RPAD-REPEAT-CONCAT-CONCAT-WS-TRIM-LTRIM-RTRIM-FORMAT" class="headerlink" title="其他格式 - REVERSE() / SUBSTRING() / LEFT() /RIGHT()/LPAD()/RPAD()/REPEAT()/CONCAT()/CONCAT_WS()/TRIM()/LTRIM()/RTRIM()/FORMAT"></a><strong>其他格式 - REVERSE() / SUBSTRING() / LEFT() /RIGHT()/LPAD()/RPAD()/REPEAT()/CONCAT()/CONCAT_WS()/TRIM()/LTRIM()/RTRIM()/FORMAT</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* REVERSE - 反转*/</span></span><br><span class="line"><span class="keyword">select</span> REVERSE(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line"><span class="comment">/* SUBSTR/LEFT/RIGHT - 子串 */</span></span><br><span class="line"><span class="keyword">select</span> SUBSTR(<span class="string">&#x27;abc&#x27;</span>,<span class="number">2</span>,<span class="number">3</span>) </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">LEFT</span>(<span class="string">&#x27;abc&#x27;</span>,<span class="number">2</span>) </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">RIGHT</span>(<span class="string">&#x27;abc&#x27;</span>,<span class="number">2</span>) </span><br><span class="line"><span class="keyword">select</span> SUBSTRING_INDEX(<span class="string">&#x27;192.168.0.100&#x27;</span>,<span class="string">&#x27;.&#x27;</span>,<span class="string">&#x27;-2&#x27;</span>) </span><br><span class="line"><span class="comment">/* LPAD/RPAD/REPAT - 重复*/</span></span><br><span class="line"><span class="keyword">select</span> LPAD(<span class="string">&#x27;aaa&#x27;</span>,<span class="number">10</span>,<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> RPAD(<span class="string">&#x27;aaa&#x27;</span>,<span class="number">10</span>,<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> REPEAT(<span class="string">&#x27;aaa&#x27;</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment">/* CONCAT/CONCAT_WS - 连接*/</span></span><br><span class="line"><span class="keyword">select</span> CONCAT(<span class="string">&#x27;abc&#x27;</span>,<span class="string">&#x27;123&#x27;</span>,)</span><br><span class="line"><span class="keyword">select</span> CONCAT_WS(<span class="string">&#x27;-&#x27;</span>,<span class="string">&#x27;abc&#x27;</span>,<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line"><span class="comment">/* TRIM/LTRIM/RTRIM*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="string">&#x27;aa&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> rtrim(<span class="string">&#x27;aa&#x27;</span>)</span><br><span class="line"><span class="keyword">select</span> ltrim(<span class="string">&#x27;aa&#x27;</span>)</span><br><span class="line"><span class="comment">/* FORMAT */</span></span><br><span class="line"><span class="keyword">select</span> FORMAT(<span class="number">123456.789</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="STRCMP-比较大小"><a href="#STRCMP-比较大小" class="headerlink" title="STRCMP() - 比较大小"></a><strong>STRCMP() - 比较大小</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> STRCMP(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="UPPER-LOWER-REPLACE-替换和大小写"><a href="#UPPER-LOWER-REPLACE-替换和大小写" class="headerlink" title="UPPER() / LOWER() / REPLACE() - 替换和大小写"></a><strong>UPPER() / LOWER() / REPLACE() - 替换和大小写</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">UPPER</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">LOWER</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="keyword">SELECT</span> REPLACE(<span class="string">&#x27;111&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="DATE函数"><a href="#DATE函数" class="headerlink" title="DATE函数"></a>DATE函数</h3><h6 id="当前时间-CURRENT-DATE-CURRENT-TIME-CURRENT-TIMESTAMP-NOW"><a href="#当前时间-CURRENT-DATE-CURRENT-TIME-CURRENT-TIMESTAMP-NOW" class="headerlink" title="当前时间 -  CURRENT_DATE()/CURRENT_TIME()/CURRENT_TIMESTAMP()/NOW()"></a><strong>当前时间 -  CURRENT_DATE()/CURRENT_TIME()/CURRENT_TIMESTAMP()/NOW()</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">CURRENT_DATE</span>()</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">CURRENT_TIME</span>()</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">CURRENT_TIMESTAMP</span>()</span><br><span class="line"><span class="keyword">select</span> now()</span><br></pre></td></tr></table></figure>
+
+<h6 id="EXTRACT-和其他格式"><a href="#EXTRACT-和其他格式" class="headerlink" title="EXTRACT - 和其他格式"></a><strong>EXTRACT - 和其他格式</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 年月日*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="type">DATE</span>(now())</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">YEAR</span>(now())</span><br><span class="line"><span class="keyword">select</span> DAYOFYEAR(now()) <span class="comment">-- 一年中的地今天</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">MONTH</span>(now())</span><br><span class="line"><span class="keyword">select</span> MONTHNAME(now())</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">DAY</span>(now())</span><br><span class="line"><span class="comment">/* 星期相关 */</span></span><br><span class="line"><span class="keyword">select</span> DAYOFWEEK(now()) <span class="comment">-- 星期几</span></span><br><span class="line"><span class="keyword">select</span> DAYNAME(now())</span><br><span class="line"><span class="keyword">select</span> WEEKOFYEAR(now()) <span class="comment">-- 第几个星系</span></span><br><span class="line"><span class="comment">/* 时间相关*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="type">time</span>(now())</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">HOUR</span>(now())</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">MINUTE</span>(now())</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">SECOND</span>(now())</span><br><span class="line"><span class="comment">/*季节*/</span></span><br><span class="line">QUARTER(now())</span><br><span class="line"><span class="comment">/*  最后一天*/</span></span><br><span class="line"><span class="keyword">select</span> LAST_DAY()</span><br></pre></td></tr></table></figure>
+
+<h6 id="DATEDIFF-DATE-ADD-DATE-SUB-日期运算"><a href="#DATEDIFF-DATE-ADD-DATE-SUB-日期运算" class="headerlink" title="DATEDIFF() / DATE_ADD() / DATE_SUB() - 日期运算"></a>DATEDIFF() / DATE_ADD() / DATE_SUB() - 日期运算</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DATEDIFF(<span class="string">&#x27;2012-03-12&#x27;</span>,<span class="string">&#x27;2012-03-13&#x27;</span>) <span class="comment">--相差</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2012-03-12&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>) <span class="comment">--相加</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2012-03-12&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">YEAR</span>) <span class="comment">--相加</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2012-03-12&#x27;</span>,<span class="type">INTERVAL</span> <span class="string">&#x27;-1:30&#x27;</span> HOUR_MINUTE) <span class="comment">--相加</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="转换-SEC-TO-TIME-STR-TP-DATE-DATE-FORMAT"><a href="#转换-SEC-TO-TIME-STR-TP-DATE-DATE-FORMAT" class="headerlink" title="**转换 - SEC_TO_TIME() / STR_TP_DATE() / DATE_FORMAT() /  **"></a>**转换 - SEC_TO_TIME() / STR_TP_DATE() / DATE_FORMAT() /  **</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 提取非标准格式的str为DATE</span></span><br><span class="line"><span class="keyword">SELECT</span> STR_TO_DATE(<span class="string">&#x27;August 10 2017&#x27;</span>, <span class="string">&#x27;%M %d %Y&#x27;</span>);</span><br><span class="line"><span class="comment">-- DATE或者标准格式str  --&gt;  指定格式</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT(<span class="string">&#x27;2011-11-11 11:11:11&#x27;</span>,<span class="string">&#x27;%Y-%m-%d %r&#x27;</span>)</span><br><span class="line"> <span class="comment">-- 秒转换TIME</span></span><br><span class="line"><span class="keyword">SELECT</span> SEC_TO_TIME(<span class="number">4320</span>)</span><br><span class="line"><span class="keyword">SELECT</span> TIME_TO_SEC(<span class="string">&#x27;00:01:00&#x27;</span>)</span><br><span class="line"><span class="comment">-- 转换成时间错</span></span><br><span class="line"><span class="keyword">select</span> unix_timestamp(now());  </span><br><span class="line"><span class="comment">-- 时间错转时间</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1451997924</span>); </span><br></pre></td></tr></table></figure>
+
+<h6 id="附表"><a href="#附表" class="headerlink" title="附表"></a>附表</h6><table>
+<thead>
+<tr>
+<th></th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>%S、%s</td>
+<td>两位数字形式的秒（ 00,01, …, 59）</td>
+</tr>
+<tr>
+<td>分</td>
+<td>%I、%i</td>
+<td>两位数字形式的分（ 00,01, …, 59）</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>%H</td>
+<td>24小时制，两位数形式小时（00,01, …,23）</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>12小时制，两位数形式小时（00,01, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%k</td>
+<td>24小时制，数形式小时（0,1, …,23）</td>
+<td></td>
+</tr>
+<tr>
+<td>%l</td>
+<td>12小时制，数形式小时（0,1, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%T</td>
+<td>24小时制，时间形式（HH:mm:ss）</td>
+<td></td>
+</tr>
+<tr>
+<td>%r</td>
+<td>12小时制，时间形式（hh:mm:ss AM 或 PM）</td>
+<td></td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM上午或PM下午</td>
+<td></td>
+</tr>
+<tr>
+<td>周</td>
+<td>%W</td>
+<td>一周中每一天的名称（Sunday,Monday, …,Saturday）</td>
+</tr>
+<tr>
+<td>%a</td>
+<td>一周中每一天名称的缩写（Sun,Mon, …,Sat）</td>
+<td></td>
+</tr>
+<tr>
+<td>%w</td>
+<td>以数字形式标识周（0=Sunday,1=Monday, …,6=Saturday）</td>
+<td></td>
+</tr>
+<tr>
+<td>%U</td>
+<td>数字表示周数，星期天为周中第一天</td>
+<td></td>
+</tr>
+<tr>
+<td>%u</td>
+<td>数字表示周数，星期一为周中第一天</td>
+<td></td>
+</tr>
+<tr>
+<td>天</td>
+<td>%d</td>
+<td>两位数字表示月中天数（01,02, …,31）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>数字表示月中天数（1,2, …,31）</td>
+<td></td>
+</tr>
+<tr>
+<td>%D</td>
+<td>英文后缀表示月中天数（1st,2nd,3rd …）</td>
+<td></td>
+</tr>
+<tr>
+<td>%j</td>
+<td>以三位数字表示年中天数（001,002, …,366）</td>
+<td></td>
+</tr>
+<tr>
+<td>月</td>
+<td>%M</td>
+<td>英文月名（January,February, …,December）</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>英文缩写月名（Jan,Feb, …,Dec）</td>
+<td></td>
+</tr>
+<tr>
+<td>%m</td>
+<td>两位数字表示月份（01,02, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>%c</td>
+<td>数字表示月份（1,2, …,12）</td>
+<td></td>
+</tr>
+<tr>
+<td>年</td>
+<td>%Y</td>
+<td>四位数字表示的年份（2015,2016…）</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>两位数字表示的年份（15,16…）</td>
+<td></td>
+</tr>
+<tr>
+<td>文字输出</td>
+<td>%文字</td>
+<td>直接输出文字内容</td>
+</tr>
+</tbody></table>
+<h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3><h6 id="基本面-VERSION-USER-DATABASE-CONNECTION-ID"><a href="#基本面-VERSION-USER-DATABASE-CONNECTION-ID" class="headerlink" title="基本面 - VERSION() / USER() / DATABASE() / CONNECTION_ID()"></a>基本面 - VERSION() / USER() / DATABASE() / CONNECTION_ID()</h6><ul>
+<li>VERSION 版本</li>
+<li>USER 用户</li>
+<li>DATABASE 数据库</li>
+<li>CONNECTION_ID 连接个数</li>
+</ul>
+<h6 id="上一次插入ID-LAST-INSERT-ID"><a href="#上一次插入ID-LAST-INSERT-ID" class="headerlink" title="上一次插入ID - LAST_INSERT_ID()"></a>上一次插入ID - LAST_INSERT_ID()</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> last_INSERT_ID()</span><br></pre></td></tr></table></figure>
+
+<h6 id="加密函数-PASSWORD-MD5"><a href="#加密函数-PASSWORD-MD5" class="headerlink" title="加密函数 - PASSWORD() /MD5()"></a>加密函数 - PASSWORD() /MD5()</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> md5(<span class="string">&#x27;123&#x27;</span>);</span><br><span class="line"><span class="keyword">select</span> password(<span class="string">&#x27;123&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="公共表表达式-Mysql8-0"><a href="#公共表表达式-Mysql8-0" class="headerlink" title="公共表表达式 - Mysql8.0"></a>公共表表达式 - Mysql8.0</h3><p>查询时候<code>CTE生成临时表</code>，可以多次引用和自引用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 用于递归查询 */</span></span><br><span class="line"><span class="keyword">WITH</span> [<span class="keyword">RECURSIVE</span>]</span><br><span class="line">cte_name [columnt_list] <span class="keyword">as</span> query_select,</span><br><span class="line">cte_name [columnt_list] <span class="keyword">as</span> query_select</span><br><span class="line"><span class="comment">/* 使用 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> cte_name;</span><br></pre></td></tr></table></figure>
+
+<p>例如下面</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> cte_my_name <span class="keyword">as</span> (</span><br><span class="line">	<span class="keyword">select</span> first_name,last_name <span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;%z%&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">/* 生成序列 */</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">RECURSIVE</span> test <span class="keyword">as</span>(</span><br><span class="line">	<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> n</span><br><span class="line">    UNITON <span class="keyword">ALL</span></span><br><span class="line">    <span class="keyword">select</span> <span class="number">1</span><span class="operator">+</span>n <span class="keyword">FROM</span> test <span class="keyword">where</span> n<span class="operator">&lt;</span><span class="number">10</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">/* 递归查询评论信息 */</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">RECURSIVE</span> reploy (id,title,<span class="keyword">user</span>,reploy,path)</span><br><span class="line"><span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> id,title,<span class="keyword">user</span>,reploy,<span class="built_in">CAST</span>(id <span class="keyword">as</span> <span class="type">char</span>(<span class="number">200</span>)) <span class="keyword">as</span> path</span><br><span class="line"><span class="keyword">from</span> imc_question b </span><br><span class="line"><span class="keyword">where</span> course<span class="operator">=</span><span class="number">29</span> <span class="keyword">and</span> reployid<span class="operator">=</span><span class="number">10</span></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> a.id,a.title,a.user,a.reploy,<span class="built_in">CAST</span>(id <span class="keyword">as</span> <span class="type">char</span>(<span class="number">200</span>)) <span class="keyword">as</span> path</span><br><span class="line"><span class="keyword">FROM</span> imc_question a</span><br><span class="line"><span class="keyword">JOIN</span> replay b <span class="keyword">on</span> a.replayid<span class="operator">=</span>b.id )</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/03.%E5%AD%97%E7%AC%A6%E6%B5%81-%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/03.%E5%AD%97%E7%AC%A6%E6%B5%81-%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 20:37:32 / عُدل: 21:23:44" itemprop="dateCreated datePublished" datetime="2021-01-10T20:37:32+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Charset"><a href="#Charset" class="headerlink" title="Charset"></a>Charset</h1><p>计算机中都是<code>二进制符号</code>，编码后变成<code>英文、中文、日文等</code>。</p>
+<ul>
+<li>二进制转换成文字，过程叫<code>解码</code>。<code>文字转二进制</code>，叫<code>编码</code>。</li>
+<li>不同码表<code>包含文字</code>不同。比如<code>ISO</code>不包含中文。</li>
+</ul>
+<h3 id="主流编码"><a href="#主流编码" class="headerlink" title="主流编码"></a>主流编码</h3><h6 id="Ascii"><a href="#Ascii" class="headerlink" title="Ascii"></a>Ascii</h6><p>最开始的编码，包括<code>英文字母</code>和<code>键盘符号</code>。</p>
+<h6 id="iso-ISO-8859-1"><a href="#iso-ISO-8859-1" class="headerlink" title="iso-ISO-8859-1"></a>iso-ISO-8859-1</h6><p>ascii无法表示<code>欧洲字符</code>，比如<code>法语音标</code>等。于是出现了<code>iso-8859-1</code>，其中包含了<code>西欧字符</code>。</p>
+<h6 id="GBK-国标码"><a href="#GBK-国标码" class="headerlink" title="GBK - 国标码"></a>GBK - 国标码</h6><p>英文和中文，都是<code>两个字节(16)</code>。<code>根据包含文字多少</code>，分为</p>
+<table>
+<thead>
+<tr>
+<th>码表</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GBK-2312</td>
+<td>全部汉字、非汉字符号</td>
+</tr>
+<tr>
+<td>BIG-5</td>
+<td>包括未被 GB 2312 收入的 139 个图形符号</td>
+</tr>
+</tbody></table>
+<h6 id="nicode"><a href="#nicode" class="headerlink" title="nicode"></a>nicode</h6><p>为了<code>包含全部语言</code>，出现了<code>unicode</code>。</p>
+<p>包括<code>UTF-8</code>、<code>UTF-16</code>、<code>UTF-32</code></p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><h6 id="availableCharsets-所有编码"><a href="#availableCharsets-所有编码" class="headerlink" title="availableCharsets - 所有编码"></a>availableCharsets - 所有编码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> SortedMap&lt;String, Charset&gt; avi_charset = Charset.availableCharsets(); <span class="comment">// 所有编码</span></span><br><span class="line">avi_charset.forEach((name,c) -&gt; &#123;</span><br><span class="line">    System.out.println(name + <span class="string">&quot;--&quot;</span> + c.name()+ <span class="string">&quot;--&quot;</span> + c.displayName())；</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="defaultCharset-默认编码"><a href="#defaultCharset-默认编码" class="headerlink" title="defaultCharset - 默认编码"></a>defaultCharset - 默认编码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.defaultCharset(); <span class="comment">// 默认编码</span></span><br><span class="line">System.out.println(charset.displayName());</span><br></pre></td></tr></table></figure>
+
+<h6 id="forName-获取编码"><a href="#forName-获取编码" class="headerlink" title="forName - 获取编码"></a>forName - 获取编码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Charset utf = Charset.forName(<span class="string">&quot;utf-8&quot;</span>); <span class="comment">// 获取Charset对象</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><h6 id="name-displayName-alias-名称"><a href="#name-displayName-alias-名称" class="headerlink" title="name() / displayName() / alias() - 名称"></a>name() / displayName() / alias() - 名称</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 实例方法</span></span><br><span class="line"><span class="comment"> * name() / displayName() / alias</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line">System.out.println(utf.aliases());</span><br><span class="line">System.out.println(utf.name());</span><br><span class="line">System.out.println(utf.displayName());         </span><br></pre></td></tr></table></figure>
+
+<h6 id="encode-decode-newDecode-newEncode-编码解码"><a href="#encode-decode-newDecode-newEncode-编码解码" class="headerlink" title="encode() / decode() / newDecode() / newEncode() -编码解码"></a>encode() / decode() / newDecode() / newEncode() -编码解码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 实例方法</span></span><br><span class="line"><span class="comment">* decode(byte[]) / encode(CharBuffer/Str) / newEncoder() / newEncoder()</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">ByteBuffer b = utf.encode(<span class="string">&quot;aaa&quot;</span>); <span class="comment">// 编码</span></span><br><span class="line">System.out.println(b.toString());</span><br><span class="line">System.out.println(utf.newDecoder().decode(b)); <span class="comment">//解码 - 多次使用</span></span><br><span class="line">System.out.println(utf.decode(b));            <span class="comment">// 一次使用</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="待解决"><a href="#待解决" class="headerlink" title="待解决"></a>待解决</h3><ul>
+<li>CharDecoder</li>
+<li>CharEncoder</li>
+</ul>
+<h1 id="StandardCharsets"><a href="#StandardCharsets" class="headerlink" title="StandardCharsets"></a>StandardCharsets</h1><p>内置了一系列<code>Charset常量</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> * StandardCharsets 定义了一系列的`charset常量`</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line">System.out.println(StandardCharsets.UTF_8);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 17:28:22 / عُدل: 17:29:00" itemprop="dateCreated datePublished" datetime="2021-01-10T17:28:22+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 17:28:22 / عُدل: 17:28:39" itemprop="dateCreated datePublished" datetime="2021-01-10T17:28:22+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/03.%E5%AD%97%E7%AC%A6%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/03.%E5%AD%97%E7%AC%A6%E6%B5%81/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 17:28:22 / عُدل: 20:37:25" itemprop="dateCreated datePublished" datetime="2021-01-10T17:28:22+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Reader-Writer"><a href="#Reader-Writer" class="headerlink" title="Reader/Writer"></a>Reader/Writer</h1><p><code>Stream</code>读写<code>文本不方便</code>，于是有了<code>Reader</code>和<code>Writer</code>。如下</p>
+<ul>
+<li>Reader和Writer会进行<code>编解码</code>，要设置<code>编码</code>。</li>
+<li><code>Reader</code>和<code>Writer</code>是对<code>Stream</code>的<code>装饰模式</code>。</li>
+</ul>
+<h3 id="Reader-Writer接口"><a href="#Reader-Writer接口" class="headerlink" title="Reader/Writer接口"></a>Reader/Writer接口</h3><ul>
+<li><code>Reader</code>实现了<code>Readeable</code>，<code>Writer</code>实现了<code>Appendable</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210110183624895.png" alt="image-20210110183624895"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* Reader/Writer</span></span><br><span class="line"><span class="comment">* Reader - Readable / Closeable</span></span><br><span class="line"><span class="comment">*   read() / read(char[] c) / read(char[]c, off, len) / skip()</span></span><br><span class="line"><span class="comment">*   markSupported() / markd() / reset()</span></span><br><span class="line"><span class="comment">*   read(CharBuffer c) - 读取到CharBuffer中</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* Writer - Appendable / Closable / Flushable</span></span><br><span class="line"><span class="comment">*   write() / write(char[] c) / write(char[] c,off,len) / write(str)</span></span><br><span class="line"><span class="comment">*   append(char) / append(charsequence)</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><h6 id="包装器-InputStreamReader-OutputStreamWriter"><a href="#包装器-InputStreamReader-OutputStreamWriter" class="headerlink" title="包装器 - InputStreamReader/OutputStreamWriter"></a>包装器 - InputStreamReader/OutputStreamWriter</h6><ul>
+<li>用于转换</li>
+<li>要设置<code>编码方式</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 流转换 InputStreamReader / OutputStreamWriter</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">InputStreamReader inputStreamReader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>));</span><br><span class="line"><span class="keyword">char</span>[] chars = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1204</span>];</span><br><span class="line">inputStreamReader.read(chars);</span><br><span class="line">System.out.println(String.valueOf(chars));</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">OutputStreamWriter outputStreamWriter = <span class="keyword">new</span> OutputStreamWriter(<span class="keyword">new</span> FileOutputStream(<span class="string">&quot;b.txt&quot;</span>));</span><br><span class="line">outputStreamWriter.write(String.valueOf(chars));</span><br></pre></td></tr></table></figure>
+
+<h6 id="文件读写器-FileReader-FileWriter"><a href="#文件读写器-FileReader-FileWriter" class="headerlink" title="文件读写器 - FileReader / FileWriter"></a>文件读写器 - FileReader / FileWriter</h6><p>用于<code>读写文件</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* FileReader/FileWriter</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">FileReader fileReader = <span class="keyword">new</span> FileReader(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">fileReader.read(chars);</span><br><span class="line">System.out.println(String.valueOf(chars));</span><br></pre></td></tr></table></figure>
+
+<h6 id="缓冲-BufferedReader-BufferWriter"><a href="#缓冲-BufferedReader-BufferWriter" class="headerlink" title="缓冲 - BufferedReader / BufferWriter"></a>缓冲 - BufferedReader / BufferWriter</h6><p>提供了<code>缓冲区</code>。提供了<code>readLine()</code>和<code>writeLine()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* BufferedReader/ BufferedWriter</span></span><br><span class="line"><span class="comment">* Buffered提供了缓冲区</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(fileReader);</span><br><span class="line">System.out.println(bufferedReader.readLine());</span><br></pre></td></tr></table></figure>
+
+<h6 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a>PrintWriter</h6><p>用于输出<code>各种格式字符</code>，可以通过<code>str、File、Stream、Writer</code>方便的创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* Printer - 支持Reader、Stream、File、str创建</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* write() / write(byte[]) - Writer</span></span><br><span class="line"><span class="comment">* append(c) / append(charsequence) - Appendable</span></span><br><span class="line"><span class="comment">* print() / println() - PrintWriter</span></span><br><span class="line"><span class="comment">* format() / printf()</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">PrintWriter printWriter = <span class="keyword">new</span> PrintWriter(<span class="string">&quot;b.txt&quot;</span>);</span><br><span class="line">printWriter.format(<span class="string">&quot;test formatter - %d&quot;</span>,<span class="number">12</span>);</span><br><span class="line">printWriter.printf(<span class="string">&quot;test printf - %d&quot;</span>, <span class="number">12</span>);</span><br><span class="line">printWriter.println(<span class="string">&quot;hello-world&quot;</span>);</span><br><span class="line">printWriter.flush();</span><br><span class="line">printWriter.close();</span><br></pre></td></tr></table></figure>
+
+<h6 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h6><p>读取字符<code>使用Scanner</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Scanner - 用于查找 和 获取</span></span><br><span class="line"><span class="comment"> *  用于读取</span></span><br><span class="line"><span class="comment"> *  nextShort/nextInt/nextLong/nextFloat/nextDouble/next()/nextLine()</span></span><br><span class="line"><span class="comment"> *  用于查找</span></span><br><span class="line"><span class="comment"> *  useDelimiter() 设置分隔符号，默认是&quot;&quot;</span></span><br><span class="line"><span class="comment"> *  hasNext(patternStr/pattern)/next(patterStr/pattern)/findInLine()/match()</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line">Scanner scanner = <span class="keyword">new</span> Scanner(System.in);<span class="comment">// 用于读取</span></span><br><span class="line"><span class="comment">// scanner.nextLine(); </span></span><br><span class="line">String str = <span class="string">&quot;a-b-d-e-f&quot;</span>;</span><br><span class="line">Scanner search = <span class="keyword">new</span> Scanner(str).useDelimiter(<span class="string">&quot;-&quot;</span>); <span class="comment">// 用于查找</span></span><br><span class="line">System.out.println(search.next());</span><br><span class="line">System.out.println(search.next(<span class="string">&quot;[a-z]&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h6 id="System-out"><a href="#System-out" class="headerlink" title="System.out"></a><strong>System.out</strong></h6><p>用于给<code>控制台</code>输出。</p>
+<ul>
+<li>类型是<code>PrinterStream</code>，方法用法和<code>PrinterWriter</code>一样。</li>
+</ul>
+<h3 id="待处理"><a href="#待处理" class="headerlink" title="待处理"></a>待处理</h3><ul>
+<li>PipedReader</li>
+<li>FilterReader</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/01.File/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/01.File/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 12:37:50 / عُدل: 17:31:19" itemprop="dateCreated datePublished" datetime="2021-01-10T12:37:50+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><p><code>File</code>类表示<code>文件或目录</code>。</p>
+<h3 id="静态属性"><a href="#静态属性" class="headerlink" title="静态属性"></a>静态属性</h3><p><code>pathSeparator - 目录分隔符号</code></p>
+<p><code>separator - 路径分隔符号</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 静态属性</span></span><br><span class="line"><span class="comment">* pathSeparator - 多个路径分隔符号</span></span><br><span class="line"><span class="comment">* separator - 目录分隔符号</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">System.out.println(File.pathSeparator); <span class="comment">// ;</span></span><br><span class="line">System.out.println(File.separator); <span class="comment">// \</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p><code>createTemplateFile(prefix,suffix,[path]) - 创建临时文件 </code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(System.getProperty(<span class="string">&quot;java.io.tmpdir&quot;</span>));</span><br><span class="line">File.createTempFile(<span class="string">&quot;temp1&quot;</span>,<span class="string">&quot;.tmp&quot;</span>);</span><br><span class="line"><span class="comment">// System.in.read(); // 阻塞住程序</span></span><br></pre></td></tr></table></figure>
+
+<p><code>listRoots() - 获取所有根目录</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> File[] files = File.listRoots();</span><br><span class="line"><span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">    System.out.println(file.getPath());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>用绝对路径，<code>File</code>指向<code>绝对路径位置</code></li>
+<li>使用相对路径，<code>File</code>指向<code>user.dir + path</code>的位置</li>
+<li>创建了<code>File不表示创建了文件</code>，<code>仅仅表示在内存中创建了File类型的对象</code>，这个对象有<code>对这个路径操作的能力</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 构造方法 - 相对路径默认相对于user.dir</span></span><br><span class="line"><span class="comment">*  File(pFile/pStr, subStr) - 对于File(p,s)这种，只能指定相对路径</span></span><br><span class="line"><span class="comment">*  File(Uri)</span></span><br><span class="line"><span class="comment">*  File(fullpath) - 可以指定 相对路径 和 绝对路径</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">System.out.println(System.getProperty(<span class="string">&quot;user.dir&quot;</span>));</span><br><span class="line"><span class="comment">// method1 -  相对路径 new File(path)</span></span><br><span class="line">File f = <span class="keyword">new</span> File(<span class="string">&quot;f1.txt&quot;</span>);</span><br><span class="line">System.out.println(f.getAbsoluteFile());</span><br><span class="line">System.out.println(f.getPath());</span><br><span class="line"><span class="comment">// method2 - 使用绝对路径</span></span><br><span class="line">File f2 = <span class="keyword">new</span> File(<span class="string">&quot;F:\\f2.txt&quot;</span>);</span><br><span class="line">System.out.println(f2.getAbsoluteFile());</span><br><span class="line">System.out.println(f2.getPath());</span><br><span class="line"><span class="comment">// method3 new File(pFile/pStr, path) - 这种，只能指定相对路径</span></span><br><span class="line">File f3 = <span class="keyword">new</span> File(<span class="string">&quot;c/&quot;</span>,<span class="string">&quot;f1.txt&quot;</span>);</span><br><span class="line">System.out.println(f.getAbsoluteFile());</span><br><span class="line">System.out.println(f.getPath());</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><h6 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h6><p><code>获取属性</code> - canRead() / canWrite() / canExecute() / lastModified() / getName() </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 获取属性</span></span><br><span class="line"><span class="comment">* canRead() / canWrite() / canExecute() / lastModified() / getName()</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f_prop = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">System.out.println(f_prop.canRead());</span><br><span class="line">System.out.println(f_prop.canWrite());</span><br><span class="line">System.out.println(f_prop.canExecute());</span><br><span class="line">System.out.println(f_prop.lastModified());</span><br><span class="line">System.out.println(f_prop.getName());</span><br></pre></td></tr></table></figure>
+
+<h6 id="设置属性"><a href="#设置属性" class="headerlink" title="设置属性"></a>设置属性</h6><p><code>设置属性</code> -  setExecuteable() / setReadable() / setWriteable() / setReadOnly() / setLastModified()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 设置属性</span></span><br><span class="line"><span class="comment">* setExecuteable(v,owner) / setReadable() / setWriteable() / setReadOnly() / setLastModified()</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f_prop2 = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">f_prop2.setReadable(<span class="keyword">true</span>,<span class="keyword">true</span>);</span><br><span class="line">f_prop2.setWritable(<span class="keyword">true</span>,<span class="keyword">true</span>);</span><br><span class="line">f_prop2.setExecutable(<span class="keyword">true</span>,<span class="keyword">false</span>); <span class="comment">// 设置权限776</span></span><br><span class="line">f_prop2.setReadOnly(); <span class="comment">// 设置只读 - 444</span></span><br><span class="line">f_prop2.setLastModified(Instant.now().getEpochSecond()); <span class="comment">// 设置为当前时间</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="比较和判断"><a href="#比较和判断" class="headerlink" title="比较和判断"></a>比较和判断</h6><p><code>比较和判断</code> -  exists() / compareTo() / isAbsolute() / isFile() / isDirectory() / isHidden() </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 判断 和 比较</span></span><br><span class="line"><span class="comment">* exists() / compareTo() / isAbsolute() / isDirectory() / isFile() * */</span></span><br><span class="line">File f_c = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">System.out.println(f_c.exists()); <span class="comment">// false</span></span><br><span class="line">File f_c_1 = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line"><span class="comment">// File.compareTo() 实际上是比较file.path 属性</span></span><br><span class="line">File f_c_2 = <span class="keyword">new</span> File(<span class="string">&quot;F:\\_eclipse-learn-workspace\\a.txt&quot;</span>); <span class="comment">//路径一致，但是File.path不一样</span></span><br><span class="line">System.out.println(f_c.compareTo(f_c_1)); <span class="comment">// 0</span></span><br><span class="line">System.out.println(f_c.compareTo(f_c_2)); <span class="comment">// -5 不相等</span></span><br><span class="line">System.out.println(f_c.isAbsolute());</span><br><span class="line">System.out.println(f_c.isDirectory());</span><br><span class="line">System.out.println(f_c.isFile());</span><br><span class="line">System.out.println(f_c.isHidden());</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取路径"><a href="#获取路径" class="headerlink" title="获取路径"></a>获取路径</h6><p><code>获取路径</code> - getPath() / getAbsolutePath() / getCanconicalPath() / getParent() </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 获取Path 和 File</span></span><br><span class="line"><span class="comment">*  getPath() / getAbsolutePath() / getCanonicalPath() / getParent()</span></span><br><span class="line"><span class="comment">*  getAbsoluteFile() / getCanonicalFile() /</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f_g = <span class="keyword">new</span> File(<span class="string">&quot;c/../a.txt&quot;</span>);</span><br><span class="line">System.out.println(f_g.getAbsoluteFile().getPath()); <span class="comment">// getPath</span></span><br><span class="line">System.out.println(f_g.getAbsolutePath());</span><br><span class="line">System.out.println(f_g.getCanonicalPath()); <span class="comment">// canonical 返回标准格式</span></span><br><span class="line">System.out.println(f_g.getCanonicalFile().getPath()); <span class="comment">// 返回上一个/之前内容</span></span><br><span class="line">System.out.println(f_g.getParent()); <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h6><p> <code>转换</code> - toURI() / toPath() / toString()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 转换其他格式</span></span><br><span class="line"><span class="comment">* toURI() / soString() / toPath()</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f_o = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">URI uri = f_o.toURI(); <span class="comment">// 转换成URI</span></span><br><span class="line">Path p = f_o.toPath(); <span class="comment">// 转换成 java.nio.Path</span></span><br><span class="line">System.out.println(f_o.toString()); <span class="comment">// toString()</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h6><p><code>遍历</code> -  list([filenameFilter]) / listFiles([filenameFilter]) / listFiles(fileFilter)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 遍历文件</span></span><br><span class="line"><span class="comment">* list([filenameFilter]) / listFiles([filenameFilter]) / listFiles(File filter)</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f_list = <span class="keyword">new</span> File(<span class="string">&quot;f:\\&quot;</span>);</span><br><span class="line">String[] str1 = f_list.list();</span><br><span class="line"><span class="keyword">for</span> (String s : str1) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// filenameFilter</span></span><br><span class="line">f_list.list(<span class="keyword">new</span> FilenameFilter() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File dir, String name)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// name 表示文件名称 dir表示目录名称</span></span><br><span class="line">        <span class="comment">// true/false 表示是否过滤</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">System.out.println(<span class="string">&quot;--------------------------------------------&quot;</span>);</span><br><span class="line"><span class="comment">// fileFilter</span></span><br><span class="line">f_list.listFiles(<span class="keyword">new</span> FileFilter() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File pathname)</span> </span>&#123;</span><br><span class="line">        System.out.println(pathname);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="待解决"><a href="#待解决" class="headerlink" title="待解决"></a>待解决</h3><ul>
+<li>URI - sh</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/io/02.Stream/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/io/02.Stream/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-10 12:37:50 / عُدل: 17:35:00" itemprop="dateCreated datePublished" datetime="2021-01-10T12:37:50+08:00">2021-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p><code>Stream</code>是<code>流</code>，用于在<code>目的地(文件、网络、内存数组)</code>中读取数据。所以</p>
+<ul>
+<li>创建时候，要指定<code>目的地</code></li>
+<li>根据读取方式不同，分为<code>字节流(Stream)</code>和<code>字符流(Reader/writer)</code></li>
+<li><code>流</code>在<code>读取写入(没有字符/等待设备)</code>时候是<code>阻塞(当前线程阻塞)</code>的。</li>
+</ul>
+<h3 id="通用接口-InPutStream-OutputStream"><a href="#通用接口-InPutStream-OutputStream" class="headerlink" title="通用接口 - InPutStream/OutputStream"></a>通用接口 - InPutStream/OutputStream</h3><ul>
+<li>所有流的<code>通用接口</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* InputStream 方法 - Closeable()#clase()</span></span><br><span class="line"><span class="comment">*  read() / read(byte[] b) / read(byte[] b, off,len) / skip()</span></span><br><span class="line"><span class="comment">*  aviable()</span></span><br><span class="line"><span class="comment">*  markSupport() / mark() / reset() - 标志回到mark()</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* OutputStream方法 - Closeable()#clase()</span></span><br><span class="line"><span class="comment">* write() / write(byte[] b) /write(byte[] b,off,len)</span></span><br><span class="line"><span class="comment">* flush()</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><h6 id="文件读取-FileInputStream-FileOutputStream"><a href="#文件读取-FileInputStream-FileOutputStream" class="headerlink" title="文件读取 - FileInputStream / FileOutputStream"></a>文件读取 - FileInputStream / FileOutputStream</h6><p>用于<code>读写文件</code>，需要指定<code>路径</code>或者<code>File</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* FileInputStream / FileOutputStream</span></span><br><span class="line"><span class="comment">* fileInputStream(file/str,append)</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">File f = <span class="keyword">new</span> File(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">f.createNewFile(); <span class="comment">// 创建文件</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 写文件</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(f,<span class="keyword">true</span>);</span><br><span class="line">fileOutputStream.write(<span class="string">&quot;i好\n&quot;</span>.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">fileOutputStream.close();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 读取文件</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line">FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(f);</span><br><span class="line"><span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>((len = fileInputStream.read(b)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.println(<span class="keyword">new</span> String(b, Charset.forName(<span class="string">&quot;UTF-8&quot;</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="缓冲-BuffteredInputStream-BufferOutputStream"><a href="#缓冲-BuffteredInputStream-BufferOutputStream" class="headerlink" title="缓冲 - BuffteredInputStream / BufferOutputStream"></a>缓冲 - BuffteredInputStream / BufferOutputStream</h6><p><code>BufferedStream</code>提供了<code>缓冲区</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* BufferedStream</span><br><span class="line">*    默认缓冲区大小 - DEFAULT_BUFFER_SIZE = 8192;</span><br><span class="line">* */</span><br><span class="line">BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(f));</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210110165543917.png" alt="image-20210110165543917"></p>
+<h6 id="各种格式数据-类型转换-DataInputStream-DataOutputStream"><a href="#各种格式数据-类型转换-DataInputStream-DataOutputStream" class="headerlink" title="各种格式数据(类型转换) - DataInputStream / DataOutputStream"></a>各种格式数据(类型转换) - DataInputStream / DataOutputStream</h6><p><code>DataStream</code>额外实现了<code>DateInput</code>和<code>DataOutput</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* DataInput</span></span><br><span class="line"><span class="comment">* readByte/readShort/readInt/readLong/readFloat/readDouble/readChar/readBoolean</span></span><br><span class="line"><span class="comment">* skipBytes()</span></span><br><span class="line"><span class="comment">* readLine() / readFully() / readUTF()</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* DataOutput</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*writeByte/writeShort/writeInt/writeLong/writeFloat/writeDouble/writeChar/writeBoolean</span></span><br><span class="line"><span class="comment">* writeBytes() / writeUTF - modified UTF-8 / writeChars - 一个char两位</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="回推流-预览-PushbackInputStream"><a href="#回推流-预览-PushbackInputStream" class="headerlink" title="回推流(预览) - PushbackInputStream"></a>回推流(预览) - PushbackInputStream</h6><p><code>PushBackInputStream</code>可以<code>预览</code>或者<code>会推</code>一个字节。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* PushbackInputStream - 预览字符后，根据需要，会推进去</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*  unread() / unread(byte[] b) / unread(byte[] b,off,len)</span></span><br><span class="line"><span class="comment">* */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="标准输入-System-in"><a href="#标准输入-System-in" class="headerlink" title="标准输入 - System.in"></a>标准输入 - System.in</h3><p>用来从<code>键盘(终端)读取数据</code>。</p>
+<ul>
+<li>当键入<code>回车</code>，表示<code>终端有了数据</code></li>
+</ul>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210110172752954.png" alt="image-20210110172752954"></p>
+<h3 id="待处理"><a href="#待处理" class="headerlink" title="待处理"></a>待处理</h3><ul>
+<li>FilterInputStream</li>
+<li>PipedInputStrean</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/JMV%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/JMV%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -232,7 +1066,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/09/J2se/String%E7%B1%BB%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/String%E7%B1%BB%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -245,7 +1079,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/09/J2se/String%E7%B1%BB%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/J2se/String%E7%B1%BB%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -351,7 +1185,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/07/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Untitled%201/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Untitled%201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -364,7 +1198,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/07/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Untitled%201/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/db/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Untitled%201/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -430,747 +1264,6 @@
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107204734988.png" alt="image-20210107204734988"></p>
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107204913672.png" alt="image-20210107204913672"></p>
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210107205003866.png" alt="image-20210107205003866"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/02.Mysql%E6%97%A5%E5%BF%97-%20File%20'.binlog.index'/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/02.Mysql%E6%97%A5%E5%BF%97-%20File%20'.binlog.index'/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-06 23:07:48 / عُدل: 23:42:36" itemprop="dateCreated datePublished" datetime="2021-01-06T23:07:48+08:00">2021-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p><strong>mysqld: File ‘./binlog.index’ not found (OS errno 13 - Permission denied)</strong></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>之前使用<code>强制用root</code>用户运行<code>Mysql</code>，产生了一些属于<code>root用户的日志</code>。</p>
-<p><code>当不强制用root用户后</code>，<code>mysql在加载这些文件时，没有权限</code></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h6 id="定位错误"><a href="#定位错误" class="headerlink" title="定位错误"></a>定位错误</h6><p>一个良好的习惯是，在启动时，就用<code>tail -f</code>观察<code>/var/log/mysqld.log</code>,随时了解<code>启动情况</code>。</p>
-<p>问题如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-01-06T12:41:47.415899Z 0 [System] [MY-010931] [Server] &#x2F;usr&#x2F;sbin&#x2F;mysqld: ready for connections. Version: &#39;8.0.21&#39;  socket: &#39;&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock&#39;  port: 0  MySQL Community Server - GPL.</span><br><span class="line">mysqld: File &#39;.&#x2F;binlog.index&#39; not found (OS errno 13 - Permission denied)</span><br></pre></td></tr></table></figure>
-
-<h6 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h6><ul>
-<li>定位到文件</li>
-<li>发现是<code>属主root</code>，因为<code>mysqld默认用mysql用户启动</code>，导致打不开文件。</li>
-<li>使用<code>chown解决</code>或则<code>chmod解决</code></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -R表示递归</span></span><br><span class="line">chown -R mysql:mysql ./binlog.index</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改权限</span></span><br><span class="line">chmode -R 777 ./binlog.index</span><br></pre></td></tr></table></figure>
-
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">chown使用</a></p>
-<p><a target="_blank" rel="noopener" href="http://blog.itpub.net/750077/viewspace-2147739/">File ‘./binlog.<del>rec</del>‘ not found 问题解决处理</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-06 22:44:35 / عُدل: 23:29:06" itemprop="dateCreated datePublished" datetime="2021-01-06T22:44:35+08:00">2021-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>安装Mysql后，使用<code>mysqld</code>启动，在<code>/var/log/mysqld.log</code>中生成随机密码。</p>
-<p>不小心删除了<code>mysql.log</code>。</p>
-<p><strong>导致不知道登陆密码是什么</strong>。</p>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><h6 id="关闭mysql"><a href="#关闭mysql" class="headerlink" title="关闭mysql"></a>关闭mysql</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看进程号</span></span><br><span class="line">ps -ef | grep mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭</span></span><br><span class="line">kill -p pid</span><br></pre></td></tr></table></figure>
-
-<h6 id="以安全模式启动"><a href="#以安全模式启动" class="headerlink" title="以安全模式启动"></a>以安全模式启动</h6><p><code>-skip-grant-tables</code>如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -skip-grant-tables</span><br></pre></td></tr></table></figure>
-
-<p>报如下<code>错误日志</code>，原因是<code>默认情况下，root用户不能以安全模式启动mysql</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-01-06T15:02:28.875450Z 0 [ERROR] [MY-010123] [Server] Fatal error: Please read &quot;Security&quot; section of the manual to find out how to run mysqld as root!</span><br><span class="line">2021-01-06T15:02:28.875541Z 0 [ERROR] [MY-010119] [Server] Aborting</span><br></pre></td></tr></table></figure>
-
-<p>解决如下(<code>补充下，这样启动创建的日志的owner全是root</code>，<code>正常启动时候</code>可能会出如下[问题](./02.Mysql日志- File’.binlog.index’.md))</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -skip-grant-tables -user=root</span><br></pre></td></tr></table></figure>
-
-<p>登陆，修改密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 登入</span></span><br><span class="line">mysql -u root</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改密码(如果修改不了，你需要设置下validate_password变量)</span></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY 123456</span><br><span class="line"><span class="meta">#</span><span class="bash"> 刷新特权</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<p><strong>可能有如下问题</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hello_world_qwp/article/details/79551789">密码不合格解决方法 - (validatee_password插件，密码不合格)</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36350532/article/details/79591803">安全模式下不允许root用户</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled%201/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled%201/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2021-01-06 22:44:22" itemprop="dateCreated datePublished" datetime="2021-01-06T22:44:22+08:00">2021-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/01.Liunx%E5%AE%89%E8%A3%85Mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/01.Liunx%E5%AE%89%E8%A3%85Mysql/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-06 21:42:32 / عُدل: 23:46:02" itemprop="dateCreated datePublished" datetime="2021-01-06T21:42:32+08:00">2021-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="RPM方式安装Mysql"><a href="#RPM方式安装Mysql" class="headerlink" title="RPM方式安装Mysql"></a>RPM方式安装Mysql</h3><h6 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h6><p><code>下载地址</code>是<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/">中科大镜像</a>。我下载了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql-community-common-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-libs-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-server-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-client-8.0.21-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<h6 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h6><p>检查<code>是否安装了Mysql</code>，使用<code>wheris</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> wheeris</span></span><br><span class="line">whereis mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span></span> </span><br><span class="line">which mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用rpm方式</span></span><br><span class="line">rpm -qa | grep ‘mysql’</span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载</span></span><br><span class="line">rpm -e [--nodeps] mysql-community-server-8.0.21-1.el7.x86_64.rpm </span><br><span class="line">rpm -e [--nodeps] mysql-community-server-8.0.21-1.el7.x86_64.rpm </span><br></pre></td></tr></table></figure>
-
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><p>使用 <code>rpm -ivh</code> 安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照顺序安装</span></span><br><span class="line">rpm -ivh mysql-community-common-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.21-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.21-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<p><strong>出现的问题</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ypp91zr/article/details/84801204">RPM安装mysql错误 - mariadb-libs 被 mysql-community-libs-8.0.13-1取代</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30840253/article/details/95006916">缺少Perl依赖(在/dev/cdrom/Packages中有)</a></li>
-</ul>
-<h6 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  查看版本</span></span><br><span class="line">mysql --version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装Ok</span></span><br><span class="line">whereis mysql</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mysql内容"><a href="#Mysql内容" class="headerlink" title="Mysql内容"></a>Mysql内容</h3><ol>
-<li>默认创建<code>mysql用户</code>和<code>mysql用户组</code>。<code>id27，是虚拟用户</code>。家目录是<code>/var/lib/mysql</code>。<code>不允许登陆</code>。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 用户名: 密码(X) : 用户id : 组id : 注释信息 : 家目录 : 登陆方式(不允许登陆)</span></span><br><span class="line">mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p><code>配置文件</code>在<code>/etc/my.ini</code>位置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/my.ini</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>日志文件在<code>/var/log/mysqld.log</code>位置。</p>
-</li>
-<li><p><code>其他目录</code>如下。可用<code>rpm -ql 软件名称</code>查看。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> lib库的位置，扩展的时候需要用到</span></span><br><span class="line">/usr/lin64/mysql/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 客户端命令存放位置</span></span><br><span class="line">/usr/bin/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务端存放位置</span></span><br><span class="line">/usr/sbin/mysqld</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>mysqld</code>用来<code>启动服务器</code>，<code>mysql</code>用来<code>连接</code>。</p>
-</li>
-</ol>
-<h3 id="初始化Mysql"><a href="#初始化Mysql" class="headerlink" title="初始化Mysql"></a>初始化Mysql</h3><ul>
-<li>初始化密码</li>
-<li>允许远程登陆</li>
-<li>开机启动</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">Systemctl start mysqld</span><br></pre></td></tr></table></figure>
-
-<p>会在<code>/var/log/mysqld.log</code>中生成随机密码。用<code>随机密码登陆，更改密码</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep -A 2 &quot;password&quot; /var/log/mysqld.log</span><br><span class="line"><span class="meta">#</span><span class="bash"> 登陆 默认root只能localhost登陆</span></span><br><span class="line">mysql -h 127.0.0.1 -P 3306 -u root -p</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改密码 - 如果不能修改，要设置`valiable_password`</span></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY 123456</span><br></pre></td></tr></table></figure>
-
-<p><code>开启远程权限</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">&#x27;a123456&#x27;</span>;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">&#x27;admin&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"><span class="keyword">flush</span> <span class="keyword">PRIVILEGES</span>; </span><br></pre></td></tr></table></figure>
-
-<p>设置<code>开机启动</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld </span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">systemctl list-unit-files -type=service | grep mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或则</span></span><br><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
-
-<p><strong>出现的问题</strong></p>
-<ul>
-<li><p><a href="../mysql%E9%94%99%E8%AF%AF/01.Mysql%E5%AE%89%E8%A3%85%E5%90%8E%E5%88%A0%E9%99%A4%E4%BA%86%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81.md">意外的原因删除了随机密码，导致无法登陆</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.58jb.com/html/162.html">密码不合格 - validate_password插件</a></p>
-</li>
-</ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ypp91zr/article/details/84801204">RPM安装mysql错误 - mariadb-libs 被 mysql-community-libs-8.0.13-1取代</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E9%AB%98%E7%BA%A7/Untitled/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-06 18:17:06 / عُدل: 23:47:48" itemprop="dateCreated datePublished" datetime="2021-01-06T18:17:06+08:00">2021-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>初始化 root用户</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost opt]<span class="comment"># mysql -u root</span></span><br><span class="line">ERROR 1045 (28000): Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27; (using password: NO)</span><br><span class="line">mysq</span><br><span class="line"><span class="comment"># 默认在 var.log/mysqld.log中 有默认密码</span></span><br><span class="line"><span class="comment"># 登入修改密码 或者视同mysqladmin修改密码就ok</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2021-01-06T13:26:11.020478Z 8 [Warning] [MY-010058] [Server] Hostname &#39;localhost.localdomain&#39; does not resolve to &#39;10.0.0.200&#39;.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/06/db/mysql%E5%9F%BA%E7%A1%80/06.%E5%AD%90%E6%9F%A5%E8%AF%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/db/mysql%E5%9F%BA%E7%A1%80/06.%E5%AD%90%E6%9F%A5%E8%AF%A2/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2021-01-06 12:20:42" itemprop="dateCreated datePublished" datetime="2021-01-06T12:20:42+08:00">2021-01-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2021-01-13 22:17:17" itemprop="dateModified" datetime="2021-01-13T22:17:17+08:00">2021-01-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>根据<code>子查询的位置</code>，大概分为如下</p>
-<ul>
-<li>WHERE后面</li>
-<li>FROM后面</li>
-<li>SELECT后面</li>
-<li>HAVING后面</li>
-</ul>
-<h3 id="WHERE后面"><a href="#WHERE后面" class="headerlink" title="WHERE后面"></a>WHERE后面</h3><p><strong>查询一</strong>： 查询Abel的工资</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- &gt;</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">salary <span class="operator">&gt;</span> (<span class="keyword">select</span> salary <span class="keyword">from</span> employees <span class="keyword">where</span> last_name <span class="operator">=</span> <span class="string">&#x27;Abel&#x27;</span>)</span><br><span class="line"><span class="comment">-- 改写成EXISTS - 把条件放到里面起</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees emp1</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line"><span class="keyword">exists</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> employees emp2 <span class="keyword">where</span> emp2.name<span class="operator">=</span>&quot;Abel&quot; <span class="keyword">and</span> emp1.salary <span class="operator">&gt;</span> emp2.salary)</span><br></pre></td></tr></table></figure>
-
-<p><strong>案例2</strong>：返回<code>job_id与141号员工相同</code>，<code>salary比143号员工多</code>的员工 姓名，job_id 和工资。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> last_name,job_id,salary</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line">job_id <span class="operator">=</span> (<span class="keyword">select</span> job_id <span class="keyword">from</span> employees <span class="keyword">where</span> employee_id <span class="operator">=</span> <span class="number">142</span>)</span><br><span class="line"><span class="keyword">and</span> </span><br><span class="line">salary <span class="operator">&gt;</span>  (<span class="keyword">select</span> salary <span class="keyword">from</span> employees <span class="keyword">where</span> employee_id <span class="operator">=</span> <span class="number">143</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>案例3</strong>：返回公司<code>工资最少的员工</code>的last_name,job_id和salary</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- limt</span></span><br><span class="line"><span class="keyword">select</span> last_name,job_id,salary</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">asc</span></span><br><span class="line">limit <span class="number">1</span></span><br><span class="line"><span class="comment">-- 子查询</span></span><br><span class="line"><span class="keyword">select</span> last_name,job_id,salary</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> salary <span class="operator">=</span> (<span class="keyword">select</span> <span class="built_in">min</span>(salary) <span class="keyword">from</span> employees)</span><br></pre></td></tr></table></figure>
-
-<h3 id="HAVING后面"><a href="#HAVING后面" class="headerlink" title="HAVING后面"></a>HAVING后面</h3><p><strong>案例4</strong>：查询<code>最低工资大于50号</code>部门最低工资的部门id和其最低工资</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">MIN</span>(salary) <span class="keyword">as</span> min_sal,department_id,salary <span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id </span><br><span class="line"><span class="keyword">having</span> min_sal <span class="operator">&gt;</span> (<span class="keyword">select</span> <span class="built_in">MIN</span>(salary) <span class="keyword">from</span> employees <span class="keyword">WHERE</span> department_id <span class="operator">=</span> <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="FROM后面-一般是配合JOIN"><a href="#FROM后面-一般是配合JOIN" class="headerlink" title="FROM后面 - 一般是配合JOIN"></a>FROM后面 - 一般是配合JOIN</h3><p><strong>案例4</strong>：查询各部门中<code>工资比本部门平均工资高</code>的员工的员工号, 姓名和工资</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> employee_id,last_name,department_id,salary <span class="keyword">from</span> employees emp</span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line">emp.salary <span class="operator">&gt;</span> </span><br><span class="line">(<span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">from</span> employees emps <span class="keyword">where</span> emps.department_id <span class="operator">=</span> emp.department_id)</span><br><span class="line"><span class="comment">-- 改写JOIN 等值链接</span></span><br><span class="line"><span class="keyword">select</span> emp1.employee_id,emp1.last_name,emp1.department_id,emp1.salary,emp2.avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp1</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">as</span> avg_sal, department_id <span class="keyword">from</span> employees emp2 <span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id) emp2</span><br><span class="line"><span class="keyword">on</span> emp1.department_id <span class="operator">=</span> emp2.department_id</span><br><span class="line"><span class="keyword">where</span> emp1.salary <span class="operator">&gt;</span> emp2.avg_sal</span><br><span class="line"><span class="comment">-- 改写 非等值链接</span></span><br><span class="line"><span class="keyword">select</span> cemp1.employee_id,emp1.last_name,emp1.department_id,emp1.salary,emp2.avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp1</span><br><span class="line"><span class="keyword">join</span> (<span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">as</span> avg_sal, department_id <span class="keyword">from</span> employees emp2 <span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id) emp2 </span><br><span class="line"><span class="keyword">on</span> emp1.department_id <span class="operator">=</span> emp2.department_id <span class="keyword">and</span> emp1.salary <span class="operator">&gt;</span> emp2.avg_sal</span><br></pre></td></tr></table></figure>
-
-<h3 id="SELECT后面"><a href="#SELECT后面" class="headerlink" title="SELECT后面"></a>SELECT后面</h3><p><strong>案例4</strong>：查询<code>员工名, 工资,部门ID,部门名称</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select last_name,salary,department_id,(select department_name  from departments dep where dep.department_id = emp.department_id)</span><br><span class="line">from employees emp </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/05/db/mysql%E5%9F%BA%E7%A1%80/05DQL%E8%AF%AD%E5%8F%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/05/db/mysql%E5%9F%BA%E7%A1%80/05DQL%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2021-01-05 22:42:26" itemprop="dateCreated datePublished" datetime="2021-01-05T22:42:26+08:00">2021-01-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2021-01-06 12:20:09" itemprop="dateModified" datetime="2021-01-06T12:20:09+08:00">2021-01-06</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>DQL语句</code>是<code>Data Query Language</code>，用于<code>查询数据</code>。</p>
-<h3 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h3><p>基础的查询语法是</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">distinct</span>] col1 [<span class="keyword">as</span> c1] ,col2 [<span class="keyword">as</span> c1],...</span><br><span class="line"><span class="keyword">from</span> table_name [tb_name_alias]</span><br><span class="line">[<span class="keyword">where</span> ... [<span class="keyword">having</span> ...] ]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> ... ]</span><br><span class="line">[<span class="keyword">having</span> xxx]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> c1 <span class="keyword">desc</span>, c1 <span class="keyword">asc</span>, ...]</span><br><span class="line">[<span class="keyword">limit</span> a,b]</span><br></pre></td></tr></table></figure>
-
-<h6 id="AS-起别名"><a href="#AS-起别名" class="headerlink" title="AS - 起别名"></a><strong>AS - 起别名</strong></h6><ul>
-<li>给<code>运算结果起别名</code></li>
-<li>给<code>列起别名</code></li>
-<li>给<code>表起别名</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 运算结果起别名 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">100</span>*<span class="number">100</span> <span class="keyword">as</span> res</span><br><span class="line"><span class="comment">/* 列别名 表别名*/</span></span><br><span class="line"><span class="keyword">select</span> first_name <span class="keyword">as</span> <span class="string">&#x27;姓&#x27;</span>, last_name <span class="keyword">as</span> <span class="string">&#x27;名&#x27;</span> <span class="keyword">from</span> employees <span class="keyword">as</span> emp</span><br><span class="line"><span class="keyword">where</span> emp.first_name <span class="keyword">like</span> <span class="string">&#x27;%s%&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h6 id="Distinct-去重复"><a href="#Distinct-去重复" class="headerlink" title="Distinct - 去重复"></a><strong>Distinct - 去重复</strong></h6><ul>
-<li><code>Distinct 紧跟在Select后面</code></li>
-<li>单列，一列作为整体，去重。<code>多列，多列作为整体，去重</code>。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 单列去重 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span></span><br><span class="line"><span class="comment">/* 多列去重 */</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">DISTINCT</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> <span class="keyword">test</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="分组-group-by"><a href="#分组-group-by" class="headerlink" title="分组 - group by"></a><strong>分组 - group by</strong></h6><ul>
-<li><code>一般配合聚合函数(count、max、min、avg、sum)，实现分组后统计</code></li>
-<li>多次使用，表示多个分组条件。比如，统计<code>每个部门的每个工种的平均工资</code>，就是<code>部门和工种</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 聚合函数 多分组*/</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary)</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br></pre></td></tr></table></figure>
-
-<h6 id="Having-子查询"><a href="#Having-子查询" class="headerlink" title="Having - 子查询"></a><strong>Having - 子查询</strong></h6><ul>
-<li><code>having</code>用来对<code>group by</code>结果进行过滤。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">having</span> avg_sal &gt; <span class="number">7000</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="排序-order-by"><a href="#排序-order-by" class="headerlink" title="排序 - order by"></a><strong>排序 - order by</strong></h6><ul>
-<li>可选值有<code>ASC</code>、<code>DESC</code>。<code>ASC可以省略</code>。</li>
-<li>多次使用，先按c1排，然后按照c2排。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 多列排序 */</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> avg_sal, job_id</span><br></pre></td></tr></table></figure>
-
-<h6 id="Limit-分页"><a href="#Limit-分页" class="headerlink" title="Limit  - 分页"></a><strong>Limit  - 分页</strong></h6><ul>
-<li>语法是Limt(idx,count)。idx省略表示取前count条。</li>
-<li><code>idx从0开始，比如取11-20条，应该是limit(10,10)</code>。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 取 6-10条 数据 */</span></span><br><span class="line"><span class="keyword">select</span> department_id,job_id,<span class="keyword">avg</span>(salary) <span class="keyword">as</span> avg_sal</span><br><span class="line"><span class="keyword">from</span> employees emp </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> department_id,job_id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> avg_sal, job_id</span><br><span class="line"><span class="keyword">limit</span> <span class="number">5</span>,<span class="number">5</span>	</span><br></pre></td></tr></table></figure>
-
-<h3 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h3><h6 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h6><p>条件表达式有<code>&gt;</code>、<code>&lt;</code>、<code>=</code>、<code>!=</code>、<code>&lt;&gt;</code></p>
-<p><strong>查询1</strong>： 工资&gt;大于1200。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees <span class="keyword">where</span> salary &gt; <span class="number">1200</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>查询2</strong>： 查询 <code>部门编号不等于90</code> 的 <code>员工名和编号</code>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>,department_id <span class="keyword">from</span> employees <span class="keyword">where</span> department_id != <span class="number">90</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="逻辑表达式"><a href="#逻辑表达式" class="headerlink" title="逻辑表达式"></a>逻辑表达式</h6><p>逻辑表达式有<code>and</code>、<code>or</code>、<code>not</code>。可以<code>连接两个条件</code>。</p>
-<p><strong>查询1</strong>： 查询 <code>工资在 1w 到 2w</code> 的 <code>员工名 工资 奖金</code>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(first_name, last_name) <span class="keyword">as</span> <span class="keyword">name</span>, salary, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> salary &gt; <span class="number">10000</span> <span class="keyword">and</span> salary &lt; <span class="number">20000</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>查询2</strong>： 查询 <code>部门编号 不再 90 - 100</code> 或 <code>工资 高于 15000</code> 的 信息</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> (department_id &lt; <span class="number">90</span> <span class="keyword">or</span> department_id &gt; <span class="number">100</span>) <span class="keyword">or</span> (salary &gt; <span class="number">15000</span>)</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>null</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> (department_id &gt;= <span class="number">90</span> <span class="keyword">and</span> department_id &lt;= <span class="number">100</span>) <span class="keyword">or</span> (salary &gt; <span class="number">15000</span>)</span><br></pre></td></tr></table></figure>
-
-<h6 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h6><ul>
-<li>模糊查询使用<code>like</code></li>
-<li>可用符号有<code>_</code>和<code>%</code></li>
-<li>转义符号是<code>\</code></li>
-</ul>
-<p><strong>查询1</strong>： 查询 <code>员工姓名 包含 a</code> 的数据</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">like</span> <span class="string">&#x27;%a%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>查询2</strong>： 查询 第二个字符是’_’的员工。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用转义符号 */</span></span><br><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> last_name <span class="keyword">like</span> <span class="string">&#x27;_\_%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="Between-and-和-in"><a href="#Between-and-和-in" class="headerlink" title="Between ... and 和 in"></a><code>Between ... and</code> 和 <code>in</code></h6><p>这两个用于<code>范围查询</code>。</p>
-<p><strong>查询3</strong>： 查询 <code>员工编号 在 100 到 200  之间</code>的 员工号 和 名称</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, job_id</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> employee_id <span class="keyword">BETWEEN</span> <span class="number">100</span> <span class="keyword">and</span> <span class="number">200</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>查询4</strong>： 查询<code>工种编号是 IT_PROG，AD_VP，AD_PRES</code>的员工姓名 和 工种号</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, job_id</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> job_id <span class="keyword">in</span> (<span class="string">&#x27;IT_PROG&#x27;</span>,<span class="string">&#x27;AD_VP&#x27;</span>,<span class="string">&#x27;AD_PRES&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h6 id="IS-NULL-和-全等"><a href="#IS-NULL-和-全等" class="headerlink" title="IS NULL 和 全等"></a>IS NULL 和 <code>全等</code></h6><ul>
-<li>判断<code>是不是Null</code>，用<code>Is Null</code>，<code>不能用==</code>。</li>
-<li><code>&lt;=&gt;</code>是全等，可以当作等号，还能当作<code>isNull</code>。</li>
-</ul>
-<p><strong>查询5</strong> ： 查询<code>没有奖金的员工</code> 的 员工名称 和奖金率</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> commission_pct <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>查询7</strong> ： 查询<code>没有奖金的员工 </code>的 员工名称 和奖金率(使用安全等于)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, commission_pct</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> commission_pct &lt;=&gt; <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>连接查询分为<code>内连接</code>、<code>外连接(左外、右外)</code>、<code>交叉连接</code>。</p>
-<p>按照连接条件又分为<code>等值连接</code>、<code>非等值链接</code>。</p>
-<p><code>SQL92 标准</code>仅仅支持<code>内连接</code>、<code>交叉连接</code>。</p>
-<p><code>SQL99 标准</code> 支持<code>内连接</code>、<code>外连接</code>、<code>交叉连接</code>。</p>
-<h4 id="SQL-92"><a href="#SQL-92" class="headerlink" title="SQL 92"></a>SQL 92</h4><h6 id="等值内连接"><a href="#等值内连接" class="headerlink" title="等值内连接"></a>等值内连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 等值内连接 */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> beauty b, boys bf</span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id = bf.id</span><br></pre></td></tr></table></figure>
-
-<h6 id="非等值内连接"><a href="#非等值内连接" class="headerlink" title="非等值内连接"></a>非等值内连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employees emps, jobs</span><br><span class="line"><span class="keyword">where</span> emps.salary <span class="keyword">BETWEEN</span> jobs.min_salary <span class="keyword">and</span> jobs.max_salary</span><br></pre></td></tr></table></figure>
-
-<h4 id="SQL-99"><a href="#SQL-99" class="headerlink" title="SQL 99"></a>SQL 99</h4><h6 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h6><p><strong>查询一</strong>： 查询<code>部门员工个数大于3</code>的<code>部门名</code>和<code>员工个数</code>，按个数降序。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(first_name,last_name) <span class="keyword">as</span> <span class="keyword">name</span>, department_name,<span class="keyword">count</span>(*) <span class="keyword">as</span> emp_count </span><br><span class="line"><span class="keyword">from</span> employees emps</span><br><span class="line"><span class="keyword">join</span> departments <span class="keyword">on</span> emps.department_id = departments.department_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> emps.department_id</span><br><span class="line"><span class="keyword">HAVING</span> emp_count &gt; <span class="number">3</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> emp_count <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>查询二</strong>： 查询<code>工资级别的员工个数</code>，按<code>级别降序</code>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> grade_level, lowest_sal, highest_sal,<span class="keyword">count</span>(*) <span class="keyword">as</span> emp_count</span><br><span class="line"><span class="keyword">from</span> employees emp</span><br><span class="line"><span class="keyword">JOIN</span> job_grades grade <span class="keyword">on</span> emp.salary <span class="keyword">BETWEEN</span> grade.lowest_sal <span class="keyword">and</span> grade.highest_sal</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> grade.grade_level</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> grade.grade_level <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h6><p><strong>查询一</strong>： 查询<code>没有男朋友</code>的<code>女神名称</code>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> beauty b</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">JOIN</span> boys bf <span class="keyword">on</span> b.boyfriend_id = bf.id</span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id <span class="keyword">is</span> <span class="literal">null</span> </span><br></pre></td></tr></table></figure>
-
-<h6 id="交叉连接"><a href="#交叉连接" class="headerlink" title="交叉连接"></a>交叉连接</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* cross join 相当于没条件的 inner join*/</span></span><br><span class="line"><span class="keyword">select</span> b.*,bo.* </span><br><span class="line"><span class="keyword">from</span> beauty b</span><br><span class="line"><span class="keyword">CROSS</span> <span class="keyword">JOIN</span> boys bo</span><br></pre></td></tr></table></figure>
-
-<h4 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h4><ul>
-<li>自连接是<code>当前表连接自己</code></li>
-</ul>
-<p><strong>查询一</strong>： 查询<code>员工名称</code>和<code>上级名称</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp.last_name, emp.manager_id &#39;上级编号&#39;,man.employee_id &#39;MA编号&#39;,man.last_name</span><br><span class="line">from employees emp</span><br><span class="line">JOIN employees man on emp.manager_id &#x3D; man.employee_id</span><br></pre></td></tr></table></figure>
-
-<h3 id="union查询"><a href="#union查询" class="headerlink" title="union查询"></a>union查询</h3><ul>
-<li><code>Union</code>会<code>自动去重</code>，<code>Union All</code>不会自动去重。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* union all */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="comment">/* union */</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> boys</span><br></pre></td></tr></table></figure>
-
 
       
     </div>

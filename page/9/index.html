@@ -115,9 +115,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
       </div>
   </nav>
 </div>
@@ -154,7 +158,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/24/J2se/01.%E5%88%9D%E8%AF%86Java/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/03.DML/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +171,728 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/24/J2se/01.%E5%88%9D%E8%AF%86Java/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/db/mysql%E5%9F%BA%E7%A1%80/03.DML/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-03 21:41:00 / عُدل: 22:30:55" itemprop="dateCreated datePublished" datetime="2021-01-03T21:41:00+08:00">2021-01-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>DML</code>是<code>Data Modify Language</code>，用来<code>修改数据</code>。</p>
+<h3 id="Insert-插入数据"><a href="#Insert-插入数据" class="headerlink" title="Insert - 插入数据"></a>Insert - 插入数据</h3><h6 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a><strong>插入数据</strong></h6><p>语法是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> table_name(c1,c2,c3,...) <span class="keyword">values</span> (v1,v2,v3,...);</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>省略了列名，值需要全部提供，顺序固定</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">into</span> beauty <span class="keyword">VALUES</span> (<span class="number">14</span>,<span class="string">&#x27;唐艺昕&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;1990-04-23&#x27;</span>,<span class="string">&#x27;12822222222&#x27;</span>,<span class="keyword">NULL</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<p>只省略部分。其中<code>not null不能省略</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">into</span> beauty(`name`,sex,borndate,phone,photo,boyfriend_id) <span class="keyword">VALUES</span> (<span class="string">&#x27;唐艺昕&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;1990-04-23&#x27;</span>,<span class="string">&#x27;12822222222&#x27;</span>,<span class="keyword">NULL</span>,<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<p>更简单的插入方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty </span><br><span class="line"><span class="keyword">set</span> </span><br><span class="line">name <span class="operator">=</span> <span class="string">&#x27;娜扎&#x27;</span>,phone<span class="operator">=</span><span class="string">&#x27;12345678911&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a><strong>插入多行</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty(name,phone)</span><br><span class="line"><span class="keyword">values</span> </span><br><span class="line">(<span class="string">&#x27;唐艺昕1&#x27;</span>,<span class="string">&#x27;18223456789&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;唐艺昕2&#x27;</span>,<span class="string">&#x27;18223456789&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="insert…select"><a href="#insert…select" class="headerlink" title="insert…select"></a><strong>insert…select</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> beauty(name,phone)</span><br><span class="line"><span class="keyword">select</span> name,phone <span class="keyword">from</span> beauty <span class="keyword">where</span> name <span class="operator">=</span> <span class="string">&#x27;唐艺昕2&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="update-修改数据"><a href="#update-修改数据" class="headerlink" title="update - 修改数据"></a>update - 修改数据</h3><h6 id="单表更新"><a href="#单表更新" class="headerlink" title="单表更新"></a><strong>单表更新</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update beauty </span><br><span class="line"><span class="keyword">set</span> boyfriend_id <span class="operator">=</span> <span class="number">5</span></span><br><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;娜扎%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="多表更新"><a href="#多表更新" class="headerlink" title="多表更新"></a><strong>多表更新</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- sql92</span></span><br><span class="line">update beauty b,boys bf</span><br><span class="line"><span class="keyword">set</span> bf.userCP <span class="operator">=</span> <span class="number">10</span></span><br><span class="line"><span class="keyword">where</span> b.boyfriend_id <span class="operator">=</span> bf.id <span class="comment">-- 连接条件</span></span><br><span class="line"><span class="keyword">and</span> bf.id <span class="operator">=</span> <span class="number">5</span></span><br><span class="line"><span class="comment">-- sql99</span></span><br><span class="line">update beauty b</span><br><span class="line"><span class="keyword">join</span> boys bf <span class="keyword">on</span> b.boyfriend_id <span class="operator">=</span> bf.id</span><br><span class="line"><span class="keyword">set</span> bf.userCP <span class="operator">=</span> <span class="number">800</span></span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line">	bf.id <span class="operator">=</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h3><h6 id="delete删除"><a href="#delete删除" class="headerlink" title="delete删除"></a><strong>delete删除</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> b,bo</span><br><span class="line"><span class="keyword">from</span> beauty b </span><br><span class="line"><span class="keyword">join</span> boys bo <span class="keyword">on</span> b.boyfriend_id <span class="operator">=</span> bo.id</span><br><span class="line"><span class="keyword">WHERE</span> bo.boyName <span class="operator">=</span> <span class="string">&#x27;张无忌&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="turncate删除"><a href="#turncate删除" class="headerlink" title="turncate删除"></a><strong>turncate删除</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> boys</span><br></pre></td></tr></table></figure>
+
+<p><strong>区别参见</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/alice-cj/p/10354737.html">delete，truncate 和 delete之间的区别</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/02.DDL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/db/mysql%E5%9F%BA%E7%A1%80/02.DDL/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-03 20:04:24 / عُدل: 21:39:34" itemprop="dateCreated datePublished" datetime="2021-01-03T20:04:24+08:00">2021-01-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>DDL是<code>数据定义语言</code>，用来<code>定义/删除数据库</code>、<code>定义/修改/删除/复制表</code>、<code>添加/删除/修改/重命名列</code>。</p>
+<h3 id="数据库管理"><a href="#数据库管理" class="headerlink" title="数据库管理"></a>数据库管理</h3><h6 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a><strong>创建数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建数据库</span></span><br><span class="line"><span class="keyword">create</span> database `test`</span><br><span class="line"><span class="comment">--  指定字符集</span></span><br><span class="line"><span class="keyword">create</span> database `test` <span class="keyword">default</span> charset <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line"><span class="comment">--  不存在就创建 - 用在脚本中</span></span><br><span class="line"><span class="keyword">create</span> database if <span class="keyword">not</span> <span class="keyword">exists</span> `test`</span><br></pre></td></tr></table></figure>
+
+<h6 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a><strong>查看数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看数据库 字符集</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> database `test3`</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a><strong>修改数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改字符集</span></span><br><span class="line"><span class="keyword">alter</span> database `test` <span class="keyword">default</span> charset <span class="string">&#x27;gbk&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a><strong>删除数据库</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 直接删除</span></span><br><span class="line"><span class="keyword">drop</span> databse test1</span><br><span class="line"><span class="comment">-- 存在删除 - 用在脚本中</span></span><br><span class="line"><span class="keyword">drop</span> database if <span class="keyword">exists</span> test2</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h3><h6 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a><strong>创建数据表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 简单创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test1 (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">	age <span class="type">smallint</span>,</span><br><span class="line">	<span class="keyword">constraint</span> pk_test1 <span class="keyword">primary</span> key(id)</span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 指定engine、charset、auto_increment开始值</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test1 (</span><br><span class="line">	id <span class="type">int</span> auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    age <span class="type">smallint</span>,</span><br><span class="line">    <span class="keyword">constraint</span> pk_test1 <span class="keyword">primary</span> key(id)</span><br><span class="line">)engine<span class="operator">=</span>innodb <span class="keyword">default</span> charset<span class="operator">=</span>gbk auto_increment<span class="operator">=</span><span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>复制表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> cp </span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> book</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="查看数据表"><a href="#查看数据表" class="headerlink" title="查看数据表"></a><strong>查看数据表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看列 和 约束</span></span><br><span class="line"><span class="keyword">desc</span> <span class="keyword">table</span> test1 </span><br><span class="line"><span class="keyword">show</span> columns <span class="keyword">from</span> test1</span><br><span class="line"><span class="comment">-- 查看字符集、存储引擎、自动增长</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> test1</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a><strong>修改表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改engine、charset 、auto_increment</span></span><br><span class="line"><span class="comment">-- 修改字符集，只会影响新添加的列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test1 <span class="keyword">default</span> charset<span class="operator">=</span>utf8 engine<span class="operator">=</span>innodb auto_increment<span class="operator">=</span><span class="number">12</span></span><br><span class="line"><span class="comment">-- 重新命名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test rename [<span class="keyword">to</span>] test2</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a><strong>删除表</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 直接删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> test1 </span><br><span class="line"><span class="comment">-- 存在，就删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">exists</span> test1</span><br></pre></td></tr></table></figure>
+
+<h3 id="列操作"><a href="#列操作" class="headerlink" title="列操作"></a>列操作</h3><h6 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a><strong>添加列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 <span class="keyword">add</span> <span class="keyword">column</span> bitth <span class="type">TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a><strong>修改列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改列类型和约束，都是必填的</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 modify <span class="keyword">column</span> bitth <span class="type">date</span> <span class="keyword">not</span> <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">-- 修改列名称、类型、约束,都是必填 </span></span><br><span class="line"><span class="comment">-- 类型不兼容，修改失败。类型兼容，可能丢失精度</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test2 change <span class="keyword">column</span> bitth bitth1 <span class="type">timestamp</span> <span class="keyword">not</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="查看列"><a href="#查看列" class="headerlink" title="查看列"></a><strong>查看列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看详细信息(约束、trigger)、chanrset、权限</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">full</span> columns <span class="keyword">from</span> test2 </span><br></pre></td></tr></table></figure>
+
+<h6 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a><strong>删除列</strong></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">drop</span> <span class="keyword">column</span> birth;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/db/mysql%E5%9F%BA%E7%A1%80/01.Mysql%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/db/mysql%E5%9F%BA%E7%A1%80/01.Mysql%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-01-03 19:16:33 / عُدل: 23:04:42" itemprop="dateCreated datePublished" datetime="2021-01-03T19:16:33+08:00">2021-01-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Mysql安装"><a href="#Mysql安装" class="headerlink" title="Mysql安装"></a>Mysql安装</h3><p>下载地址是<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/">中科大镜像</a>。</p>
+<p>这里只安装了<code>Mysql Server</code>和<code>Mysql for Excel</code> 和<code>Mysql Notifer</code>。</p>
+<h3 id="Mysql启动停止"><a href="#Mysql启动停止" class="headerlink" title="Mysql启动停止"></a>Mysql启动停止</h3><p>方式1 Services面板</p>
+<ul>
+<li><code>计算机管理</code> -&gt; <code>服务</code> -&gt; <code>开启Mysql</code></li>
+<li><code>windows + r</code> -&gt; <code>services</code> </li>
+</ul>
+<p>方式2 <code>Cmd</code>运行如下</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 开启mysql</span><br><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mysql服务名称</span><br><span class="line"># 关闭mysql </span><br><span class="line"><span class="built_in">net</span> stop mysql服务名称</span><br></pre></td></tr></table></figure>
+
+<p>方式3 <code>Mysql Notifier</code>运行和停止</p>
+<h3 id="Mysql配置"><a href="#Mysql配置" class="headerlink" title="Mysql配置"></a>Mysql配置</h3><p><code>Mysql配置文件</code>在<code>programData/Mysql/MySeql Server/my.ini</code>中。</p>
+<p>可以用<code>MysqlInstatceConfig</code>进行可视化配置，位置是<code>Mysql安装目录/bin/MysqlInstanceConfig</code>。</p>
+<h3 id="连接MySql"><a href="#连接MySql" class="headerlink" title="连接MySql"></a>连接MySql</h3><p>方式1 <code>命令行客户端 - mysql.exe</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cmd中运行如下</span></span><br><span class="line">mysql -h 127.0.0.1 -P 3306 -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>方式2 图形客户端 - 比如<code>navicat</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hfxtest/p/12513210.html">Navicat激活</a></p>
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看数据库</span></span><br><span class="line"><span class="keyword">show</span> databases;</span><br><span class="line"><span class="comment">-- 切换数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment">-- 查看表</span></span><br><span class="line"><span class="keyword">show</span> tables [<span class="keyword">from</span> mysql];</span><br><span class="line"><span class="comment">-- 查看表信息</span></span><br><span class="line"><span class="keyword">desc</span> mysql.db</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Sublime%E6%8F%92%E4%BB%B6%20-%20Reveal%20in%20Side%20Bar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Sublime%E6%8F%92%E4%BB%B6%20-%20Reveal%20in%20Side%20Bar/" class="post-title-link" itemprop="url">Sublime插件 - SyncedSideBar</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2020-12-26 11:54:15 / عُدل: 12:02:16" itemprop="dateCreated datePublished" datetime="2020-12-26T11:54:15+08:00">2020-12-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用Sublime时候，<code>文件不能拖入Sidebar</code>。</p>
+<p><code>SyncedSideBar</code>可以解决这个问题，这里记录下安装过程。</p>
+<ol>
+<li>打开<code>命令面板(ctrl + shift + p)</code>，输入 <code>package Control</code>，找到<code>package Control:install package</code>。</li>
+<li>搜索<code>SyncedSideBar</code>，点击安装。</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/sublime/Sublime%E6%8F%92%E4%BB%B6%20-%20A%20File%20Icon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/sublime/Sublime%E6%8F%92%E4%BB%B6%20-%20A%20File%20Icon/" class="post-title-link" itemprop="url">Sublime插件 - A File Icon</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2020-12-25 21:37:10" itemprop="dateCreated datePublished" datetime="2020-12-25T21:37:10+08:00">2020-12-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2020-12-26 12:02:07" itemprop="dateModified" datetime="2020-12-26T12:02:07+08:00">2020-12-26</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>做项目的时候，发现了如下问题</p>
+<ul>
+<li><p>多了很多文件夹和文件</p>
+</li>
+<li><p>需要来回切换</p>
+</li>
+<li><p><strong>很难直接看出需要的文件类型</strong></p>
+</li>
+</ul>
+<p>于是安装了<strong>A File Icon</strong>，记录下安装过程。</p>
+<ol>
+<li>打开<code>命令面板(ctrl + shift + p)</code>，输入 <code>package Control</code>，找到<code>package Control:install package</code>。</li>
+<li>输入<code>A File Icon</code>，点击。</li>
+<li>成功</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/Untitled/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/Untitled/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2020-12-25 21:00:07 / عُدل: 21:02:04" itemprop="dateCreated datePublished" datetime="2020-12-25T21:00:07+08:00">2020-12-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>equals()/hashcode</td>
+<td></td>
+</tr>
+<tr>
+<td>toString</td>
+<td></td>
+</tr>
+<tr>
+<td>getClass</td>
+<td></td>
+</tr>
+<tr>
+<td>clone()</td>
+<td></td>
+</tr>
+<tr>
+<td>finalize</td>
+<td></td>
+</tr>
+<tr>
+<td>wait / notify</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/02.Java%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/02.Java%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2020-12-24 19:33:41" itemprop="dateCreated datePublished" datetime="2020-12-24T19:33:41+08:00">2020-12-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-01-02 22:28:27" itemprop="dateModified" datetime="2021-01-02T22:28:27+08:00">2021-01-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h3><p>任何编程语言都有<strong>变量</strong>和<strong>常量</strong>概念。</p>
+<h6 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a><strong>命名规则</strong></h6><ul>
+<li><p>字母(a-z)、数字(0-9)、下划线(_)、美元符号($)</p>
+</li>
+<li><p>不能以数字(0-9)开头</p>
+</li>
+</ul>
+<h6 id="常量-final"><a href="#常量-final" class="headerlink" title="常量 - final"></a><strong>常量 - final</strong></h6><ul>
+<li>常量<code>必须赋值一次，不用立即赋值</code></li>
+<li>最好声明时候直接赋值</li>
+<li>有局部常量、属性常量、静态常量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class TestFinal &#123;</span><br><span class="line">    main() &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> fin1; <span class="comment">// 局部常量</span></span><br><span class="line">        fin1 = <span class="number">1</span>; <span class="comment">// 可以不用立即赋值</span></span><br><span class="line">	&#125;</span><br><span class="line">   	<span class="comment">// 属性常量</span></span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">int</span> fin1 = <span class="number">12</span>; <span class="comment">// 好的方式，声明时候赋值</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> fin_s; <span class="comment">// 静态常量</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        fin_s = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型分为<code>基本数据类型</code>和<code>对象类型</code>。</p>
+<p><code>对象类型</code>是<code>引用类型</code>，由<code>基本数据类型</code>组成。</p>
+<h6 id="基本数据类型分类"><a href="#基本数据类型分类" class="headerlink" title="基本数据类型分类"></a><strong>基本数据类型分类</strong></h6><ul>
+<li>整数类型 - byte(1) short(2) int(4) long(8)</li>
+<li>小数类型 - float(1.4E-45<del>3.4E10+38) double(4.9E-324</del>1.7E+308)</li>
+<li>字符类型 - </li>
+<li>布尔类型 - true/false</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th>idea快捷键</th>
+<th>eclipse快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生成变量名称</td>
+<td>.var</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>ctrl + alt + v</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">运行代码</td>
+<td>ctrl + alt + f10</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>选中多块</p>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>idea快捷键</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + w</td>
+<td>快速选中，每次都扩充</td>
+<td></td>
+</tr>
+<tr>
+<td>alt + j</td>
+<td>选中下一个相同内容</td>
+<td></td>
+</tr>
+<tr>
+<td>alt+ f6/ctrl + alt + shift + j</td>
+<td>选择所有相同内容</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>修改</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + d</td>
+<td>复制一行</td>
+<td></td>
+</tr>
+<tr>
+<td>ctrl + shift + ↑/↓</td>
+<td>上下移动</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置</td>
+<td>ctrl  + alt  +  s</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/01.%E5%88%9D%E8%AF%86Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/J2se/01.%E5%88%9D%E8%AF%86Java/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -265,7 +990,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/13/css/06.position%E5%AE%9A%E4%BD%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/css/06.position%E5%AE%9A%E4%BD%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -278,7 +1003,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/13/css/06.position%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">position定位</a>
+          <a href="/css/06.position%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">position定位</a>
         </h2>
 
         <div class="post-meta-container">
@@ -345,7 +1070,7 @@
 <p>B绝对定位 -&gt;<strong>脱离文档流，位置不保留，相对body</strong></p>
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201213121400793.png" alt="image-20201213121400793"></p>
 <p><strong>设置居中</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 方法1 */</span></span><br><span class="line"><span class="selector-class">.center1</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>:auto; <span class="comment">/* 都居中*/</span> </span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> auto; <span class="comment">/* 左右居中*/</span> </span><br><span class="line">    <span class="attribute">margin</span>:auto <span class="number">0</span>; <span class="comment">/* 上下居中*/</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 方法2 */</span></span><br><span class="line"><span class="selector-tag">center2</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>,-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 方法1 */</span></span><br><span class="line"><span class="selector-class">.center1</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>:auto; <span class="comment">/* 都居中*/</span> </span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> auto; <span class="comment">/* 左右居中*/</span> </span><br><span class="line">    <span class="attribute">margin</span>:auto <span class="number">0</span>; <span class="comment">/* 上下居中*/</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 方法2 */</span></span><br><span class="line">center2&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>,-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="固定定位-fixed"><a href="#固定定位-fixed" class="headerlink" title="固定定位 - fixed"></a>固定定位 - fixed</h3><p><strong>fixed</strong>是固定定位，相对于<strong>视口</strong>固定</p>
 <ul>
@@ -403,7 +1128,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/css/05.float%E5%AE%9A%E4%BD%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/css/05.float%E5%AE%9A%E4%BD%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -416,7 +1141,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/12/css/05.float%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">float浮动</a>
+          <a href="/css/05.float%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">float浮动</a>
         </h2>
 
         <div class="post-meta-container">
@@ -488,13 +1213,13 @@
 <li>使用伪元素(::after)和clear</li>
 </ul>
 <p><strong>父元素overflow</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.clear1</span> &#123;<span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clear1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">		<span class="selector-class">.clear1</span> &#123;<span class="attribute">overflow</span>: hidden;&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clear1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>内部添加div，设置clear</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="comment">/* cl*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.clear2</span> &#123;<span class="attribute">clear</span>: both;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clear2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="comment">/* cl*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.clear2</span> &#123;<span class="attribute">clear</span>: both;&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clear2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>使用伪元素</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line">        content: &quot;&quot;;</span><br><span class="line"><span class="css">        <span class="selector-tag">display</span>: <span class="selector-tag">block</span>; <span class="comment">/*ds*/</span></span></span><br><span class="line">        clear: both;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span>&#123;<span class="attribute">-ms-zoom</span>: <span class="number">1</span>; <span class="comment">/*for ie 6-7*/</span>&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">display</span>: block; <span class="comment">/*ds*/</span></span></span><br><span class="line"><span class="css">        <span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.clearfix</span>&#123;-ms-zoom: <span class="number">1</span>; <span class="comment">/*for ie 6-7*/</span>&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fl box&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -511,1231 +1236,6 @@
 
 
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/css/04.css%E8%83%8C%E6%99%AF%E5%92%8C%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/12/css/04.css%E8%83%8C%E6%99%AF%E5%92%8C%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F/" class="post-title-link" itemprop="url">背景和边框</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2020-12-12 18:56:57" itemprop="dateCreated datePublished" datetime="2020-12-12T18:56:57+08:00">2020-12-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2020-12-13 11:34:13" itemprop="dateModified" datetime="2020-12-13T11:34:13+08:00">2020-12-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="背景和边框"><a href="#背景和边框" class="headerlink" title="背景和边框"></a>背景和边框</h2><p><strong>border</strong> - 边框</p>
-<ul>
-<li>包括<code>border-width</code>、<code>border-color</code>、<code>border-style</code></li>
-<li>transparent设置透明边框</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myborder</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> dashed <span class="number">#000</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>透明边框</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myborder-trans</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> dashed transparent;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>background</strong> - 背景</p>
-<p>包括如下内容</p>
-<ul>
-<li>border-color - 背景色</li>
-<li>border-image - 背景图片</li>
-<li>border-position- 背景开始的位置</li>
-<li>border-repeat - 背景重复</li>
-<li>border-attachment - 偏移参照点</li>
-</ul>
-<p><strong>background-color</strong> - 背景颜色</p>
-<ul>
-<li>支持<code>16进制(#fff)</code>和<code>rgba(x,x,x,x)</code></li>
-<li>默认起始于border</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* bgc*/</span></span><br><span class="line"><span class="selector-tag">background-color</span>: <span class="selector-tag">orange</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>background-image</strong> - 背景图片</p>
-<ul>
-<li>默认起始于是border</li>
-<li>可以设置多个图片</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bgi  开始于border*/</span></span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>(<span class="selector-tag">img</span>/<span class="selector-tag">bg</span><span class="selector-class">.png</span>);</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>(<span class="selector-tag">img</span>/<span class="selector-tag">bg3</span><span class="selector-class">.png</span>),<span class="selector-tag">url</span>(<span class="selector-tag">img</span>/<span class="selector-tag">bg</span><span class="selector-class">.png</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>background-position</strong> - 开始位置</p>
-<ul>
-<li>默认开始于左上角</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bgp 默认是 0 0*/</span></span><br><span class="line"><span class="selector-tag">background-position</span>: <span class="selector-tag">left</span> <span class="selector-tag">top</span>;</span><br></pre></td></tr></table></figure>
-
-<p>。<strong>background-repeat</strong> - 重复方式</p>
-<ul>
-<li>repeat - 默认 重复</li>
-<li>repeat-x</li>
-<li>repeat-y</li>
-<li>no-repeat</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bgr repeat | repeat-x | repeat-y | no-repeat*/</span></span><br><span class="line"><span class="selector-tag">background-repeat</span>: <span class="selector-tag">no-repeat</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>background-attachment</strong> - 设置相对点</p>
-<ul>
-<li>影响的是background-position和background-repeated</li>
-<li>scroll - 相对本元素 进行偏移和重复</li>
-<li>fixed - 相对于body 进行偏移和重复</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bga fixed | scroll*/</span></span><br><span class="line"><span class="selector-tag">background-attachment</span>: <span class="selector-tag">fixed</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>background</strong> - 背景</p>
-<ul>
-<li>顺序随意</li>
-<li>空格分隔</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bg*/</span></span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">background-color</span> <span class="selector-tag">background-image</span> <span class="selector-tag">background-position</span> <span class="selector-tag">background-repeat</span> <span class="selector-tag">background-attachment</span>;</span><br><span class="line"><span class="selector-tag">background</span>: </span><br><span class="line">	<span class="selector-tag">url</span>(<span class="selector-tag">img</span>/<span class="selector-tag">bg3</span><span class="selector-class">.png</span>) <span class="selector-tag">left</span> <span class="selector-tag">top</span> <span class="selector-tag">repeat</span> <span class="selector-tag">scroll</span>,</span><br><span class="line">	<span class="selector-tag">url</span>(<span class="selector-tag">img</span>/<span class="selector-tag">bg</span><span class="selector-class">.png</span>) <span class="selector-tag">left</span> <span class="selector-tag">top</span> <span class="selector-tag">repeat</span> <span class="selector-tag">scroll</span> <span class="selector-tag">orange</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Css3-Moudle"><a href="#Css3-Moudle" class="headerlink" title="Css3 Moudle"></a>Css3 Moudle</h2><p>border扩展了</p>
-<ul>
-<li>border-radious - 圆角</li>
-<li>border-image - 边框图片</li>
-</ul>
-<p>background扩展了</p>
-<ul>
-<li>background-orign</li>
-<li>background-clip</li>
-<li>background-size</li>
-</ul>
-<p>新增加了box-shadow - 设置阴影</p>
-<p><strong>border-radious</strong> - 设置圆角</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.b-radius</span> &#123;<span class="attribute">border-radius</span>: <span class="number">50%</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>border-image</strong> - 设置背景图片</p>
-<p>分为</p>
-<ul>
-<li>border-image-slice - 图片</li>
-<li>border-image-slice - 如何分隔</li>
-<li>border-image-width - 占用多宽(大于border会往内缩)</li>
-<li>border-image-outset - 往外扩展(不影响布局)</li>
-<li>border-image-repeat - strech | repeat | round(重复，微略缩放) | space(重复，不够空白)</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bd-img</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">27px</span> solid red;</span><br><span class="line">    <span class="attribute">border-image-source</span>: <span class="built_in">url</span>(img/bd.png);</span><br><span class="line">    <span class="attribute">border-image-slice</span>: <span class="number">27</span>;</span><br><span class="line">    <span class="attribute">border-image-width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border-image-outset</span>: <span class="number">23px</span>;</span><br><span class="line">    <span class="attribute">border-image-repeat</span>: repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>border-image 可以连写</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-image</span>: <span class="selector-tag">source</span> <span class="selector-tag">slice</span> <span class="selector-tag">width</span> <span class="selector-tag">outset</span> <span class="selector-tag">repeat</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>background-orign</strong> - 图片起始位置</p>
-<ul>
-<li>border-box - 默认 边框开始</li>
-<li>padding-box- padding开始</li>
-<li>content-box - 内容开始</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-origin</span>: <span class="selector-tag">padding-box</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>background-clip</strong> - 图片显示范围</p>
-<ul>
-<li>border-box  - 显示在border上和内</li>
-<li>padding-box - 显示在padding和content</li>
-<li>content-box - 现实杂content中</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-clip</span>: <span class="selector-tag">padding-box</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>background-size</strong> - 图片大小</p>
-<ul>
-<li>auto - 默认大小</li>
-<li>cover - 等比扩展，填充容器</li>
-<li>contain - 扩展一边，填满</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-size</span>: <span class="selector-tag">contain</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="box-shadow-阴影"><a href="#box-shadow-阴影" class="headerlink" title="box-shadow - 阴影"></a>box-shadow - 阴影</h4><p>语法 - box-shadow: x偏移 y偏移 模糊距离 扩展距离 [inset]</p>
-<ul>
-<li>模糊距离会单独多出来</li>
-<li>扩展距离会单独多出来</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 2px 2px 0px 0px;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="list-style"><a href="#list-style" class="headerlink" title="list-style"></a>list-style</h3><p>列表样式包括<strong>list-style-type</strong>、list-style-image、list-style-position。</p>
-<ul>
-<li>list-style-type 表示列表标志的位置</li>
-<li>list-style-image 把图片设置为列表标志</li>
-<li>list-style-position: 别表标志位置</li>
-</ul>
-<p><code>list-style-type</code>取值如下。<code>none</code>是没有。</p>
-<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201023205922131.png" alt="image-20201023205922131"></p>
-<p><code>list-type-image</code> 把图像设置为列表标志。图片显示原有大小。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">list-style-image</span>: <span class="selector-tag">url</span>()</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>list-style-posiiton</code>设置<code>列表标志</code>的位置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list-style-position: inside| ouside</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>inside</th>
-<th>内部</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>outside</td>
-<td>外部</td>
-</tr>
-</tbody></table>
-<p>可以简写成<code>list-style</code>,不分顺序,空格分隔。<strong>list-style-image会覆盖list-style-type属性。</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">list-style</span>: <span class="selector-tag">list-style-type</span> <span class="selector-tag">list-style-image</span> <span class="selector-tag">list-style-position</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/css/03.%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/12/css/03.%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">盒子模型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2020-12-12 15:35:16 / عُدل: 18:54:17" itemprop="dateCreated datePublished" datetime="2020-12-12T15:35:16+08:00">2020-12-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>css引入了<strong>盒子模型</strong>，用来布局。每个元素都是一个盒子。</p>
-<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022175735444.png" alt="image-20201022175735444"></p>
-<p>块元素和行内元素，盒子有如下区别：</p>
-<ul>
-<li>行内元素没有width和height</li>
-<li>行内元素的margin-top和margin-bottom失效</li>
-<li><code>h1~h6</code>、<code>p</code>、<code>ul</code>、<code>ol</code>、<code>li</code>、<code>dl</code>、<code>dt</code>、<code>dd</code>、<code>table</code>、<code>form</code>、<code>div</code>等是块元素</li>
-<li><code>修饰标签(b,strong,em,i,sup等)</code>、<code>img</code>、<code>a</code>、<code>表单元素(input、select、texearea)</code>是行内元素</li>
-</ul>
-<p>盒子相关属性如下</p>
-<ul>
-<li>width|max-width|min-width: 长度 | 最大长度|最小长度 </li>
-<li>height | max-height | min-height: 高度 | 最大高度 | 最小高度</li>
-<li>padding 内填充</li>
-<li>margin 外填充</li>
-<li>border 边框</li>
-</ul>
-<p><strong>width、height</strong> - 宽高</p>
-<ul>
-<li>IE不支持<code>max-height、min-heiht、max-width、min-width</code></li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*w h minH maxH**/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">200px</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>border</strong> - 边框</p>
-<ul>
-<li>细分为<code>border-width</code>、<code>border-color</code>、<code>border-style</code></li>
-<li>边框可以设置透明<code>transparent</code></li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*bd bdl bdr bdt bdb*/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">border-width</span>:<span class="number">1px</span>; <span class="attribute">border-style</span>:solid;<span class="attribute">border-color</span>:red; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> solid red; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>透明边框transparent</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-color</span>: <span class="selector-tag">transparent</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>padding</strong> - 内填充</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 四个填充</span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span>;</span><br><span class="line">// 上下5<span class="selector-tag">px</span>,左右10<span class="selector-tag">px</span></span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span> 10<span class="selector-tag">px</span>;</span><br><span class="line">// 上5<span class="selector-tag">px</span>  左右10<span class="selector-tag">px</span> 下8<span class="selector-tag">px</span></span><br><span class="line"><span class="selector-tag">padding</span>: 5<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> 8<span class="selector-tag">px</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>margin</strong> - 外填充</p>
-<ul>
-<li>绝对定位四个方向都是0，<code>margin auto</code> 实现居中</li>
-<li><code>margin:auto</code> 水平居中</li>
-<li>上下margin重合，取大的值</li>
-</ul>
-<p><code>margin</code>设置为<code>auto</code>居中</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin: 10 auto;</span><br></pre></td></tr></table></figure>
-
-<p>配合<code>absolute设置绝对居中</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolue</span>;<span class="selector-tag">top</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">right</span><span class="selector-pseudo">:0</span><span class="selector-pseudo">:bottom</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">left</span><span class="selector-pseudo">:0</span>;<span class="selector-tag">margin</span><span class="selector-pseudo">:auto</span>;</span><br><span class="line">// 另外一种方式</span><br><span class="line"><span class="selector-tag">postion</span><span class="selector-pseudo">:absolute</span>;<span class="selector-tag">top</span><span class="selector-pseudo">:50</span>%;<span class="selector-tag">left</span><span class="selector-pseudo">:50</span>%;<span class="selector-tag">tansform</span>: <span class="selector-tag">translate</span>(<span class="selector-tag">-50</span>%,<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure>
-
-<p>上下<code>margin</code>会<code>重叠取较大的</code>，<code>左右不会重叠</code>。</p>
-<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022183420462.png" alt="image-20201022183420462"></p>
-<h2 id="不同的盒子模型"><a href="#不同的盒子模型" class="headerlink" title="不同的盒子模型"></a>不同的盒子模型</h2><p>虽然有<code>标准盒子模型</code>，但是我大IE就是特例独行，也提出了<code>IE盒子模型</code>。</p>
-<p>浏览器如何创建盒子</p>
-<ul>
-<li>声明了 <code>&lt;!doctype html&gt;</code> -&gt; 标准盒子</li>
-<li>没声明 -&gt;  ie= IE盒子  其他浏览器 = 标准盒子</li>
-</ul>
-<p><strong>IE盒子</strong> - 做IE就是要与众不同</p>
-<ul>
-<li>在IE盒子中 width = content + padding</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">width = width + border-left + border-right + margin-left + margin-right</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20201022183913607.png" alt="image-20201022183913607"></p>
-<h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p><strong>display</strong> - 改变盒子类型(改变块or内联)</p>
-<ul>
-<li>inline</li>
-<li>block</li>
-<li>inline-block</li>
-<li>none -  不显示(不支持动画)</li>
-<li>table </li>
-<li>table-cell  - 配合上面可以实现居中</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/11/css/02.css%E6%96%87%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/11/css/02.css%E6%96%87%E6%9C%AC/" class="post-title-link" itemprop="url">字体和文本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2020-12-11 21:34:47" itemprop="dateCreated datePublished" datetime="2020-12-11T21:34:47+08:00">2020-12-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2020-12-13 12:59:17" itemprop="dateModified" datetime="2020-12-13T12:59:17+08:00">2020-12-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Css字体-Css-Text-Module"><a href="#Css字体-Css-Text-Module" class="headerlink" title="Css字体 - Css Text Module"></a>Css字体 - Css Text Module</h2><p>字体可以设置如下属性</p>
-<ul>
-<li><p>font-variant - 小写字母转换成小型大写字母</p>
-</li>
-<li><p>font-weight - 粗细</p>
-</li>
-<li><p>font-style - 是否倾斜</p>
-</li>
-<li><p>font-size - 字体大小</p>
-</li>
-<li><p>font-family - 类型</p>
-</li>
-<li><p>color表示字体颜色</p>
-</li>
-</ul>
-<p><strong>font-variant</strong> - 是否是小型大写字母</p>
-<ul>
-<li>normal 正常</li>
-<li>small-caps 小写字母转换成小型大写字母</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* font-variant - normal | small-caps fv*/</span></span><br><span class="line"><span class="selector-class">.f-var</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:first-of-type</span> &#123;<span class="attribute">font-variant</span>: normal;&#125;</span><br><span class="line"><span class="selector-class">.f-var</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:first-of-type</span> &#123;<span class="attribute">font-variant</span>: small-caps;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>font-style</strong> -字体是否倾斜</p>
-<ul>
-<li>normal - 正常</li>
-<li>italic - 字体有斜体就倾斜，没有就不倾斜</li>
-<li>oblique - 强制倾斜</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* font-style - normal | italic | oblique fs*/</span></span><br><span class="line"><span class="selector-class">.f-sty</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:first-of-type</span> &#123;<span class="attribute">font-style</span>: normal;&#125;</span><br><span class="line"><span class="selector-class">.f-sty</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:nth-of-type(2)</span> &#123;<span class="attribute">font-style</span>: italic;&#125;</span><br><span class="line"><span class="selector-class">.f-sty</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:last-of-type</span> &#123;<span class="attribute">font-style</span>: oblique;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>font-weight</strong> - 设置粗细</p>
-<ul>
-<li>normal=400 - 正常</li>
-<li>blod=700 -粗体</li>
-<li>lighter/bloder/数值 </li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* font-weight normal400| blod700| bloder |lighter | 数值 fw*/</span> </span><br><span class="line"><span class="selector-class">.f-wei</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:nth-of-type(1)</span> &#123;<span class="attribute">font-weight</span>: lighter;&#125;</span><br><span class="line"><span class="selector-class">.f-wei</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:nth-of-type(2)</span> &#123;<span class="attribute">font-weight</span>: normal;&#125;</span><br><span class="line"><span class="selector-class">.f-wei</span> &gt; <span class="selector-tag">span</span><span class="selector-pseudo">:nth-of-type(3)</span> &#123;<span class="attribute">font-weight</span>: bold;&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>font-size</strong> - 字体大小</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* font-size px|em|rem  fsize*/</span></span><br><span class="line"><span class="selector-class">.f-size</span>&#123;<span class="attribute">font-size</span>: <span class="number">12px</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>font-family</strong> - 字体 - 语法 <code>font-family: f1,f2,...,s1...sn</code></p>
-<ul>
-<li>f是字体,s是字体风格。当f都不成立，会应用s风格的字体。</li>
-</ul>
-<p>常见字体风格有，<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/css/css_font-family.asp">详细参看</a></p>
-<ul>
-<li>serif - 衬线体 - New Times Roman</li>
-<li>sans-serif - 不衬线体 - Helvetica、Verdana</li>
-<li>Monospace - 等宽(浓厚的盗版风格字体) - Lucida Console</li>
-<li>Cursive - 手写</li>
-<li>Fantasy - 不归入前面字体的字体</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.f-family</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;New Times Roman&quot;</span>,<span class="string">&quot;Verdana&quot;</span>,<span class="string">&quot;Lucida Console&quot;</span>,<span class="string">&quot;sans-serif&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>font</strong> - 上面内容可以缩写</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font</span>: <span class="selector-tag">font-variant</span> <span class="selector-tag">font-style</span> <span class="selector-tag">font-weight</span> <span class="selector-tag">font-size</span>/<span class="selector-tag">line-height</span> <span class="selector-tag">font-family</span>;</span><br></pre></td></tr></table></figure>
-
-<p>说明</p>
-<ul>
-<li>空格分隔</li>
-<li>前三个顺序随意，后两个(fontSize、fontFamily)位置固定</li>
-</ul>
-<h2 id="颜色-Css-Color-Module"><a href="#颜色-Css-Color-Module" class="headerlink" title="颜色 - Css Color Module"></a>颜色 - Css Color Module</h2><p><strong>color</strong> - 设置颜色，支持<code>16进制</code>和<code>rgba(x,x,x,x)</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* color - 颜色 c*/</span></span><br><span class="line"><span class="selector-class">.clr</span> &#123;<span class="attribute">colo</span>:red;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>WEB安全色(现在没用了): <a target="_blank" rel="noopener" href="https://www.bootcss.com/p/websafecolors/">WEBSAFECOLORS</a></p>
-<h2 id="文本-Text-moudle"><a href="#文本-Text-moudle" class="headerlink" title="文本 - Text moudle"></a>文本 - Text moudle</h2><p>主要包括如下属性</p>
-<ul>
-<li><p>text-transform - 大小写转换</p>
-</li>
-<li><p>text-indent - 缩进</p>
-</li>
-<li><p>text-align - 对齐方式</p>
-</li>
-<li><p>line-height - 行高</p>
-</li>
-<li><p>vertical-align - 改变元素的baseline位置(inline、inline-block、img)</p>
-</li>
-<li><p>letter-spacing - 字母(汉字)之间间隔</p>
-</li>
-<li><p>word-spacing -  单词(空格分隔的文本)间隔</p>
-</li>
-<li><p>white-space - 回车和空格保留方式 以及 是否换行</p>
-</li>
-</ul>
-<p><strong>text-transform</strong> - 大小写转换</p>
-<ul>
-<li>none - 等于不设置</li>
-<li>capitalize - 首字母大写</li>
-<li>lowercase - 小写</li>
-<li>uppercase - 大写</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*text-transform capitalize | uppercase| lowercase | none tt*/</span></span><br><span class="line">.t-transform &gt; span:nth-<span class="keyword">of</span>-<span class="function"><span class="title">type</span>(<span class="params"><span class="number">1</span></span>)</span> &#123;text-transform: uppercase;&#125;</span><br><span class="line">.t-transform &gt; span:nth-<span class="keyword">of</span>-<span class="function"><span class="title">type</span>(<span class="params"><span class="number">2</span></span>)</span> &#123;text-transform: capitalize ;&#125;</span><br><span class="line">.t-transform &gt; span:nth-<span class="keyword">of</span>-<span class="function"><span class="title">type</span>(<span class="params"><span class="number">3</span></span>)</span> &#123;text-transform: lowercase;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>text-indent</strong> - 文字缩进</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* text-indent 缩进 ti o*/</span></span><br><span class="line"><span class="selector-class">.text-hidden</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: -<span class="number">9999</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>text-align</strong> - 文字对齐</p>
-<ul>
-<li>left - 左对齐</li>
-<li>right - 右对齐</li>
-<li>center - 居中</li>
-<li>start - 设置了dir属性或者<code>direction</code>，位于开始方向</li>
-<li>end - 设置了dir或者direction，位于结束方向</li>
-<li>justify - 两端对齐，不处理最后一行、br强制换的行</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.t-align &gt; p:nth-of-type(1) &#123;text-align: left;&#125;</span><br><span class="line">.t-align &gt; p:nth-of-type(2) &#123;text-align: right;&#125;</span><br><span class="line">.t-align &gt; p:nth-of-type(3) &#123;direction: rtl; text-align: start;&#125;</span><br><span class="line">.t-align &gt; p:nth-of-type(4) &#123;direction: rtl; text-align: end;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当文本只有一行，这行是最后一行，不处理。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span>p &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    text-align: justify;</span><br><span class="line">&#125;<span class="tag">&lt;/<span class="name">style</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>轻轻的我周了<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>加个<code>br</code>，变成两行，但是text-align不处理强制打断的行</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">p</span>&gt;轻轻的我周了&lt;<span class="selector-tag">br</span>&gt;&lt;/<span class="selector-tag">p</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以如下解决，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zjjDaily/p/9525350.html">详细参看</a></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">   <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 或者使用text-align-last */</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>line-height</strong> - 设置行高 </p>
-<ul>
-<li>只设置line-height,不设置height，可以把height撑起来</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* lin-height lh*/</span></span><br><span class="line"><span class="selector-class">.l-height</span> &#123;<span class="attribute">line-height</span>: <span class="number">40px</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>vertical-align</strong> - 设置basline对齐方式</p>
-<p>元素baseline位置</p>
-<ul>
-<li>内联元素 - 位于文字a的下端(英文四线格，a下面的那个)</li>
-<li>img - 位于边缘</li>
-<li>inline-block,里面有内联元素 - 最后一行的基线</li>
-<li>inlineBlock，没有内容 - margin底部边缘</li>
-</ul>
-<p>vertical可以设置的值</p>
-<ul>
-<li>sub - 基线下移</li>
-<li>super - 基线上移</li>
-<li>middle - 基线中间</li>
-<li>top - 基线移动到最高元素的顶部</li>
-<li>bottom - 基线移动到最低元素底边</li>
-<li>text-top - 元素和内容顶部对齐</li>
-<li>text-bottom - 和底部内容区域对齐</li>
-</ul>
-<p><strong>word-spacing</strong> - 单词之间距离</p>
-<p><strong>letter-spacing</strong> - 字母之间的距离</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* word-spacing letterspaceing ws ls*/</span></span><br><span class="line">.w-spacing &#123;word-spacing: 50px;&#125;</span><br><span class="line">.l-spacing &#123;letter-spacing: 5px;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>white-space</strong> - 空格合并 回车保留 是否换行</p>
-<ul>
-<li>normal - 空格合并 回车删除 换行</li>
-<li>nowrap - 空格合并 回车删除 不换行</li>
-<li>pre - 空格不合并 回车保留 不换行</li>
-<li>pre-wrap - 空格不合并 回车保留 换行</li>
-<li>pre-line - 空格合并 回车保留 不换行</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* white-space normal| wrap | nowrap wh</span></span><br><span class="line"><span class="comment">        normal: 空格合并回车删除 换行</span></span><br><span class="line"><span class="comment">        nowrap: 不换行</span></span><br><span class="line"><span class="comment">        pre  保留 不换行</span></span><br><span class="line"><span class="comment">        pre-wrap 保留 换行</span></span><br><span class="line"><span class="comment">        pre-line 只保留回车</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.w-space</span> &#123;<span class="attribute">width</span>: <span class="number">200px</span>;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span>&#123;<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;<span class="attribute">margin-bottom</span>: <span class="number">5px</span>;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(1)</span>&#123;<span class="attribute">white-space</span>: normal;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;<span class="attribute">white-space</span>: nowrap;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(3)</span>&#123;<span class="attribute">white-space</span>: pre;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(4)</span>&#123;<span class="attribute">white-space</span>: pre-wrap;&#125;</span><br><span class="line"><span class="selector-class">.w-space</span> &gt; <span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(5)</span>&#123;<span class="attribute">white-space</span>: pre-line;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="文本装饰-Text-decoration"><a href="#文本装饰-Text-decoration" class="headerlink" title="文本装饰- Text decoration"></a>文本装饰- Text decoration</h2><p>如下</p>
-<ul>
-<li>text-decoration-line - 装饰位置</li>
-<li>text-decoration-color - 颜色</li>
-<li>text-decoration-style - 线条样式</li>
-</ul>
-<p><strong>text-decoration-line</strong> - 装饰线位置</p>
-<table>
-<thead>
-<tr>
-<th><strong>none</strong></th>
-<th>没有</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>underline</td>
-<td>底部</td>
-</tr>
-<tr>
-<td>overline</td>
-<td>头部</td>
-</tr>
-<tr>
-<td>line-through</td>
-<td>中间</td>
-</tr>
-</tbody></table>
-<p><strong>text-decoration-color</strong> - 线条颜色</p>
-<ul>
-<li>不给 - 默认黑色</li>
-</ul>
-<p><strong>text-decoration-style</strong> -线条样式</p>
-<table>
-<thead>
-<tr>
-<th>solid</th>
-<th>实线</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>double</td>
-<td>双线</td>
-</tr>
-<tr>
-<td>dotted</td>
-<td>点</td>
-</tr>
-<tr>
-<td>dashed</td>
-<td>点</td>
-</tr>
-<tr>
-<td>wavy</td>
-<td>波浪线</td>
-</tr>
-</tbody></table>
-<p>可以合起来写</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">text-decoration：text-decoration-line || text-decoration-style || text-decoration-color</span><br><span class="line"><span class="selector-tag">text-decoration</span><span class="selector-pseudo">:underline</span> <span class="selector-id">#f00</span> <span class="selector-tag">solid</span> ;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h2><h3 id="Font-Moudle"><a href="#Font-Moudle" class="headerlink" title="Font Moudle"></a>Font Moudle</h3><p>添加了</p>
-<ul>
-<li>font-stretch - 文字横向拉伸(没看出来效果)</li>
-<li>font-size-adjust - 没搞懂(只有firfox支持)</li>
-</ul>
-<p><strong>font-stretch</strong> - 文字横向拉伸</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    normal：正常文字宽度</span></span><br><span class="line"><span class="comment">    ultra-condensed：比正常文字宽度窄4个基数。</span></span><br><span class="line"><span class="comment">    extra-condensed：比正常文字宽度窄3个基数。</span></span><br><span class="line"><span class="comment">    condensed：比正常文字宽度窄2个基数。</span></span><br><span class="line"><span class="comment">    semi-condensed：比正常文字宽度窄1个基数。</span></span><br><span class="line"><span class="comment">    semi-expanded：比正常文字宽度宽1个基数。</span></span><br><span class="line"><span class="comment">    expanded：比正常文字宽度宽2个基数。</span></span><br><span class="line"><span class="comment">    extra-expanded：比正常文字宽度宽3个基数。</span></span><br><span class="line"><span class="comment">    ultra-expanded：比正常文字宽度宽4个基数。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Color-Module3"><a href="#Color-Module3" class="headerlink" title="Color Module3"></a>Color Module3</h3><p>扩充了opacity</p>
-<p><strong>opacity</strong> - 设置透明度</p>
-<ul>
-<li>可以用来设置动画，<code>display:none</code>不支持，一般先到<code>opacity:0</code>，然后再隐藏</li>
-<li>ie要使用filter</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.c-opacity</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.5</span>; <span class="comment">/* for IE9 and other browsers */</span></span><br><span class="line">    div&#123;filter: alpha(opacity=50);&#125; /* for IE8 and earlier */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Text-Moudle3"><a href="#Text-Moudle3" class="headerlink" title="Text Moudle3"></a>Text Moudle3</h3><ul>
-<li>tab-size - 设置tab多少个空格</li>
-<li>word-wrap</li>
-<li>word-break</li>
-<li>text-align-last</li>
-<li>text-justify - 文本对齐方式(高版本firfox支持)</li>
-</ul>
-<p><strong>tab-size</strong> - 设置tab多少个空格</p>
-<ul>
-<li>white-space 设置为pre和pre-wrap有效</li>
-<li>pre元素中</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pre</span>&#123;</span><br><span class="line">    <span class="attribute">-moz-tab-size</span>:<span class="number">4</span>;</span><br><span class="line">    <span class="attribute">-o-tab-size</span>:<span class="number">4</span>;</span><br><span class="line">    <span class="attribute">tab-size</span>:<span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>word-wrap</strong> - 单词换行</p>
-<ul>
-<li>normal: 单词放不下，直接溢出</li>
-<li>break-word: 单词放不下，放到下一行，并且换行。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.break-word</span> <span class="selector-tag">p</span>&#123;<span class="attribute">word-wrap</span>:break-word;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>word-break</strong> - 更全面的换行</p>
-<p>最开始，大家都用word-wrap,我们喜闻乐见的ie觉得word-wrap不行，功能太少了，于是做了word-wrap做了plus版本，叫做word-break。</p>
-<ul>
-<li>normal - 同上</li>
-<li>break-word - 同上</li>
-<li>keep-all - 直接全部一行</li>
-<li>break-all - 单词直接追加，碰到边界直接截断</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.normal</span> <span class="selector-tag">p</span>&#123;<span class="attribute">word-break</span>:normal;&#125;</span><br><span class="line"><span class="selector-class">.break-word</span> <span class="selector-tag">p</span>&#123;<span class="attribute">word-break</span>:break-word;&#125;</span><br><span class="line"><span class="selector-class">.keep-all</span> <span class="selector-tag">p</span>&#123;<span class="attribute">word-break</span>:keep-all;&#125;</span><br><span class="line"><span class="selector-class">.break-all</span> <span class="selector-tag">p</span>&#123;<span class="attribute">word-break</span>:break-all;&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/11/css/01.css%E9%80%89%E6%8B%A9%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/11/css/01.css%E9%80%89%E6%8B%A9%E5%99%A8/" class="post-title-link" itemprop="url">css选择器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2020-12-11 18:48:37" itemprop="dateCreated datePublished" datetime="2020-12-11T18:48:37+08:00">2020-12-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2021-09-13 18:49:27" itemprop="dateModified" datetime="2021-09-13T18:49:27+08:00">2021-09-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="CSS简介"><a href="#CSS简介" class="headerlink" title="CSS简介"></a>CSS简介</h2><p>CSS，层叠样式表，<strong>用来给html页面添加样式</strong>。</p>
-<p>1996年，W3C发布了CSS1。aaaaaa</p>
-<p>1998年，W3C发布了Css2。因为一次发布太ddd多内容，到2011年各个厂商aaa才基本实现支持。</p>
-<p>CSS33把内容分为小模块，每年会更新一些模块(snapshots版本)，比如2007、2010、2015、2017。目前模块还没全部完成(GA版本)。等模块全部完善，Css3就会正式发布了。</p>
-<p>各个模块情况<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Archive/CSS3">css模块状态</a></p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>语法包括两部分</p>
-<ul>
-<li>选择器</li>
-<li>样式</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:red&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://note.youdao.com/yws/public/resource/8dbb10f4c8d7c83a1f78b77bcc8fc8b0/xmlnote/7D1167F0B1DA45F88ACFA3261F04A550/1493" alt="语法规则"></p>
-<h2 id="Css引入"><a href="#Css引入" class="headerlink" title="Css引入"></a>Css引入</h2><p>引入如下</p>
-<ul>
-<li>四种方式 - <code>内联</code>、<code>内部样式表</code>、<code>外部样式表</code>、<code>导入⓷</code></li>
-<li>优先级 - 内联 &gt; 内部 = 外部 = 导入<strong>⓷</strong></li>
-<li>后三个距离越近，优先级越高</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">引入方式 </span></span><br><span class="line"><span class="comment">    - 内联</span></span><br><span class="line"><span class="comment">    - 内部样式表	</span></span><br><span class="line"><span class="comment">    - 外部样式表</span></span><br><span class="line"><span class="comment">    - 导入方式</span></span><br><span class="line"><span class="comment">优先级别</span></span><br><span class="line"><span class="comment">	- 内联 &gt; 内部 = 外部 = 引入</span></span><br><span class="line"><span class="comment">	- 后三个越靠近优先级别越高</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 内联引入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: pink&quot;</span>&gt;</span>不可思议<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 内部引入, css3加入了scoped 可以写在body中(不推荐)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--外部引入 href-路径 rel-文件类型 type-文件语法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;01-style.css&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	导入 </span></span><br><span class="line"><span class="comment">		-style中只能有@import一句</span></span><br><span class="line"><span class="comment">	语法 @import &lt;url&gt; &lt;media_query_list&gt; </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">   <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="css">    或者 </span></span></span><br><span class="line"><span class="comment"><span class="css">    @import url(01import.css)</span></span></span><br><span class="line"><span class="comment"><span class="css">    */</span></span></span><br><span class="line"><span class="css">    <span class="keyword">@import</span> url(<span class="number">01</span>import.css) screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">800px</span>),print;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Css选择器"><a href="#Css选择器" class="headerlink" title="Css选择器"></a>Css选择器</h2><p><strong>基本选择器</strong></p>
-<p><code>通配符选择器 *</code>， 权重 <code>0</code>，用来做初始化(cssReset)。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;color: black;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>标签选择器</code>，权重<code>1</code>。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: black;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>类选择器.</code>，也叫<code>Class选择器</code>，权重<code>10</code>。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.red</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Id选择器#</code>，权重<code>100</code>。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#green</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>关系选择器</strong></p>
-<p><code>通用后代选择器</code>，选中所有的后代。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* E F*/</span></span><br><span class="line"><span class="selector-class">.relate</span> <span class="selector-tag">span</span>&#123;<span class="attribute">color</span>: red;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>直接后代选择器</code>，选择直接后代。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* E &gt; F*/</span></span><br><span class="line"><span class="selector-class">.relate</span> &gt; <span class="selector-tag">span</span> &#123;<span class="attribute">color</span>: orange;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>兄弟选择器，<strong>选择紧邻的兄弟</strong>，**(紧邻&amp;&amp;某类型)同时满足。**</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* E + F*/</span></span><br><span class="line"><span class="selector-class">.relate</span> <span class="selector-class">.sp2</span> + <span class="selector-tag">span</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>⓷</strong>所有兄弟选择器-css3</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* E ~ F*/</span></span><br><span class="line"><span class="selector-class">.relate</span> <span class="selector-class">.bro</span>  ~ <span class="selector-tag">span</span> &#123;<span class="attribute">color</span>: blue;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分组选择器</strong></p>
-<p>多个分组同时实现样式。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* E,F,G*/</span></span><br><span class="line"><span class="selector-class">.group1</span>,<span class="selector-class">.group2</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">    <span class="attribute">color</span>: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>伪类选择器</strong></p>
-<p>首先是</p>
-<ul>
-<li><code>:link-访问前</code>、<code>:visted-访问后</code>、<code>:hover-悬浮</code>、<code>:active-激活(按住鼠标不松手)</code>、</li>
-<li>书写顺序 - link &gt; visted &gt; hover &gt; active</li>
-<li><code>&lt;a&gt;</code>四个都有，其他只有active、active</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fakeP</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">background-color</span>: green;&#125;</span><br><span class="line"><span class="selector-class">.fakeP</span><span class="selector-pseudo">:active</span>&#123;<span class="attribute">background-color</span>: red;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;<span class="attribute">color</span>: black;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">color</span>: orange;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>:focus</code> - input被聚焦</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:focus</span> &#123;<span class="attribute">background-color</span>: green;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Css优先级"><a href="#Css优先级" class="headerlink" title="Css优先级"></a>Css优先级</h2><p>样式生效规则</p>
-<ul>
-<li><code>!important</code>最先生效</li>
-<li>一般来说第二高的是行内1000</li>
-<li>优先级高的生效</li>
-<li>优先级相同，按照导入计算，距离近优先</li>
-</ul>
-<p><strong>优先级别最高的是 !inportant</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: red <span class="meta">!important</span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>权重计算规则是</strong></p>
-<ul>
-<li><p>id=100 class=10 标签=1</p>
-</li>
-<li><p>直接累加</p>
-<p><img src="http://note.youdao.com/yws/public/resource/8dbb10f4c8d7c83a1f78b77bcc8fc8b0/xmlnote/3AFF38C68DF8412BB76098CFD6B60DE2/1724" alt="权重计算"></p>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnblogs-jcy/p/8574177.html">css的优先级 和 权重</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Archive/CSS3">模块和标准化进程</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/11/js/06.%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/11/js/06.%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Js错误处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2020-12-11 13:14:34" itemprop="dateCreated datePublished" datetime="2020-12-11T13:14:34+08:00">2020-12-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2020-12-10 15:55:39" itemprop="dateModified" datetime="2020-12-10T15:55:39+08:00">2020-12-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Js错误处理の笔记</p>
-<h2 id="内置错误"><a href="#内置错误" class="headerlink" title="内置错误"></a>内置错误</h2><h2 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h2><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h2 id="debugger"><a href="#debugger" class="headerlink" title="debugger"></a>debugger</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/10/js/05.Dom%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/10/js/05.Dom%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Dom处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2020-12-10 15:56:03" itemprop="dateCreated datePublished" datetime="2020-12-10T15:56:03+08:00">2020-12-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2020-12-30 22:20:28" itemprop="dateModified" datetime="2020-12-30T22:20:28+08:00">2020-12-30</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Dom处理の笔记</p>
-<h2 id="DOM概述"><a href="#DOM概述" class="headerlink" title="DOM概述"></a>DOM概述</h2><p>在Java中，有需求是显示家族成员信息，这时候，对人进行抽象，提取出他们的特征，然后定义系列Java接口，然后实现。</p>
-<p><img src="http://note.youdao.com/yws/public/resource/47f4d5f41398ffd6a22254994a1dbaa6/xmlnote/2858865F9F264C06890460BE0901BEC9/1714" alt="建模过程"></p>
-<p>同样，<strong>W3C</strong>进行了建模和接口定义过程，浏览器厂商负责实现过程。</p>
-<ul>
-<li>建的模型叫DOM树</li>
-<li>定义的接口叫DOM API</li>
-</ul>
-<p>DOM API接口有</p>
-<ul>
-<li>Node - 节点，用于遍历节点、Dom操作、属性</li>
-<li>ChildNode -  表示子节点，只有<code>&lt;/html&gt;</code>不是，用于Dom操作</li>
-<li>Element、ParentNode - 用于遍历节点、Dom操作、获取Props、innerXXX、查询操作和位置属性</li>
-<li>NodeList - 节点集合</li>
-<li>HtmlCollection - Element集合</li>
-<li>Text表示文本 - 获取属性、文本操作</li>
-<li>NamedNodeMap - attr集合属性</li>
-<li>Attr - 表示属性</li>
-<li>CSSStyleDeclaration - css属性集合</li>
-<li>DOMTokenList - className集合</li>
-<li>DOMStringMap - data集合</li>
-</ul>
-<h2 id="Dom-create"><a href="#Dom-create" class="headerlink" title="Dom create"></a>Dom create</h2><p>Dom提供了如下创建方法</p>
-<ul>
-<li>document.createElement()  -  创建节点</li>
-<li>document.createTextNode()  -  创建文本节点</li>
-<li>document.createComment()  -  创建注释</li>
-<li>document.createDocumentFragment - 创建文档片段</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> comment = <span class="built_in">document</span>.createComment(<span class="string">&quot;这是注释&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> span1 = <span class="built_in">document</span>.createElement(<span class="string">&quot;span&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> span2 = <span class="built_in">document</span>.createElement(<span class="string">&quot;span&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> text1 = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;洛阳亲友如相问&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> text2 = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;一片冰心在玉壶&quot;</span>);</span><br><span class="line">span1.appendChild(text1);</span><br><span class="line">span2.appendChild(text2);</span><br><span class="line"><span class="keyword">var</span> part = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">part.appendChild(comment);</span><br><span class="line">part.appendChild(span1);</span><br><span class="line">part.appendChild(span2);</span><br><span class="line">article.appendChild(part)</span><br></pre></td></tr></table></figure>
-
-<p>插入大量元素时候,使用</p>
-<ul>
-<li>Element.innerHTML</li>
-<li>Element.innerText</li>
-<li>Element.outerHTML</li>
-<li>Element.outerText</li>
-<li>Node.textContent</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">插入大量元素时候使用</span></span><br><span class="line"><span class="comment">Element.innerHTML --- 所有内容 -- &#x27;aaa&lt;!--这是注释--&gt;&lt;span&gt;洛阳亲友如相问&#x27;&lt;/span&gt;&lt;span&gt;一片冰心在玉壶&lt;/span</span></span><br><span class="line"><span class="comment">Element.innerText --- 所有的文本 --  aaa洛阳亲友如相问一片冰心在玉壶</span></span><br><span class="line"><span class="comment">Element.outerText --- 取值和innerHTML一样 --- 设置的时候，会冲掉标签本身</span></span><br><span class="line"><span class="comment">Element.outerHTML --- 显示和innerText没区别 ---  设置时候，冲掉标签</span></span><br><span class="line"><span class="comment">Node.textContent -- 可以获取到&lt;style&gt;和&lt;script&gt;中内容</span></span><br><span class="line"><span class="comment">		  -&gt; innerText获取不到&lt;script&gt;和&lt;style&gt;</span></span><br><span class="line"><span class="comment">https://blog.csdn.net/qq_39207948/article/details/86099905</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="built_in">console</span>.log(article.innerHTML)</span><br><span class="line"><span class="built_in">console</span>.log(article.innerText)</span><br><span class="line"><span class="built_in">console</span>.log(article.outerHTML) </span><br><span class="line"><span class="built_in">console</span>.log(article.outerText)</span><br><span class="line">article.outerHTML = article.innerHTML <span class="comment">// 设置的时候，会冲掉标签本身</span></span><br><span class="line">article.outerText = article.innerHTML   <span class="comment">// 冲掉标签本身</span></span><br><span class="line"><span class="comment">// console.log(document.body.textContent)</span></span><br><span class="line"><span class="comment">// console.log(document.body.innerText)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Dom遍历"><a href="#Dom遍历" class="headerlink" title="Dom遍历"></a>Dom遍历</h2><p>首先，可以使用Node提供的遍历方法，得到NodeList</p>
-<ul>
-<li>firstChild、lastChild、childNodes - 子节点</li>
-<li>parentNode、ownerDocument - 父节点</li>
-<li>previousSibling、nextSibling - 兄弟节点</li>
-<li>hastChildNodes() - 是否有子节点</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">travel</span>(<span class="params">ele,prefix</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prefix + ele.tagName);</span><br><span class="line"></span><br><span class="line">    prefix += <span class="built_in">arguments</span>.callee.SPLITOR;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = ele.childNodes.length,childNode; i&lt; len ;i++) &#123;</span><br><span class="line">        childNode = ele.childNodes[i]</span><br><span class="line">        <span class="keyword">if</span>(childNode.nodeType == Node.ELEMENT_NODE) &#123;</span><br><span class="line">            <span class="built_in">arguments</span>.callee(childNode, prefix)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">travel.SPLITOR = <span class="string">&quot;\t&quot;</span>;</span><br><span class="line"><span class="comment">// travel(document.documentElement,&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>其次，可以使用Element和ParentElement提供的Api,得到的是HtmlCollection</p>
-<ul>
-<li>firstElementChild、lastElementChild、children</li>
-<li>parentNode、ownerDocument</li>
-<li>previousElementSibling、nextElementSibling</li>
-<li>childElementCount</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">travelEle</span>(<span class="params">ele,prefix</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prefix + ele.tagName);</span><br><span class="line"></span><br><span class="line">    prefix += travelEle.SPLITOR;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>,eleChild; i&lt; ele.childElementCount ; i++) &#123;</span><br><span class="line">        <span class="built_in">arguments</span>.callee(ele.children[i],prefix)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">travelEle.SPLITOR = <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line"><span class="comment">// travelEle(document.documentElement, &quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>调用Node.childNodes，得到<code>NodeList</code>，是<code>动态集合</code>、<code>类数组对象</code></p>
-<ul>
-<li>获取每个Node,使用Node.childNodes[i] = Nodelist.prototype.item(i) </li>
-<li>Nodelist.prototype.length - 长度</li>
-<li>Nodelist.prototype.forEach() -遍历</li>
-<li>Nodelist.prototype.keys() 、Nodelist.prototype.values() 、 Nodelist.prototype.entries()</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">travelNodeEach</span>(<span class="params">ele,prefix</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prefix + ele.tagName)</span><br><span class="line"></span><br><span class="line">    prefix += <span class="built_in">arguments</span>.callee.SPLITOR;</span><br><span class="line">    ele.childNodes.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(item.nodeType != Node.ELEMENT_NODE) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">arguments</span>.callee(item,prefix)</span><br><span class="line">    &#125;) </span><br><span class="line">&#125;</span><br><span class="line">travelNodeEach.SPLITOR = <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line"><span class="comment">// travelNodeEach(document.documentElement,&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>调用Children,得到<code>HtmlCollection</code>，<code>类数组</code>、<code>动态集合</code>。</p>
-<ul>
-<li>获取元素 ParentNode.children[i] = ParentNode.children.item(i)</li>
-<li>HTMLCollection.prototype.length</li>
-<li>根据id和name获取元素 HTMLCollection.prototype.namedItem() </li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">travelHtmlCollectionEach</span>(<span class="params">ele,prefix</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prefix + ele.tagName)</span><br><span class="line"></span><br><span class="line">    prefix += <span class="built_in">arguments</span>.callee.SPLITOR;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.forEach.call(ele.children,<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">arguments</span>.callee(item,prefix)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">travelHtmlCollectionEach.SPLITOR = <span class="string">&quot;\t&quot;</span>;</span><br><span class="line"><span class="comment">// travelHtmlCollectionEach(document.documentElement,&quot;&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>其他创建HtmlCollection的方式有</p>
-<ul>
-<li>getElementsByTagName() - 获取内容</li>
-<li>document.all - 获取所有的id元素</li>
-<li>document.scripts</li>
-<li>document.links</li>
-<li>document.images</li>
-<li>document.forms</li>
-<li>tr.cells</li>
-<li>select.options</li>
-</ul>
-<h2 id="Dom-查找"><a href="#Dom-查找" class="headerlink" title="Dom 查找"></a>Dom 查找</h2><p>Dom提供了如下的查找API</p>
-<ul>
-<li>Document.<code>getElementById()</code></li>
-<li>Document.getElementByName()</li>
-<li>Element.getElementByTagName()</li>
-<li>Element.getElementByClassName()</li>
-<li>Element.querySelector()</li>
-<li>Element.querySelectorAll()</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无内容</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="DOM-操作节点"><a href="#DOM-操作节点" class="headerlink" title="DOM 操作节点"></a>DOM 操作节点</h2><p>Dom操作节点的API如下</p>
-<ul>
-<li>Node.appendChild()</li>
-<li>Node.insertBefore(newNode,refNode)</li>
-<li>Node.replaceNode(newNode,oldNode)</li>
-<li>Node.removeNode(node)</li>
-<li>Node.clodeNode(node)</li>
-<li>ChildeNode.before()、ChildeNode.after()、remove()、replaceWith()</li>
-<li>normalize()/splitText()</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 操作节点</span></span><br><span class="line"><span class="comment">* Node.appendChild()</span></span><br><span class="line"><span class="comment">* Node.insertBefore(newNode,refNode)</span></span><br><span class="line"><span class="comment">* Node.replaceChild(newNode,oldNode)</span></span><br><span class="line"><span class="comment">* Node.removeChild(node)</span></span><br><span class="line"><span class="comment">* Node.cloneNode(node)</span></span><br><span class="line"><span class="comment">* Node.normalize() 合并节点</span></span><br><span class="line"><span class="comment">* Text.splitText(index) 分隔index</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> insEle = <span class="built_in">document</span>.querySelector(<span class="string">&quot;#ins&quot;</span>);</span><br><span class="line">insEle.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">&quot; | append-child-test&quot;</span>)); <span class="comment">// appendChild</span></span><br><span class="line">insEle.insertBefore(<span class="built_in">document</span>.createTextNode(<span class="string">&quot; | insert-bofore-test&quot;</span>),insEle.lastChild); <span class="comment">// insertBefore</span></span><br><span class="line">insEle.replaceChild(<span class="built_in">document</span>.createTextNode(<span class="string">&quot; | new-node&quot;</span>),insEle.lastChild); <span class="comment">// replaceChild</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.slice.call(insEle.childNodes).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// item.outerHTML = item.outerHTML &amp;&amp; &quot;&quot;;</span></span><br><span class="line">    <span class="comment">// item.textContent = item.textContent &amp;&amp; &quot;&quot;;</span></span><br><span class="line">    <span class="comment">//item.parentNode.removeChild(item); // 要转换成数组 不能直接操作动态DOM 否者长度会改变</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// console.log(insEle.childNodes.length)</span></span><br><span class="line"><span class="comment">// insEle.normalize();</span></span><br><span class="line"><span class="comment">// console.log(insEle.childNodes.length)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h2><p>Js中属性分为<code>固有属性(prop)</code>和<code>自定义属性(Attr)</code>。</p>
-<ul>
-<li>prop是固有的，有默认值。Attr需要自己指定</li>
-<li>固有属性(prop)指定后，会显示在标签上</li>
-</ul>
-<p>固有属性可以通过Element.xx直接访问,可以直接设置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Property 和 Attribute  https://www.cnblogs.com/rubylouvre/p/4777069.html</span></span><br><span class="line"><span class="comment">	- property 是固有的,是默认值，可以覆盖   Attribute是不存在的</span></span><br><span class="line"><span class="comment">    - prop设置后 显示在标签上</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> aEle = doucment.querySelector(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(aEle.href) <span class="comment">// #</span></span><br><span class="line">aEle.title = <span class="string">&quot;xxx&quot;</span>; <span class="comment">// 直接指定</span></span><br></pre></td></tr></table></figure>
-
-<p>操作属性，可以使用Attibuites，本质上是NamedNodeMap</p>
-<ul>
-<li>attributes[i/name] = attributes.item(i) = attributes.getNamedItem(name) -&gt; Attr 有name(不能修改)和value属性</li>
-<li>length - 长度</li>
-<li>修改 - attributes[i].value = ‘xxx’</li>
-<li>插入 - setNamedItem()</li>
-<li>删除 -  removeNamedItem()</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Attributes</span></span><br><span class="line"><span class="comment">	- attributes[i/name] = attributes.item(i) = attributes.getNamedItem(name)</span></span><br><span class="line"><span class="comment">    - length 长度</span></span><br><span class="line"><span class="comment">    - 修改 attributes[name].value = &quot;xxx&quot;</span></span><br><span class="line"><span class="comment">    - 删除 removeNamedItem()</span></span><br><span class="line"><span class="comment">    - 设置 setNamedItem(Attr)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(aEle.attributes[<span class="string">&quot;href&quot;</span>].name) <span class="comment">// 获取</span></span><br><span class="line"><span class="built_in">console</span>.log(aEle.attributes[<span class="string">&quot;href&quot;</span>].value)</span><br><span class="line">aEle.attributes[<span class="string">&quot;href&quot;</span>].value = <span class="string">&quot;vvvv&quot;</span> <span class="comment">// 修改</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">&quot;ins1&quot;</span>); <span class="comment">// 插入</span></span><br><span class="line">attr.value = <span class="string">&quot;ins1&quot;</span></span><br><span class="line">aEle.attributes.setNamedItem(attr)</span><br><span class="line"></span><br><span class="line">aEle.attributes.removeNamedItem(<span class="string">&quot;ins1&quot;</span>); <span class="comment">// 删除</span></span><br></pre></td></tr></table></figure>
-
-<p>Element上提供了更加简单的Api</p>
-<ul>
-<li>getAttribute - 获取</li>
-<li>setAttribute - 设置 修改</li>
-<li>removeAttribute - 删除</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Element上提供了更加简单的Api</span></span><br><span class="line"><span class="comment">	- getAttribute - 获取</span></span><br><span class="line"><span class="comment">    - setAttribute - 设置 修改</span></span><br><span class="line"><span class="comment">    - removeAttribute - 删除</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(aEle.getAttribute(<span class="string">&quot;href&quot;</span>)); <span class="comment">// 获取</span></span><br><span class="line">aEle.setAttribute(<span class="string">&quot;href&quot;</span>,<span class="string">&quot;setAttibute&quot;</span>); <span class="comment">// 修改 和 设置</span></span><br><span class="line">aEle.setAttribute(<span class="string">&quot;ins2&quot;</span>,<span class="string">&quot;ins2&quot;</span>)</span><br><span class="line">aEle.removeAttribute(<span class="string">&quot;ins2&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>属性(Prop)有很多分类</p>
-<ul>
-<li>布尔属性- 值等于自己</li>
-<li>字符串属性</li>
-<li>data属性</li>
-<li>class属性</li>
-<li>style属性</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">属性分类 - 布尔属性- 值等于自己 -  checked/selected/multiple/readonly/hidden</span></span><br><span class="line"><span class="comment">字符串属性 - id/class/name/value/href/title/src/alt/lang/dir_起始方向/accesskey_快捷键/tabindex_tab顺序/contentEditable/</span></span><br><span class="line"><span class="comment">data-xxx属性 - 本质是DOMStringMap </span></span><br><span class="line"><span class="comment">	- 访问 - dataset[xxx] = dataset.xxx</span></span><br><span class="line"><span class="comment">     - 设置 - dataset[xxx] = xxx</span></span><br><span class="line"><span class="comment">class属性</span></span><br><span class="line"><span class="comment">	- className 类名字符串</span></span><br><span class="line"><span class="comment">	- classList 本质是 DOMTokenList</span></span><br><span class="line"><span class="comment">	- 获取 classList[i] = classList.item(i)</span></span><br><span class="line"><span class="comment">	- 添加 classList.add(&quot;xx&quot;)</span></span><br><span class="line"><span class="comment">	- 修改 replace(&quot;xx&quot;,&quot;xx&quot;)</span></span><br><span class="line"><span class="comment">	- 删除 remove(&quot;a2&quot;)</span></span><br><span class="line"><span class="comment">style属性 - CSSStyleDeclaration </span></span><br><span class="line"><span class="comment">	- 获取 - xx.style.xxx</span></span><br><span class="line"><span class="comment">    - 设置、删除 - xxx.style.xxx = &#x27;&#x27;</span></span><br><span class="line"><span class="comment">    - window.getComputedStyle(styEle,null) - CSSStyleDeclaration </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;checkEle&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">checked</span>=<span class="string">&quot;checked&quot;</span>&gt;</span> newyork</span><br><span class="line"></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;selectEle&quot;</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bj&quot;</span> <span class="attr">selected</span>=<span class="string">&quot;selected&quot;</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;sh&quot;</span>&gt;</span>上海<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;tj&quot;</span>&gt;</span>天津<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;gz&quot;</span>&gt;</span>广州<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	 <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;readonlyEle&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">readonly</span>=<span class="string">&quot;readonly&quot;</span> /&gt;</span> 只读</span><br><span class="line"></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;city&quot;</span> <span class="attr">id</span>=<span class="string">&quot;city&quot;</span> <span class="attr">multiple</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bj&quot;</span> <span class="attr">selected</span>=<span class="string">&quot;selected&quot;</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;sh&quot;</span>&gt;</span>上海<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;tj&quot;</span>&gt;</span>天津<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;gz&quot;</span>&gt;</span>广州<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">dir</span>=<span class="string">&quot;rtl&quot;</span>&gt;</span>Write this text right-to-left!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;Ele&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">accesskey</span>=<span class="string">&quot;a&quot;</span>&gt;</span> 快捷键_accesskey = alt + a</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">contentEditable</span>=<span class="string">&quot;true&quot;</span>&gt;</span>Write this text right-to-left!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;dataEle&quot;</span> <span class="attr">data-author</span>=<span class="string">&quot;a1&quot;</span> <span class="attr">data-sub-author</span>=<span class="string">&quot;a2&quot;</span> &gt;</span>测试dataSet<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span> =<span class="string">&#x27;clsEle&#x27;</span> <span class="attr">class</span>=<span class="string">&quot;p1 p2 p3&quot;</span>&gt;</span>测试class属性<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span> =<span class="string">&#x27;styEle&#x27;</span>&gt;</span>测试style属性<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&quot;--------  属性分类 --------&quot;</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">&quot;[name=checkEle]&quot;</span>).oninput = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.checked); <span class="comment">// true/false</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">&quot;[name=selectEle]&quot;</span>).oninput = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.value); <span class="comment">// true/false</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="built_in">document</span>.querySelector(<span class="string">&quot;[name]&quot;</span>).checked);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="comment">// dataSet测试</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(dataEle.dataset);</span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(dataEle.dataset[<span class="string">&#x27;author&#x27;</span>]); <span class="comment">// 访问</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(dataEle.dataset.author);</span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(dataEle.dataset[<span class="string">&#x27;author&#x27;</span>]);</span></span><br><span class="line"><span class="javascript">dataEle.dataset[<span class="string">&quot;desc&quot;</span>] = <span class="string">&quot;desc&quot;</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="comment">// className 和 class</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(clsEle.className); <span class="comment">// p1 p2 p3</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(clsEle.classList); <span class="comment">// </span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(clsEle.classList[<span class="number">0</span>]); <span class="comment">// 获取</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(clsEle.classList.item(<span class="number">0</span>));  </span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(clsEle.classList.add(<span class="string">&quot;a1&quot;</span>)); <span class="comment">// 添加</span></span></span><br><span class="line"><span class="javascript">clsEle.classList.replace(<span class="string">&quot;a1&quot;</span>,<span class="string">&quot;a2&quot;</span>) <span class="comment">// 修改</span></span></span><br><span class="line"><span class="javascript">clsEle.classList.remove(<span class="string">&quot;a2&quot;</span>) <span class="comment">// 删除</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="comment">// style属性 - CSSStyleDeclaration </span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(styEle.style);  <span class="comment">// 内联style 以0123表示</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(styEle.style.item(<span class="number">0</span>)); <span class="comment">// 获取属性值 - 没卵用</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(styEle.style[<span class="string">&#x27;position&#x27;</span>]); <span class="comment">// 内联可以获取，其他获取是&quot;&quot;</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(<span class="built_in">window</span>.getComputedStyle(styEle,<span class="literal">null</span>)[<span class="string">&#x27;color&#x27;</span>]); <span class="comment">// 最后渲染值</span></span></span><br><span class="line"><span class="javascript">styEle.style.color = <span class="string">&#x27;red&#x27;</span>; <span class="comment">// 设置内联值</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">DOM小小的总结</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">DOM 是模型 =&gt;  DOM接口  ==&gt; 厂商实现</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Node - 表示节点 </span></span><br><span class="line"><span class="comment">	1. 遍历节点 firstChild/lastChild/childNodes/parentNode/ownerDocument/getRootNode/previous/next</span></span><br><span class="line"><span class="comment">    2. Dom操作 appendChild/insertBefore/replaceNode/removeChild/cloneNode/normalize</span></span><br><span class="line"><span class="comment">    3. 常用属性 nodeType/nodeName/textContent/nodeValue-只对text节点和comment生效/</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">ChildNode - 表示子节点,只有&lt;html&gt;没实现</span></span><br><span class="line"><span class="comment">	1. 更简介的dom操作  /after()/before()/replaceWith()/remove()</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">Element/parentNode - 表示元素</span></span><br><span class="line"><span class="comment">	1. 节点创建  innerHTML/innerText/outerHTML/outerText</span></span><br><span class="line"><span class="comment">    2. 节点遍历  firstElementChild/lastElementChild/children/childElementCount/previous/next</span></span><br><span class="line"><span class="comment">    3. 查询操作  getById/ getByName / querySelector</span></span><br><span class="line"><span class="comment">    4. Dom操作	append/prepend</span></span><br><span class="line"><span class="comment">    5. 属性Props: dataset / className/ classList / style/ attributes / getAtttibute / setAtttibute/ removeAttribute </span></span><br><span class="line"><span class="comment">    6. 位置属性(留个坑)： </span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">NodeList: 节点结合</span></span><br><span class="line"><span class="comment"> 	- length</span></span><br><span class="line"><span class="comment">    - NodeList[i] = item(i) / keys() / values() / enties()</span></span><br><span class="line"><span class="comment">    - forEach()</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">HtmlCollection Element的集合</span></span><br><span class="line"><span class="comment">	- length</span></span><br><span class="line"><span class="comment">     - item() = namedItem(id或name) = coll[i]</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">NamedNodeMap - attr属性结合</span></span><br><span class="line"><span class="comment">	- attributes[i] = item(i) = getNamedItem(&#x27;xxx&#x27;)</span></span><br><span class="line"><span class="comment">    - length</span></span><br><span class="line"><span class="comment">    - setNameItem - 添加</span></span><br><span class="line"><span class="comment">    - removeNamedItem - 删除</span></span><br><span class="line"><span class="comment">    - attribute[i].valye = &#x27;xx&#x27; - 修改</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">DOMStringMap - datalist集合</span></span><br><span class="line"><span class="comment">	- 访问 - dataset[xxx] = dataset.xxx</span></span><br><span class="line"><span class="comment">	- 设置 - dataset[xxx] = xxx</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">CSSStyleDeclaration - 内联css</span></span><br><span class="line"><span class="comment">	- 获取 list.color = item(0)</span></span><br><span class="line"><span class="comment">    - 设置 list[xxx] = xxx</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">DOMTokenList - classNme集合</span></span><br><span class="line"><span class="comment">	- 访问 - list[0] = item(0)</span></span><br><span class="line"><span class="comment">    - 删除  remove()</span></span><br><span class="line"><span class="comment">    - 修改  replace()</span></span><br><span class="line"><span class="comment">    - 添加  add()</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">CSSStyleDeclaration  - 计算后的css</span></span><br><span class="line"><span class="comment">	- window.getComputedStyle(styEle,null) 只能获取</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">Text 表示文本</span></span><br><span class="line"><span class="comment">- value/wholeText(相邻Text和自己文本-ro)</span></span><br><span class="line"><span class="comment">- appendData()/insertData()/replaceData()/deleteData()/subStringData()</span></span><br><span class="line"><span class="comment">- splitText() / remove()</span></span><br><span class="line"><span class="comment">					</span></span><br><span class="line"><span class="comment">Attr 表示属性 </span></span><br><span class="line"><span class="comment">	- name/ value</span></span><br><span class="line"><span class="comment">			 </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">document</span></span><br><span class="line"><span class="comment">	- 1. 快捷方式 defaultView/doctype/documentElement/body/head/all/links/scripts/forms/link/images/embeds</span></span><br><span class="line"><span class="comment">    - 2. 静态属性： URL/documentURI/domain/location_Location对象/title/charset/refer_防盗链/lastModified_文档最后</span></span><br><span class="line"><span class="comment">    - 3. 创建和查询</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/10/js/04.%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/10/js/04.%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Js错误处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2020-12-10 15:45:28 / عُدل: 15:55:39" itemprop="dateCreated datePublished" datetime="2020-12-10T15:45:28+08:00">2020-12-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Js错误处理の笔记</p>
-<h2 id="内置错误"><a href="#内置错误" class="headerlink" title="内置错误"></a>内置错误</h2><h2 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h2><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h2 id="debugger"><a href="#debugger" class="headerlink" title="debugger"></a>debugger</h2>
       
     </div>
 

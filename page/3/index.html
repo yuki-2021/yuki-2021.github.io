@@ -115,9 +115,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
       </div>
   </nav>
 </div>
@@ -154,7 +158,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/05/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/mlocate/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/03.sed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +171,779 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/05/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/mlocate/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/03.sed/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-08-06 18:52:01" itemprop="dateCreated datePublished" datetime="2021-08-06T18:52:01+08:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-08-09 18:29:06" itemprop="dateModified" datetime="2021-08-09T18:29:06+08:00">2021-08-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Sed命令"><a href="#Sed命令" class="headerlink" title="Sed命令"></a>Sed命令</h3><p><code>Sed命令</code>用于<code>筛选</code>、<code>替换</code>。</p>
+<blockquote>
+<p><code>sed</code>是按照<code>行进行处理</code>。</p>
+</blockquote>
+<blockquote>
+<p><code>sed</code>来<code>筛选</code>比较麻烦，长处是用来<code>替换</code>。</p>
+</blockquote>
+<p><code>sed</code>的<code>执行原理</code>如下</p>
+<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210809182726742.png" alt="image-20210809182726742"></p>
+<p><code>sed</code>支持如下参数</p>
+<ul>
+<li><code>-r</code> - 扩展正则</li>
+<li><code>-n</code> - 取消默认输出</li>
+<li><code>-e</code> - 识别多个<code>操作指令</code></li>
+<li><code>-i</code> - 插入</li>
+</ul>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><h5 id="单词查询"><a href="#单词查询" class="headerlink" title="单词查询"></a>单词查询</h5><p><code>单词查询</code> -  显示出<code>save</code>行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> // 中间是，要查找的内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -n 表示，不是每行都默认输出。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> p 表示输出</span></span><br><span class="line">sed -n &quot;/save/p&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h5 id="行查询"><a href="#行查询" class="headerlink" title="行查询"></a>行查询</h5><p><code>行查询</code> - 显示行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 显示第三行</span></span><br><span class="line">sed -n &quot;3p&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h5 id="多行查询"><a href="#多行查询" class="headerlink" title="多行查询"></a>多行查询</h5><p>查询<code>rdb</code>到<code>aop</code>之间的行</p>
+<ul>
+<li>如果找不到<code>aop</code>，会<code>一直显示到最后</code></li>
+<li>如果找到了<code>aop</code>，会进行<code>第二轮匹配</code>，然后输出。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> , - 表示 A到 B之间内容</span></span><br><span class="line">sed -n &quot;/rdb/,/aof/p&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>查询<code>rdb</code>和<code>aop</code>行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ; - 来链接多个条件</span></span><br><span class="line">sed -n &quot;/rdb/p;/aof/p&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><h5 id="行上添加-i"><a href="#行上添加-i" class="headerlink" title="行上添加 - i"></a>行上添加 - i</h5><p>在某行上添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> i - 表示之前添加</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> red - 表示添加的内容</span></span><br><span class="line">sed &quot;2ired&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h5 id="行下添加-a"><a href="#行下添加-a" class="headerlink" title="行下添加 - a"></a>行下添加 - a</h5><p>如果需要匹配<code>最后一行</code>，使用<code>$</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> $ - 表示匹配最后一行</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> a - 表示行下添加</span></span><br><span class="line">sed &#x27;$ahello-world&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h5 id="同时添加"><a href="#同时添加" class="headerlink" title="同时添加"></a>同时添加</h5><p><code>-e</code> 表示做<code>多个插入操作</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 做多个插入操作</span></span><br><span class="line"> sed -e &#x27;$i666&#x27; -e &#x27;$a777&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>添加多行，使用<code>\n</code>换行符号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 做多个插入操作</span></span><br><span class="line"> sed &#x27;$i666\n777&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>删除使用<code>d</code>。</p>
+<p>删除第<code>3-6行</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed &#x27;3,6d&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>删除空行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先，判断`^$`是否匹配行，把匹配结果，取反</span></span><br><span class="line">sed -n &#x27;/^$/!p&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><p>替换的语法是</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed &#x27;s###g&#x27; file</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code>表示插入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;1i11111&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>在修改前，先<code>备份文件</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i.bak &#x27;1i11111&#x27; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/02.grep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/02.grep/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-08-06 18:48:22" itemprop="dateCreated datePublished" datetime="2021-08-06T18:48:22+08:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-08-11 14:14:58" itemprop="dateModified" datetime="2021-08-11T14:14:58+08:00">2021-08-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Grep"><a href="#Grep" class="headerlink" title="Grep"></a>Grep</h1><p><code>Grep</code>用于<code>对文件内容进行过滤</code>。</p>
+<ul>
+<li>默认只支持<code>基础正则</code>，要使用<code>扩展正则</code>，使用<code>grep -e</code>或<code>egrep</code></li>
+</ul>
+<p>支持如下参数</p>
+<ul>
+<li><code>-v</code> - 取反</li>
+<li><code>-o</code> - 查看匹配过程</li>
+<li><code>-e</code> - 支持扩展正则</li>
+<li><code>-n</code> - 支持行号</li>
+<li><code>-A</code> - 匹配后的多少行</li>
+<li><code>-B</code> - 匹配前的多少行</li>
+</ul>
+<p>查询查<code>非空行</code>和<code>非注释行</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -v &quot;^$|^#&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看匹配过程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep -v &quot;^$|^#&quot; redis.conf -o</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/01.linux%E7%AC%A6%E5%8F%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/01.linux%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-08-06 09:41:04 / عُدل: 13:11:09" itemprop="dateCreated datePublished" datetime="2021-08-06T09:41:04+08:00">2021-08-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="基础符号"><a href="#基础符号" class="headerlink" title="基础符号"></a>基础符号</h4><h5 id="取出变量"><a href="#取出变量" class="headerlink" title="$ - 取出变量"></a>$ - 取出变量</h5><p>使用<code>$</code>可以<code>取出变量</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 加目录</span></span><br><span class="line"><span class="meta">$</span><span class="bash">HOME</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上次目录</span></span><br><span class="line"><span class="meta">$</span><span class="bash">OLDPWD</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="执行命令"><a href="#执行命令" class="headerlink" title="$ - 执行命令"></a>$ - 执行命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $(head /etc/ssh/sshd_config)</span><br></pre></td></tr></table></figure>
+
+<p>相当于<code>反引号</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `head /etc/ssh/sshd_config`</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h5 id="！-取反"><a href="#！-取反" class="headerlink" title="！- 取反"></a>！- 取反</h5><p><code>!</code>用于取反。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc -newermt &#x27;2019-07-03 23:55 &#x27; ! -newermt &#x27;2019-07-04 02:30&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="管道符号"><a href="#管道符号" class="headerlink" title="| - 管道符号"></a>| - 管道符号</h5><p><code>|</code>表示管道符号，把<code>上个命令的结果</code>重定向到<code>标准输入Stdin</code>。</p>
+<ul>
+<li><code>|</code> 经常和<code>xargs</code>配合使用</li>
+<li><code>xargs</code>用于把<code>多行转换成一行</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head /etc/ssh/sshd_config | xargs</span><br></pre></td></tr></table></figure>
+
+<p><code>xargs</code>支持如下</p>
+<ul>
+<li><code>-n</code> - 一次给标准输入多少行</li>
+<li><code>-i</code> - 放到指定位置</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -maxdepth 1 | xargs -n 2</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code>使用如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~ -name &quot;m*.mp4&quot; | xargs -i cp &#123;&#125;  test2/</span><br></pre></td></tr></table></figure>
+
+<p>最后，<code>cp</code>、<code>mv</code>也可以使用<code>-t</code>。</p>
+<ul>
+<li><code>-t</code> 表示<code>source</code>是在<code>stdin</code>中</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~ -name &quot;m*.mp4&quot; | xargs cp -t test2/</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="单引号和双引号"><a href="#单引号和双引号" class="headerlink" title="单引号和双引号"></a>单引号和双引号</h4><ul>
+<li><code>双引号</code>支持变量，<code>单引号</code>不支持变量</li>
+<li>双引号支持<code>命令</code>，<code>单引号</code>不支持</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 双引号支持变量</span></span><br><span class="line">echo &quot;$LANG&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 双引号支持``</span></span><br><span class="line">echo &quot;`cat /etc/ssh/sshd_config`&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>单双引号都不支持<code>序列</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如下</span></span><br><span class="line">echo &quot;&#123;01..10&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="重定向符号"><a href="#重定向符号" class="headerlink" title="重定向符号"></a>重定向符号</h4><p>如下</p>
+<ul>
+<li><code>&gt;</code>、<code>1&gt;</code> -  输出重定向</li>
+<li><code>&gt;&gt;</code>、<code>1&gt;&gt;</code> - 输出追加</li>
+<li><code>2&gt;&gt;</code> - 错误追加</li>
+<li><code>&amp;&gt;&gt;</code> - 错误和正确追加</li>
+</ul>
+<h4 id="逻辑符号"><a href="#逻辑符号" class="headerlink" title="逻辑符号"></a>逻辑符号</h4><ul>
+<li><code>&amp;&amp;</code> - 前一个执行成功，执行下一个</li>
+<li><code>||</code> - 前一个失败，执行后面的</li>
+<li><code>;</code> -  不论成功，都活执行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 前一个执行成功，执行下一个命令</span></span><br><span class="line">if down &amp;&amp; if up</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="序列符号"><a href="#序列符号" class="headerlink" title="序列符号"></a>序列符号</h4><p><code>序列符号&#123;&#125;</code>用于生成序列。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成序列</span></span><br><span class="line">echo &#123;01..10&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 倒序</span></span><br><span class="line">echo &#123;z..a&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 组合序列</span></span><br><span class="line">echo &#123;z..a&#125;&#123;1..3&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 不连续序列</span></span><br><span class="line">echo &#123;1..10..2&#125;</span><br><span class="line">echo &#123;a..z..3&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 固定序列</span></span><br><span class="line">echo &#123;aa,bb,cc&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>seq</code>命令也可以生成<code>序列</code></p>
+<ul>
+<li><code>-w</code> -  表示显示宽度</li>
+</ul>
+<p>语法如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Usage: seq [OPTION]... LAST</span><br><span class="line">  or:  seq [OPTION]... FIRST LAST</span><br><span class="line">  or:  seq [OPTION]... FIRST INCREMENT LAST</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq -w 1 2 10 </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/01.linux%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E4%B8%89%E5%89%91%E5%AE%A2/01.linux%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2021-08-05 21:30:47" itemprop="dateCreated datePublished" datetime="2021-08-05T21:30:47+08:00">2021-08-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-08-06 16:00:52" itemprop="dateModified" datetime="2021-08-06T16:00:52+08:00">2021-08-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="基础正则"><a href="#基础正则" class="headerlink" title="基础正则"></a>基础正则</h3><h4 id="开始和结束符号"><a href="#开始和结束符号" class="headerlink" title="^$ - 开始和结束符号"></a><code>^$</code> - 开始和结束符号</h4><p>筛选以<code>#</code>开头的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;^#&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>排除<code>空行</code>和<code>注释</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -v &quot;^#&quot; redis.conf | grep -v &quot;^$&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="表示任意字符-0个或者多个字符"><a href="#表示任意字符-0个或者多个字符" class="headerlink" title=". - 表示任意字符/* - 0个或者多个字符"></a><code>.</code> - 表示任意字符/<code>*</code> - 0个或者多个字符</h4><p>筛选<code>有内容</code>的行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -v &quot;^..*&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="转义符号"><a href="#转义符号" class="headerlink" title="\ - 转义符号"></a><code>\</code> - 转义符号</h4><p><code>\</code>用于把<code>正则符号</code>转换成<code>普通符号</code>。</p>
+<ul>
+<li>如果需要使用<code>\</code>,使用<code>\\</code>。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 筛选以.开头的</span></span><br><span class="line">grep -v &quot;^\.*&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>另外，使用<code>\x</code>可以表示<code>特殊符号</code>。</p>
+<ul>
+<li><code>\n</code> -  表示换行符号</li>
+<li><code>\t</code> - 表示制表符</li>
+<li><code>\d</code> - 数字</li>
+<li><code>\w</code> - 数字和字符</li>
+<li><code>\D</code> - 非数字</li>
+<li><code>\W</code> - 非数字和字母</li>
+<li><code>\s</code> -  空白字符，包括空格、制表符、换页符等等（等价于[ \f\n\r\t\v]）</li>
+<li><code>\S</code> - 非空字符</li>
+</ul>
+<p>查找<code>注释</code>，并且上面一行是<code>空行</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -e &quot;^$\n^#&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="把多个字符作为一组"><a href="#把多个字符作为一组" class="headerlink" title="[] - 把多个字符作为一组"></a><code>[]</code> - 把多个字符作为一组</h4><p><code>[]</code>中包含<code>一组字符</code></p>
+<ul>
+<li><code>^</code> - 表示非</li>
+<li><code>-</code> - 表示连续</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 匹配数字和字母</span></span><br><span class="line">grep &quot;[a-zA-Z0-9]&quot; redis.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 匹配特殊符号</span></span><br><span class="line">grep &quot;[^a-zA-Z0-9]&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="扩展正则"><a href="#扩展正则" class="headerlink" title="扩展正则"></a>扩展正则</h3><blockquote>
+<p><code>grep</code>和<code>sed</code>默认不支持<code>扩展正则</code>。</p>
+<p>对于<code>grep</code>，使用<code>egrep</code>或者<code>grep -e</code>。</p>
+<p>对于<code>sed</code>，使用<code>sed -r</code>。</p>
+</blockquote>
+<h4 id="、-、-m，n"><a href="#、-、-m，n" class="headerlink" title="+、 ? 、{m，n}"></a><code>+</code>、 <code>?</code> 、<code>&#123;m，n&#125;</code></h4><ul>
+<li><code>+</code> 表示出现<code>1~n</code>次</li>
+<li><code>?</code> - 表示出现<code>0~1</code>次</li>
+<li><code>&#123;m,n&#125;</code> - 表示出现<code>m~n</code>次</li>
+</ul>
+<p>筛选<code>a开头</code>的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep &quot;a.&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>筛选手机号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep &quot;[0-9]&#123;11&#125;&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="链接两个正则"><a href="#链接两个正则" class="headerlink" title="| -  链接两个正则"></a><code>|</code> -  链接两个正则</h4><p><code>|</code> 用于链接多个<code>正则表达式</code>。</p>
+<p>查询<code>red</code>和<code>green</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep &quot;red|green&quot; redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="分组"><a href="#分组" class="headerlink" title="() - 分组"></a><code>()</code> - 分组</h4><p><code>()</code>用于分组。</p>
+<ul>
+<li>在<code>sed</code>中，可以引用<code>()</code>匹配的<code>某个组</code></li>
+<li>对需要的组，进行引用，使用<code>\x</code>进行引用。</li>
+<li>不需要的组，进行替换。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 交给bash解释并执行</span></span><br><span class="line">echo test&#123;1..2&#125; | xargs -n 1 | sed -r &quot;s#(.*)#useradd \1#g&quot;| bash</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出ip地址</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用 hostname -i</span></span><br><span class="line">ip a show ens33 | grep &quot;inet .*/&quot; | sed -r &quot;s#inet (.*)/(.*)#\1#g&quot; | sed &quot;s#[ ]##g&quot;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/06.%E6%97%B6%E9%97%B4%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/06.%E6%97%B6%E9%97%B4%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-08-05 20:21:44 / عُدل: 20:52:45" itemprop="dateCreated datePublished" datetime="2021-08-05T20:21:44+08:00">2021-08-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p><code>date</code>用于查看<code>时间</code>。</p>
+<ul>
+<li><code>-s</code> - 设置时间</li>
+<li><code>-d</code> - 调整后，显示时间</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<h4 id="调整时间格式"><a href="#调整时间格式" class="headerlink" title="调整时间格式"></a>调整时间格式</h4><ul>
+<li>“+%F-%T” =  “+%y-%m-%d %H:%M:%S”</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date &quot;+%F-%T&quot;</span><br><span class="line">date &quot;+%y-%m-%d %H:%M:%S&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="备份日志"><a href="#备份日志" class="headerlink" title="备份日志"></a>备份日志</h4><p>在<code>备份日志</code>时候，经常需要<code>文件以日期来命名</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 备份日志</span></span><br><span class="line">cp a.txt a.`date &quot;+%F-%T&quot;`.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改时间"><a href="#修改时间" class="headerlink" title="修改时间"></a>修改时间</h4><ul>
+<li><code>-s</code> - 用于<code>修改时间</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改日期</span></span><br><span class="line">date -s &quot;2020-04-17 14:00:00&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="调整时间"><a href="#调整时间" class="headerlink" title="调整时间"></a>调整时间</h4><ul>
+<li><code>-s</code> 调整后，显示时间</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 10天后</span></span><br><span class="line">date &quot;+%F&quot; -d &quot;+10day&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 10 天前</span></span><br><span class="line">date &quot;+%F&quot; -d &quot;-10day&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 10小时前</span></span><br><span class="line">date &quot;+%F-%T&quot; -d &quot;-10hour&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 10 分前</span></span><br><span class="line">date &quot;+%F-%T&quot; -d &quot;-10minute&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 20 s前</span></span><br><span class="line">date &quot;+%F-%T&quot; -d &quot;-10second&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 10月前</span></span><br><span class="line">date &quot;+%F-%T&quot; -d &quot;-10month&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ntpdate-同步时间"><a href="#ntpdate-同步时间" class="headerlink" title="ntpdate - 同步时间"></a>ntpdate - 同步时间</h2><p><code>ntpdate</code>用于<code>同步时间</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 同步时间</span></span><br><span class="line">ntpdate ntp1.aliyun.com</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/05.%E5%8E%8B%E7%BC%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/05.%E5%8E%8B%E7%BC%A9/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-08-05 13:23:01 / عُدل: 13:48:47" itemprop="dateCreated datePublished" datetime="2021-08-05T13:23:01+08:00">2021-08-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p><code>tar</code>命令用于<code>压缩、解压缩</code>。</p>
+<ul>
+<li><code>z</code>  -  压缩算法，<code>z</code>表示<code>gzip</code>，结尾是<code>.tar.gz</code>。</li>
+<li><code>c</code> -   创建压缩</li>
+<li><code>x</code> - 解压</li>
+<li><code>v</code> - 显示过程和信息</li>
+<li><code>f</code> - 文件</li>
+<li><code>t</code> -  预览</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 压缩</span></span><br><span class="line">tar -zcvf ifcfg.tar.gz ifcfg-ens33 </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 预览</span></span><br><span class="line">tar -tf ifcfg.tar.gz </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">tar -zxvf ifcfg.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="排除文件"><a href="#排除文件" class="headerlink" title="排除文件"></a>排除文件</h5><p>使用<code>--exclude </code>和<code>--exclude-from</code>排除<code>文件</code>。</p>
+<p>使用<code>--exclude </code>排除</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 排除</span></span><br><span class="line">tar -zcvf music.tar.gz m&#123;01..10&#125;.mp4 --exclude m01.mp4</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 排除多个</span></span><br><span class="line">tar -zcvf music.tar.gz m&#123;01..10&#125;.mp4 --exclude m01.mp4 --exclude m02.mp4</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>--exclude-from</code>排除</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用--exclude-from排除</span></span><br><span class="line">tar -zcvf music.tar.gz m&#123;01..10&#125;.mp4 --exclude-from music.txt </span><br></pre></td></tr></table></figure>
+
+<p>对应的<code>music.txt</code>文件如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; music.txt &lt;&lt;EOF</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> m01.mp4</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> m02.mp4</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> EOF</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/tree/" class="post-title-link" itemprop="url">بدون عنوان</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-08-05 13:13:36 / عُدل: 13:20:00" itemprop="dateCreated datePublished" datetime="2021-08-05T13:13:36+08:00">2021-08-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>tree</code>用于显示<code>目录结构</code>。</p>
+<ul>
+<li><code>-d</code> - 查看目录</li>
+<li><code>-L</code> - 层级</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目录结构</span></span><br><span class="line">tree /etc</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录</span></span><br><span class="line">tree -d /etc</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 层级</span></span><br><span class="line">tree -L 1 /etc</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/mlocate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6/mlocate/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -234,7 +1010,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/05/linux/CentOS/%E5%9F%BA%E7%A1%80/04.linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/04.linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -247,7 +1023,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/05/linux/CentOS/%E5%9F%BA%E7%A1%80/04.linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/04.linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -379,7 +1155,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/04/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -392,7 +1168,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/04/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/" class="post-title-link" itemprop="url">بدون عنوان</a>
+          <a href="/linux/CentOS/%E5%9F%BA%E7%A1%80/Untitled/" class="post-title-link" itemprop="url">بدون عنوان</a>
         </h2>
 
         <div class="post-meta-container">
@@ -501,822 +1277,6 @@
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210810210336516.png" alt="image-20210810210336516"></p>
 <p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210810210455074.png" alt="image-20210810210455074"></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/27/java-frame/spring/spring-mvc-%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-02-27 11:04:37 / عُدل: 11:07:40" itemprop="dateCreated datePublished" datetime="2021-02-27T11:04:37+08:00">2021-02-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="ViewResolver和View"><a href="#ViewResolver和View" class="headerlink" title="ViewResolver和View"></a>ViewResolver和View</h3><h4 id="🍎-View解析和-ResponseBoady区别"><a href="#🍎-View解析和-ResponseBoady区别" class="headerlink" title="🍎 View解析和@ResponseBoady区别"></a>🍎 <code>View解析</code>和<code>@ResponseBoady</code>区别</h4><p>1️⃣ 设置**<code>响应</code><strong>的</strong><code>Content-type响应头</code><strong>。<code>\**显示指定就下一步\**</code>，没有显示指定，就</strong><code>根据req的Accept自动设定</code>**。</p>
-<p>2️⃣ <strong><code>有@ResponseBody</code></strong>,直接**<code>使用Converter转换</code>**，然后返回。</p>
-<p>3️⃣ 没有，使用**<code>ViewResolver找到合适的View</code><strong>，然后</strong><code>渲染内容</code>**，返回。</p>
-<h4 id="🍟-传递数据给View-Model、-ModelMap-、-Map-、-Pojo"><a href="#🍟-传递数据给View-Model、-ModelMap-、-Map-、-Pojo" class="headerlink" title="🍟 传递数据给View - Model、**ModelMap**、**Map**、**Pojo**"></a>🍟 传递数据给View - <code>Model</code>、<code>**ModelMap**</code>、<code>**Map**</code>、<code>**Pojo**</code></h4><p><code>Model</code>、<code>**ModelMap**</code>、<code>**Map**</code>、<code>**Pojo</code>** 会自动传递给View。</p>
-<ul>
-<li><strong>Map</strong>、<strong>ModelMap</strong>、<strong>Model</strong>作为参数无区别，spring-mvc在运行时创建的都是**<code>BindingAwareModelMap</code>**。</li>
-<li>其他类型不会传递</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 给view传递数据 - Map、Model、ModelMap(本质上是BindingAwareModelMap)、User</span></span><br><span class="line"><span class="comment">*              - 其他类型不会自动传递</span></span><br><span class="line"><span class="comment">*              - 请求参数可以使用 - paramScope访问</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view3&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view3</span><span class="params">(String username, Map&lt;String,Object&gt; map, Model model, ModelMap modelMap, User user)</span> </span>&#123;</span><br><span class="line">    map.put(<span class="string">&quot;map1&quot;</span>,<span class="string">&quot;map传递参数&quot;</span>);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;model1&quot;</span>,<span class="string">&quot;model传递参数&quot;</span>);</span><br><span class="line">    modelMap.addAttribute(<span class="string">&quot;modelMap1&quot;</span>,<span class="string">&quot;modelMap传递参数&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;viewAuto&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
-
-<h4 id="🍒-ModelAndView-指定view和model"><a href="#🍒-ModelAndView-指定view和model" class="headerlink" title="🍒 ModelAndView - 指定view和model"></a>🍒 ModelAndView - 指定view和model</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* ModelAndView -</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view4&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">view4</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">    ModelAndView modelAndView = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">    modelAndView.setViewName(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;username&quot;</span>,username);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
-
-<h4 id="🌶️-请求转发-redirect-hello"><a href="#🌶️-请求转发-redirect-hello" class="headerlink" title="🌶️ 请求转发 - redirect:/hello"></a>🌶️ 请求转发 - <code>redirect:/hello</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 请求转发 - redirect:/hello</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view1&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;forward:/hello&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
-
-<h4 id="🍚-重定向和-RedirectAttributes-redirect-hello"><a href="#🍚-重定向和-RedirectAttributes-redirect-hello" class="headerlink" title="🍚 重定向和**RedirectAttributes**- redirect:/hello"></a>🍚 重定向和**<code>RedirectAttributes</code>**- <code>redirect:/hello</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - redirect:/hello</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/view2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/hello&quot;</span>;</span><br><span class="line">&#125;**</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>RedirectAttributes</code></strong> - <code>**传递重定向参数**</code>。</p>
-<p><code>**@ModelAttribute**</code>用于<code>**接收重定向参数**</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - RedirectAttributes - 传递重定向参数</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@GetMapping(&quot;/view2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view2</span><span class="params">(RedirectAttributes redirectAttrs)</span> </span>&#123;</span><br><span class="line">    redirectAttrs.addFlashAttribute(<span class="string">&quot;redirect&quot;</span>,<span class="string">&quot;FlashMap用于重定向&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/hello&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">* 重定向 - @ModelAttribute - 接收重定向参数</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(<span class="meta">@ModelAttribute(&quot;redirect&quot;)</span> String redirect)</span> </span>&#123;</span><br><span class="line">    System.out.println(redirect);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello-world-aaaaaa1&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="🐳-CookieValue-获取Cookie"><a href="#🐳-CookieValue-获取Cookie" class="headerlink" title="🐳 @CookieValue - 获取Cookie"></a>🐳 @CookieValue - 获取Cookie</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*  @CookieValue - @CookieValue获取cookie</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param6/cookie&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param6Cookie</span><span class="params">(HttpServletResponse  resp)</span> </span>&#123;</span><br><span class="line">    Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">&quot;yuki&quot;</span>, <span class="string">&quot;y&quot;</span>);</span><br><span class="line">    resp.addCookie(cookie);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;已经生成Cookie !!!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">**<span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param6&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param6</span><span class="params">(<span class="meta">@CookieValue(&quot;yuki&quot;)</span> String sessionId)</span> </span>&#123;**</span><br><span class="line">    System.out.println(sessionId);</span><br><span class="line">    <span class="keyword">return</span> sessionId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="🐋-SessionAttribute-获取Session"><a href="#🐋-SessionAttribute-获取Session" class="headerlink" title="🐋 @SessionAttribute - 获取Session"></a>🐋 @SessionAttribute - 获取Session</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*  @**SessionAttribute **- 获取Session</span></span><br><span class="line"><span class="comment">*		- required - 是否必须</span></span><br><span class="line"><span class="comment">*		- name  - 获取name的session赋值给对象</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="meta">@GetMapping(&quot;getSession&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">attr2</span><span class="params">(<span class="meta">@SessionAttribute</span> User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="🌺-DateTimeFormat-按照parttern解析str到Date"><a href="#🌺-DateTimeFormat-按照parttern解析str到Date" class="headerlink" title="🌺@DateTimeFormat - 按照parttern解析str到Date"></a>🌺<code>@DateTimeFormat</code> - 按照<strong>parttern</strong>解析str到Date</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">**<span class="comment">/*</span></span><br><span class="line"><span class="comment">*   @DateTimeFormat - 按照parttern解析str到Date</span></span><br><span class="line"><span class="comment">*		- pattern - 给定格式</span></span><br><span class="line"><span class="comment">*		- 可以用在方法、pojo类中</span></span><br><span class="line"><span class="comment">* */</span>**</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在方法</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;param7&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">param7</span><span class="params">(<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span> Date birth,User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(birth);</span><br><span class="line">    <span class="keyword">return</span> user.toString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 💚- 用在pojo</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Integer id;</span><br><span class="line">  <span class="keyword">private</span> String username;</span><br><span class="line">  <span class="keyword">private</span> String password;</span><br><span class="line">  **<span class="meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span>**</span><br><span class="line">  <span class="keyword">private</span> Date birth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/03.Maven%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-24 21:56:33 / عُدل: 22:10:16" itemprop="dateCreated datePublished" datetime="2021-01-24T21:56:33+08:00">2021-01-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在Maven中，有<code>六类属性</code>。</p>
-<h3 id="内置属性-可以直接使用"><a href="#内置属性-可以直接使用" class="headerlink" title="内置属性 - 可以直接使用"></a>内置属性 - 可以直接使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> project info</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.basedir&#125; --- project根目录</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.packaging&#125; 打包类型，缺省为jar</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.version&#125; --- 项目版本</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">  build</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.build.sourceEncoding&#125; -- 源文键格式</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.build.sourceDirectory&#125; --源码目录</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.build.finalName&#125; -- 包名，缺省为<span class="variable">$&#123;project.artifactId&#125;</span>-<span class="variable">$&#123;project.version&#125;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.build.directory&#125; -构建目录，默认是target</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.build.outputDirectory&#125; -- 输出目录，缺省为target/classes</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;project.xxx&#125; 当前pom文件的任意节点的内容</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="settings-相关内容"><a href="#settings-相关内容" class="headerlink" title="settings-相关内容"></a>settings-相关内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 本地仓库地址</span></span><br><span class="line">setting.localRepository </span><br></pre></td></tr></table></figure>
-
-<h3 id="Java系统顺序ing"><a href="#Java系统顺序ing" class="headerlink" title="Java系统顺序ing"></a>Java系统顺序ing</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;user.home&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;env.JAVA_HOME&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">db.driver</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">db.driver</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/changerzhuo_319/article/details/79768252">maven常用内置变量</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/02.%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/02.%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-24 18:01:15 / عُدل: 22:16:20" itemprop="dateCreated datePublished" datetime="2021-01-24T18:01:15+08:00">2021-01-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="archetype-plugin-生成项目结构"><a href="#archetype-plugin-生成项目结构" class="headerlink" title="archetype-plugin - 生成项目结构"></a>archetype-plugin - 生成项目结构</h3><p><code>generate目标</code>来<code>生成项目结构</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate</span><br></pre></td></tr></table></figure>
-
-<h3 id="jar-plugin-打包"><a href="#jar-plugin-打包" class="headerlink" title="jar-plugin - 打包"></a>jar-plugin - 打包</h3><p><code>jar-plugin</code>的作用包括三个</p>
-<ul>
-<li><code>打包</code> - 打出的是maven包，<code>不包含三方jar和manifest</code>。</li>
-<li><code>生成Manifest</code> - 生成<code>Manifest文件</code></li>
-<li><code>exclude</code>和<code>include</code>文件  - 原则是多数文件默认，少数<code>exclude掉</code></li>
-</ul>
-<h6 id="生成Manifest"><a href="#生成Manifest" class="headerlink" title="生成Manifest"></a>生成Manifest</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定如何创建 MainFest--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">archive</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- classpath相关  --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 是否在Manifest中添加classpath字段--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">addClasspath</span>&gt;</span>true<span class="tag">&lt;/<span class="name">addClasspath</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 指定classpath字段的值(第三方jar存放目录)--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">classpathPrefix</span>&gt;</span>lib/<span class="tag">&lt;/<span class="name">classpathPrefix</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- Main-Class --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>jar.App<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">archive</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="生成可执行Jar-配合dependency-plugin"><a href="#生成可执行Jar-配合dependency-plugin" class="headerlink" title="生成可执行Jar - 配合dependency-plugin"></a>生成可执行Jar - 配合dependency-plugin</h6><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranran-liang123/p/11274189.html">Maven打包插件：依赖包打包到lib 依赖包打包到jar中</a></p>
-<h6 id="详细配置"><a href="#详细配置" class="headerlink" title="详细配置"></a>详细配置</h6><p><a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-dependency-plugin/">官方文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://maven.ityuan.com/article/3435">maven-jar-plugin的使用及详解</a></p>
-<p><a target="_blank" rel="noopener" href="https://copyfuture.com/blogs-details/201909052225454526983ha4r2is3zm3">maven-jar-plugin配置详解</a></p>
-<h3 id="assembly-plugin"><a href="#assembly-plugin" class="headerlink" title="assembly-plugin"></a>assembly-plugin</h3><p><code>assembly-plugin</code>作用如下</p>
-<ul>
-<li>创建包含<code>dependencies</code>、<code>modules</code>、<code>document</code>、<code>其他文件的包</code></li>
-<li>创建各种格式的包</li>
-<li>创建<code>Manifest</code></li>
-<li><code>排除和包含</code>文件</li>
-</ul>
-<h6 id="打自定义格式包"><a href="#打自定义格式包" class="headerlink" title="打自定义格式包"></a>打自定义格式包</h6><p>首先配置<code>assimble.xml</code>描述文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">assembly</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目名称 + id --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>SNAPSHOT<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 打包格式 - 支持zip、tar、tar.gz (or tgz)、tar.bz2 (or tbz2)、jar、dir、war --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可以同时指定多个打包格式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">format</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- false - 是否直接放在根目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includeBaseDirectory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">includeBaseDirectory</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 依赖处理 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 是否包含同一个工程的其他包 --&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">useProjectArtifact</span>&gt;</span>true<span class="tag">&lt;/<span class="name">useProjectArtifact</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 依赖存放位置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>lib<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 文件集合 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fileSets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.outputDirectory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileSets</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后<code>配置assembly-plugin</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  assembly包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 指定自定义内容 project-name/depenencies/project-files--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">descriptors</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">descriptor</span>&gt;</span>assembly.xml<span class="tag">&lt;/<span class="name">descriptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">descriptors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 指定MANIFEST --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">archive</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- add --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">addClasspath</span>&gt;</span>true<span class="tag">&lt;/<span class="name">addClasspath</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">classpathPrefix</span>&gt;</span>lib/<span class="tag">&lt;/<span class="name">classpathPrefix</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Main-Class --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>jar.App<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">archive</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 执行阶段 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goal</span>&gt;</span>single<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="生成可执行Jar文件"><a href="#生成可执行Jar文件" class="headerlink" title="生成可执行Jar文件"></a>生成可执行Jar文件</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">descriptors</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">descriptor</span>&gt;</span>src/assembly/src.xml<span class="tag">&lt;/<span class="name">descriptor</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">descriptors</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011955252/article/details/78927175">maven－assembly-plugin 打包的配置</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chujia1956/article/details/100674232">maven-assembly-plugin配置详解</a></p>
-<h3 id="maven-shade-plugin"><a href="#maven-shade-plugin" class="headerlink" title="maven-shade-plugin"></a>maven-shade-plugin</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangguosb/article/details/80619481">https://blog.csdn.net/yangguosb/article/details/80619481</a></p>
-<h3 id="maven-dependency-plugin"><a href="#maven-dependency-plugin" class="headerlink" title="maven-dependency-plugin"></a>maven-dependency-plugin</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/clarino/p/12089002.html">https://www.cnblogs.com/clarino/p/12089002.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/01.Maven/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/24/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/01.Maven/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-24 16:29:55 / عُدل: 18:00:56" itemprop="dateCreated datePublished" datetime="2021-01-24T16:29:55+08:00">2021-01-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p><code>Maven</code>是一个<code>依赖管理</code>和<code>项目构建工具</code>。功能如下</p>
-<ul>
-<li>可以进行<code>依赖管理</code>和<code>自动更新</code></li>
-<li>约定了<code>统一的项目结构</code></li>
-<li>提供了<code>丰富的插件</code>，可以用来<code>构建</code>、<code>编译</code>、<code>测试</code>、<code>打包</code>、<code>生成报告</code>等。</li>
-</ul>
-<h3 id="Maven生命周期和插件"><a href="#Maven生命周期和插件" class="headerlink" title="Maven生命周期和插件"></a>Maven生命周期和插件</h3><h6 id="生命周期、插件、目标-goal"><a href="#生命周期、插件、目标-goal" class="headerlink" title="生命周期、插件、目标(goal)"></a><code>生命周期</code>、<code>插件</code>、<code>目标(goal)</code></h6><p><code>生命周期</code>、<code>插件</code>、<code>目标(goal)</code>可以如下理解</p>
-<ul>
-<li><code>目标(goal)</code> -  可以执行的<code>一个功能点</code></li>
-<li><code>插件</code> -  多个<code>goal(功能点)</code>的集合</li>
-<li><code>生命周期</code> -  在执行构建命令时候，用来绑定插件</li>
-</ul>
-<h6 id="生命周期阶段"><a href="#生命周期阶段" class="headerlink" title="生命周期阶段"></a>生命周期阶段</h6><p><code>生命周期</code>由如下阶段</p>
-<p><img src="C:\Users\yuki\AppData\Roaming\Typora\typora-user-images\image-20210124174815001.png" alt="image-20210124174815001"></p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>作用</th>
-<th>默认执行的插件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Clean</td>
-<td>清除target目录</td>
-<td>maven-clean-plugin</td>
-</tr>
-<tr>
-<td>Validate</td>
-<td>检查pom.xml是否正确</td>
-<td></td>
-</tr>
-<tr>
-<td>Compile</td>
-<td>build项目</td>
-<td>maven-resource-plugin、maven-compiler-plugin</td>
-</tr>
-<tr>
-<td>Test</td>
-<td>单元测试</td>
-<td>maven-surefire-plugin</td>
-</tr>
-<tr>
-<td>Package</td>
-<td>打包</td>
-<td>maven-jar-plugin、maven-war-plugin</td>
-</tr>
-<tr>
-<td>Verify</td>
-<td>检查集成测试结果</td>
-<td></td>
-</tr>
-<tr>
-<td>Install</td>
-<td>安装到本地仓库</td>
-<td>maven-install-plugin</td>
-</tr>
-<tr>
-<td>Site</td>
-<td>生成项目信息</td>
-<td>maven-project-info-reports-plugin</td>
-</tr>
-<tr>
-<td>Deploy</td>
-<td>发布到远程仓库</td>
-<td>maven-deploy-plugin</td>
-</tr>
-</tbody></table>
-<h6 id="构建项目三种方式"><a href="#构建项目三种方式" class="headerlink" title="构建项目三种方式"></a>构建项目三种方式</h6><ul>
-<li><code>执行生命周期</code> -  实际是执行默认插件</li>
-<li><code>执行具体插件(执行某个目标)</code> </li>
-<li><code>插件的goal绑定到生命周期，然后执行生命周期</code></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/java-frame/spring/spring-base/03.spring-aop-advisor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/java-frame/spring/spring-base/03.spring-aop-advisor/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2021-01-21 14:17:13" itemprop="dateCreated datePublished" datetime="2021-01-21T14:17:13+08:00">2021-01-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2021-03-25 22:22:41" itemprop="dateModified" datetime="2021-03-25T22:22:41+08:00">2021-03-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP - 面向切面编程"></a>AOP - 面向切面编程</h3><h6 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h6><p><code>AOP</code>是<code>面向切面编程</code>。是指把<code>横切逻辑(事务管理、缓存、性能监视、权限控制、日志记录等)</code>单独抽取出来，在<code>编译期</code>或者<code>运行期</code>，把横切逻辑<code>织入</code>到<code>目标类</code>，返回<code>代理类</code>的过程。</p>
-<h6 id="AOP中的概念"><a href="#AOP中的概念" class="headerlink" title="AOP中的概念"></a>AOP中的概念</h6><p>主要有如下</p>
-<ul>
-<li><code>连接点(Join Point)</code> - 可以织入横切逻辑的位置集合</li>
-<li><code>切点(Pointcut)</code> - 实际织入横切逻辑的位置</li>
-<li><code>通知(Advice)</code> - 横切逻辑，有<code>前置通知</code>、<code>后置通知</code>、<code>异常通知</code>、<code>最后通知</code>、<code>环绕通知</code>。</li>
-<li><code>切面(Aspect)</code> - <code>切点</code>和<code>通知的集合</code></li>
-<li><code>织入(Weaving)</code> - 创建代理类的过程</li>
-<li><code>目标类(Target)</code> - 目标类</li>
-<li><code>代理(proxy)</code> - 返回的代理类</li>
-</ul>
-<h3 id="Spring中的AOP"><a href="#Spring中的AOP" class="headerlink" title="Spring中的AOP"></a>Spring中的AOP</h3><p>在Spring中，实现<code>aop</code>有两种方式</p>
-<ul>
-<li><code>spring-aop</code>中自己实现了<code>aop</code>。</li>
-<li><code>spring-aspectj</code>整合了<code>aspectweaver</code>，提供了<code>更加高效和方便的实现</code>。</li>
-</ul>
-<p>这里主要是spring-aop方式实现的aop。</p>
-<p><code>AOP联盟</code>定义了<code>org.aopalliance.aop.Interface.Advice</code>，Spring有如下<code>Advice</code></p>
-<ul>
-<li><code>MethodBeforeAdvice</code> - 前置通知</li>
-<li><code>AfterReturingAdvice</code> - 后置通知</li>
-<li><code>ThrowsAdvice</code> - 错误通知</li>
-<li><code>MethodInterceptor</code> - 环绕通知</li>
-</ul>
-<p><code>切点</code>由<code>MethodMatcher</code>和<code>ClassFilter</code>组成，分别来拦截<code>方法</code>和<code>类</code>。</p>
-<p>主要由如下<code>ClassFilter</code></p>
-<ul>
-<li><p><code>TrueClassFilter</code> - 匹配所有</p>
-</li>
-<li><p><code>RootClassFilter</code> -  匹配指定类</p>
-</li>
-<li><p><code>AnnotationClassFilter</code> - 匹配标注了<code>注解的类</code></p>
-</li>
-<li><p><code>UnionClassFilter</code> - 组合ClassFilter</p>
-</li>
-</ul>
-<p>主要切点如下<code>Pointcut</code></p>
-<ul>
-<li><code>TruePointcut</code> - 匹配所有</li>
-<li><code>NameMatchMethodPointcut</code> - 匹配方法</li>
-<li><code>AnnotationMatchingPointcut</code> - 匹配特定注解的方法</li>
-<li><code>ExpressionPointcut</code> - 正则切点</li>
-<li><code>PerTargetInstantiationModelPointcut</code> - 动态切点</li>
-<li><code>ComposablePointcut</code> - 组合切点</li>
-</ul>
-<p><code>Advisor</code>表示切面。</p>
-<ul>
-<li><code>StaticMethodMatcherPointcutAdvisor</code> - 相当于直接配置<code>Advice</code></li>
-<li><code>NameMatchMethodPointcutAdvusir</code></li>
-<li><code>RegexpMethodPointcutAdvisor</code> - 正则切面</li>
-<li><code>DefaultPointcutAdvisor</code> - 可以组合任意切点和Advice</li>
-</ul>
-<h3 id="ProxyFactoryBean-手动创建代理"><a href="#ProxyFactoryBean-手动创建代理" class="headerlink" title="ProxyFactoryBean - 手动创建代理"></a>ProxyFactoryBean - 手动创建代理</h3><h4 id="配置target"><a href="#配置target" class="headerlink" title="配置target"></a>配置target</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!---target--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userServiceTarget&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo1.UserServiceImpl&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="配置Advisor-一种就ok"><a href="#配置Advisor-一种就ok" class="headerlink" title="配置Advisor - 一种就ok"></a>配置Advisor - 一种就ok</h4><h6 id="直接使用Advisor"><a href="#直接使用Advisor" class="headerlink" title="直接使用Advisor"></a>直接使用Advisor</h6><p>直接用Advisor等于用<code>StaticMethodMatcherPointcuAdvisor</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- static advisor,等同于配置了 StaticMethodMatcherPointAdvisor--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;staticAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo1.PermissCheckBeforeAdvce&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="NameMatchMethodPointcutAdvisor-类方法名切面"><a href="#NameMatchMethodPointcutAdvisor-类方法名切面" class="headerlink" title="NameMatchMethodPointcutAdvisor - 类方法名切面"></a>NameMatchMethodPointcutAdvisor - 类方法名切面</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- namedAdvisor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;namedAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.support.NameMatchMethodPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定方法名称--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mappedName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;get*&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置ClassFilter,不配置是TrueClassFilter--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;classFilter&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.support.RootClassFilter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;clazz&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.yuki.demo1.UserService&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;staticAdvisor&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="ExpressionPointctAdvisor-正则切面"><a href="#ExpressionPointctAdvisor-正则切面" class="headerlink" title="ExpressionPointctAdvisor - 正则切面"></a>ExpressionPointctAdvisor - 正则切面</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- regexpAdvisor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;regexpAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.support.RegexpMethodPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 正则匹配内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;pattern&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com\.yuki\..*Impl.get.*&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;staticAdvisor&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="DefaultPointcutAdvisor-组合任意切点和通知"><a href="#DefaultPointcutAdvisor-组合任意切点和通知" class="headerlink" title="DefaultPointcutAdvisor - 组合任意切点和通知"></a>DefaultPointcutAdvisor - 组合任意切点和通知</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- defaultAdvisor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;defaultAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.support.DefaultPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;pointcut&quot;</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.support.NameMatchMethodPointcut&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mappedName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;get*&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;staticAdvisor&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="使用ProxyFactoryBean获取代理"><a href="#使用ProxyFactoryBean获取代理" class="headerlink" title="使用ProxyFactoryBean获取代理"></a>使用ProxyFactoryBean获取代理</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ProxyFactoryBean - 获取代理类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定Target - target --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;target&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;userServiceTarget&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 横切逻辑 - interceptorNames --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;interceptorNames&quot;</span> <span class="attr">value</span>=<span class="string">&quot;defaultAdvisor&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用jdk动态代理实现 - proxyInterfaces --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;proxyInterfaces&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.yuki.demo1.UserService&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用cglib实现 - 使用cglib --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;proxyTargetClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用cglib实现 - 强制使用cglib --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;optimize&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="BeanNameAutoProxy-DefaultAdvicorAutoProxy-自动代理"><a href="#BeanNameAutoProxy-DefaultAdvicorAutoProxy-自动代理" class="headerlink" title="BeanNameAutoProxy/DefaultAdvicorAutoProxy - 自动代理"></a>BeanNameAutoProxy/DefaultAdvicorAutoProxy - 自动代理</h3><p>主要由如下两个类</p>
-<ul>
-<li><code>BeanNameAutoProxyCreator</code> - 用于和<code>StaticAdvisor</code>配合。</li>
-<li><code>DefaultAdvisorAutoProxyCreator</code> -和<code>其他Advisor</code>配合。</li>
-</ul>
-<h6 id="BeanNameAutoProxyAdvisor"><a href="#BeanNameAutoProxyAdvisor" class="headerlink" title="BeanNameAutoProxyAdvisor"></a>BeanNameAutoProxyAdvisor</h6><p><code>准备target</code></p>
-<p>同上。</p>
-<p><code>准备StaticAdvisor</code></p>
-<p>同上。</p>
-<p><code>配置BeanNameAutoProxyCreator</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- BeanNameAutoProxyCreater - BeanName自动代理 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- beanNames - target --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;beanNames&quot;</span> <span class="attr">value</span>=<span class="string">&quot;userService&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- interceptorNames - 横切逻辑 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;interceptorNames&quot;</span> <span class="attr">value</span>=<span class="string">&quot;staticAdvisor&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 默认使用JDK动态代理方式 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- cglib - 使用cglib--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;proxyTargetClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- cglib - 强制cglib--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;optimize&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="DefaultAdvisorAutoProxyCreator"><a href="#DefaultAdvisorAutoProxyCreator" class="headerlink" title="DefaultAdvisorAutoProxyCreator"></a>DefaultAdvisorAutoProxyCreator</h6><p>用来配合<code>其他的Advisor</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/java-frame/spring/spring-base/03.spring-aop-aspectj/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/java-frame/spring/spring-base/03.spring-aop-aspectj/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-
-      <time title="أُنشأ: 2021-01-21 14:17:13" itemprop="dateCreated datePublished" datetime="2021-01-21T14:17:13+08:00">2021-01-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">عُدل في</span>
-        <time title="عُدل: 2021-01-22 20:40:34" itemprop="dateModified" datetime="2021-01-22T20:40:34+08:00">2021-01-22</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Spring-aspectj"><a href="#Spring-aspectj" class="headerlink" title="Spring-aspectj"></a>Spring-aspectj</h3><p>在<code>Spring 2.0</code>之后，整合了<code>AspectJ</code>来提供<code>AOP服务</code>。</p>
-<h3 id="手动代理-AspectJExpressionAdvisor"><a href="#手动代理-AspectJExpressionAdvisor" class="headerlink" title="手动代理 - AspectJExpressionAdvisor"></a>手动代理 - AspectJExpressionAdvisor</h3><p>对于手动代理，<code>apsirng-aspect</code>如下</p>
-<ul>
-<li>提供了<code>AspectJExpressionPointcutAdvisor</code>，使用<code>AspectJExpressionPointcut</code>进行过滤。</li>
-<li><code>AspectjExpressionPointcut</code>内部用<code>TypePatternClassFilter</code>。</li>
-</ul>
-<h6 id="配置target和advice"><a href="#配置target和advice" class="headerlink" title="配置target和advice"></a>配置target和advice</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 创建Advisor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;aspectAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;expression&quot;</span> <span class="attr">value</span>=<span class="string">&quot;execution(* com.yuki..*.Cat.fish*(..))&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;fishAdvice&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="配置AspectJExpressionPointcutAdvisor"><a href="#配置AspectJExpressionPointcutAdvisor" class="headerlink" title="配置AspectJExpressionPointcutAdvisor"></a>配置AspectJExpressionPointcutAdvisor</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 创建Advisor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;aspectAdvisor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 切点表达式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;expression&quot;</span> <span class="attr">value</span>=<span class="string">&quot;execution(* com.yuki..*.Cat.fish*(..))&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 通知--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;fishAdvice&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="ProxyFactoryBean生成代理"><a href="#ProxyFactoryBean生成代理" class="headerlink" title="ProxyFactoryBean生成代理"></a>ProxyFactoryBean生成代理</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用ProxyFactory创建 代理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cat1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- target --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;target&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;catTarget&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- advisor --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;interceptorNames&quot;</span> <span class="attr">value</span>=<span class="string">&quot;aspectAdvisor&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- cglib实现--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;proxyTargetClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;optimize&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自动代理-xml切面"><a href="#自动代理-xml切面" class="headerlink" title="自动代理 - xml切面"></a>自动代理 - xml切面</h3><p>对于<code>xml切面</code>，自动开启了<code>自动代理</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;fishAspect&quot;</span> <span class="attr">id</span>=<span class="string">&quot;fishAspect1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">&quot;fishPoint&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;execution(* com.yuki.demo2.Dog.fish*(..))&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">&quot;beforeFish&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-returning</span> <span class="attr">method</span>=<span class="string">&quot;afterFish&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> <span class="attr">returning</span>=<span class="string">&quot;obj&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-throwing</span> <span class="attr">method</span>=<span class="string">&quot;afterThrowing1&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> <span class="attr">throwing</span>=<span class="string">&quot;e&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-throwing</span> <span class="attr">method</span>=<span class="string">&quot;afterThrowing2&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> <span class="attr">throwing</span>=<span class="string">&quot;e&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">&quot;afterAll&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">&quot;around&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;fishPoint&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自动代理-Aspect-aop-aspectj-autoproxy"><a href="#自动代理-Aspect-aop-aspectj-autoproxy" class="headerlink" title="自动代理 @Aspect/aop-aspectj-autoproxy"></a>自动代理 @Aspect/aop-aspectj-autoproxy</h3><h6 id="准备切面"><a href="#准备切面" class="headerlink" title="准备切面"></a>准备切面</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FishAspect</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="开启代理"><a href="#开启代理" class="headerlink" title="开启代理"></a>开启代理</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- xml + aspectj自动代理 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自动代理-Aspect-EnableAspectJAutoProxy"><a href="#自动代理-Aspect-EnableAspectJAutoProxy" class="headerlink" title="自动代理 - @Aspect/@EnableAspectJAutoProxy"></a>自动代理 - @Aspect/@EnableAspectJAutoProxy</h3><h6 id="准备切面-1"><a href="#准备切面-1" class="headerlink" title="准备切面"></a>准备切面</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FishAspect</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="开启自动配置"><a href="#开启自动配置" class="headerlink" title="开启自动配置"></a>开启自动配置</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="切面"><a href="#切面" class="headerlink" title="切面"></a>切面</h3><p>由如下内容</p>
-<ul>
-<li><code>@Pointcut</code> - 定义切点</li>
-<li><code>@Before</code> - 前置通知</li>
-<li><code>@Around</code> - 环绕通知</li>
-<li><code>@AfterReturning</code> - 执行完毕</li>
-<li><code>@After</code> - 最后通知</li>
-<li><code>@AfterThrowing</code> - 异常通知</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FishAspect</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* com.yuki.demo2.Dog.fish*(..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fishPoint</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="comment">//@Before------------------------------------------------------</span></span><br><span class="line">    <span class="meta">@Before(&quot;fishPoint()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeFish</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        joinPoint.getTarget(); <span class="comment">// 获取target</span></span><br><span class="line">        joinPoint.getArgs(); <span class="comment">// 获取参数</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//@AfterReturning------------------------------------------------------</span></span><br><span class="line">    <span class="meta">@AfterReturning(value = &quot;fishPoint()&quot;,returning = &quot;obj&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterFish</span><span class="params">(JoinPoint joinPoint,Object obj)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"> 	<span class="comment">//@AfterThrowing------------------------------------------------------</span></span><br><span class="line">    <span class="meta">@AfterThrowing(value = &quot;fishPoint()&quot;,throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrowing1</span><span class="params">(JoinPoint joinPoint,WaterException e)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterThrowing(value = &quot;fishPoint()&quot;,throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrowing2</span><span class="params">(JoinPoint joinPoint,WindException e)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//@After------------------------------------------------------</span></span><br><span class="line">    <span class="meta">@After(value = &quot;fishPoint()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//@Around------------------------------------------------------</span></span><br><span class="line">    <span class="meta">@Around(value = &quot;fishPoint()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">around</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;cat/dog - 抛下了鱼钩 !!!&quot;</span>);</span><br><span class="line">        joinPoint.proceed(joinPoint.getArgs());</span><br><span class="line">        System.out.println(<span class="string">&quot;cat/dog - 抛下了鱼钩 !!!&quot;</span>);</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> WaterException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="切点表达式"><a href="#切点表达式" class="headerlink" title="切点表达式"></a>切点表达式</h3><p>由如下符号</p>
-<table>
-<thead>
-<tr>
-<th>*</th>
-<th>匹配任意名称</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>.*</td>
-<td>匹配多级包</td>
-</tr>
-<tr>
-<td>..</td>
-<td>匹配任意参数</td>
-</tr>
-</tbody></table>
-<p><code>exection</code> - 匹配切点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execution(<span class="keyword">public</span> * com.spring.service.BusinessObject.businessService(java.lang.String,..))</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49930191/article/details/108360340">aspectj表达式详细</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/java-frame/spring/spring-base/02.spring-ioc3-auto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/java-frame/spring/spring-base/02.spring-ioc3-auto/" class="post-title-link" itemprop="url">بدون عنوان</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
-
-      <time title="أُنشأ: 2021-01-21 12:26:09 / عُدل: 14:12:25" itemprop="dateCreated datePublished" datetime="2021-01-21T12:26:09+08:00">2021-01-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Spring</code>提供了<code>组件扫描</code>和<code>自动注入</code>。</p>
-<h3 id="注解方式实现"><a href="#注解方式实现" class="headerlink" title="注解方式实现"></a>注解方式实现</h3><h6 id="compomponent-表示组件"><a href="#compomponent-表示组件" class="headerlink" title="@compomponent - 表示组件"></a>@compomponent - 表示组件</h6><p>还有其他可用注解</p>
-<ul>
-<li><code>@Controller</code> - 控制器</li>
-<li><code>@Service</code> - 业务Bean</li>
-<li><code>@Respository</code> - dao组件</li>
-<li><code>@Component</code> - 组件</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductDaoImpl</span> <span class="keyword">implements</span> <span class="title">ProductDao</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getProductList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;dao - 获取商品列表 !!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="Autowrite-Value-自动注入"><a href="#Autowrite-Value-自动注入" class="headerlink" title="@Autowrite/@Value - 自动注入"></a>@Autowrite/@Value - 自动注入</h6><ul>
-<li>@AutoWrite - 注入依赖Bean</li>
-<li>@Value - 注入普通值</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductServiceImpl</span> <span class="keyword">implements</span> <span class="title">ProductService</span></span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;version-1.0.0&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String version; <span class="comment">// 注入值=================================</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductDao productDao; <span class="comment">// 注入依赖=================================</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-
-<h6 id="componentscan-组件扫描和自动装配"><a href="#componentscan-组件扫描和自动装配" class="headerlink" title="@componentscan - 组件扫描和自动装配"></a>@componentscan - 组件扫描和自动装配</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">// 组件扫描 +  自动装配 ============================</span></span><br><span class="line"><span class="meta">@ComponentScan(basePackages = &quot;com.yuki.demo4&quot;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="xml方式实现"><a href="#xml方式实现" class="headerlink" title="xml方式实现"></a>xml方式实现</h3><h6 id="compomponent-表示组件-1"><a href="#compomponent-表示组件-1" class="headerlink" title="@compomponent - 表示组件"></a>@compomponent - 表示组件</h6><p>和上边一样。</p>
-<h6 id="Autowrite-Value-自动注入-1"><a href="#Autowrite-Value-自动注入-1" class="headerlink" title="@Autowrite/@Value - 自动注入"></a>@Autowrite/@Value - 自动注入</h6><p>和上边一样。</p>
-<h6 id="context-component-scan-组件扫描-和-自动装配"><a href="#context-component-scan-组件扫描-和-自动装配" class="headerlink" title="context-component-scan - 组件扫描 和 自动装配"></a>context-component-scan - 组件扫描 和 自动装配</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开启组件扫描 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.yuki.demo4&quot;</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 排除@RunnWith - 没什么意义，仅仅测试用法--&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 一般是来排除@Controller注解 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">&quot;annotation&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;org.junit.runner.RunWith&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除具体的类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">&quot;assignable&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;com.yuki.demo4.ScanDemo&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- aspectj表达式 - 排除很多类 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">&quot;aspectj&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;com.yuki..*.inner.*&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自动注入详解"><a href="#自动注入详解" class="headerlink" title="自动注入详解"></a>自动注入详解</h3><h6 id="bean的autowrited属性"><a href="#bean的autowrited属性" class="headerlink" title="bean的autowrited属性"></a>bean的autowrited属性</h6><p>在使用<code>autowrited属性</code>的时候，有如下<code>三个情况</code>。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>no/default</td>
-<td>不自动装配。</td>
-</tr>
-<tr>
-<td>byName</td>
-<td>根据名称装配。找到就装配，找不到就是null。</td>
-</tr>
-<tr>
-<td>byType</td>
-<td>按类型装配。找到多个报错，找不到是null。</td>
-</tr>
-</tbody></table>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 测试auto属性--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;productDao1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo4.ProductDaoImpl&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;productDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo4.ProductDaoImpl&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;productService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.yuki.demo4.ProductServiceImpl&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">autowire</span>=<span class="string">&quot;byType&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="autowrite-qualified-详细"><a href="#autowrite-qualified-详细" class="headerlink" title="@autowrite/@qualified - 详细"></a>@autowrite/@qualified - 详细</h6><p>使用<code>@AutoWrite</code>时候，默认<code>按照类型装配</code>。</p>
-<ul>
-<li>默认按<code>type</code>装配。找到<code>多个Bean直接报错</code>。找不到也<code>报错</code>。</li>
-<li>可以配合<code>@Qualified</code>按照名称装配。<code>找到就装配，找不到就报错</code>。</li>
-<li>可以使用<code>require=false</code>属性，在找不到时候，注入null。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Qualifier(&quot;productDaoJdbcImpl&quot;)</span> <span class="comment">//按照名称装配======================</span></span><br><span class="line"><span class="meta">@Autowired(required = false)</span>	<span class="comment">// 找不到装null===================== </span></span><br><span class="line"><span class="keyword">private</span> ProductDao productDao;</span><br></pre></td></tr></table></figure>
-
-<h6 id="Resource-jsr250装配注解"><a href="#Resource-jsr250装配注解" class="headerlink" title="@Resource - jsr250装配注解"></a>@Resource - jsr250装配注解</h6><ul>
-<li>@Resource是Jsr204提供的<code>注入注解</code>，对比<code>@Autowried</code>好处是，可以在<code>非Spring中使用(代码迁移到别的框架，依旧有效)</code>。</li>
-<li>@Resource -  等同于 <code>@Autowried</code>，按照类型注入</li>
-<li>@Resource(“name”) - 等同于<code>@Qualified</code>和<code>@AutoWited</code>，按照名称注入</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按照类型注入</span></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> ProductDao productDao;</span><br></pre></td></tr></table></figure>
       
     </div>
 

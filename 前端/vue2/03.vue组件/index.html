@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="定义组件在Vue中，组件分为全局组件和局部组件。  全局组件 - 使用Vue.component()创建，挂载到Vue上，任何地方都能用。 局部组件 - 使用components: &amp;#123;&amp;#125;引入，只有引入后，才能使用。  全局组件 -  Vue.component123456789101112131415&#x2F;&#x2F; 1. 定义组件Vue.component(&amp;#x27;my-counte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue组件">
+<meta property="og:url" content="http://example.com/%E5%89%8D%E7%AB%AF/vue2/03.vue%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="定义组件在Vue中，组件分为全局组件和局部组件。  全局组件 - 使用Vue.component()创建，挂载到Vue上，任何地方都能用。 局部组件 - 使用components: &amp;#123;&amp;#125;引入，只有引入后，才能使用。  全局组件 -  Vue.component123456789101112131415&#x2F;&#x2F; 1. 定义组件Vue.component(&amp;#x27;my-counte">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-08T06:59:38.480Z">
+<meta property="article:modified_time" content="2021-09-08T07:59:14.810Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/03.vue%E7%BB%84%E4%BB%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/%E5%89%8D%E7%AB%AF/vue2/03.vue%E7%BB%84%E4%BB%B6/","path":"前端/vue2/03.vue组件/","title":"Vue组件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vue组件 | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">定义组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%BB%84%E4%BB%B6-Vue-component"><span class="nav-number">1.0.1.</span> <span class="nav-text">全局组件 -  Vue.component</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6-components"><span class="nav-number">1.0.2.</span> <span class="nav-text">局部组件 - components</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%90%8D%E7%A7%B0"><span class="nav-number">1.0.3.</span> <span class="nav-text">组件名称</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">传值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E5%80%BC-props-%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="nav-number">2.0.1.</span> <span class="nav-text">传值 - props - 单向数据流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81"><span class="nav-number">2.0.2.</span> <span class="nav-text">数据验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9EProps%E5%B1%9E%E6%80%A7"><span class="nav-number">2.0.3.</span> <span class="nav-text">非Props属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">3.</span> <span class="nav-text">通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#emit-%E7%88%B6%E5%AD%90%E9%80%9A%E4%BF%A1"><span class="nav-number">3.0.1.</span> <span class="nav-text">$emit - 父子通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-number">3.0.2.</span> <span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">3.0.3.</span> <span class="nav-text">.sync 修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#native-%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.0.4.</span> <span class="nav-text">.native- 绑定原生事件&#96;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E6%A7%BD-Slot"><span class="nav-number">4.</span> <span class="nav-text">插槽 - Slot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-slot-gt-%E5%92%8Cv-slot"><span class="nav-number">4.0.1.</span> <span class="nav-text">&lt;slot &#x2F;&gt;和v-slot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="nav-number">4.0.2.</span> <span class="nav-text">具名插槽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E6%A7%BD%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">4.0.3.</span> <span class="nav-text">插槽作用域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">动态组件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/03.vue%E7%BB%84%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue组件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+      
+
+      <time title="أُنشأ: 2021-09-08 14:59:38 / عُدل: 15:59:14" itemprop="dateCreated datePublished" datetime="2021-09-08T14:59:38+08:00">2021-09-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="定义组件"><a href="#定义组件" class="headerlink" title="定义组件"></a>定义组件</h2><p>在<code>Vue</code>中，组件分为<code>全局组件</code>和<code>局部组件</code>。</p>
+<ul>
+<li><code>全局组件</code> - 使用<code>Vue.component()</code>创建，挂载到<code>Vue</code>上，任何地方都能用。</li>
+<li><code>局部组件</code> - 使用<code>components: &#123;&#125;</code>引入，只有<code>引入后</code>，才能<code>使用</code>。</li>
+</ul>
+<h4 id="全局组件-Vue-component"><a href="#全局组件-Vue-component" class="headerlink" title="全局组件 -  Vue.component"></a>全局组件 -  Vue.component</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义组件</span></span><br><span class="line">Vue.component(<span class="string">&#x27;my-counter&#x27;</span>,&#123;</span><br><span class="line">	<span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> obj; &#125;,</span><br><span class="line">	<span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">				&lt;span&gt; &#123;&#123; count &#125;&#125; &lt;/span&gt;</span></span><br><span class="line"><span class="string">				&lt;button @click=&quot;countAdd()&quot;&gt;增加 +1&lt;/button&gt;</span></span><br><span class="line"><span class="string">			   &lt;/div&gt;`</span>,</span><br><span class="line">	<span class="attr">methods</span>: &#123;</span><br><span class="line">		<span class="function"><span class="title">countAdd</span>(<span class="params"></span>)</span> &#123; <span class="built_in">this</span>.count += <span class="number">1</span>; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 定义Vm - 可以直接诶使用Vue.component()中定义的组件</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="局部组件-components"><a href="#局部组件-components" class="headerlink" title="局部组件 - components"></a>局部组件 - components</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 局部组件</span></span><br><span class="line"><span class="keyword">var</span> MyCounterScope = &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> obj; &#125;,</span><br><span class="line">    <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">				&lt;button @click=&quot;count_add()&quot;&gt;增加 +1&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;span&gt; &#123;&#123; count &#125;&#125; &lt;/span&gt;</span></span><br><span class="line"><span class="string">			  &lt;/div&gt;`</span>,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">count_add</span>(<span class="params"></span>)</span> &#123;  <span class="built_in">this</span>.count += <span class="number">1</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义Vm</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">components</span>: &#123;</span><br><span class="line">        <span class="comment">// MyConyerScpe自动被注册成`my-counter-scope`</span></span><br><span class="line">        MyCounterScope</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>另外，你也可以<code>手动指定组件名称</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">components</span>: &#123;</span><br><span class="line">        <span class="comment">// MyConyerScpe自动被注册成`my-counter-scope`</span></span><br><span class="line">        <span class="string">&#x27;my-counter&#x27;</span>: MyCounterScope</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="组件名称"><a href="#组件名称" class="headerlink" title="组件名称"></a>组件名称</h4><p>对于<code>全局组件</code>，名称建议<code>中划线（-）</code>分隔。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&#x27;my-counter&#x27;</span>,&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>对于<code>局部组件</code>，建议</p>
+<ul>
+<li>声明时候，<code>大拓峰</code>格式</li>
+<li>引入时候，如果<code>需要重新命名</code>，可以自定义。不明名，会自动转换。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 声明 - 大拓峰</span></span><br><span class="line"><span class="keyword">var</span> MyCounterScope = &#123;...&#125;;</span><br><span class="line"><span class="comment">// 2. 命名 - </span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">components</span>: &#123;<span class="string">&#x27;my-counter&#x27;</span>: MyCounterScope &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 3. 不命名 - 自动转换</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// MyConyerScpe自动被注册成`my-counter-scope`</span></span><br><span class="line">    <span class="attr">components</span>: &#123; MyCounterScope &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="传值"><a href="#传值" class="headerlink" title="传值"></a>传值</h2><h4 id="传值-props-单向数据流"><a href="#传值-props-单向数据流" class="headerlink" title="传值 - props - 单向数据流"></a>传值 - props - 单向数据流</h4><p>使用<code>props</code>在<code>父子组件</code>之间传值。</p>
+<ul>
+<li><code>父组件</code>使用<code>v-bind</code>传值</li>
+<li><code>子组件</code>使用<code>props</code>来接收</li>
+</ul>
+<p>可以传递的类型有</p>
+<ul>
+<li><code>值</code></li>
+<li><code>对象</code></li>
+<li><code>传对象</code>，接收<code>值</code> – 自动解构</li>
+</ul>
+<blockquote>
+<p>最后，也是最重要的，不要<code>直接改变Props的值</code>。</p>
+<p>如果有需要，先让<code>data=props</code>，然后再修改。</p>
+</blockquote>
+<p>传<code>值</code>如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父对象的data</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="attr">blogStr</span>: <span class="string">&#x27;blog-str&#x27;</span>&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2. 传递给子组件</span></span><br><span class="line">&lt;blog-post :blog-str=<span class="string">&quot;blogStr&quot;</span> &gt;&lt;/blog-post&gt;</span><br><span class="line"><span class="comment">// 3. 子组件接收</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">props</span>: [<span class="string">&#x27;blogStr&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>对象</code>传递如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父对象的data</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="attr">blogObj</span>: &#123; <span class="attr">title</span>: <span class="string">&#x27;blog-title1&#x27;</span>, <span class="attr">content</span>: <span class="string">&#x27;blog-content1&#x27;</span>&#125; &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2. 传递给子组件</span></span><br><span class="line">&lt;blog-post :blog-obj=<span class="string">&quot;blogObj&quot;</span> &gt;&lt;/blog-post&gt;</span><br><span class="line"><span class="comment">// 3. 子组件接收</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">props</span>: [<span class="string">&#x27;blogObj&#x27;</span>]</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>使用<code>v-bind</code>传递<code>对象</code>，自动<code>解    构</code>，然后<code>接收</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父对象的data</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="attr">testObj</span>: &#123;<span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>,<span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>, <span class="attr">c</span>: <span class="string">&#x27;c&#x27;</span>&#125; &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2. 传递给子组件 - 使用v-bind传递</span></span><br><span class="line">&lt;blog-test  v-bind=<span class="string">&#x27;testObj&#x27;</span>&gt;&lt;/blog-test&gt;</span><br><span class="line"><span class="comment">// 3. 子组件接收</span></span><br><span class="line">  Vue.component(<span class="string">&quot;blog-test&quot;</span>, &#123;</span><br><span class="line">        <span class="attr">props</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>],</span><br><span class="line">        <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">                        &#123;&#123; a &#125;&#125; -- &#123;&#123; b &#125;&#125; -- &#123;&#123; c &#125;&#125;</span></span><br><span class="line"><span class="string">                        &lt;button @click=&quot;a = &#x27;aa&#x27;&quot;&gt;修改&lt;/button&gt;</span></span><br><span class="line"><span class="string">                   &lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数据验证"><a href="#数据验证" class="headerlink" title="数据验证"></a>数据验证</h4><p><code>数据验证</code>分为两类</p>
+<ul>
+<li><code>类型验证</code></li>
+<li><code>其他验证</code> -  <code>required</code>、<code>default</code>、<code>validator</code></li>
+</ul>
+<p><code>类型验证</code>如下，使用<code>type</code>，支持</p>
+<ul>
+<li><code>Number</code></li>
+<li><code>String</code></li>
+<li><code>Boolean</code></li>
+<li><code>Array</code></li>
+<li><code>Object</code></li>
+<li><code>Function</code></li>
+<li>构造函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">props</span>: &#123;</span><br><span class="line">    	<span class="string">&#x27;blogStr&#x27;</span>: <span class="built_in">String</span>,</span><br><span class="line">         <span class="string">&#x27;blogObj&#x27;</span>: <span class="built_in">Object</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>required验证</code>如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">       <span class="attr">props</span>: &#123;</span><br><span class="line">           <span class="comment">// 不传递，控制台会报错</span></span><br><span class="line">           <span class="string">&#x27;blogRequired&#x27;</span>: &#123;</span><br><span class="line">               <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">               <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>default验证</code>如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">props</span>: &#123;</span><br><span class="line">          <span class="comment">// 不传递，使用默认值</span></span><br><span class="line">          <span class="string">&#x27;blogDefault&#x27;</span>: &#123;</span><br><span class="line">              <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">              <span class="attr">default</span>: <span class="string">&#x27;6666&#x27;</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="comment">// 使用回调</span></span><br><span class="line">           <span class="string">&#x27;blogDefaultFunc&#x27;</span>: &#123;</span><br><span class="line">              <span class="attr">type</span>: <span class="built_in">String</span>,</span><br><span class="line">              <span class="attr">default</span>: <span class="function">() =&gt;</span> &#123;<span class="keyword">return</span> <span class="string">&quot;7777&quot;</span>&#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>validator</code>用来填写<code>自定义验证逻辑</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">        <span class="attr">props</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;blogValidator&#x27;</span>: &#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">                <span class="comment">// 年龄大于18的验证逻辑</span></span><br><span class="line">                <span class="attr">validator</span>: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123; <span class="keyword">return</span> value &gt; <span class="number">18</span>&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="非Props属性"><a href="#非Props属性" class="headerlink" title="非Props属性"></a>非Props属性</h4><p>这类属性</p>
+<ul>
+<li>在<code>父组件</code>传递值，<code>子组件</code>，不用<code>props</code>接收</li>
+<li>默认会添加到<code>子组件最外层的元素上</code>，使用<code>inheritAttrs</code>来控制<code>是否添加</code>。</li>
+<li>使用<code>$attrs</code>来访问</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父组件传值</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="attr">noPropObj</span>: &#123; <span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>,<span class="attr">c</span>: <span class="string">&#x27;c&#x27;</span>&#125; &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind</span>=<span class="string">&quot;noPropObj&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 2. 接收，不用`props`</span></span><br><span class="line"> Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">     <span class="attr">inheritAttrs</span>: <span class="literal">true</span>,</span><br><span class="line">     <span class="attr">template</span>: <span class="string">`&lt;div a=&#x27;666&#x27; d=&#x27;777&#x27;&gt;&lt;span v-bind=&#x27;$attrs&#x27;&gt;blog-post&lt;/span&gt;&lt;/div&gt;`</span>,</span><br><span class="line">     <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="built_in">this</span>.$attrs);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>$attrs</code>在<code>vue</code>和<code>template</code>中，都可以访问。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">     <span class="attr">inheritAttrs</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 在模板中访问，使用$attrs</span></span><br><span class="line">     <span class="attr">template</span>: <span class="string">`&lt;div a=&#x27;666&#x27; d=&#x27;777&#x27;&gt;&lt;span v-bind=&#x27;$attrs&#x27;&gt;blog-post&lt;/span&gt;&lt;/div&gt;`</span>,</span><br><span class="line">     <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">         <span class="comment">// 在vue中访问，使用this.$attrs</span></span><br><span class="line">         <span class="built_in">console</span>.log(<span class="built_in">this</span>.$attrs);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><h4 id="emit-父子通信"><a href="#emit-父子通信" class="headerlink" title="$emit - 父子通信"></a>$emit - 父子通信</h4><p>父子组件通信</p>
+<ul>
+<li>子组件使用<code>$emit</code>，抛出<code>事件</code></li>
+<li>父组件使用<code>@xxx</code>来做监听</li>
+</ul>
+<p>如果有<code>传参</code>，</p>
+<ul>
+<li>一个参数 - 用<code>$event</code></li>
+<li>多个参数 - 用<code>arguments</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1. 子组件，用$emit抛出事件</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">				&lt;h3&gt;</span></span><br><span class="line"><span class="string">					hello World !!!   </span></span><br><span class="line"><span class="string">					&lt;button @click=&quot;handleClick&quot;&gt;放大字体&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;/h3&gt;</span></span><br><span class="line"><span class="string">				&lt;p&gt;文章内容...&lt;/p&gt;  </span></span><br><span class="line"><span class="string">			  &lt;/div&gt;`</span>,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">            <span class="comment">// 抛出事件</span></span><br><span class="line">            <span class="built_in">this</span>.$emit(<span class="string">&#x27;enlarge-font-size&#x27;</span>, <span class="built_in">this</span>.fontSizeNum + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 2. 父组件监听</span></span><br><span class="line"> <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"> 	<span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line"> 	<span class="attr">data</span>: &#123; </span><br><span class="line"> 		<span class="attr">fontSizeNum</span>: <span class="number">16</span></span><br><span class="line"> 	&#125;,</span><br><span class="line"> 	<span class="attr">computed</span>: &#123;</span><br><span class="line">         <span class="function"><span class="title">fontSizeobj</span>(<span class="params"></span>)</span> &#123; <span class="keyword">return</span> &#123; <span class="attr">fontSize</span>: <span class="built_in">this</span>.fontSizeNum + <span class="string">&#x27;px&#x27;</span> &#125; &#125;</span><br><span class="line">	&#125;,</span><br><span class="line"> 	<span class="attr">methods</span>: &#123;</span><br><span class="line"> 		<span class="function"><span class="title">handleEnlarge</span>(<span class="params">event</span>)</span> &#123; <span class="built_in">this</span>.fontSizeNum = event;&#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blog-post</span> @<span class="attr">enlarge-font-size</span>=<span class="string">&#x27;handleEnlarge($event)&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>对于<code>一个参数</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 用$event</span></span><br><span class="line">&lt;blog-post @enlarge-font-size=<span class="string">&#x27;handleEnlarge($event)&#x27;</span>&gt;&lt;/blog-post&gt;</span><br><span class="line"><span class="comment">// 2. 方法如下</span></span><br><span class="line">methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">handleEnlarge</span>(<span class="params">event</span>)</span> &#123; <span class="built_in">this</span>.fontSizeNum = event;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于<code>多个参数</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 用$event</span></span><br><span class="line">&lt;blog-post @enlarge-font-size=<span class="string">&#x27;handleEnlarge(arguments)&#x27;</span>&gt;&lt;/blog-post&gt;</span><br><span class="line"><span class="comment">// 2. 方法如下</span></span><br><span class="line">methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">handleEnlarge</span>(<span class="params">agrs</span>)</span> &#123; <span class="built_in">this</span>.fontSizeNum = args[<span class="number">0</span>];&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><p><code>v-model</code>不仅可以<code>绑定input</code>，还可以用来修饰<code>组件</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-model</span>=<span class="string">&#x27;fontSizeNum&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样写法等同于.</p>
+<ul>
+<li>优点在于，不需要再写<code>父组件的监听方法</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:value</span>=<span class="string">&#x27;fontSizeNum&#x27;</span> @<span class="attr">input</span>=<span class="string">&#x27;fontSizeNum = $event&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果，你觉得<code>事件名称</code>和<code>prop属性名称</code>不合适，使用<code>model</code>来定制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">model</span>:&#123;</span><br><span class="line">        <span class="attr">prop</span>: <span class="string">&#x27;fontSizeNum&#x27;</span>,</span><br><span class="line">        <span class="attr">event</span>: <span class="string">&#x27;enlarge-font-size&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">props</span>: [<span class="string">&#x27;fontSizeNum&#x27;</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="sync-修饰符"><a href="#sync-修饰符" class="headerlink" title=".sync 修饰符"></a>.sync 修饰符</h4><p><code>.sync</code>同于<code>v-model</code>，但是<code>v-model</code>不能写<code>多个</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父组件使用`.sync`</span></span><br><span class="line">&lt;blog-post v-bind:font-size-num.sync=<span class="string">&#x27;fontSizeNum&#x27;</span> v-bind:font-color.sync=<span class="string">&#x27;fontColor&#x27;</span>&gt;&lt;/blog-post&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 子组件使用</span></span><br><span class="line"> Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">        <span class="comment">// 使用`props` 来接收内容</span></span><br><span class="line">        <span class="attr">props</span>: [<span class="string">&#x27;fontSizeNum&#x27;</span>, <span class="string">&#x27;fontColor&#x27;</span>],</span><br><span class="line">        <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">                        &lt;h3&gt;</span></span><br><span class="line"><span class="string">                            hello World !!!   </span></span><br><span class="line"><span class="string">                            &lt;button @click=&quot;changeFontSizeNum&quot;&gt;放大字体 -- &#123;&#123; fontSizeNum&#125;&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">                            &lt;button @click=&quot;changeFontColor&quot;&gt;改变颜色 -- &#123;&#123; fontColor &#125;&#125;&lt;/button&gt;</span></span><br><span class="line"><span class="string">                        &lt;/h3&gt;</span></span><br><span class="line"><span class="string">                        &lt;p&gt; 文章内容....&lt;/p&gt;  </span></span><br><span class="line"><span class="string">                   &lt;/div&gt;`</span>,</span><br><span class="line">        <span class="attr">methods</span>: &#123;</span><br><span class="line">            <span class="function"><span class="title">changeFontSizeNum</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="comment">// 更改内容，使用update:fontSizeNum</span></span><br><span class="line">                <span class="built_in">this</span>.$emit(<span class="string">&#x27;update:fontSizeNum&#x27;</span>, <span class="built_in">this</span>.fontSizeNum + <span class="number">1</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="title">changeFontColor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                <span class="built_in">this</span>.$emit(<span class="string">&#x27;update:fontColor&#x27;</span>, <span class="string">&#x27;green&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="native-绑定原生事件"><a href="#native-绑定原生事件" class="headerlink" title=".native- 绑定原生事件`"></a>.native<code>- 绑定</code>原生事件`</h4><p>使用<code>.native修饰符</code>，子组件<code>触发原生事件</code>，<code>父组件</code>能监听到。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 父组件使用.native修饰符</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="function"><span class="title">nativeClicK</span>(<span class="params"></span>)</span> &#123; <span class="built_in">console</span>.log(<span class="string">&#x27;native clicK&#x27;</span>);&#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 使用.navtive修饰符</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blog-post</span> @<span class="attr">click.native</span>=<span class="string">&#x27;nativeClicK&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="插槽-Slot"><a href="#插槽-Slot" class="headerlink" title="插槽 - Slot"></a>插槽 - Slot</h2><h4 id="lt-slot-gt-和v-slot"><a href="#lt-slot-gt-和v-slot" class="headerlink" title="&lt;slot /&gt;和v-slot"></a><code>&lt;slot /&gt;</code>和<code>v-slot</code></h4><p>插槽用于<code>扩展组件</code>。</p>
+<ul>
+<li>在<code>子组件</code>使用<code>&lt;v-slot name=&#39;xxx&#39;/&gt;</code>定义<code>插槽</code>。不写<code>name</code>，默认是<code>default</code>。</li>
+<li>使用<code>v-slot:xxx</code>传入<code>slot内容</code>，或者使用<code>#xxx</code>。</li>
+<li>对于<code>&lt;slot /&gt;</code>，不传递，默认展示<code>&lt;slot&gt;&lt;/slot&gt;</code>中的内容。</li>
+</ul>
+<p>用<code>&lt;slot /&gt;</code>定义插槽。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义slot </span></span><br><span class="line"><span class="comment">// 等同于 &lt;slot name=&#x27;default&#x27;&gt;&lt;/slot&gt;</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">        			&lt;slot&gt; ttt &lt;/slot&gt;</span></span><br><span class="line"><span class="string">                 	  &lt;p&gt; content ... &lt;/p&gt;</span></span><br><span class="line"><span class="string">			&lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2. 传递内容</span></span><br><span class="line">&lt;blog-post&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">template</span> #<span class="attr">default</span>&gt;</span> Hello World !!!<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也可以如下传递</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span> Hello World !!!<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;/blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h4><p>就是<code>有名称</code>的<code>插槽</code>。</p>
+<ul>
+<li>定义时，使用<code>&lt;slot name=&#39;xxx&#39;/&gt;</code>指定名称</li>
+<li>传递内容，使用<code>v-slot:xxx</code>或者<code>#xxx</code>传递内容</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 用 &lt;slot name=&#x27;xx&#x27; /&gt;定义插槽</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">				&lt;slot name=&#x27;title&#x27;&gt; title... &lt;/slot&gt;</span></span><br><span class="line"><span class="string">				&lt;slot name=&#x27;content&#x27;&gt; content...&lt;/slot&gt;</span></span><br><span class="line"><span class="string">			 &lt;/div&gt;`</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 传递内容 - 用#xxx</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blog-post</span>&gt;</span></span></span><br><span class="line"><span class="xml">    // 简写</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">title</span>&gt;</span> Hello World !!!<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">    // 全写</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:content</span>&gt;</span> content ... <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="插槽作用域"><a href="#插槽作用域" class="headerlink" title="插槽作用域"></a>插槽作用域</h4><p>默认情况，插槽只能访问<code>定义位置</code>的<code>组件</code>的<code>数据</code>，无法使用<code>子组件</code>的<code>数据</code>。比如<code>App</code>组件如下</p>
+<ul>
+<li>也就是说，<code>slot</code>只能访问<code>App的Data</code>，而不能访问<code>blog-post的Data</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">blog-post</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">template</span> &gt;</span> &#123;&#123; slotProps&#125;&#125; <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决办法如下</p>
+<ul>
+<li>在<code>子组件</code>，使用<code>&lt;slot v-bind:xxx=&#39;xxx&#39;&gt;</code>或者<code>&lt;slot v-bind=&#39;xxx&#39;&gt;</code>传递</li>
+<li>在<code>父组件</code>，使用<code>v-slot:xxx=&#39;xxx&#39;</code>来接收。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 用&lt;slot v-bind:xxx=&#x27;&#x27;/&gt; 传递</span></span><br><span class="line">Vue.component(<span class="string">&quot;blog-post&quot;</span>, &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            	<span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">                <span class="attr">obj</span>: &#123; <span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>, : <span class="string">&#x27;c&#x27;</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">template</span>: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">				&lt;slot name=&#x27;default&#x27; :a=&#x27;a&#x27; v-bind=&#x27;obj&#x27;&gt;    </span></span><br><span class="line"><span class="string">				&lt;/slot&gt;</span></span><br><span class="line"><span class="string">			  &lt;div&gt;`</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 2. 用`v-slot:xxx=xxx`来接收</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blog-post</span> &gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">default</span>=<span class="string">&#x27;slotProps&#x27;</span>&gt;</span> </span></span><br><span class="line"><span class="xml">    	&#123;&#123; slotProps&#125;&#125;</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><p>动态组件，用<code>&lt;component v-bind:is=&#39;xxx&#39;&gt;</code>来标识。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// template</span></span><br><span class="line">&lt;component v-bind:is=<span class="string">&quot;compType&quot;</span>&gt;&lt;/component&gt;</span><br><span class="line"><span class="comment">// data如下</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    data &#123; <span class="attr">compType</span>: <span class="string">&#x27;my-component1&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在切换时候，需要保存<code>组件的状态</code>，使用<code>&lt;keep-alive&gt;&lt;/keep-alive /&gt;</code>。它的原理是</p>
+<ul>
+<li>在切换时候，保存<code>组件的状态</code></li>
+<li>切回来时，恢复状态</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component</span> <span class="attr">v-bind:is</span>=<span class="string">&quot;compType&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/02a.v-model/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/02a.v-on/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

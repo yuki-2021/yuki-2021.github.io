@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="变量和常量任何编程语言都有变量和常量概念。 命名规则 字母(a-z)、数字(0-9)、下划线(_)、美元符号($)  不能以数字(0-9)开头   常量 - final 常量必须赋值一次，不用立即赋值 最好声明时候直接赋值 有局部常量、属性常量、静态常量  123456789101112Class TestFinal &amp;#123;    main() &amp;#123;        final int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:url" content="http://example.com/J2se/02.Java%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="变量和常量任何编程语言都有变量和常量概念。 命名规则 字母(a-z)、数字(0-9)、下划线(_)、美元符号($)  不能以数字(0-9)开头   常量 - final 常量必须赋值一次，不用立即赋值 最好声明时候直接赋值 有局部常量、属性常量、静态常量  123456789101112Class TestFinal &amp;#123;    main() &amp;#123;        final int">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-12-24T11:33:41.635Z">
+<meta property="article:modified_time" content="2021-01-02T14:28:27.154Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/J2se/02.Java%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/J2se/02.Java%E5%9F%BA%E7%A1%80/","path":"J2se/02.Java基础/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">变量和常量</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">命名规则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F-final"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">常量 - final</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">基本数据类型分类</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/J2se/02.Java%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2020-12-24 19:33:41" itemprop="dateCreated datePublished" datetime="2020-12-24T19:33:41+08:00">2020-12-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-01-02 22:28:27" itemprop="dateModified" datetime="2021-01-02T22:28:27+08:00">2021-01-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h3><p>任何编程语言都有<strong>变量</strong>和<strong>常量</strong>概念。</p>
+<h6 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a><strong>命名规则</strong></h6><ul>
+<li><p>字母(a-z)、数字(0-9)、下划线(_)、美元符号($)</p>
+</li>
+<li><p>不能以数字(0-9)开头</p>
+</li>
+</ul>
+<h6 id="常量-final"><a href="#常量-final" class="headerlink" title="常量 - final"></a><strong>常量 - final</strong></h6><ul>
+<li>常量<code>必须赋值一次，不用立即赋值</code></li>
+<li>最好声明时候直接赋值</li>
+<li>有局部常量、属性常量、静态常量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class TestFinal &#123;</span><br><span class="line">    main() &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> fin1; <span class="comment">// 局部常量</span></span><br><span class="line">        fin1 = <span class="number">1</span>; <span class="comment">// 可以不用立即赋值</span></span><br><span class="line">	&#125;</span><br><span class="line">   	<span class="comment">// 属性常量</span></span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">int</span> fin1 = <span class="number">12</span>; <span class="comment">// 好的方式，声明时候赋值</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> fin_s; <span class="comment">// 静态常量</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        fin_s = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型分为<code>基本数据类型</code>和<code>对象类型</code>。</p>
+<p><code>对象类型</code>是<code>引用类型</code>，由<code>基本数据类型</code>组成。</p>
+<h6 id="基本数据类型分类"><a href="#基本数据类型分类" class="headerlink" title="基本数据类型分类"></a><strong>基本数据类型分类</strong></h6><ul>
+<li>整数类型 - byte(1) short(2) int(4) long(8)</li>
+<li>小数类型 - float(1.4E-45<del>3.4E10+38) double(4.9E-324</del>1.7E+308)</li>
+<li>字符类型 - </li>
+<li>布尔类型 - true/false</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th>idea快捷键</th>
+<th>eclipse快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">生成变量名称</td>
+<td>.var</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>ctrl + alt + v</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">运行代码</td>
+<td>ctrl + alt + f10</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>选中多块</p>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>idea快捷键</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + w</td>
+<td>快速选中，每次都扩充</td>
+<td></td>
+</tr>
+<tr>
+<td>alt + j</td>
+<td>选中下一个相同内容</td>
+<td></td>
+</tr>
+<tr>
+<td>alt+ f6/ctrl + alt + shift + j</td>
+<td>选择所有相同内容</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>修改</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl + d</td>
+<td>复制一行</td>
+<td></td>
+</tr>
+<tr>
+<td>ctrl + shift + ↑/↓</td>
+<td>上下移动</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置</td>
+<td>ctrl  + alt  +  s</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/J2se/01.%E5%88%9D%E8%AF%86Java/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/J2se/Untitled/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
