@@ -2,20 +2,21 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# Site
-title: Hexo
+# Site - 站点相关内容
+title: 产品汪，我劝你耗子尾汁~
 subtitle: ''
 description: ''
 keywords:
 author: John Doe
-language: en
+language: zh
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: http://example.com
 root: /
-permalink: :year/:month/:day/:title/
+# 文件url - 默认格式:year/:month/:day/:title/ 
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -95,16 +96,15 @@ include:
 exclude:
 ignore:
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: landscape
+# theme - 主题相关
+theme: next
 
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
+
+# Deployment - 部署相关 
 deploy:
   # 1. 要安装hexo-deployer-git
   # 2. hexo-deployer-git会用到这个配置
   type: 'git'
   repo: 'git@github.com:yuki-2021/yuki-2021.github.io.git'
+  branch: 'hexo'
 
