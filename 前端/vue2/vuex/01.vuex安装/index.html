@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Suche...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="vuex介绍vuex类似于全局对象，用于在不同组件中传值。 包括如下概念  state - 类似于data，表示全局存储的数据。 getters - 类似于computed。当state变化，getters会从新计算 mutations - 用于更新state actions - 异步更新state。 modules - 可以把state、getters、mutations、actions分割成不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex介绍">
+<meta property="og:url" content="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vuex/01.vuex%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
+<meta property="og:description" content="vuex介绍vuex类似于全局对象，用于在不同组件中传值。 包括如下概念  state - 类似于data，表示全局存储的数据。 getters - 类似于computed。当state变化，getters会从新计算 mutations - 用于更新state actions - 异步更新state。 modules - 可以把state、getters、mutations、actions分割成不">
+<meta property="og:locale">
+<meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
+<meta property="article:published_time" content="2021-09-16T02:18:43.523Z">
+<meta property="article:modified_time" content="2021-09-16T02:19:44.441Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="vuex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vuex.vuejs.org/vuex.png">
+
+
+<link rel="canonical" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vuex/01.vuex%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/%E5%89%8D%E7%AB%AF/vue2/vuex/01.vuex%E5%AE%89%E8%A3%85/","path":"前端/vue2/vuex/01.vuex安装/","title":"vuex介绍"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vuex介绍 | 产品汪，我劝你耗子尾汁~</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">产品汪，我劝你耗子尾汁~</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Inhaltsverzeichnis
+        </li>
+        <li class="sidebar-nav-overview">
+          Übersicht
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">vuex介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">vuex安装</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">Artikel</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">schlagwörter</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%89%8D%E7%AB%AF/vue2/vuex/01.vuex%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="产品汪，我劝你耗子尾汁~">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vuex介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
+      
+
+      <time title="Erstellt: 2021-09-16 10:18:43 / Geändert am: 10:19:44" itemprop="dateCreated datePublished" datetime="2021-09-16T10:18:43+08:00">2021-09-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="vuex介绍"><a href="#vuex介绍" class="headerlink" title="vuex介绍"></a>vuex介绍</h2><p><code>vuex</code>类似于<code>全局对象</code>，用于<code>在不同组件中传值</code>。</p>
+<p>包括如下<code>概念</code></p>
+<ul>
+<li><code>state</code> - 类似于<code>data</code>，表示<code>全局存储的数据</code>。</li>
+<li><code>getters</code> - 类似于<code>computed</code>。当<code>state</code>变化，<code>getters</code>会<code>从新计算</code></li>
+<li><code>mutations</code> - 用于<code>更新state</code></li>
+<li><code>actions</code> - 异步更新<code>state</code>。</li>
+<li><code>modules</code> - 可以把<code>state</code>、<code>getters</code>、<code>mutations</code>、<code>actions</code>分割成不同模块。</li>
+</ul>
+<p>工作流程如下：    </p>
+<p><img src="https://vuex.vuejs.org/vuex.png" alt="vuex"></p>
+<h2 id="vuex安装"><a href="#vuex安装" class="headerlink" title="vuex安装"></a>vuex安装</h2><p>如果，你用的是<code>vue-cli</code>，在<code>vue create xxx</code>的时候，选择<code>vuex</code>就<code>OK</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create vuex-demo</span><br></pre></td></tr></table></figure>
+
+<p>如果你用了<code>vue3</code>，用<code>vue add vuex</code>，可以安装<code>vuex</code>。</p>
+<ul>
+<li>会安装<code>vuex</code></li>
+<li>会生成<code>@/store/index.js</code>文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add vuex</span><br></pre></td></tr></table></figure>
+
+<p>如果你是<code>vuex2</code></p>
+<ul>
+<li>用<code>npm install vuex --save</code>安装</li>
+<li>在<code>@/store/index.js</code>创建<code>Vuex.Store</code>创建<code>store</code></li>
+<li>传给<code>vue实例</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 安装vuex</span></span><br><span class="line">npm installl vuex --save</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建@/store/index.js</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">// 创建Vuex.Store()</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="attr">state</span>: &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br><span class="line"><span class="comment">// 3. 传给vue</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line">createApp(App).use(store).use(router).mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/vuex/" rel="tag"># vuex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/npm/npm%E5%AE%89%E8%A3%85/%E5%AE%89%E8%A3%85nrm/" rel="prev" title="安装nrm">
+                  <i class="fa fa-chevron-left"></i> 安装nrm
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%89%8D%E7%AB%AF/vue2/vuex/02.vuex%E4%BD%BF%E7%94%A8/" rel="next" title="Vuex使用">
+                  Vuex使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

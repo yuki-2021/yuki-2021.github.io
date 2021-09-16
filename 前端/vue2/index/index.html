@@ -19,16 +19,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Vue2vue-router vue-router安装.md vue-router使用.md vue-router进阶.md">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Suche...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Vue2vue-router vue-router安装.md vue-router使用.md vue-router进阶.md  vuex vuex安装.md vuex使用.md vuex表单处理.md">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue汇总">
 <meta property="og:url" content="http://example.com/%E5%89%8D%E7%AB%AF/vue2/index/index.html">
 <meta property="og:site_name" content="产品汪，我劝你耗子尾汁~">
-<meta property="og:description" content="Vue2vue-router vue-router安装.md vue-router使用.md vue-router进阶.md">
+<meta property="og:description" content="Vue2vue-router vue-router安装.md vue-router使用.md vue-router进阶.md  vuex vuex安装.md vuex使用.md vuex表单处理.md">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-14T08:48:17.597Z">
-<meta property="article:modified_time" content="2021-09-14T14:04:09.031Z">
+<meta property="article:modified_time" content="2021-09-16T03:44:20.037Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="vue">
 <meta property="article:tag" content="vue-router">
@@ -60,7 +60,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten" role="button">
     </div>
   </div>
 
@@ -99,17 +99,17 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          المحتويات
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          عام
+          Übersicht
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue2"><span class="nav-number">1.</span> <span class="nav-text">Vue2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-router"><span class="nav-number">1.0.1.</span> <span class="nav-text">vue-router</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue2"><span class="nav-number">1.</span> <span class="nav-text">Vue2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-router"><span class="nav-number">1.1.</span> <span class="nav-text">vue-router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vuex"><span class="nav-number">1.2.</span> <span class="nav-text">vuex</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -122,13 +122,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
-          <span class="site-state-item-name">المقالات</span>
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">الوسوم</span>
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">schlagwörter</span>
       </div>
   </nav>
 </div>
@@ -188,11 +188,17 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">نُشر في</span>
-      
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="أُنشأ: 2021-09-14 16:48:17 / عُدل: 22:04:09" itemprop="dateCreated datePublished" datetime="2021-09-14T16:48:17+08:00">2021-09-14</time>
+      <time title="Erstellt: 2021-09-14 16:48:17" itemprop="dateCreated datePublished" datetime="2021-09-14T16:48:17+08:00">2021-09-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Bearbeitet am</span>
+        <time title="Geändert am: 2021-09-16 11:44:20" itemprop="dateModified" datetime="2021-09-16T11:44:20+08:00">2021-09-16</time>
+      </span>
 
   
 </div>
@@ -204,10 +210,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h1><h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><ul>
+        <h2 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h2><h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><ul>
 <li><a href="/%E5%89%8D%E7%AB%AF/vue2/vue-router/01.vue-router%E5%AE%89%E8%A3%85/">vue-router安装.md</a></li>
 <li><a href="/%E5%89%8D%E7%AB%AF/vue2/vue-router/02.vue-router%E4%BD%BF%E7%94%A8/">vue-router使用.md</a></li>
 <li><a href="/%E5%89%8D%E7%AB%AF/vue2/vue-router/03.vue-router%E8%BF%9B%E9%98%B6/">vue-router进阶.md</a></li>
+</ul>
+<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><ul>
+<li><a href="/%E5%89%8D%E7%AB%AF/vue2/vuex/01.vuex%E5%AE%89%E8%A3%85/">vuex安装.md</a></li>
+<li><a href="/%E5%89%8D%E7%AB%AF/vue2/vuex/02.vuex%E4%BD%BF%E7%94%A8/">vuex使用.md</a></li>
+<li><a href="/%E5%89%8D%E7%AB%AF/vue2/vuex/03.vuex%E8%A1%A8%E5%8D%95%E5%A4%84%E7%90%86/">vuex表单处理.md</a></li>
 </ul>
 
     </div>
@@ -260,7 +271,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
 </div>
-  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
     </div>
